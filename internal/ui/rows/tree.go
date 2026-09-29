@@ -156,9 +156,9 @@ func (r *Renderer) tree(row model.TreeRow, w int, sel bool) string {
 	b.WriteString(paint(theme.Dim, fold))
 	b.WriteString(paint(statusRole, g.Status[idx]))
 	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(paint(idRole, id))
+	b.WriteString(r.hl(paint, idRole, id))
 	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(paint(textRole, r.look.Fit(oneLine(is.Title), titleW)))
+	b.WriteString(r.hl(paint, textRole, r.look.Fit(oneLine(is.Title), titleW)))
 	if showOrphan {
 		b.WriteString(paint(theme.Text, " "))
 		b.WriteString(paint(theme.Faint, orphan))

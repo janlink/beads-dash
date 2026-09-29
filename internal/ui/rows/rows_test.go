@@ -6,6 +6,7 @@ import (
 
 	"github.com/charmbracelet/x/ansi"
 
+	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/testgolden"
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/rows"
@@ -146,5 +147,29 @@ func TestBodyCacheIsKeyedByViewIDAndWidth(t *testing.T) {
 	draw("a", 40, true)
 	if calls != 5 {
 		t.Errorf("the current row is drawn fresh every frame: %d calls", calls)
+	}
+}
+
+func TestMatchHighlightPaintsTermsInIDAndTitle(t *testing.T) {
+	r, _ := newRenderer(theme.DepthTrueColor, theme.TierFancy)
+	plain := line(r, 80, rows.Row{ID: "ws-9qe"})
+	r.SetMatch([]model.MatchTerm{{Text: "payment"}, {Text: "9QE"}, {Text: "Timeout", Exact: true}})
+	got := line(r, 80, rows.Row{ID: "ws-9qe"})
+	if ansi.Strip(got) != ansi.Strip(plain) || ansi.StringWidth(got) != 80 {
+		t.Errorf("highlighting changed the text or width:\n%q\n%q", ansi.Strip(got), ansi.Strip(plain))
+	}
+	match := uitest.Look(theme.DepthTrueColor, theme.TierFancy, true).Paint(theme.Match, "Payment")
+	if !strings.Contains(got, match) {
+		t.Errorf("title match not painted in the match role: %q", got)
+	}
+	if !strings.Contains(got, uitest.Look(theme.DepthTrueColor, theme.TierFancy, true).Paint(theme.Match, "9qe")) {
+		t.Errorf("id match not painted: %q", got)
+	}
+	if strings.Contains(got, uitest.Look(theme.DepthTrueColor, theme.TierFancy, true).Paint(theme.Match, "timeout")) {
+		t.Errorf("exact term matched case-insensitively")
+	}
+	r.SetMatch(nil)
+	if line(r, 80, rows.Row{ID: "ws-9qe"}) != plain {
+		t.Error("clearing the terms must restore the rows")
 	}
 }

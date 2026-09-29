@@ -228,7 +228,7 @@ func (r *Renderer) issueLabel(row model.OutlineRow, w int, text func(theme.Role,
 	head.WriteString(text(statusRole, g.Status[idx]))
 	head.WriteString(text(theme.Text, " "))
 	id := ansi.Truncate(is.ID, maxIDWidth, g.Ellipsis)
-	head.WriteString(text(idRole, id))
+	head.WriteString(r.hl(text, idRole, id))
 	headW := ansi.StringWidth(head.String())
 	if row.Member {
 		head.WriteString(text(theme.Changed, " "+CycleGlyph(g)))
@@ -242,9 +242,9 @@ func (r *Renderer) issueLabel(row model.OutlineRow, w int, text func(theme.Role,
 	if titleW <= 0 {
 		return head.String() + text(theme.Text, strings.Repeat(" ", max(w-headW, 0)))
 	}
-	title := r.look.Fit(oneLine(is.Title), titleW)
+	title := r.hl(text, titleRole, r.look.Fit(oneLine(is.Title), titleW))
 	if suffix != "" {
-		return head.String() + text(theme.Text, " ") + text(titleRole, title) + text(theme.Dim, suffix)
+		return head.String() + text(theme.Text, " ") + title + text(theme.Dim, suffix)
 	}
-	return head.String() + text(theme.Text, " ") + text(titleRole, title)
+	return head.String() + text(theme.Text, " ") + title
 }

@@ -5,6 +5,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/charmbracelet/x/ansi"
+
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/keys"
 	"github.com/janlink/beads-dash/internal/ui/rows"
@@ -96,13 +98,14 @@ func scopeInfoFor(env Env, shown int, hidesClosed bool) scopeInfo {
 	return si
 }
 
-// fit is the label in at most w cells, cut out in the middle when it is
-// longer; nothing when no scope is active or w is too small to say anything.
+// fit is the label in at most w cells; the query is cut out in the middle
+// when it is longer, the counts and notes after it stay whole. Nothing when no
+// scope is active or w is too small to say anything.
 func (si scopeInfo) fit(w int) string {
 	if !si.active || w < 8 {
 		return ""
 	}
-	parts := []string{si.marker + " " + si.query, fmt.Sprintf("%d/%d", si.shown, si.total)}
+	parts := []string{fmt.Sprintf("%d/%d", si.shown, si.total)}
 	if si.closedHidden {
 		parts = append(parts, "closed hidden")
 	}
@@ -112,7 +115,14 @@ func (si scopeInfo) fit(w int) string {
 	if len(si.unknown) > 0 {
 		parts = append(parts, "unknown: "+strings.Join(si.unknown, ", "))
 	}
-	return rows.MidCut(strings.Join(parts, " · "), w, si.ellipsis)
+	head := si.marker + " "
+	tail := " · " + strings.Join(parts, " · ")
+	if room := w - ansi.StringWidth(head) - ansi.StringWidth(tail); room >= minQueryCells {
+		return head + rows.MidCut(si.query, room, si.ellipsis) + tail
+	}
+	return rows.MidCut(head+si.query+tail, w, si.ellipsis)
 }
+
+const minQueryCells = 6
 
 func itoa(n int) string { return strconv.Itoa(n) }

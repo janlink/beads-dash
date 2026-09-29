@@ -16,6 +16,7 @@ import (
 	"github.com/janlink/beads-dash/internal/bd"
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/refresh"
+	"github.com/janlink/beads-dash/internal/ui/command"
 	"github.com/janlink/beads-dash/internal/ui/detail"
 	"github.com/janlink/beads-dash/internal/ui/dialog"
 	"github.com/janlink/beads-dash/internal/ui/keys"
@@ -35,12 +36,13 @@ type (
 		cancel context.CancelFunc
 		sess   bd.Session
 	}
-	updateMsg  struct{ u refresh.Update }
-	closedMsg  struct{}
-	recheckMsg struct{ gen int }
-	clockMsg   struct{}
-	hlTickMsg  struct{ gen int }
-	savedMsg   struct{ err error }
+	updateMsg     struct{ u refresh.Update }
+	closedMsg     struct{}
+	recheckMsg    struct{ gen int }
+	clockMsg      struct{}
+	hlTickMsg     struct{ gen int }
+	searchTickMsg struct{ gen int }
+	savedMsg      struct{ err error }
 )
 
 const (
@@ -74,6 +76,7 @@ type App struct {
 	slotCur [6]string
 
 	scope  model.Scope
+	away   away
 	mset   *model.Matches
 	msnap  *model.Snapshot
 	mkey   string
@@ -105,6 +108,12 @@ type App struct {
 	hint       string
 	dialogs    []Dialog
 	quitting   bool
+
+	bar         *bar
+	searchHist  *recall
+	commandHist *recall
+	cmds        *command.Table
+	run         map[string]commandFunc
 }
 
 // New returns the root model.
@@ -119,6 +128,14 @@ func New(o Options) *App {
 			Theme: o.Settings.Settings.Theme, Background: o.Settings.Settings.Background, Glyphs: o.Settings.Settings.Glyphs,
 		},
 	}
+	var saved []string
+	if o.History != nil {
+		saved = o.History.History()
+	}
+	search, typed := splitHistory(saved)
+	a.searchHist, a.commandHist = newRecall(search), newRecall(typed)
+	a.cmds, a.run = command.NewTable(), map[string]commandFunc{}
+	a.registerBuiltins()
 	a.acts = sessionActions{s: a.sess, show: a.show}
 	a.panel = detail.New()
 	a.docked = o.Settings.Settings.DetailDocked
@@ -165,11 +182,6 @@ func (a *App) startSlot() int {
 		}
 	}
 	return 0
-}
-
-func (a *App) setScope(s model.Scope) {
-	a.scope = s
-	a.sess.ScopeActive = s.Active()
 }
 
 // matches is the scope applied to the snapshot, recomputed only when either
@@ -283,6 +295,12 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 		a.cols, a.rows = m.Width, m.Height
 	case tea.KeyPressMsg:
 		return a.key(m)
+	case tea.PasteMsg:
+		return a.paste(m.Content)
+	case searchTickMsg:
+		if b := a.bar; b != nil && m.gen == b.gen {
+			a.flushSearch()
+		}
 	case tea.MouseClickMsg:
 		a.click(tea.Mouse(m))
 	case tea.MouseWheelMsg:
@@ -423,13 +441,14 @@ func (a *App) apply(u refresh.Update) tea.Cmd {
 	}
 	var cmds []tea.Cmd
 	if u.Snapshot != nil && u.Snapshot != a.snap && !a.vanished {
-		old := a.view().Visible(a.env())
+		old := slices.Clone(a.view().Visible(a.env()))
 		a.snap = u.Snapshot
 		a.rend.Bind(a.snap, a.bds.Statuses)
 		exists := func(id string) bool { _, ok := a.snap.Issue(id); return ok }
 		a.sess.Prune(exists)
 		a.hl.Prune(exists)
 		a.keepCurrent(old)
+		a.clampCursors()
 	}
 	if len(u.Events) > 0 {
 		a.feed.Merge(u.Events...)
@@ -449,24 +468,20 @@ func (a *App) apply(u refresh.Update) tea.Cmd {
 // keepCurrent moves the current issue to its nearest neighbour when the view
 // no longer shows it.
 func (a *App) keepCurrent(old []string) {
-	env := a.env()
-	v := a.view()
 	cur := a.sess.Current()
-	if cur != "" && v.Has(env, cur) {
-		return
-	}
-	if next := state.NearestSurvivor(old, cur, func(id string) bool { return v.Has(env, id) }); next != "" {
-		a.sess.SetCurrent(next)
-		return
-	}
-	if cur != "" && a.snap != nil {
+	if cur != "" {
 		if _, ok := a.snap.Issue(cur); ok {
+			if slices.Contains(old, cur) {
+				a.reconcile(old)
+			}
 			return
 		}
 	}
-	a.sess.SetCurrent("")
-	if vis := v.Visible(env); len(vis) > 0 {
-		a.sess.SetCurrent(vis[0])
+	a.reconcile(old)
+	if a.sess.Current() == "" {
+		if vis := a.view().Visible(a.env()); len(vis) > 0 {
+			a.sess.SetCurrent(vis[0])
+		}
 	}
 }
 
@@ -530,7 +545,7 @@ func (a *App) baseContext() keys.Context {
 		case state.LayerDetailFocus, state.LayerDetail:
 			return keys.Panel
 		case state.LayerBar:
-			return keys.Bar
+			return a.bar.kind.context()
 		case state.LayerDialog:
 		}
 	}
@@ -545,7 +560,7 @@ func (a *App) topDialog() Dialog {
 }
 
 func (a *App) bodyHeight() int {
-	h := a.rows - 2
+	h := a.rows - 2 - a.barHeight()
 	if _, ok := a.notice(); ok {
 		h--
 	}
@@ -607,8 +622,12 @@ func (a *App) key(m tea.KeyPressMsg) tea.Cmd {
 		return a.topDialog().Update(m)
 	}
 	b, res := a.mx.Feed(a.context(), k)
-	if res != keys.Matched {
+	switch res {
+	case keys.NoMatch:
+		return a.typeKey(m)
+	case keys.Pending:
 		return nil
+	case keys.Matched:
 	}
 	return a.act(b.Action, k)
 }
@@ -638,9 +657,22 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 		}
 		return tea.Batch(cmd, a.syncPause())
 	}
+	if a.barOpen() {
+		if cmd, ok := a.barAct(act); ok {
+			return tea.Batch(cmd, a.syncPause())
+		}
+	}
 	switch act { //nolint:exhaustive // the action set is open: views add their own
 	case keys.Retry, keys.Refresh:
 		return a.retry()
+	case keys.OpenSearch:
+		a.openBar(barSearch)
+	case keys.OpenFilter:
+		a.openBar(barFilter)
+	case keys.OpenCommand:
+		a.openBar(barCommand)
+	case keys.OpenPicker:
+		a.openJumpPicker()
 	case keys.OpenHelp:
 		a.pushDialog(&helpDialog{a: a, under: a.baseContext()})
 	case keys.OpenAppearance:
@@ -666,8 +698,12 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 				return nil
 			}
 		}
+		barOpen := a.barOpen()
 		if a.sess.Esc() == state.EscScope {
-			a.setScope(model.ParseScope("", a.scope.ShowClosed()))
+			a.applyScope(a.clearedScope())
+		}
+		if barOpen {
+			return tea.Batch(a.closeBar(), a.syncPause())
 		}
 	case keys.Open:
 		if cmd, ok := a.view().Handle(act, a.env()); ok || !a.openDetail() {
@@ -991,6 +1027,9 @@ func (a *App) render() string {
 		lines = append(lines, n)
 	}
 	lines = append(lines, a.footer())
+	if a.bar != nil {
+		lines = append(lines, a.barLines()...)
+	}
 	page := strings.Join(lines, "\n")
 	for _, d := range a.dialogs {
 		page = dialog.Overlay(l, a.cols, a.rows, page, d.Frame(l, a.cols, a.rows))

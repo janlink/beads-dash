@@ -149,6 +149,9 @@ func (a *App) footer() string {
 		left = " " + l.Paint(theme.Warning, a.hint)
 	} else {
 		hs := a.hintsFor(a.context())
+		if a.escClears() {
+			hs = append([]keys.Hint{{Key: "Esc", Desc: "clear"}}, hs...)
+		}
 		if a.emptyShown() {
 			hs = append(slices.Clone(a.emptyWorkspace().Hints), hs...)
 		}
@@ -197,4 +200,16 @@ func (a *App) noticeRow() (string, bool) {
 		return "", false
 	}
 	return screens.NoticeRow(a.look, n, a.cols), true
+}
+
+// escClears reports whether Esc, with no layer above the view, clears the
+// scope or the marks.
+func (a *App) escClears() bool {
+	if a.report != nil || len(a.dialogs) > 0 || a.bar != nil {
+		return false
+	}
+	if _, layered := a.sess.Top(); layered {
+		return false
+	}
+	return a.sess.ScopeActive || a.sess.MarkCount() > 0
 }

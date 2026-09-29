@@ -115,7 +115,7 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 	b.WriteString(sp)
 	b.WriteString(paint(statusRole, g.Status[idx]))
 	b.WriteString(sp)
-	b.WriteString(paint(theme.Dim, r.look.Fit(is.ID, r.idW)))
+	b.WriteString(r.hl(paint, theme.Dim, r.look.Fit(is.ID, r.idW)))
 	b.WriteString(sp)
 	b.WriteString(paint(theme.PriorityRole(is.Priority), "P"+strconv.Itoa(min(max(is.Priority, 0), 9))))
 	b.WriteString(sp)
@@ -123,7 +123,7 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 		b.WriteString(paint(theme.TypeRole(is.IssueType), r.look.Fit(oneLine(is.IssueType), readyTypeW)))
 		b.WriteString(sp)
 	}
-	b.WriteString(paint(theme.Text, r.look.Fit(oneLine(is.Title), titleW)))
+	b.WriteString(r.hl(paint, theme.Text, r.look.Fit(oneLine(is.Title), titleW)))
 	if cols.Assignee {
 		b.WriteString(sp)
 		b.WriteString(paint(theme.Dim, r.look.Fit(ansi.Truncate(oneLine(is.Assignee), readyWhoW, g.Ellipsis), readyWhoW)))

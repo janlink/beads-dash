@@ -9,6 +9,7 @@ import (
 
 	"github.com/janlink/beads-dash/internal/config"
 	"github.com/janlink/beads-dash/internal/theme"
+	"github.com/janlink/beads-dash/internal/ui/command"
 	"github.com/janlink/beads-dash/internal/ui/dialog"
 	"github.com/janlink/beads-dash/internal/ui/keys"
 	"github.com/janlink/beads-dash/internal/ui/look"
@@ -64,6 +65,9 @@ type helpDialog struct {
 	under     keys.Context
 	filter    string
 	filtering bool
+	// cmds are the commands listed after the keys; only drops the keys.
+	cmds []command.Spec
+	only bool
 	scroller
 }
 
@@ -119,7 +123,11 @@ func (d *helpDialog) Frame(l look.Look, w, h int) dialog.Frame {
 		body = append(body, l.Paint(theme.Primary, "/ ")+l.Paint(theme.Strong, d.filter+cursor), "")
 	}
 	needle := strings.ToLower(d.filter)
-	for _, sec := range d.a.km.Sections(d.under) {
+	var secs []keys.Section
+	if !d.only {
+		secs = d.a.km.Sections(d.under)
+	}
+	for _, sec := range secs {
 		var lines []string
 		keyW := 0
 		for _, b := range sec.Bindings {
@@ -140,6 +148,9 @@ func (d *helpDialog) Frame(l look.Look, w, h int) dialog.Frame {
 		body = append(body, lines...)
 		body = append(body, "")
 	}
+	if len(d.cmds) > 0 {
+		body, shown = d.commandLines(l, needle, body, shown)
+	}
 	if shown == 0 {
 		body = append(body, l.Paint(theme.Dim, "No key matches."))
 	}
@@ -148,7 +159,11 @@ func (d *helpDialog) Frame(l look.Look, w, h int) dialog.Frame {
 		hints = []keys.Hint{{Key: "Enter", Desc: "done"}, {Key: "Esc", Desc: "clear"}}
 	}
 	d.clamp(w, h, len(body))
-	return dialog.Frame{Title: "Keys", Aside: fmt.Sprintf("%d shown", shown), Hints: hints, Body: body, Scroll: d.at}
+	title := "Keys"
+	if d.only {
+		title = "Command"
+	}
+	return dialog.Frame{Title: title, Aside: fmt.Sprintf("%d shown", shown), Hints: hints, Body: body, Scroll: d.at}
 }
 
 type detailsDialog struct {
@@ -231,4 +246,34 @@ func (*appearanceDialog) Update(tea.Msg) tea.Cmd { return nil }
 
 func (d *appearanceDialog) Frame(l look.Look, _, _ int) dialog.Frame {
 	return d.m.Frame(l, d.a.hintsFor(keys.Appearance))
+}
+
+func (d *helpDialog) commandLines(l look.Look, needle string, body []string, shown int) ([]string, int) {
+	lineW := 0
+	for _, s := range d.cmds {
+		lineW = max(lineW, ansi.StringWidth(s.Line()))
+	}
+	var lines []string
+	for _, s := range d.cmds {
+		if needle != "" && !strings.Contains(strings.ToLower(s.Line()+" "+s.Summary), needle) {
+			continue
+		}
+		pad := strings.Repeat(" ", lineW-ansi.StringWidth(s.Line()))
+		lines = append(lines, "  "+l.Paint(theme.Strong, s.Line())+pad+"  "+l.Paint(theme.Text, s.Summary))
+		if d.only {
+			if len(s.Aliases) > 0 {
+				lines = append(lines, "", "  "+l.Paint(theme.Dim, "also: :"+strings.Join(s.Aliases, ", :")))
+			}
+			if s.Help != "" {
+				lines = append(lines, "", "  "+l.Paint(theme.Dim, s.Help))
+			}
+		}
+		shown++
+	}
+	if len(lines) == 0 {
+		return body, shown
+	}
+	body = append(body, l.Paint(theme.Primary, "Commands"))
+	body = append(body, lines...)
+	return append(body, ""), shown
 }

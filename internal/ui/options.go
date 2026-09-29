@@ -43,6 +43,8 @@ type Options struct {
 	Appearance appearance.Appearance
 	Getenv     func(string) string
 	Store      Persister
+	// History is the persisted bar history; nil keeps it for the session.
+	History History
 	// Warnings and the appearance notice are shown once in the notice row.
 	Warnings []string
 	NoMouse  bool

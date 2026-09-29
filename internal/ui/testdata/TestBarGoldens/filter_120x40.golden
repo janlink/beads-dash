@@ -1,0 +1,40 @@
+ 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph  / -type:...:alice · 1/15 · closed hidden * live 12:00:00 
+|     * ws-4k2 Checkout: guest orders                                                                         2/5 ##----
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+ Enter keep  Esc close  Space toggle  Tab column  Up/Dn option                                                          
+ Filter  type to find an option                                                                             1/15 shown  
+Status                          Type                  Priority              Assignee (1)          Labels                
+[x] open                      5 [ ] task            7 [ ] P0              1 [ ] (none)         11                       
+[x] in progress               2 [ ] feature         3 [ ] P1              2 [x] alice           2                       
+[x] blocked                   2 [ ] bug             2 [ ] P2              8 [ ] bob             1                       
+[x] frozen                    1 [ ] epic            2 [ ] P3              4 [ ] carol           1                       
+[ ] closed                    5 [ ] chore           1 [ ] P4              0                                             
+[x] other                     0                                                                                         
+ advanced: -type:chore                                                                                                  

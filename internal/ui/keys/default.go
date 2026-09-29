@@ -16,11 +16,11 @@ func Default() *Map {
 		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "close, then clear marks and scope"},
 		{Keys: []string{"backspace", "ctrl+o"}, Action: Back, Label: "Backspace", Desc: "back to the previous issue"},
 		{Keys: []string{"!"}, Action: OpenDetails, Desc: "error details"},
-		{Keys: []string{":"}, Action: "bar.command", Desc: "command bar", Later: true},
-		{Keys: []string{"/"}, Action: "bar.search", Desc: "search", Later: true},
-		{Keys: []string{"f"}, Action: "bar.filter", Desc: "filter", Later: true},
+		{Keys: []string{"/"}, Action: OpenSearch, Desc: "search", Hint: 5},
+		{Keys: []string{"f"}, Action: OpenFilter, Desc: "filter", Hint: 7},
+		{Keys: []string{":"}, Action: OpenCommand, Desc: "command bar", Hint: 7, HintDesc: "command"},
 		{Keys: []string{"N"}, Action: "notifications", Desc: "notifications", Later: true},
-		{Keys: []string{"ctrl+p"}, Action: "picker", Desc: "jump to issue", Later: true},
+		{Keys: []string{"ctrl+p"}, Action: OpenPicker, Label: "Ctrl+P", Desc: "jump to an issue", Hint: 7, HintDesc: "jump"},
 		{Keys: []string{"tab"}, Action: FocusNext, Label: "Tab", Desc: "focus list or detail"},
 		{Keys: []string{"D"}, Action: DetailToggle, Desc: "show or hide the detail panel"},
 	}
@@ -98,11 +98,35 @@ func Default() *Map {
 		{Keys: []string{"y"}, Action: "copy.id", Desc: "copy ID", Later: true},
 	}
 	m.by[Bar] = []Binding{
-		{Keys: []string{"enter"}, Action: "bar.accept", Label: "Enter", Desc: "accept", Later: true},
-		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "close", Later: true},
-		{Keys: []string{"up", "ctrl+p"}, Action: "bar.up", Label: "Up", Desc: "previous", Later: true},
-		{Keys: []string{"down", "ctrl+n"}, Action: "bar.down", Label: "Down", Desc: "next", Later: true},
-		{Keys: []string{"tab"}, Action: "bar.complete", Label: "Tab", Desc: "complete", Later: true},
+		{Keys: []string{"enter"}, Action: BarAccept, Label: "Enter", Desc: "keep the search and close", Hint: 1, HintDesc: "keep"},
+		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "close, keeping the search", Hint: 2, HintDesc: "close"},
+		{Keys: []string{"tab"}, Action: BarComplete, Label: "Tab", Desc: "complete a facet, value or ID", Hint: 3, HintDesc: "complete"},
+		{Keys: []string{"shift+tab"}, Action: BarCompleteBack, Label: "Shift+Tab", Desc: "complete backwards"},
+		{Keys: []string{"ctrl+n"}, Action: BarIssueNext, Label: "Ctrl+N", Desc: "next issue behind the bar", Hint: 4, HintKey: "Ctrl+N/P", HintDesc: "issue"},
+		{Keys: []string{"ctrl+p"}, Action: BarIssuePrev, Label: "Ctrl+P", Desc: "previous issue behind the bar"},
+		{Keys: []string{"down"}, Action: BarDown, Label: "Down", Desc: "next issue, or a newer search while browsing history", Hint: 5, HintKey: "Up/Dn", HintDesc: "issue, history"},
+		{Keys: []string{"up"}, Action: BarUp, Label: "Up", Desc: "previous issue, or an older search on an empty bar"},
+	}
+	m.by[BarCommand] = []Binding{
+		{Keys: []string{"enter"}, Action: BarAccept, Label: "Enter", Desc: "run the command", Hint: 1, HintDesc: "run"},
+		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "close", Hint: 2},
+		{Keys: []string{"tab"}, Action: BarComplete, Label: "Tab", Desc: "complete", Hint: 3},
+		{Keys: []string{"shift+tab"}, Action: BarCompleteBack, Label: "Shift+Tab", Desc: "complete backwards"},
+		{Keys: []string{"up"}, Action: BarUp, Label: "Up", Desc: "older command", Hint: 4, HintKey: "Up/Dn", HintDesc: "history"},
+		{Keys: []string{"down"}, Action: BarDown, Label: "Down", Desc: "newer command"},
+		{Keys: []string{"ctrl+n"}, Action: BarIssueNext, Label: "Ctrl+N", Desc: "next issue behind the bar"},
+		{Keys: []string{"ctrl+p"}, Action: BarIssuePrev, Label: "Ctrl+P", Desc: "previous issue behind the bar"},
+	}
+	m.by[BarFilter] = []Binding{
+		{Keys: []string{"enter"}, Action: BarAccept, Label: "Enter", Desc: "keep the filter and close", Hint: 1, HintDesc: "keep"},
+		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "close, keeping the filter", Hint: 2, HintDesc: "close"},
+		{Keys: []string{"space"}, Action: BarToggle, Label: "Space", Desc: "toggle the option", Hint: 3, HintDesc: "toggle"},
+		{Keys: []string{"tab"}, Action: BarColumnNext, Label: "Tab", Desc: "next column", Hint: 4, HintKey: "Tab", HintDesc: "column"},
+		{Keys: []string{"shift+tab"}, Action: BarColumnPrev, Label: "Shift+Tab", Desc: "previous column"},
+		{Keys: []string{"down"}, Action: BarDown, Label: "Down", Desc: "next option", Hint: 5, HintKey: "Up/Dn", HintDesc: "option"},
+		{Keys: []string{"up"}, Action: BarUp, Label: "Up", Desc: "previous option"},
+		{Keys: []string{"ctrl+n"}, Action: BarIssueNext, Label: "Ctrl+N", Desc: "next issue behind the bar"},
+		{Keys: []string{"ctrl+p"}, Action: BarIssuePrev, Label: "Ctrl+P", Desc: "previous issue behind the bar"},
 	}
 	m.by[Form] = []Binding{
 		{Keys: []string{"tab"}, Action: Next, Label: "Tab", Desc: "next field", Later: true},
@@ -110,6 +134,16 @@ func Default() *Map {
 		{Keys: []string{"ctrl+s"}, Action: Apply, Label: "Ctrl+S", Desc: "submit", Later: true},
 		{Keys: []string{"ctrl+e"}, Action: "editor", Label: "Ctrl+E", Desc: "editor", Later: true},
 		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "close", Later: true},
+	}
+	m.by[Picker] = []Binding{
+		{Keys: []string{"enter"}, Action: Apply, Label: "Enter", Desc: "pick", Hint: 1},
+		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "close", Hint: 2},
+		{Keys: []string{"down", "ctrl+n"}, Action: NavDown, Label: "Down/Ctrl+N", Desc: "next", Hint: 3, HintKey: "Up/Dn", HintDesc: "move"},
+		{Keys: []string{"up", "ctrl+p"}, Action: NavUp, Label: "Up/Ctrl+P", Desc: "previous"},
+		{Keys: []string{"pgdown"}, Action: NavPageDown, Label: "PgDn", Desc: "page down"},
+		{Keys: []string{"pgup"}, Action: NavPageUp, Label: "PgUp", Desc: "page up"},
+		{Keys: []string{"tab"}, Action: PickerMark, Label: "Tab", Desc: "mark for several", Hint: 4, HintDesc: "mark"},
+		{Keys: []string{"ctrl+t"}, Action: PickerClosed, Label: "Ctrl+T", Desc: "show or hide closed issues", Hint: 5, HintDesc: "closed"},
 	}
 	m.by[Help] = []Binding{
 		{Keys: []string{"esc", "?"}, Action: Close, Label: "Esc", Desc: "close", Hint: 1},

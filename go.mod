@@ -17,6 +17,7 @@ require (
 	github.com/charmbracelet/x/term v0.2.2
 	github.com/muesli/cancelreader v0.2.2
 	github.com/quasilyte/go-ruleguard/dsl v0.3.23
+	github.com/sahilm/fuzzy v0.1.3
 	go.uber.org/goleak v1.3.0
 	golang.org/x/text v0.42.0
 )

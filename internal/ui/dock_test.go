@@ -261,7 +261,7 @@ func TestEnterOnAPanelRowJumpsAndBackReturns(t *testing.T) {
 }
 
 func TestDetailToggleIsListedInHelp(t *testing.T) {
-	a := viewApp(t, plain, 120, 40, "tree", true)
+	a := viewApp(t, plain, 120, 100, "tree", true)
 	press(a, "?")
 	if out := screen(a); !strings.Contains(out, "show or hide the detail panel") {
 		t.Errorf("help lacks the D binding:\n%s", out)

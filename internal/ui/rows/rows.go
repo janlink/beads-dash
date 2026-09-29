@@ -49,6 +49,7 @@ type Renderer struct {
 	statuses model.Statuses
 	idW      int
 	cache    map[cacheKey]string
+	terms    []needle
 	gutter   [2][2][2]string
 }
 
@@ -198,9 +199,9 @@ func (r *Renderer) render(w int, id string, sel, withAssignee bool) string {
 	b.WriteString(paint(theme.Text, " "))
 	b.WriteString(paint(theme.PriorityRole(is.Priority), prio))
 	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(paint(theme.Dim, idText))
+	b.WriteString(r.hl(paint, theme.Dim, idText))
 	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(paint(titleRole, r.look.Fit(oneLine(is.Title), max(titleW, 0))))
+	b.WriteString(r.hl(paint, titleRole, r.look.Fit(oneLine(is.Title), max(titleW, 0))))
 	if factW > 0 {
 		b.WriteString(paint(theme.Text, " "))
 		b.WriteString(paint(theme.Dim, fact))

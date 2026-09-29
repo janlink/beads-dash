@@ -6,9 +6,12 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"sync"
+	"unicode/utf8"
 )
 
-// HistoryLimit is how many command-bar entries the history file keeps.
+// HistoryLimit is how many entries the history file keeps for each kind of
+// entry, a kind being the first character of the line.
 const HistoryLimit = 100
 
 // JournalAnswer records what the viewer said to the events-journal opt-in
@@ -25,6 +28,7 @@ const (
 // State is the machine-written state directory: command history and per
 // workspace answers. Every write re-reads the file and replaces it atomically.
 type State struct {
+	historyMu      sync.Mutex
 	historyFile    string
 	workspacesFile string
 }
@@ -35,8 +39,14 @@ func NewState(p Paths) *State {
 	return &State{historyFile: p.HistoryFile, workspacesFile: p.WorkspacesFile}
 }
 
-// History returns the stored command-bar history, oldest first.
+// History returns the stored history, oldest first.
 func (s *State) History() []string {
+	s.historyMu.Lock()
+	defer s.historyMu.Unlock()
+	return s.readHistory()
+}
+
+func (s *State) readHistory() []string {
 	if s.historyFile == "" {
 		return nil
 	}
@@ -44,38 +54,67 @@ func (s *State) History() []string {
 	if err != nil {
 		return nil
 	}
-	return lastLines(string(data), HistoryLimit)
+	return capPerKind(splitLines(string(data)), HistoryLimit)
 }
 
-// AppendHistory adds one command, keeping the last HistoryLimit entries.
-// Blank commands and immediate repeats are skipped.
-func (s *State) AppendHistory(cmd string) error {
-	cmd = strings.TrimSpace(strings.NewReplacer("\r", " ", "\n", " ").Replace(cmd))
-	if cmd == "" || s.historyFile == "" {
+// AppendHistory adds one entry, keeping the last HistoryLimit of its kind.
+// Blank entries and immediate repeats within a kind are skipped.
+func (s *State) AppendHistory(entry string) error {
+	entry = strings.TrimSpace(strings.NewReplacer("\r", " ", "\n", " ").Replace(entry))
+	if entry == "" || s.historyFile == "" {
 		return nil
 	}
-	lines := s.History()
-	if len(lines) > 0 && lines[len(lines)-1] == cmd {
-		return nil
+	s.historyMu.Lock()
+	defer s.historyMu.Unlock()
+	lines := s.readHistory()
+	kind := kindOf(entry)
+	for i := len(lines) - 1; i >= 0; i-- {
+		if kindOf(lines[i]) == kind {
+			if lines[i] == entry {
+				return nil
+			}
+			break
+		}
 	}
-	lines = append(lines, cmd)
-	if len(lines) > HistoryLimit {
-		lines = lines[len(lines)-HistoryLimit:]
-	}
+	lines = capPerKind(append(lines, entry), HistoryLimit)
 	return writeFileAtomic(s.historyFile, []byte(strings.Join(lines, "\n")+"\n"), 0o600)
 }
 
-func lastLines(data string, n int) []string {
+func kindOf(line string) rune {
+	r, _ := utf8.DecodeRuneInString(line)
+	return r
+}
+
+func splitLines(data string) []string {
 	var lines []string
 	for _, l := range strings.Split(data, "\n") {
 		if l = strings.TrimRight(l, "\r"); l != "" {
 			lines = append(lines, l)
 		}
 	}
-	if len(lines) > n {
-		lines = lines[len(lines)-n:]
-	}
 	return lines
+}
+
+// capPerKind keeps the last n lines of each kind, in their original order.
+func capPerKind(lines []string, n int) []string {
+	seen := map[rune]int{}
+	keep := make([]bool, len(lines))
+	kept := 0
+	for i := len(lines) - 1; i >= 0; i-- {
+		k := kindOf(lines[i])
+		if seen[k] < n {
+			seen[k]++
+			keep[i] = true
+			kept++
+		}
+	}
+	out := make([]string, 0, kept)
+	for i, l := range lines {
+		if keep[i] {
+			out = append(out, l)
+		}
+	}
+	return out
 }
 
 // Journal returns the stored opt-in answer for a workspace, keyed by the

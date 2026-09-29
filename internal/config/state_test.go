@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"reflect"
 	"strings"
+	"sync"
 	"testing"
 
 	"github.com/janlink/beads-dash/internal/config"
@@ -111,5 +112,39 @@ func TestSetJournalNeverOverwritesBrokenFile(t *testing.T) {
 	}
 	if s.Journal("/w/a") != config.JournalUnasked {
 		t.Error("broken file must read as unasked")
+	}
+}
+
+func TestHistoryCapsEachKindApart(t *testing.T) {
+	s, _ := newState(t)
+	for i := range 120 {
+		if err := s.AppendHistory(fmt.Sprintf("/search %d", i)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	for i := range 3 {
+		if err := s.AppendHistory(fmt.Sprintf(":cmd %d", i)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	got := s.History()
+	if len(got) != config.HistoryLimit+3 || got[0] != "/search 20" || got[len(got)-1] != ":cmd 2" {
+		t.Errorf("history has %d entries, first %q, last %q", len(got), got[0], got[len(got)-1])
+	}
+}
+
+func TestHistoryAppendIsSafeConcurrently(t *testing.T) {
+	s, _ := newState(t)
+	var wg sync.WaitGroup
+	for i := range 20 {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			_ = s.AppendHistory(fmt.Sprintf(":c%d", i))
+		}()
+	}
+	wg.Wait()
+	if got := s.History(); len(got) != 20 {
+		t.Errorf("%d entries survived, want 20", len(got))
 	}
 }

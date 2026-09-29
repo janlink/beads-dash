@@ -44,6 +44,10 @@ func TestScopeInfoFit(t *testing.T) {
 	if got := si.fit(30); len([]rune(got)) != 30 || !strings.Contains(got, "…") {
 		t.Errorf("truncated label %q", got)
 	}
+	long := scopeInfo{active: true, query: "status:open type:bug assignee:alice label:checkout", marker: "⌕", ellipsis: "…", shown: 3, total: 140, closedHidden: true}
+	if got := long.fit(50); len([]rune(got)) != 50 || !strings.HasSuffix(got, " · 3/140 · closed hidden") || !strings.HasPrefix(got, "⌕ status:") {
+		t.Errorf("only the query is cut: %q", got)
+	}
 	if si.fit(5) != "" || (scopeInfo{}).fit(100) != "" {
 		t.Error("no label when it does not fit or no scope is active")
 	}

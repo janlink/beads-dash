@@ -73,6 +73,9 @@ func uiOptions(s Session) ui.Options {
 	if s.Store != nil {
 		o.Store = s.Store
 	}
+	if s.State != nil {
+		o.History = s.State
+	}
 	return o
 }
 

@@ -107,8 +107,16 @@ func keyMsg(k string) tea.KeyPressMsg {
 		return tea.KeyPressMsg{Code: tea.KeyDown}
 	case "right":
 		return tea.KeyPressMsg{Code: tea.KeyRight}
-	case "ctrl+c":
-		return tea.KeyPressMsg{Code: 'c', Mod: tea.ModCtrl}
+	case "tab":
+		return tea.KeyPressMsg{Code: tea.KeyTab}
+	case "shift+tab":
+		return tea.KeyPressMsg{Code: tea.KeyTab, Mod: tea.ModShift}
+	case "up":
+		return tea.KeyPressMsg{Code: tea.KeyUp}
+	case "left":
+		return tea.KeyPressMsg{Code: tea.KeyLeft}
+	case "ctrl+c", "ctrl+n", "ctrl+p", "ctrl+t", "ctrl+u":
+		return tea.KeyPressMsg{Code: rune(k[len("ctrl+")]), Mod: tea.ModCtrl}
 	}
 	r := []rune(k)
 	return tea.KeyPressMsg{Code: r[0], Text: k}
@@ -121,4 +129,24 @@ func lines(a *App) []string { return strings.Split(screen(a), "\n") }
 func isOpen[T Dialog](a *App) bool {
 	_, ok := a.topDialog().(T)
 	return ok
+}
+
+// typeText presses each character of s as a key, then lets the search
+// debounce elapse.
+func typeText(a *App, s string) {
+	for _, r := range s {
+		if r == ' ' {
+			press(a, "space")
+			continue
+		}
+		press(a, string(r))
+	}
+	settle(a)
+}
+
+// settle lets the search debounce elapse.
+func settle(a *App) {
+	if b := a.bar; b != nil && b.dirty {
+		send(a, searchTickMsg{b.gen})
+	}
 }

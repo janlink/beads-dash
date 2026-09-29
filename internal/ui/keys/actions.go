@@ -49,6 +49,25 @@ const (
 	Next  Action = "next"
 	Apply Action = "apply"
 
+	OpenCommand Action = "bar.command"
+	OpenSearch  Action = "bar.search"
+	OpenFilter  Action = "bar.filter"
+	OpenPicker  Action = "picker"
+
+	BarAccept       Action = "bar.accept"
+	BarUp           Action = "bar.up"
+	BarDown         Action = "bar.down"
+	BarIssueNext    Action = "bar.issue.next"
+	BarIssuePrev    Action = "bar.issue.prev"
+	BarComplete     Action = "bar.complete"
+	BarCompleteBack Action = "bar.complete.back"
+	BarToggle       Action = "bar.toggle"
+	BarColumnNext   Action = "bar.column.next"
+	BarColumnPrev   Action = "bar.column.prev"
+
+	PickerMark   Action = "picker.mark"
+	PickerClosed Action = "picker.closed"
+
 	Retry  Action = "retry"
 	Copy   Action = "copy"
 	PickUp Action = "pick.up"

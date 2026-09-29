@@ -29,10 +29,16 @@ const (
 	Graph
 	// Panel holds the keys of a focused detail panel or Overview panel.
 	Panel
-	// Bar holds the keys of the docked search, filter and command bars.
+	// Bar holds the keys of the docked search bar.
 	Bar
+	// BarCommand holds the keys of the docked command bar.
+	BarCommand
+	// BarFilter holds the keys of the docked filter bar.
+	BarFilter
 	// Form holds the keys inside form dialogs.
 	Form
+	// Picker holds the keys of the issue picker.
+	Picker
 	// Help holds the keys of the help overlay.
 	Help
 	// Appearance holds the keys of the Appearance dialog.
@@ -49,7 +55,7 @@ const (
 
 var contextNames = [contextCount]string{
 	Always: "always", Global: "global", View: "view", Memories: "memories", Tree: "tree", Overview: "overview", Graph: "graph", Panel: "panel",
-	Bar: "docked bar", Form: "form", Help: "help", Appearance: "appearance",
+	Bar: "search bar", BarCommand: "command bar", BarFilter: "filter bar", Form: "form", Picker: "picker", Help: "help", Appearance: "appearance",
 	Details: "details", Startup: "startup", TooSmall: "too small",
 }
 

@@ -37,4 +37,4 @@
    `- o gr-x @ Cache warmup                                                                                             
       `- o gr-y @ Cache eviction                                                                                        
          `- @ gr-z (cycle)                                                                                              
- ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  m markdown or source  r refresh            
+ ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  / search  m markdown or source  r refresh  
