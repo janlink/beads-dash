@@ -1,0 +1,258 @@
+{
+  "data": {
+    "ready": [
+      {
+        "id": "r1-109",
+        "title": "Milestone M",
+        "status": "open",
+        "priority": 1,
+        "issue_type": "milestone",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:48Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:48Z",
+        "reason": "1 blocker(s) resolved",
+        "resolved_blockers": [
+          "external:other:cap-x"
+        ],
+        "dependency_count": 1,
+        "dependent_count": 0
+      },
+      {
+        "id": "r1-o9v",
+        "title": "Epic B blocker",
+        "status": "open",
+        "priority": 2,
+        "issue_type": "epic",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:52:00Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:52:00Z",
+        "reason": "no blocking dependencies",
+        "resolved_blockers": null,
+        "dependency_count": 0,
+        "dependent_count": 1
+      },
+      {
+        "id": "r1-45z",
+        "title": "Blocked by closed issue",
+        "status": "open",
+        "priority": 2,
+        "issue_type": "task",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:59Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:59Z",
+        "reason": "1 blocker(s) resolved",
+        "resolved_blockers": [
+          "r1-r36"
+        ],
+        "dependency_count": 1,
+        "dependent_count": 0
+      },
+      {
+        "id": "r1-4a3",
+        "title": "Story Z",
+        "status": "open",
+        "priority": 2,
+        "issue_type": "story",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:47Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:47Z",
+        "reason": "no blocking dependencies",
+        "resolved_blockers": null,
+        "dependency_count": 0,
+        "dependent_count": 0
+      },
+      {
+        "id": "r1-fmk",
+        "title": "Spike Y",
+        "status": "open",
+        "priority": 2,
+        "issue_type": "spike",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:46Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:46Z",
+        "reason": "no blocking dependencies",
+        "resolved_blockers": null,
+        "dependency_count": 0,
+        "dependent_count": 0
+      },
+      {
+        "id": "r1-jzk",
+        "title": "Chore standalone",
+        "status": "open",
+        "priority": 4,
+        "issue_type": "chore",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:44Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:44Z",
+        "reason": "no blocking dependencies",
+        "resolved_blockers": null,
+        "dependency_count": 0,
+        "dependent_count": 0
+      }
+    ],
+    "blocked": [
+      {
+        "id": "r1-xev.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:52:16Z",
+        "started_at": "2026-09-29T07:52:16Z",
+        "labels": [
+          "area:core",
+          "ui"
+        ],
+        "blocked_by": [
+          {
+            "id": "r1-xev",
+            "title": "Epic A",
+            "status": "open",
+            "priority": 1
+          }
+        ],
+        "blocked_by_count": 1
+      },
+      {
+        "id": "r1-xev",
+        "title": "Epic A",
+        "description": "Epic **markdown**",
+        "status": "open",
+        "priority": 1,
+        "issue_type": "epic",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:38Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:38Z",
+        "labels": [
+          "area:core",
+          "ui"
+        ],
+        "blocked_by": [
+          {
+            "id": "r1-o9v",
+            "title": "Epic B blocker",
+            "status": "open",
+            "priority": 2
+          }
+        ],
+        "blocked_by_count": 1
+      },
+      {
+        "id": "r1-xev.1.1",
+        "title": "Grandchild of A1",
+        "status": "open",
+        "priority": 2,
+        "issue_type": "task",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:51Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:51Z",
+        "labels": [
+          "area:core",
+          "ui"
+        ],
+        "blocked_by": [
+          {
+            "id": "r1-xev.1",
+            "title": "Child task A1",
+            "status": "in_progress",
+            "priority": 0
+          }
+        ],
+        "blocked_by_count": 1
+      },
+      {
+        "id": "r1-e8j",
+        "title": "Decision X",
+        "status": "open",
+        "priority": 2,
+        "issue_type": "decision",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:45Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:45Z",
+        "blocked_by": [
+          {
+            "id": "r1-xev.3",
+            "title": "Feature blocked by A1",
+            "status": "open",
+            "priority": 3
+          }
+        ],
+        "blocked_by_count": 1
+      },
+      {
+        "id": "r1-xev.2",
+        "title": "Child bug A2",
+        "design": "design text",
+        "acceptance_criteria": "AC here",
+        "notes": "some notes",
+        "status": "open",
+        "priority": 2,
+        "issue_type": "bug",
+        "assignee": "agent-7",
+        "owner": "tester@example.com",
+        "estimated_minutes": 90,
+        "created_at": "2026-09-29T07:51:41Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:52:19Z",
+        "due_at": "2026-10-15T00:00:00Z",
+        "external_ref": "gh-12",
+        "labels": [
+          "area:core",
+          "ui"
+        ],
+        "blocked_by": [
+          {
+            "id": "r1-xev",
+            "title": "Epic A",
+            "status": "open",
+            "priority": 1
+          }
+        ],
+        "blocked_by_count": 1
+      },
+      {
+        "id": "r1-xev.3",
+        "title": "Feature blocked by A1",
+        "status": "open",
+        "priority": 3,
+        "issue_type": "feature",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:51:43Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:51:43Z",
+        "labels": [
+          "area:core",
+          "ui"
+        ],
+        "blocked_by": [
+          {
+            "id": "r1-xev.1",
+            "title": "Child task A1",
+            "status": "in_progress",
+            "priority": 0
+          }
+        ],
+        "blocked_by_count": 1
+      }
+    ],
+    "summary": {
+      "total_ready": 6,
+      "total_blocked": 6,
+      "cycle_count": 0
+    }
+  },
+  "schema_version": 1
+}

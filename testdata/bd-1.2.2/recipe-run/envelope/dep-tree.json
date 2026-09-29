@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "id": "r1-e8j",
+      "title": "Decision X",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "decision",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:51:45Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:51:45Z",
+      "depth": 0,
+      "parent_id": "",
+      "truncated": false
+    },
+    {
+      "id": "r1-xev.3",
+      "title": "Feature blocked by A1",
+      "status": "open",
+      "priority": 3,
+      "issue_type": "feature",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:51:43Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:51:43Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "depth": 1,
+      "parent_id": "r1-e8j",
+      "edge_from_parent": "blocks",
+      "truncated": false
+    },
+    {
+      "id": "r1-xev",
+      "title": "Epic A",
+      "description": "Epic **markdown**",
+      "status": "open",
+      "priority": 1,
+      "issue_type": "epic",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:51:38Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:51:38Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "depth": 2,
+      "parent_id": "r1-xev.3",
+      "edge_from_parent": "parent-child",
+      "truncated": false
+    },
+    {
+      "id": "r1-o9v",
+      "title": "Epic B blocker",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "epic",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:52:00Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:52:00Z",
+      "depth": 3,
+      "parent_id": "r1-xev",
+      "edge_from_parent": "blocks",
+      "truncated": false
+    },
+    {
+      "id": "r1-xev.1",
+      "title": "Child task A1",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:51:39Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:52:16Z",
+      "started_at": "2026-09-29T07:52:16Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "depth": 2,
+      "parent_id": "r1-xev.3",
+      "edge_from_parent": "blocks",
+      "truncated": false
+    }
+  ],
+  "schema_version": 1
+}

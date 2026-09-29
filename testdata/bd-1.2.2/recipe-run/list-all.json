@@ -1,0 +1,412 @@
+[
+  {
+    "id": "r1-xev.1",
+    "title": "Child task A1",
+    "status": "in_progress",
+    "priority": 0,
+    "issue_type": "task",
+    "assignee": "alice",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:39Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:16Z",
+    "started_at": "2026-09-29T07:52:16Z",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r1-xev.1",
+        "depends_on_id": "r1-xev",
+        "type": "parent-child",
+        "created_at": "2026-09-29T09:51:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 1,
+    "comment_count": 2,
+    "parent": "r1-xev"
+  },
+  {
+    "id": "r1-109",
+    "title": "Milestone M",
+    "status": "open",
+    "priority": 1,
+    "issue_type": "milestone",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:48Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:48Z",
+    "dependencies": [
+      {
+        "issue_id": "r1-109",
+        "depends_on_id": "external:other:cap-x",
+        "type": "blocks",
+        "created_at": "2026-09-29T09:52:06Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-xev",
+    "title": "Epic A",
+    "description": "Epic **markdown**",
+    "status": "open",
+    "priority": 1,
+    "issue_type": "epic",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:38Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:38Z",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r1-xev",
+        "depends_on_id": "r1-o9v",
+        "type": "blocks",
+        "created_at": "2026-09-29T09:52:07Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-o9v",
+    "title": "Epic B blocker",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "epic",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:52:00Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:00Z",
+    "dependency_count": 0,
+    "dependent_count": 1,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-45z",
+    "title": "Blocked by closed issue",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "task",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:59Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:59Z",
+    "dependencies": [
+      {
+        "issue_id": "r1-45z",
+        "depends_on_id": "r1-r36",
+        "type": "blocks",
+        "created_at": "2026-09-29T09:52:01Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-lyn",
+    "title": "Explicit blocked status",
+    "status": "blocked",
+    "priority": 2,
+    "issue_type": "task",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:58Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:14Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-5ef",
+    "title": "Review custom status",
+    "status": "review",
+    "priority": 2,
+    "issue_type": "task",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:56Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:13Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-p37",
+    "title": "Hooked task",
+    "status": "hooked",
+    "priority": 2,
+    "issue_type": "task",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:55Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:12Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-5fr",
+    "title": "Pinned task",
+    "status": "pinned",
+    "priority": 2,
+    "issue_type": "task",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:54Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:11Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-zjh",
+    "title": "Deferred task",
+    "status": "deferred",
+    "priority": 2,
+    "issue_type": "task",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:54Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:10Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-r36",
+    "title": "Closed task",
+    "status": "closed",
+    "priority": 2,
+    "issue_type": "task",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:52Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:09Z",
+    "closed_at": "2026-09-29T07:52:09Z",
+    "close_reason": "done for test",
+    "dependency_count": 0,
+    "dependent_count": 1,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-xev.1.1",
+    "title": "Grandchild of A1",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "task",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:51Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:51Z",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r1-xev.1.1",
+        "depends_on_id": "r1-xev.1",
+        "type": "parent-child",
+        "created_at": "2026-09-29T09:51:50Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r1-xev.1"
+  },
+  {
+    "id": "r1-fdo",
+    "title": "Research custom type",
+    "status": "parked",
+    "priority": 2,
+    "issue_type": "research",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:49Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:17Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-4a3",
+    "title": "Story Z",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "story",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:47Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:47Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-fmk",
+    "title": "Spike Y",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "spike",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:46Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:46Z",
+    "dependencies": [
+      {
+        "issue_id": "r1-fmk",
+        "depends_on_id": "r1-4a3",
+        "type": "discovered-from",
+        "created_at": "2026-09-29T09:52:05Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-e8j",
+    "title": "Decision X",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "decision",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:45Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:45Z",
+    "dependencies": [
+      {
+        "issue_id": "r1-e8j",
+        "depends_on_id": "r1-xev.3",
+        "type": "blocks",
+        "created_at": "2026-09-29T09:52:04Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r1-xev.2",
+    "title": "Child bug A2",
+    "design": "design text",
+    "acceptance_criteria": "AC here",
+    "notes": "some notes",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "bug",
+    "assignee": "agent-7",
+    "owner": "tester@example.com",
+    "estimated_minutes": 90,
+    "created_at": "2026-09-29T07:51:41Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:52:19Z",
+    "due_at": "2026-10-15T00:00:00Z",
+    "external_ref": "gh-12",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r1-xev.2",
+        "depends_on_id": "r1-xev",
+        "type": "parent-child",
+        "created_at": "2026-09-29T09:51:40Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r1-xev"
+  },
+  {
+    "id": "r1-xev.3",
+    "title": "Feature blocked by A1",
+    "status": "open",
+    "priority": 3,
+    "issue_type": "feature",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:43Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:43Z",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r1-xev.3",
+        "depends_on_id": "r1-xev",
+        "type": "parent-child",
+        "created_at": "2026-09-29T09:51:42Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      },
+      {
+        "issue_id": "r1-xev.3",
+        "depends_on_id": "r1-xev.1",
+        "type": "blocks",
+        "created_at": "2026-09-29T09:52:00Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 1,
+    "comment_count": 0,
+    "parent": "r1-xev"
+  },
+  {
+    "id": "r1-jzk",
+    "title": "Chore standalone",
+    "status": "open",
+    "priority": 4,
+    "issue_type": "chore",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:44Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:44Z",
+    "dependencies": [
+      {
+        "issue_id": "r1-jzk",
+        "depends_on_id": "r1-xev.2",
+        "type": "related",
+        "created_at": "2026-09-29T09:52:03Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  }
+]

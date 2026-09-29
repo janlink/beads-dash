@@ -1,0 +1,6 @@
+{
+  "error": "no_beads_directory",
+  "hint": "check BEADS_DIR/worktree setup, or run 'bd init' to create a new database",
+  "message": "No active beads workspace found.",
+  "schema_version": 1
+}

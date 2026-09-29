@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "id": "r1-w24.1",
+      "title": "Child task A1",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:41:18Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:42:04Z",
+      "started_at": "2026-09-29T07:42:04Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "dependency_type": "blocks"
+    },
+    {
+      "id": "r1-w24",
+      "title": "Epic A",
+      "description": "Epic **markdown**",
+      "status": "open",
+      "priority": 1,
+      "issue_type": "epic",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:41:05Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:41:05Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "dependency_type": "parent-child"
+    }
+  ],
+  "schema_version": 1
+}

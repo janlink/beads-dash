@@ -1,0 +1,14 @@
+{
+  "backend": "dolt",
+  "bd_version": "1.2.2",
+  "beads_dir": "/tmp/bdws-r1/.beads",
+  "cwd_repo_root": "/tmp/bdws-r1",
+  "database": "r1",
+  "dolt_mode": "embedded",
+  "is_redirected": false,
+  "is_worktree": false,
+  "project_id": "4fff1165-c6af-41b3-9ce1-a9c63bda3423",
+  "repo_root": "/tmp/bdws-r1",
+  "role": "maintainer",
+  "schema_version": 1
+}

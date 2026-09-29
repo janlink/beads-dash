@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "id": "r1-a31",
+      "title": "Decision X",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "decision",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:41:24Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:41:24Z",
+      "blocked_by_count": 1,
+      "blocked_by": [
+        "r1-w24.3"
+      ]
+    },
+    {
+      "id": "r1-w24.3",
+      "title": "Feature blocked by A1",
+      "status": "open",
+      "priority": 3,
+      "issue_type": "feature",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T07:41:22Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T07:41:22Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "blocked_by_count": 1,
+      "blocked_by": [
+        "r1-w24.1"
+      ]
+    }
+  ],
+  "schema_version": 1
+}

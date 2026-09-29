@@ -1,0 +1,35 @@
+[
+  {
+    "id": "r1-xev",
+    "title": "Epic A",
+    "description": "Epic **markdown**",
+    "status": "open",
+    "priority": 1,
+    "issue_type": "epic",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:51:38Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:51:38Z",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "id": "r1-o9v",
+        "title": "Epic B blocker",
+        "status": "open",
+        "priority": 2,
+        "issue_type": "epic",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T07:52:00Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T07:52:00Z",
+        "dependency_type": "blocks"
+      }
+    ],
+    "dependent_count": 3,
+    "dependency_count": 1,
+    "comment_count": 0
+  }
+]

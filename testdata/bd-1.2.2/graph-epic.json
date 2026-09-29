@@ -1,0 +1,295 @@
+{
+  "issues": [
+    {
+      "created_at": "2026-09-29T07:41:05Z",
+      "created_by": "janlink",
+      "description": "Epic **markdown**",
+      "id": "r1-w24",
+      "issue_type": "epic",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "owner": "tester@example.com",
+      "priority": 1,
+      "status": "open",
+      "title": "Epic A",
+      "updated_at": "2026-09-29T07:41:05Z"
+    },
+    {
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:41:18Z",
+      "created_by": "janlink",
+      "id": "r1-w24.1",
+      "issue_type": "task",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "owner": "tester@example.com",
+      "priority": 0,
+      "started_at": "2026-09-29T07:42:04Z",
+      "status": "in_progress",
+      "title": "Child task A1",
+      "updated_at": "2026-09-29T07:42:04Z"
+    },
+    {
+      "acceptance_criteria": "AC here",
+      "assignee": "agent-7",
+      "created_at": "2026-09-29T07:41:21Z",
+      "created_by": "janlink",
+      "design": "design text",
+      "due_at": "2026-10-15T00:00:00Z",
+      "estimated_minutes": 90,
+      "external_ref": "gh-12",
+      "id": "r1-w24.2",
+      "issue_type": "bug",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "notes": "some notes",
+      "owner": "tester@example.com",
+      "priority": 2,
+      "status": "open",
+      "title": "Child bug A2",
+      "updated_at": "2026-09-29T07:42:05Z"
+    },
+    {
+      "created_at": "2026-09-29T07:41:22Z",
+      "created_by": "janlink",
+      "id": "r1-w24.3",
+      "issue_type": "feature",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "owner": "tester@example.com",
+      "priority": 3,
+      "status": "open",
+      "title": "Feature blocked by A1",
+      "updated_at": "2026-09-29T07:41:22Z"
+    },
+    {
+      "created_at": "2026-09-29T07:41:28Z",
+      "created_by": "janlink",
+      "id": "r1-w24.1.1",
+      "issue_type": "task",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "owner": "tester@example.com",
+      "priority": 2,
+      "status": "open",
+      "title": "Grandchild of A1",
+      "updated_at": "2026-09-29T07:41:28Z"
+    },
+    {
+      "created_at": "2026-09-29T07:41:23Z",
+      "created_by": "janlink",
+      "id": "r1-ds4",
+      "issue_type": "chore",
+      "owner": "tester@example.com",
+      "priority": 4,
+      "status": "open",
+      "title": "Chore standalone",
+      "updated_at": "2026-09-29T07:41:23Z"
+    },
+    {
+      "created_at": "2026-09-29T07:41:24Z",
+      "created_by": "janlink",
+      "id": "r1-a31",
+      "issue_type": "decision",
+      "owner": "tester@example.com",
+      "priority": 2,
+      "status": "open",
+      "title": "Decision X",
+      "updated_at": "2026-09-29T07:41:24Z"
+    }
+  ],
+  "layout": {
+    "Layers": [
+      [
+        "r1-ds4",
+        "r1-w24",
+        "r1-w24.1",
+        "r1-w24.1.1",
+        "r1-w24.2"
+      ],
+      [
+        "r1-w24.3"
+      ],
+      [
+        "r1-a31"
+      ]
+    ],
+    "MaxLayer": 2,
+    "Nodes": {
+      "r1-a31": {
+        "DependsOn": [
+          "r1-w24.3"
+        ],
+        "Issue": {
+          "created_at": "2026-09-29T07:41:24Z",
+          "created_by": "janlink",
+          "id": "r1-a31",
+          "issue_type": "decision",
+          "owner": "tester@example.com",
+          "priority": 2,
+          "status": "open",
+          "title": "Decision X",
+          "updated_at": "2026-09-29T07:41:24Z"
+        },
+        "Layer": 2,
+        "Position": 0
+      },
+      "r1-ds4": {
+        "DependsOn": null,
+        "Issue": {
+          "created_at": "2026-09-29T07:41:23Z",
+          "created_by": "janlink",
+          "id": "r1-ds4",
+          "issue_type": "chore",
+          "owner": "tester@example.com",
+          "priority": 4,
+          "status": "open",
+          "title": "Chore standalone",
+          "updated_at": "2026-09-29T07:41:23Z"
+        },
+        "Layer": 0,
+        "Position": 0
+      },
+      "r1-w24": {
+        "DependsOn": null,
+        "Issue": {
+          "created_at": "2026-09-29T07:41:05Z",
+          "created_by": "janlink",
+          "description": "Epic **markdown**",
+          "id": "r1-w24",
+          "issue_type": "epic",
+          "labels": [
+            "area:core",
+            "ui"
+          ],
+          "owner": "tester@example.com",
+          "priority": 1,
+          "status": "open",
+          "title": "Epic A",
+          "updated_at": "2026-09-29T07:41:05Z"
+        },
+        "Layer": 0,
+        "Position": 1
+      },
+      "r1-w24.1": {
+        "DependsOn": null,
+        "Issue": {
+          "assignee": "alice",
+          "created_at": "2026-09-29T07:41:18Z",
+          "created_by": "janlink",
+          "id": "r1-w24.1",
+          "issue_type": "task",
+          "labels": [
+            "area:core",
+            "ui"
+          ],
+          "owner": "tester@example.com",
+          "priority": 0,
+          "started_at": "2026-09-29T07:42:04Z",
+          "status": "in_progress",
+          "title": "Child task A1",
+          "updated_at": "2026-09-29T07:42:04Z"
+        },
+        "Layer": 0,
+        "Position": 2
+      },
+      "r1-w24.1.1": {
+        "DependsOn": null,
+        "Issue": {
+          "created_at": "2026-09-29T07:41:28Z",
+          "created_by": "janlink",
+          "id": "r1-w24.1.1",
+          "issue_type": "task",
+          "labels": [
+            "area:core",
+            "ui"
+          ],
+          "owner": "tester@example.com",
+          "priority": 2,
+          "status": "open",
+          "title": "Grandchild of A1",
+          "updated_at": "2026-09-29T07:41:28Z"
+        },
+        "Layer": 0,
+        "Position": 3
+      },
+      "r1-w24.2": {
+        "DependsOn": null,
+        "Issue": {
+          "acceptance_criteria": "AC here",
+          "assignee": "agent-7",
+          "created_at": "2026-09-29T07:41:21Z",
+          "created_by": "janlink",
+          "design": "design text",
+          "due_at": "2026-10-15T00:00:00Z",
+          "estimated_minutes": 90,
+          "external_ref": "gh-12",
+          "id": "r1-w24.2",
+          "issue_type": "bug",
+          "labels": [
+            "area:core",
+            "ui"
+          ],
+          "notes": "some notes",
+          "owner": "tester@example.com",
+          "priority": 2,
+          "status": "open",
+          "title": "Child bug A2",
+          "updated_at": "2026-09-29T07:42:05Z"
+        },
+        "Layer": 0,
+        "Position": 4
+      },
+      "r1-w24.3": {
+        "DependsOn": [
+          "r1-w24.1"
+        ],
+        "Issue": {
+          "created_at": "2026-09-29T07:41:22Z",
+          "created_by": "janlink",
+          "id": "r1-w24.3",
+          "issue_type": "feature",
+          "labels": [
+            "area:core",
+            "ui"
+          ],
+          "owner": "tester@example.com",
+          "priority": 3,
+          "status": "open",
+          "title": "Feature blocked by A1",
+          "updated_at": "2026-09-29T07:41:22Z"
+        },
+        "Layer": 1,
+        "Position": 0
+      }
+    },
+    "RootID": "r1-w24"
+  },
+  "root": {
+    "created_at": "2026-09-29T07:41:05Z",
+    "created_by": "janlink",
+    "description": "Epic **markdown**",
+    "id": "r1-w24",
+    "issue_type": "epic",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "owner": "tester@example.com",
+    "priority": 1,
+    "status": "open",
+    "title": "Epic A",
+    "updated_at": "2026-09-29T07:41:05Z"
+  },
+  "schema_version": 1
+}
