@@ -19,6 +19,8 @@ type Snapshot struct {
 	ready       map[string]struct{}
 	readyIDs    []string
 	blocked     map[string][]string
+	blockedBD   map[string][]string
+	reason      map[string]string
 	blockedIDs  []string
 	fingerprint string
 }
@@ -34,6 +36,8 @@ func NewSnapshot(issues []Issue, r Readiness, fetchedAt time.Time) *Snapshot {
 		issues:    make(map[string]*Issue, len(issues)),
 		ready:     make(map[string]struct{}, len(r.Ready)),
 		blocked:   make(map[string][]string, len(r.Blocked)),
+		blockedBD: make(map[string][]string, len(r.Blocked)),
+		reason:    make(map[string]string, len(r.Reason)),
 	}
 	for i := range issues {
 		s.issues[issues[i].ID] = &issues[i]
@@ -53,6 +57,9 @@ func NewSnapshot(issues []Issue, r Readiness, fetchedAt time.Time) *Snapshot {
 		if _, dup := s.ready[id]; !dup {
 			s.ready[id] = struct{}{}
 			s.readyIDs = append(s.readyIDs, id)
+			if why := r.Reason[id]; why != "" {
+				s.reason[id] = why
+			}
 		}
 	}
 	sort.Strings(s.readyIDs)
@@ -61,6 +68,7 @@ func NewSnapshot(issues []Issue, r Readiness, fetchedAt time.Time) *Snapshot {
 			continue
 		}
 		s.blocked[id] = sortedCopy(by)
+		s.blockedBD[id] = append([]string(nil), by...)
 		s.blockedIDs = append(s.blockedIDs, id)
 	}
 	sort.Strings(s.blockedIDs)
@@ -174,6 +182,19 @@ func (s *Snapshot) IsBlocked(id string) bool {
 // BlockedBy lists the IDs bd names as blocking id, sorted.
 func (s *Snapshot) BlockedBy(id string) []string { return s.blocked[id] }
 
+// FirstBlocker is the blocker bd names first for a blocked issue, empty when
+// there is none.
+func (s *Snapshot) FirstBlocker(id string) string {
+	if by := s.blockedBD[id]; len(by) > 0 {
+		return by[0]
+	}
+	return ""
+}
+
+// ReadyReason is bd's explanation of why an issue is ready, empty when bd
+// gave none.
+func (s *Snapshot) ReadyReason(id string) string { return s.reason[id] }
+
 // BlockedIDs lists bd's blocked issues sorted by ID.
 func (s *Snapshot) BlockedIDs() []string { return s.blockedIDs }
 
@@ -279,6 +300,9 @@ func (s *Snapshot) computeFingerprint() string {
 	h.list(digests)
 	h.str("ready")
 	h.list(s.readyIDs)
+	for _, id := range s.readyIDs {
+		h.str(s.reason[id])
+	}
 	h.str("blocked")
 	for _, id := range s.blockedIDs {
 		h.str(id)

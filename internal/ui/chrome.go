@@ -54,9 +54,6 @@ func (a *App) tabs() (string, [6]span) {
 func (a *App) header() string {
 	l := a.look
 	left, _ := a.tabs()
-	if s := a.view().Scope(); s != "" {
-		left += "  " + l.Paint(theme.Dim, s)
-	}
 	var right []string
 	if a.bds.Untested {
 		right = append(right, l.Paint(theme.Warning, "bd "+a.bds.Version.Parsed.String()+" untested"))
@@ -65,6 +62,9 @@ func (a *App) header() string {
 	r := strings.Join(right, "  ") + " "
 	rw := ansi.StringWidth(r)
 	lw := max(a.cols-rw, 0)
+	if s := a.view().Scope(lw - ansi.StringWidth(left) - 3); s != "" {
+		left += "  " + l.Paint(theme.Dim, s)
+	}
 	return l.Fit(left, lw) + r
 }
 
@@ -118,6 +118,11 @@ func (a *App) chips() string {
 			s += fmt.Sprintf(" (%d hidden)", hidden)
 		}
 		parts = append(parts, l.Paint(theme.Changed, s))
+	}
+	if n, ok := a.view().(Noter); ok && a.snap != nil {
+		if s := n.Note(); s != "" {
+			parts = append(parts, l.Paint(theme.Dim, s))
+		}
 	}
 	if a.status.Slow {
 		parts = append(parts, l.Paint(theme.Warning, "slow"))

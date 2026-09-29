@@ -222,6 +222,33 @@ var (
 	EmptyGraph    = Empty{Title: "No dependencies to draw.", Body: "Link issues with bd dep add."}
 )
 
+// EmptyScopeMatch is the block for a scope that shows no issue. hiddenClosed
+// counts the closed issues that match but are hidden by default.
+func EmptyScopeMatch(query string, hiddenClosed int) Empty {
+	if query == "" {
+		return Empty{
+			Title: "No open issues.",
+			Body:  fmt.Sprintf("%d closed %s hidden; status:closed shows them.", hiddenClosed, plural(hiddenClosed, "issue is", "issues are")),
+		}
+	}
+	e := Empty{
+		Title: `No issue matches "` + query + `".`,
+		Body:  "Esc clears the scope.",
+		Hints: []keys.Hint{{Key: "Esc", Desc: "clear"}, {Key: "/", Desc: "edit"}, {Key: "f", Desc: "filter"}},
+	}
+	if hiddenClosed > 0 {
+		e.Body = fmt.Sprintf("+%d closed match; add status:closed to show them.", hiddenClosed)
+	}
+	return e
+}
+
+func plural(n int, one, many string) string {
+	if n == 1 {
+		return one
+	}
+	return many
+}
+
 // EmptyWorkspace is the block for a workspace without issues. Its hints are
 // the actions; newIssue adds the shell's own key once it is bound.
 func EmptyWorkspace(workspace string, newIssue bool) Empty {

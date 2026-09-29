@@ -1,0 +1,24 @@
+ Tree                                            * 12:00:00 
+ ws-9qe  o Open  bug  P0                                    
+ Payment provider timeout retries                           
+|v Description  markdown                                    
+   Retries fail after the provider times out.               
+                                                            
+   * back off between tries                                 
+   * add jitter                                             
+ * Dependencies  none                                       
+ * Children  none                                           
+ > Details  created 5 h ago · updated 5 h ago               
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+ ? help  j/k scroll  ]/[ section  1-6 switch view           

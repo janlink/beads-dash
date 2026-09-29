@@ -1,0 +1,40 @@
+ 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph                                           * live 12:00:00 
+|     o ws-9qe Payment provider timeout retries                                                                       P0
+    v * ws-4k2 Checkout: guest orders                                                                         2/5 ##----
+    |-  o ws-4k2.1 Address form validation                                                                            P1
+    |-  ! ws-4k2.2 Guest order confirmation mail                                                                      P2
+    |-v o ws-4k2.5 Shipping options                                                                           0/1 ------
+    | `-  o ws-4k2.5.1 Pickup point lookup                                                                 P3 carol     
+    `-> x 2 closed                                                                                                      
+      ! ws-2hz Split pricing service                                                                                  P2
+      o ws-lost Follow-up from a deleted epic                                                    ^ ws-gone P2 alice     
+      * ws-7mt Cart badge shows stale count                                                                P2 bob       
+      ~ ws-8np Search: typo tolerance                                                                                 P3
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+-- Detail (focused) ----------------------------------------------------------------------------------------------------
+ ws-9qe  o Open  bug  P0                                                                                                
+ Payment provider timeout retries                                                                                       
+|v Description  markdown                                                                                                
+   Retries fail after the provider times out.                                                                           
+                                                                                                                        
+   * back off between tries                                                                                             
+   * add jitter                                                                                                         
+ * Dependencies  none                                                                                                   
+ * Children  none                                                                                                       
+ > Details  created 5 h ago · updated 5 h ago                                                                           
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+ ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  m markdown or source  r refresh            

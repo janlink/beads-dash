@@ -130,7 +130,8 @@ func (b *blockerRef) UnmarshalJSON(data []byte) error {
 func parseReadiness(data json.RawMessage) (model.Readiness, error) {
 	var w struct {
 		Ready []struct {
-			ID string `json:"id"`
+			ID     string `json:"id"`
+			Reason string `json:"reason"`
 		} `json:"ready"`
 		Blocked []struct {
 			ID        string       `json:"id"`
@@ -143,9 +144,13 @@ func parseReadiness(data json.RawMessage) (model.Readiness, error) {
 	r := model.Readiness{
 		Ready:   make([]string, 0, len(w.Ready)),
 		Blocked: make(map[string][]string, len(w.Blocked)),
+		Reason:  make(map[string]string, len(w.Ready)),
 	}
 	for _, x := range w.Ready {
 		r.Ready = append(r.Ready, x.ID)
+		if x.Reason != "" {
+			r.Reason[x.ID] = x.Reason
+		}
 	}
 	for _, x := range w.Blocked {
 		by := make([]string, 0, len(x.BlockedBy))

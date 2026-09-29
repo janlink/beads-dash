@@ -188,6 +188,18 @@ func (s *Session) Remove(l Layer) {
 	}
 }
 
+// Replace turns the topmost layer of kind from into to, keeping its place in
+// the stack, and reports whether there was one.
+func (s *Session) Replace(from, to Layer) bool {
+	for i := len(s.layers) - 1; i >= 0; i-- {
+		if s.layers[i] == from {
+			s.layers[i] = to
+			return true
+		}
+	}
+	return false
+}
+
 // Esc applies one Esc press: it closes the top layer (dialog, docked bar,
 // detail focus, detail panel, in that order), then clears the marks, then
 // asks for the active search or filter to be cleared.

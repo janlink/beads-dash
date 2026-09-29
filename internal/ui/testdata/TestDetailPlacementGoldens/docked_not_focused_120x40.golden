@@ -1,0 +1,40 @@
+ 1 Overview  2 Tree  3 Kanban  [4 Ready]  5 Memories  6 Graph                                           * live 12:00:00 
+   Unassigned (2)                                                                                                       
+|   o ws-9qe     P0 bug      Payment provider timeout retries                                  5h no blocking depende...
+    o ws-4k2.1   P1 task     Address form validation                                           3d no blocking depende...
+   Assigned, not started (2)                                                                                            
+    o ws-lost    P2 task     Follow-up from a deleted epic                      alice          1d 1 blocker(s) resolved 
+    o ws-4k2.5.1 P3 task     Pickup point lookup                                carol          2d no blocking depende...
+   > Blocked (2)                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+-- Detail --------------------------------------------------------------------------------------------------------------
+ ws-9qe  o Open  bug  P0                                                                                                
+ Payment provider timeout retries                                                                                       
+ v Description  markdown                                                                                                
+   Retries fail after the provider times out.                                                                           
+                                                                                                                        
+   * back off between tries                                                                                             
+   * add jitter                                                                                                         
+ * Dependencies  none                                                                                                   
+ * Children  none                                                                                                       
+ > Details  created 5 h ago · updated 5 h ago                                                                           
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+ ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view  t appearance  r refresh         1 container hidden  

@@ -121,7 +121,7 @@ func TestHintsAreRankedAndSkipReserved(t *testing.T) {
 		t.Fatalf("hints = %v", hints)
 	}
 	for _, h := range hints {
-		if h.Key == "s" || h.Key == "Enter" {
+		if h.Key == "s" {
 			t.Errorf("reserved hint %v", h)
 		}
 	}
@@ -172,5 +172,25 @@ func TestFoldAllKeysBelongToTheTree(t *testing.T) {
 		if !found {
 			t.Errorf("%q is not reserved for the tree", k)
 		}
+	}
+}
+
+func TestDetailToggleIsGlobalAndFree(t *testing.T) {
+	m := keys.Default()
+	found := false
+	for _, c := range keys.Contexts() {
+		for _, b := range m.Active(c) {
+			for _, k := range b.Keys {
+				if k == "D" {
+					found = found || (c == keys.Global && b.Action == keys.DetailToggle)
+					if b.Action != keys.DetailToggle {
+						t.Errorf("D is also bound to %s in %s", b.Action, c)
+					}
+				}
+			}
+		}
+	}
+	if !found {
+		t.Error("D is not bound to the detail toggle in the global context")
 	}
 }

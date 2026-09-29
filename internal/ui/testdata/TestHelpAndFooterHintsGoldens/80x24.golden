@@ -1,27 +1,27 @@
  [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
- ? help  q quit  j/k move  Space mark  1-6 switch view  t appearance  r refresh 
+ ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view              
 
  [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
 |   ? P4 ws-1zz   Mystery status issue                                          
-  +- Keys -------------------------------------------------------- 18 shown -+  
+  +- Keys -------------------------------------------------------- 23 shown -+  
   | Lists                                                                    |ce
-  |   q       quit                                                           |  
-  |   j/Down  move down                                                      |  
-  |   k/Up    move up                                                        |  
-  |   gg      first                                                          |ob
-  |   G       last                                                           |  
-  |   Ctrl+D  half page down                                                 |  
-  |   Ctrl+U  half page up                                                   |  
-  |   PgDn    page down                                                      |  
-  |   PgUp    page up                                                        |  
-  |   Space   mark                                                           |  
+  |   q        quit                                                          |  
+  |   j/Down   move down                                                     |  
+  |   k/Up     move up                                                       |  
+  |   gg       first                                                         |ob
+  |   G        last                                                          |  
+  |   Ctrl+D   half page down                                                |  
+  |   Ctrl+U   half page up                                                  |  
+  |   PgDn     page down                                                     |  
+  |   PgUp     page up                                                       |  
+  |   Space    mark                                                          |  
+  |   h/Left   column, collapse                                              |  
+  |   l/Right  column, expand                                                |  
+  |   Enter    open the detail, fold row                                     |  
   |                                                                          |  
   | Everywhere                                                               |  
   |   ?          help                                                        |  
-  |   1-6        switch view                                                 |  
-  |   t          appearance                                                  |  
-  |   r          refresh                                                     |  
-  | ... 5 more                                                               |  
+  | ... 10 more                                                              |  
   +---------------------------------------- Esc close  j/k scroll  / filter -+  
                                                                                 
  Esc close  j/k scroll  / filter                                                

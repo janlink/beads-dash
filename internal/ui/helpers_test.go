@@ -28,6 +28,7 @@ var (
 func resolved(f flavour) config.Resolved {
 	s := config.Defaults()
 	s.Background, s.Glyphs, s.Color, s.Ambiguous = "dark", f.glyphs, f.depth, "narrow"
+	s.DetailDocked = false
 	return config.Resolved{Settings: s}
 }
 
@@ -66,6 +67,7 @@ func liveStatus() refresh.Status {
 func loaded(t testing.TB, f flavour, cols, rows int, snap *model.Snapshot, mod func(*Options)) *App {
 	t.Helper()
 	a := New(testOptions(f, mod))
+	a.syncMD = true
 	send(a, tea.WindowSizeMsg{Width: cols, Height: rows})
 	send(a, sessionMsg{sess: workspace()})
 	send(a, updateMsg{refresh.Update{Snapshot: snap, Status: liveStatus(), Session: workspace()}})

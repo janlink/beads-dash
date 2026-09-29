@@ -3,6 +3,7 @@ package uitest
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/janlink/beads-dash/internal/model"
@@ -35,6 +36,11 @@ func Sample() (*model.Snapshot, model.Statuses) {
 	ready := model.Readiness{
 		Ready:   []string{"ws-4k2.1", "ws-9qe", "ws-7mt", "ws-5ca"},
 		Blocked: map[string][]string{"ws-4k2.2": {"ws-4k2.1"}, "ws-2hz": {"ws-9qe"}},
+		Reason: map[string]string{
+			"ws-4k2.1": "no blocking dependencies", "ws-4k2.5": "no blocking dependencies", "ws-4k2.5.1": "no blocking dependencies",
+			"ws-9qe": "no blocking dependencies", "ws-7mt": "no blocking dependencies", "ws-4k2": "no blocking dependencies",
+			"ws-lost": "1 blocker(s) resolved",
+		},
 	}
 	return model.NewSnapshot(issues, ready, T0), model.BuiltinStatuses()
 }
@@ -56,4 +62,91 @@ func Big(n int) (*model.Snapshot, model.Statuses) {
 		}
 	}
 	return model.NewSnapshot(issues, model.Readiness{}, T0), model.BuiltinStatuses()
+}
+
+// Deep builds a hierarchical snapshot of about n issues for budgets: epics
+// with children and grandchildren, readiness with reasons and blockers, and
+// markdown descriptions, one of about 5 KB on every fifth issue.
+func Deep(n int) (*model.Snapshot, model.Statuses) {
+	para := "Retries **fail** after the provider times out; see `client.go` and [the notes](https://example.com/notes).\n\n- back off between tries\n- add jitter\n\n> keep the budget in mind\n\n"
+	long := strings.Repeat(para, 5000/len(para)+1)
+	var issues []model.Issue
+	var ready model.Readiness
+	ready.Blocked, ready.Reason = map[string][]string{}, map[string]string{}
+	add := func(id, parent string, i int) {
+		is := model.Issue{
+			ID: id, Title: fmt.Sprintf("Issue %s with a moderately long descriptive title", id), Parent: parent,
+			Status: [...]string{"open", "in_progress", "closed", "open", "deferred"}[i%5], IssueType: "task", Priority: i % 5,
+			Assignee:  [...]string{"", "alice", "bob"}[i%3],
+			CreatedAt: T0.Add(-time.Duration(i) * time.Minute), UpdatedAt: T0.Add(-time.Duration(i) * time.Second),
+		}
+		switch {
+		case i%5 == 0:
+			is.Description = long
+		case i%3 == 0:
+			is.Description = para
+		}
+		if is.Status == "closed" {
+			is.ClosedAt = is.UpdatedAt
+		}
+		issues = append(issues, is)
+		switch {
+		case is.Status == "closed" || is.Status == "deferred":
+		case i%7 == 0 && len(issues) > 1:
+			ready.Blocked[id] = []string{issues[len(issues)-2].ID}
+		default:
+			ready.Ready = append(ready.Ready, id)
+			ready.Reason[id] = "no blocking dependencies"
+		}
+	}
+	for e := 0; len(issues) < n; e++ {
+		epic := fmt.Sprintf("deep-%04d", e)
+		add(epic, "", len(issues))
+		for c := 0; c < 8 && len(issues) < n; c++ {
+			child := fmt.Sprintf("%s.%d", epic, c)
+			add(child, epic, len(issues))
+			for g := 0; g < 4 && len(issues) < n; g++ {
+				add(fmt.Sprintf("%s.%d", child, g), child, len(issues))
+			}
+		}
+	}
+	return model.NewSnapshot(issues, ready, T0), model.BuiltinStatuses()
+}
+
+// Tree is a workspace for the tree and ready views: an epic with open,
+// blocked and closed children and a deeper level, a fully closed epic, an
+// orphan, a blocked chain and a description to draw.
+func Tree() (*model.Snapshot, model.Statuses) {
+	at := func(d time.Duration) time.Time { return T0.Add(-d) }
+	h := time.Hour
+	issues := []model.Issue{
+		{ID: "ws-4k2", Title: "Checkout: guest orders", Status: "in_progress", IssueType: "epic", Priority: 1, Assignee: "alice", CreatedAt: at(72 * h), UpdatedAt: at(h)},
+		{ID: "ws-4k2.1", Title: "Address form validation", Status: "open", IssueType: "task", Priority: 1, Parent: "ws-4k2", CreatedAt: at(72 * h), UpdatedAt: at(2 * h)},
+		{ID: "ws-4k2.2", Title: "Guest order confirmation mail", Status: "open", IssueType: "task", Priority: 2, Parent: "ws-4k2", CreatedAt: at(48 * h), UpdatedAt: at(3 * h)},
+		{ID: "ws-4k2.3", Title: "Order summary page", Status: "closed", IssueType: "task", Priority: 2, Parent: "ws-4k2", CreatedAt: at(80 * h), UpdatedAt: at(9 * h), ClosedAt: at(9 * h)},
+		{ID: "ws-4k2.4", Title: "Guest cart merge", Status: "closed", IssueType: "task", Priority: 2, Parent: "ws-4k2", CreatedAt: at(81 * h), UpdatedAt: at(10 * h), ClosedAt: at(10 * h)},
+		{ID: "ws-4k2.5", Title: "Shipping options", Status: "open", IssueType: "feature", Priority: 3, Parent: "ws-4k2", CreatedAt: at(60 * h), UpdatedAt: at(4 * h)},
+		{ID: "ws-4k2.5.1", Title: "Pickup point lookup", Status: "open", IssueType: "task", Priority: 3, Assignee: "carol", Parent: "ws-4k2.5", CreatedAt: at(59 * h), UpdatedAt: at(4 * h)},
+		{
+			ID: "ws-9qe", Title: "Payment provider timeout retries", Status: "open", IssueType: "bug", Priority: 0, CreatedAt: at(5 * h), UpdatedAt: at(5 * h),
+			Description: "Retries **fail** after the provider times out.\n\n- back off between tries\n- add jitter\n",
+		},
+		{ID: "ws-7mt", Title: "Cart badge shows stale count", Status: "in_progress", IssueType: "bug", Priority: 2, Assignee: "bob", CreatedAt: at(24 * h), UpdatedAt: at(4 * h)},
+		{ID: "ws-2hz", Title: "Split pricing service", Status: "open", IssueType: "feature", Priority: 2, CreatedAt: at(144 * h), UpdatedAt: at(6 * h)},
+		{ID: "ws-8np", Title: "Search: typo tolerance", Status: "deferred", IssueType: "feature", Priority: 3, CreatedAt: at(288 * h), UpdatedAt: at(12 * h)},
+		{ID: "ws-5ca", Title: "Update analytics consent banner", Status: "closed", IssueType: "chore", Priority: 3, CreatedAt: at(96 * h), UpdatedAt: at(8 * h), ClosedAt: at(8 * h)},
+		{ID: "ws-old", Title: "Legacy checkout removal", Status: "closed", IssueType: "epic", Priority: 2, CreatedAt: at(400 * h), UpdatedAt: at(300 * h), ClosedAt: at(300 * h)},
+		{ID: "ws-old.1", Title: "Delete legacy routes", Status: "closed", IssueType: "task", Priority: 2, Parent: "ws-old", CreatedAt: at(399 * h), UpdatedAt: at(300 * h), ClosedAt: at(300 * h)},
+		{ID: "ws-lost", Title: "Follow-up from a deleted epic", Status: "open", IssueType: "task", Priority: 2, Assignee: "alice", Parent: "ws-gone", CreatedAt: at(30 * h), UpdatedAt: at(30 * h)},
+	}
+	ready := model.Readiness{
+		Ready:   []string{"ws-4k2.1", "ws-4k2.5", "ws-4k2.5.1", "ws-9qe", "ws-7mt", "ws-lost", "ws-4k2"},
+		Blocked: map[string][]string{"ws-4k2.2": {"ws-4k2.1"}, "ws-2hz": {"ws-9qe"}},
+		Reason: map[string]string{
+			"ws-4k2.1": "no blocking dependencies", "ws-4k2.5": "no blocking dependencies", "ws-4k2.5.1": "no blocking dependencies",
+			"ws-9qe": "no blocking dependencies", "ws-7mt": "no blocking dependencies", "ws-4k2": "no blocking dependencies",
+			"ws-lost": "1 blocker(s) resolved",
+		},
+	}
+	return model.NewSnapshot(issues, ready, T0), model.BuiltinStatuses()
 }

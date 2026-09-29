@@ -16,6 +16,7 @@ import (
 	"github.com/janlink/beads-dash/internal/bd"
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/refresh"
+	"github.com/janlink/beads-dash/internal/ui/detail"
 	"github.com/janlink/beads-dash/internal/ui/dialog"
 	"github.com/janlink/beads-dash/internal/ui/keys"
 	"github.com/janlink/beads-dash/internal/ui/look"
@@ -72,6 +73,16 @@ type App struct {
 	slot    int
 	slotCur [6]string
 
+	scope  model.Scope
+	mset   *model.Matches
+	msnap  *model.Snapshot
+	mkey   string
+	panel  *detail.Panel
+	docked bool
+	// syncMD renders markdown inside Update; tests use it to see the final page.
+	syncMD  bool
+	lookGen int
+
 	bds        bd.Session
 	startErr   error
 	checking   bool
@@ -105,6 +116,9 @@ func New(o Options) *App {
 		},
 	}
 	a.acts = sessionActions{a.sess}
+	a.panel = detail.New()
+	a.docked = o.Settings.Settings.DetailDocked
+	a.setScope(model.ParseScope("", o.Settings.Settings.ShowClosed))
 	a.setLook()
 	a.rend = rows.New(a.look)
 	for n, v := range o.Views {
@@ -149,7 +163,25 @@ func (a *App) startSlot() int {
 	return 0
 }
 
+func (a *App) setScope(s model.Scope) {
+	a.scope = s
+	a.sess.ScopeActive = s.Active()
+}
+
+// matches is the scope applied to the snapshot, recomputed only when either
+// changes.
+func (a *App) matches() *model.Matches {
+	if a.snap == nil {
+		return nil
+	}
+	if k := a.scope.Key(); a.mset == nil || a.msnap != a.snap || a.mkey != k {
+		a.mset, a.msnap, a.mkey = a.scope.Apply(a.snap, a.bds.Statuses), a.snap, k
+	}
+	return a.mset
+}
+
 func (a *App) setLook() {
+	a.lookGen++
 	a.look = look.New(a.app.Palette, a.app.Glyphs)
 	if a.rend != nil {
 		a.rend.SetLook(a.look)
@@ -225,6 +257,11 @@ func waitUpdate(e Engine) tea.Cmd {
 // Update implements tea.Model.
 func (a *App) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	cmd := a.update(msg)
+	a.syncLayers()
+	if s, ok := a.view().(Syncer); ok && a.snap != nil {
+		s.Sync(a.env())
+	}
+	cmd = tea.Batch(cmd, a.renderJobs())
 	if a.needsClock() && !a.ticking && !a.quitting {
 		a.ticking = true
 		cmd = tea.Batch(cmd, tea.Tick(time.Second, func(time.Time) tea.Msg { return clockMsg{} }))
@@ -256,6 +293,8 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 		return a.onEngine(m)
 	case updateMsg:
 		return tea.Batch(a.apply(m.u), waitUpdate(a.eng))
+	case mdMsg:
+		a.panel.Apply(m.res)
 	case closedMsg:
 	case recheckMsg:
 		if m.gen == a.checkGen && a.startErr != nil && !a.checking {
@@ -451,6 +490,7 @@ func (a *App) env() Env {
 		Marked:  a.sess.Marked,
 		Changed: func(id string) bool { return a.hl.Live(id, now) },
 		Act:     a.acts,
+		Scope:   a.scope, Matches: a.matches(), Now: now, Cols: a.cols,
 	}
 }
 
@@ -475,11 +515,11 @@ func (a *App) context() keys.Context {
 func (a *App) baseContext() keys.Context {
 	if top, ok := a.sess.Top(); ok {
 		switch top {
-		case state.LayerDetailFocus:
+		case state.LayerDetailFocus, state.LayerDetail:
 			return keys.Panel
 		case state.LayerBar:
 			return keys.Bar
-		case state.LayerDetail, state.LayerDialog:
+		case state.LayerDialog:
 		}
 	}
 	return a.view().Context()
@@ -605,13 +645,25 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 		a.sess.Back(a.visible)
 	case keys.Close:
 		if a.sess.Esc() == state.EscScope {
-			return a.viewAct(act)
+			a.setScope(model.ParseScope("", a.scope.ShowClosed()))
 		}
+	case keys.Open:
+		if cmd, ok := a.view().Handle(act, a.env()); ok || !a.openDetail() {
+			return cmd
+		}
+	case keys.FocusNext:
+		a.focusNext()
+	case keys.DetailToggle:
+		return a.toggleDocked()
 	case keys.Mark:
 		if id := a.sess.Current(); id != "" {
 			a.sess.ToggleMark(id)
 		}
 	default:
+		if a.baseContext() == keys.Panel {
+			a.panelAct(act)
+			return nil
+		}
 		return a.viewAct(act)
 	}
 	return a.syncPause()
@@ -746,7 +798,7 @@ func (a *App) navigate(act keys.Action) {
 		return
 	}
 	i := slices.Index(order, env.Current)
-	h := a.bodyHeight()
+	_, h := a.listSize()
 	to := i
 	switch act { //nolint:exhaustive // the action set is open: views add their own
 	case keys.NavDown:
@@ -822,9 +874,7 @@ func (a *App) click(m tea.Mouse) {
 			}
 		}
 	case m.Y-1 < a.bodyHeight():
-		if id, ok := a.view().At(m.Y - 1); ok {
-			a.sess.SetCurrent(id)
-		}
+		a.clickBody(m.X, m.Y-1)
 	}
 }
 
@@ -832,12 +882,20 @@ func (a *App) wheel(m tea.Mouse) {
 	if !a.mouseOn() || len(a.dialogs) > 0 || a.report != nil || a.tooSmall() {
 		return
 	}
+	n := 0
 	switch m.Button { //nolint:exhaustive // only the wheel is handled
 	case tea.MouseWheelUp:
-		a.view().Scroll(-wheelStep)
+		n = -wheelStep
 	case tea.MouseWheelDown:
-		a.view().Scroll(wheelStep)
+		n = wheelStep
+	default:
+		return
 	}
+	if a.overPanel(m.X, m.Y-1) {
+		a.panel.ScrollBy(n)
+		return
+	}
+	a.view().Scroll(n)
 }
 
 func (a *App) workspaceName() string {
@@ -883,10 +941,10 @@ func (a *App) render() string {
 			Look: l, Hints: a.hintsFor(keys.Startup), Sel: a.pick, RetryIn: retry, Cols: a.cols, Rows: a.rows,
 		}, *a.report), "\n")
 	}
-	h := a.bodyHeight()
+	body := a.body(a.bodyHeight())
 	lines := make([]string, 0, a.rows)
 	lines = append(lines, a.header())
-	lines = append(lines, a.body(h)...)
+	lines = append(lines, body...)
 	if n, ok := a.noticeRow(); ok {
 		lines = append(lines, n)
 	}
@@ -905,7 +963,23 @@ func (a *App) body(h int) []string {
 	case a.snap.Len() == 0:
 		return screens.RenderEmpty(a.look, a.emptyWorkspace(), a.cols, h)
 	}
-	return a.view().Render(a.env(), a.cols, h)
+	d := a.frame()
+	env := a.env()
+	switch d.Frame {
+	case detail.Overlay:
+		return a.panelLines(d)
+	case detail.Bottom:
+		return append(a.view().Render(env, a.cols, h-d.H), a.panelLines(d)...)
+	case detail.Side:
+		list := a.view().Render(env, a.cols-d.W, h)
+		side := a.panelLines(d)
+		for i := range list {
+			list[i] += side[i]
+		}
+		return list
+	case detail.Hidden:
+	}
+	return a.view().Render(env, a.cols, h)
 }
 
 func (a *App) emptyWorkspace() screens.Empty {

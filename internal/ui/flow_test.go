@@ -35,7 +35,7 @@ type memStore struct {
 func (m *memStore) Set(name string, value any) error {
 	m.mu.Lock()
 	defer m.mu.Unlock()
-	m.sets = append(m.sets, [2]string{name, value.(string)})
+	m.sets = append(m.sets, [2]string{name, fmt.Sprint(value)})
 	return m.err
 }
 

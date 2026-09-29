@@ -138,3 +138,22 @@ func TestPruneDropsDeletedBackEntries(t *testing.T) {
 		t.Error("deleted origin a stayed on the stack")
 	}
 }
+
+func TestReplaceKeepsTheLayerInPlace(t *testing.T) {
+	s := state.New()
+	s.Push(state.LayerDetail)
+	s.Push(state.LayerDialog)
+	if !s.Replace(state.LayerDetail, state.LayerDetailFocus) {
+		t.Fatal("Replace found nothing")
+	}
+	if top, _ := s.Top(); top != state.LayerDialog {
+		t.Errorf("top = %v, want the dialog", top)
+	}
+	s.Pop()
+	if top, _ := s.Top(); top != state.LayerDetailFocus {
+		t.Errorf("below the dialog: %v", top)
+	}
+	if s.Replace(state.LayerBar, state.LayerDialog) {
+		t.Error("replaced a layer that is not there")
+	}
+}

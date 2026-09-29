@@ -142,6 +142,11 @@ func TestFixtureListAndReadiness(t *testing.T) {
 				}
 			}
 			assertParentPropagation(t, snap)
+			for _, id := range snap.ReadyIDs() {
+				if snap.ReadyReason(id) == "" {
+					t.Errorf("%s: bd's reason was dropped", id)
+				}
+			}
 		})
 	}
 }

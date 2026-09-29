@@ -197,3 +197,18 @@ func TestStartupScreenPointsAtTheVersionReport(t *testing.T) {
 		t.Errorf("no pointer to bdash -v:\n%s", out)
 	}
 }
+
+func TestEmptyScopeMatch(t *testing.T) {
+	e := screens.EmptyScopeMatch(`type:bug "two words"`, 0)
+	if e.Title != `No issue matches "type:bug "two words"".` || e.Body != "Esc clears the scope." || len(e.Hints) != 3 {
+		t.Errorf("no closed: %+v", e)
+	}
+	e = screens.EmptyScopeMatch("needle", 4)
+	if e.Body != "+4 closed match; add status:closed to show them." {
+		t.Errorf("closed hint: %q", e.Body)
+	}
+	e = screens.EmptyScopeMatch("", 1)
+	if e.Title != "No open issues." || e.Body != "1 closed issue is hidden; status:closed shows them." {
+		t.Errorf("default scope: %+v", e)
+	}
+}

@@ -76,10 +76,16 @@ func (f *Fake) SetIssues(issues ...model.Issue) {
 	f.locked(func() { f.issues = slices.Clone(issues) })
 }
 
-// SetReadiness sets bd's ready and blocked verdict verbatim.
-func (f *Fake) SetReadiness(ready []string, blocked map[string][]string) {
+// SetReadiness sets bd's ready and blocked verdict verbatim; reasons maps a
+// ready ID to the reason bd gives for it and may be nil.
+func (f *Fake) SetReadiness(ready []string, blocked map[string][]string, reasons ...map[string]string) {
 	f.locked(func() {
-		f.readiness = model.Readiness{Ready: slices.Clone(ready), Blocked: map[string][]string{}}
+		f.readiness = model.Readiness{Ready: slices.Clone(ready), Blocked: map[string][]string{}, Reason: map[string]string{}}
+		for _, m := range reasons {
+			for k, v := range m {
+				f.readiness.Reason[k] = v
+			}
+		}
 		for k, v := range blocked {
 			f.readiness.Blocked[k] = slices.Clone(v)
 		}
@@ -227,7 +233,10 @@ func (f *Fake) Ready(ctx context.Context) (model.Readiness, error) {
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
-	r := model.Readiness{Ready: slices.Clone(f.readiness.Ready), Blocked: map[string][]string{}}
+	r := model.Readiness{Ready: slices.Clone(f.readiness.Ready), Blocked: map[string][]string{}, Reason: map[string]string{}}
+	for k, v := range f.readiness.Reason {
+		r.Reason[k] = v
+	}
 	for k, v := range f.readiness.Blocked {
 		r.Blocked[k] = slices.Clone(v)
 	}

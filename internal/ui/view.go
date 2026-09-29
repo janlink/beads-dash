@@ -2,6 +2,7 @@ package ui
 
 import (
 	"slices"
+	"time"
 
 	tea "charm.land/bubbletea/v2"
 
@@ -42,14 +43,22 @@ type Env struct {
 	Marked   func(id string) bool
 	Changed  func(id string) bool
 	Act      Actions
+	// Scope and Matches are the active scope and its outcome on Snap;
+	// Matches is nil while there is no snapshot.
+	Scope   model.Scope
+	Matches *model.Matches
+	Now     time.Time
+	// Cols is the width of the whole terminal, of which a view may get less.
+	Cols int
 }
 
 // View is one of the numbered views.
 type View interface {
 	// Name keys the row cache; it is unique among the registered views.
 	Name() string
-	// Scope is the label the header shows beside the view name.
-	Scope() string
+	// Scope is the label the header shows beside the view name, in at most w
+	// cells; empty when there is none or it does not fit.
+	Scope(w int) string
 	// Context is the key context of the view's base level.
 	Context() keys.Context
 	// Visible lists the issue IDs the view shows in cursor order.
@@ -65,6 +74,17 @@ type View interface {
 	Scroll(n int)
 	// At is the issue drawn on body row y of the last Render.
 	At(y int) (id string, ok bool)
+}
+
+// Noter is implemented by views that add a note to the footer chips.
+type Noter interface {
+	Note() string
+}
+
+// Syncer is implemented by views that keep state in line with the session
+// after each update, such as revealing the current issue.
+type Syncer interface {
+	Sync(env Env)
 }
 
 // Updater is implemented by views that receive messages, such as lazy loads.
@@ -152,7 +172,7 @@ func (*placeholder) Name() string { return "list" }
 
 func (*placeholder) Context() keys.Context { return keys.View }
 
-func (*placeholder) Scope() string { return "" }
+func (*placeholder) Scope(int) string { return "" }
 
 func (*placeholder) Visible(env Env) []string {
 	if env.Snap == nil {

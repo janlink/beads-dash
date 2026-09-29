@@ -59,6 +59,7 @@ func uiOptions(s Session) ui.Options {
 		Tunables:     &tunables,
 		Actor:        resolveActor(getenv, gitUserName),
 		Settings:     s.Settings,
+		Views:        ui.IssueViews(),
 		Appearance:   s.Appearance,
 		Getenv:       getenv,
 		Warnings:     s.Warnings,

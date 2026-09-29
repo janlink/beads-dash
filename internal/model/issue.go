@@ -50,9 +50,21 @@ type Issue struct {
 	Raw          json.RawMessage
 }
 
-// Readiness is bd's own verdict from ready --explain: the ready IDs and, per
-// blocked ID, the IDs that block it. bdash never derives either.
+// Readiness is bd's own verdict from ready --explain: the ready IDs with the
+// reason bd gives for each and, per blocked ID, the IDs that block it in bd's
+// order. bdash never derives any of it.
 type Readiness struct {
 	Ready   []string
+	Reason  map[string]string
 	Blocked map[string][]string
+}
+
+// BlockingEdge reports whether a dependency type holds its source back until
+// the target is done.
+func BlockingEdge(edgeType string) bool {
+	switch edgeType {
+	case "blocks", "conditional-blocks", "waits-for":
+		return true
+	}
+	return false
 }

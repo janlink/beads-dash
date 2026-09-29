@@ -24,6 +24,19 @@ const (
 
 	HelpFilter Action = "help.filter"
 
+	Open         Action = "open"
+	Left         Action = "left"
+	Right        Action = "right"
+	FoldAll      Action = "fold.all"
+	UnfoldAll    Action = "unfold.all"
+	FocusNext    Action = "focus.next"
+	DetailToggle Action = "detail.toggle"
+	SectionNext  Action = "section.next"
+	SectionPrev  Action = "section.prev"
+	Jump         Action = "jump"
+	SectionsAll  Action = "sections.all"
+	Markdown     Action = "markdown"
+
 	Prev  Action = "prev"
 	Next  Action = "next"
 	Apply Action = "apply"
