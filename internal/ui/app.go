@@ -95,6 +95,8 @@ type App struct {
 	eng        Engine
 	cancel     context.CancelFunc
 	snap       *model.Snapshot
+	feed       model.Ring
+	feedNewest []model.Event
 	status     refresh.Status
 	ticking    bool
 	notices    []screens.Notice
@@ -115,7 +117,7 @@ func New(o Options) *App {
 			Theme: o.Settings.Settings.Theme, Background: o.Settings.Settings.Background, Glyphs: o.Settings.Settings.Glyphs,
 		},
 	}
-	a.acts = sessionActions{a.sess}
+	a.acts = sessionActions{s: a.sess, show: a.show}
 	a.panel = detail.New()
 	a.docked = o.Settings.Settings.DetailDocked
 	a.setScope(model.ParseScope("", o.Settings.Settings.ShowClosed))
@@ -424,6 +426,10 @@ func (a *App) apply(u refresh.Update) tea.Cmd {
 		a.hl.Prune(exists)
 		a.keepCurrent(old)
 	}
+	if len(u.Events) > 0 {
+		a.feed.Merge(u.Events...)
+		a.feedNewest = a.feed.Newest()
+	}
 	if len(u.Highlights) > 0 {
 		a.hl.Trigger(a.now(), u.Highlights, u.Events)
 		cmds = append(cmds, a.hlSchedule())
@@ -490,7 +496,8 @@ func (a *App) env() Env {
 		Marked:  a.sess.Marked,
 		Changed: func(id string) bool { return a.hl.Live(id, now) },
 		Act:     a.acts,
-		Scope:   a.scope, Matches: a.matches(), Now: now, Cols: a.cols,
+		Scope:   a.scope, Matches: a.matches(), Now: now, Cols: a.cols, Feed: a.feedNewest,
+		Docked: a.dock().Frame != detail.Hidden && a.sess.Current() != "",
 	}
 }
 
@@ -642,7 +649,9 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 	case keys.SwitchView:
 		a.switchView(key)
 	case keys.Back:
-		a.sess.Back(a.visible)
+		if slot, ok := a.sess.Back(a.visible); ok && slot != state.NoView {
+			a.switchTo(slot, "")
+		}
 	case keys.Close:
 		if a.sess.Esc() == state.EscScope {
 			a.setScope(model.ParseScope("", a.scope.ShowClosed()))
@@ -652,7 +661,9 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 			return cmd
 		}
 	case keys.FocusNext:
-		a.focusNext()
+		if !a.viewFocusNext() {
+			a.focusNext()
+		}
 	case keys.DetailToggle:
 		return a.toggleDocked()
 	case keys.Mark:
@@ -754,8 +765,21 @@ func (a *App) persist(changes map[string]string) tea.Cmd {
 	}
 }
 
-func (a *App) switchView(key string) {
-	n := int(key[0] - '1')
+func (a *App) switchView(key string) { a.switchTo(int(key[0]-'1'), "") }
+
+// show opens view number n (1-6) on issue id; the back key returns to the
+// view and issue it left.
+func (a *App) show(n int, id string) {
+	if n < 1 || n > 6 || a.views[n-1] == nil {
+		return
+	}
+	a.switchTo(n-1, id)
+}
+
+// switchTo makes slot n the current view. With an id, that issue becomes
+// current and the view and issue left go on the back stack, even when the
+// issue stays the same.
+func (a *App) switchTo(n int, id string) {
 	if n < 0 || n > 5 {
 		return
 	}
@@ -763,11 +787,15 @@ func (a *App) switchView(key string) {
 		a.hint = fmt.Sprintf("%s is not available yet", ViewNames[n])
 		return
 	}
-	if n == a.slot {
+	if n == a.slot && id == "" {
 		return
 	}
 	cur := a.sess.Current()
 	a.slotCur[a.slot] = cur
+	if id != "" {
+		a.sess.JumpFrom(a.slot, id)
+		cur = id
+	}
 	a.slot = n
 	env := a.env()
 	v := a.views[n]

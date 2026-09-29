@@ -6,12 +6,12 @@
     |-v o ws-4k2.5 Shipping options                                                                 0/1 ------|                                                                                         
     | `-  o ws-4k2.5.1 Pickup point lookup                                                       P3 carol     |    * back off between tries                                                             
     `-> x 2 closed                                                                                            |    * add jitter                                                                         
-      ! ws-2hz Split pricing service                                                                        P2|  * Dependencies  none                                                                   
-      o ws-lost Follow-up from a deleted epic                                          ^ ws-gone P2 alice     |  * Children  none                                                                       
-      * ws-7mt Cart badge shows stale count                                                      P2 bob       |  > Details  created 5 h ago · updated 5 h ago                                           
-      ~ ws-8np Search: typo tolerance                                                                       P3|                                                                                         
-                                                                                                              |                                                                                         
-                                                                                                              |                                                                                         
+      ! ws-2hz Split pricing service                                                                        P2|  v Dependencies  holds up 1                                                             
+      o ws-lost Follow-up from a deleted epic                                          ^ ws-gone P2 alice     |    holds up 1                                                                           
+      * ws-7mt Cart badge shows stale count                                                      P2 bob       |      ! ws-2hz Split pricing service                                                     
+      ~ ws-8np Search: typo tolerance                                                                       P3|    focus graph comes with the graph view                                                
+                                                                                                              |  * Children  none                                                                       
+                                                                                                              |  > Details  created 5 h ago · updated 5 h ago                                           
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         

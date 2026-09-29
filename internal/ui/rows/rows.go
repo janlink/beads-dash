@@ -144,10 +144,16 @@ func (r *Renderer) Line(w int, row Row, view string, body Body) string {
 // Standard is the one-line body of an issue: status, priority, ID, title and
 // assignee.
 func (r *Renderer) Standard(id string) Body {
-	return func(w int, sel bool) string { return r.render(w, id, sel) }
+	return func(w int, sel bool) string { return r.render(w, id, sel, true) }
 }
 
-func (r *Renderer) render(w int, id string, sel bool) string {
+// Unassigned is the standard row without the assignee, for lists grouped by
+// assignee.
+func (r *Renderer) Unassigned(id string) Body {
+	return func(w int, sel bool) string { return r.render(w, id, sel, false) }
+}
+
+func (r *Renderer) render(w int, id string, sel, withAssignee bool) string {
 	paint := r.look.Paint
 	if sel {
 		paint = r.look.PaintSel
@@ -166,7 +172,10 @@ func (r *Renderer) render(w int, id string, sel bool) string {
 
 	prio := "P" + string(rune('0'+min(max(is.Priority, 0), 9)))
 	idText := r.look.Fit(id, r.idW)
-	fact := ansi.Truncate(oneLine(is.Assignee), maxFactWidth, g.Ellipsis)
+	var fact string
+	if withAssignee {
+		fact = ansi.Truncate(oneLine(is.Assignee), maxFactWidth, g.Ellipsis)
+	}
 
 	fixed := 1 + ansi.StringWidth(g.Status[idx]) + 1 + 2 + 1 + r.idW + 1
 	factW := 0

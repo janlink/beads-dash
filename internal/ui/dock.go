@@ -210,7 +210,24 @@ func (a *App) clickBody(x, y int) {
 	if a.sess.Has(state.LayerDetailFocus) {
 		a.sess.Remove(state.LayerDetailFocus)
 	}
-	if id, ok := a.view().At(y); ok {
+	var id string
+	var ok bool
+	if p, isPointer := a.view().(Pointer); isPointer {
+		id, ok = p.AtXY(x, y)
+	} else {
+		id, ok = a.view().At(y)
+	}
+	if ok {
 		a.sess.SetCurrent(id)
 	}
+}
+
+// viewFocusNext offers Tab to the view while the list has the keys; it
+// reports whether the view used it.
+func (a *App) viewFocusNext() bool {
+	if a.baseContext() != a.view().Context() {
+		return false
+	}
+	_, ok := a.view().Handle(keys.FocusNext, a.env())
+	return ok
 }

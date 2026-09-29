@@ -39,7 +39,7 @@ const (
 type Session struct {
 	current string
 	marks   map[string]struct{}
-	back    []string
+	back    []Origin
 	layers  []Layer
 	// ScopeActive is set by views while a search or filter narrows the list.
 	ScopeActive bool
@@ -55,30 +55,53 @@ func (s *Session) Current() string { return s.current }
 // cursor movement does.
 func (s *Session) SetCurrent(id string) { s.current = id }
 
+// Origin is where a jump came from: the view slot, or NoView when the jump
+// stayed in one view, and the issue that was current.
+type Origin struct {
+	Slot int
+	ID   string
+}
+
+// NoView marks an Origin that does not name a view.
+const NoView = -1
+
 // Jump moves the current issue to id and remembers where it came from, so
 // Back can return.
 func (s *Session) Jump(id string) {
 	if id == s.current {
 		return
 	}
-	if s.current != "" && (len(s.back) == 0 || s.back[len(s.back)-1] != s.current) {
-		s.back = append(s.back, s.current)
-	}
+	s.push(Origin{NoView, s.current})
 	s.current = id
 }
 
-// Back returns to the most recent jump origin that alive still accepts, and
-// reports whether there was one.
-func (s *Session) Back(alive func(id string) bool) bool {
+// JumpFrom moves the current issue to id from the view in slot and remembers
+// both, even when id is already current: the view is what Back returns to.
+func (s *Session) JumpFrom(slot int, id string) {
+	s.push(Origin{slot, s.current})
+	s.current = id
+}
+
+func (s *Session) push(o Origin) {
+	if o.ID == "" || (len(s.back) > 0 && s.back[len(s.back)-1] == o) {
+		return
+	}
+	s.back = append(s.back, o)
+}
+
+// Back returns to the most recent jump origin whose issue alive still
+// accepts. It reports the view slot to restore (NoView when the jump stayed
+// in one view) and whether there was an origin.
+func (s *Session) Back(alive func(id string) bool) (slot int, ok bool) {
 	for len(s.back) > 0 {
-		id := s.back[len(s.back)-1]
+		o := s.back[len(s.back)-1]
 		s.back = s.back[:len(s.back)-1]
-		if alive == nil || alive(id) {
-			s.current = id
-			return true
+		if alive == nil || alive(o.ID) {
+			s.current = o.ID
+			return o.Slot, true
 		}
 	}
-	return false
+	return NoView, false
 }
 
 // NearestSurvivor picks where the current issue goes when it is no longer
@@ -154,7 +177,7 @@ func (s *Session) Prune(exists func(id string) bool) {
 			delete(s.marks, id)
 		}
 	}
-	s.back = slices.DeleteFunc(s.back, func(id string) bool { return !exists(id) })
+	s.back = slices.DeleteFunc(s.back, func(o Origin) bool { return !exists(o.ID) })
 }
 
 // Push opens a layer on top.

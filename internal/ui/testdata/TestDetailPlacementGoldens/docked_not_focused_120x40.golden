@@ -30,11 +30,11 @@
                                                                                                                         
    * back off between tries                                                                                             
    * add jitter                                                                                                         
- * Dependencies  none                                                                                                   
+ v Dependencies  holds up 1                                                                                             
+   holds up 1                                                                                                           
+     ! ws-2hz Split pricing service                                                                                     
+   focus graph comes with the graph view                                                                                
  * Children  none                                                                                                       
  > Details  created 5 h ago · updated 5 h ago                                                                           
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
                                                                                                                         
  ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view  t appearance  r refresh         1 container hidden  

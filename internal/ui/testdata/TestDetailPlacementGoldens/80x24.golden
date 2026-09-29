@@ -19,6 +19,6 @@
                                                                                 
    * back off between tries                                                     
    * add jitter                                                                 
- * Dependencies  none                                                           
- * Children  none                                                               
+ v Dependencies  holds up 1                                                     
+   holds up 1                                                                   
  ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance     

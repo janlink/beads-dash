@@ -1,6 +1,9 @@
 package keys
 
-import "sort"
+import (
+	"slices"
+	"sort"
+)
 
 // Hint is one footer or dialog-frame hint.
 type Hint struct {
@@ -16,8 +19,10 @@ func (m *Map) Hints(c Context) []Hint {
 	}
 	var all []ranked
 	n := 0
+	var claimed claims
 	for _, lc := range Layered(c) {
-		for _, b := range m.Active(lc) {
+		bs := claimed.unshadowed(m.Active(lc))
+		for _, b := range bs {
 			n++
 			if b.Hint > 0 {
 				all = append(all, ranked{b.hint(), b.Hint, n})
@@ -49,6 +54,7 @@ var sectionTitles = [contextCount]string{
 	View:       "Lists",
 	Memories:   "Memories",
 	Tree:       "Tree",
+	Overview:   "Overview",
 	Panel:      "Panel",
 	Bar:        "Docked bar",
 	Form:       "Forms",
@@ -65,8 +71,9 @@ var sectionTitles = [contextCount]string{
 func (m *Map) Sections(c Context) []Section {
 	var out []Section
 	index := map[string]int{}
+	var claimed claims
 	for _, lc := range Layered(c) {
-		bs := m.Active(lc)
+		bs := claimed.unshadowed(m.Active(lc))
 		if len(bs) == 0 {
 			continue
 		}
@@ -78,6 +85,30 @@ func (m *Map) Sections(c Context) []Section {
 			out = append(out, Section{Title: title})
 		}
 		out[i].Bindings = append(out[i].Bindings, bs...)
+	}
+	return out
+}
+
+// claims are the keys a more specific context already binds; the same key in
+// a later context is shadowed and neither listed nor hinted.
+type claims map[string]bool
+
+// unshadowed returns the bindings of bs whose keys no earlier context bound,
+// then claims their keys.
+func (c *claims) unshadowed(bs []Binding) []Binding {
+	if *c == nil {
+		*c = claims{}
+	}
+	var out []Binding
+	for _, b := range bs {
+		if !slices.ContainsFunc(b.Keys, func(k string) bool { return (*c)[k] }) {
+			out = append(out, b)
+		}
+	}
+	for _, b := range bs {
+		for _, k := range b.Keys {
+			(*c)[k] = true
+		}
 	}
 	return out
 }

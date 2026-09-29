@@ -114,13 +114,13 @@ func TestBackStack(t *testing.T) {
 	s.Jump("b")
 	s.Jump("c")
 	s.Jump("c")
-	if !s.Back(set("a", "b", "c")) || s.Current() != "b" {
+	if _, ok := s.Back(set("a", "b", "c")); !ok || s.Current() != "b" {
 		t.Errorf("back to %q", s.Current())
 	}
-	if s.Back(set("c")) || s.Current() != "b" {
+	if _, ok := s.Back(set("c")); ok || s.Current() != "b" {
 		t.Errorf("back with only c alive moved to %q", s.Current())
 	}
-	if s.Back(set()) {
+	if _, ok := s.Back(set()); ok {
 		t.Error("Back succeeded with an empty stack")
 	}
 }
@@ -131,10 +131,10 @@ func TestPruneDropsDeletedBackEntries(t *testing.T) {
 	s.Jump("b")
 	s.Jump("c")
 	s.Prune(set("b", "c"))
-	if !s.Back(nil) || s.Current() != "b" {
+	if _, ok := s.Back(nil); !ok || s.Current() != "b" {
 		t.Errorf("back = %q, want b", s.Current())
 	}
-	if s.Back(nil) {
+	if _, ok := s.Back(nil); ok {
 		t.Error("deleted origin a stayed on the stack")
 	}
 }
@@ -155,5 +155,18 @@ func TestReplaceKeepsTheLayerInPlace(t *testing.T) {
 	}
 	if s.Replace(state.LayerBar, state.LayerDialog) {
 		t.Error("replaced a layer that is not there")
+	}
+}
+
+func TestJumpFromRemembersTheViewEvenForTheSameIssue(t *testing.T) {
+	s := state.New()
+	s.SetCurrent("a")
+	s.JumpFrom(0, "a")
+	s.JumpFrom(3, "b")
+	if slot, ok := s.Back(nil); !ok || slot != 3 || s.Current() != "a" {
+		t.Errorf("first back: slot %d current %q", slot, s.Current())
+	}
+	if slot, ok := s.Back(nil); !ok || slot != 0 || s.Current() != "a" {
+		t.Errorf("second back: slot %d current %q", slot, s.Current())
 	}
 }

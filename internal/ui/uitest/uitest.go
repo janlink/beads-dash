@@ -122,7 +122,7 @@ func Tree() (*model.Snapshot, model.Statuses) {
 	issues := []model.Issue{
 		{ID: "ws-4k2", Title: "Checkout: guest orders", Status: "in_progress", IssueType: "epic", Priority: 1, Assignee: "alice", CreatedAt: at(72 * h), UpdatedAt: at(h)},
 		{ID: "ws-4k2.1", Title: "Address form validation", Status: "open", IssueType: "task", Priority: 1, Parent: "ws-4k2", CreatedAt: at(72 * h), UpdatedAt: at(2 * h)},
-		{ID: "ws-4k2.2", Title: "Guest order confirmation mail", Status: "open", IssueType: "task", Priority: 2, Parent: "ws-4k2", CreatedAt: at(48 * h), UpdatedAt: at(3 * h)},
+		{ID: "ws-4k2.2", Title: "Guest order confirmation mail", Status: "open", IssueType: "task", Priority: 2, Parent: "ws-4k2", CreatedAt: at(48 * h), UpdatedAt: at(3 * h), Dependencies: []model.Edge{{From: "ws-4k2.2", To: "ws-4k2.1", Type: "blocks"}}},
 		{ID: "ws-4k2.3", Title: "Order summary page", Status: "closed", IssueType: "task", Priority: 2, Parent: "ws-4k2", CreatedAt: at(80 * h), UpdatedAt: at(9 * h), ClosedAt: at(9 * h)},
 		{ID: "ws-4k2.4", Title: "Guest cart merge", Status: "closed", IssueType: "task", Priority: 2, Parent: "ws-4k2", CreatedAt: at(81 * h), UpdatedAt: at(10 * h), ClosedAt: at(10 * h)},
 		{ID: "ws-4k2.5", Title: "Shipping options", Status: "open", IssueType: "feature", Priority: 3, Parent: "ws-4k2", CreatedAt: at(60 * h), UpdatedAt: at(4 * h)},
@@ -132,7 +132,7 @@ func Tree() (*model.Snapshot, model.Statuses) {
 			Description: "Retries **fail** after the provider times out.\n\n- back off between tries\n- add jitter\n",
 		},
 		{ID: "ws-7mt", Title: "Cart badge shows stale count", Status: "in_progress", IssueType: "bug", Priority: 2, Assignee: "bob", CreatedAt: at(24 * h), UpdatedAt: at(4 * h)},
-		{ID: "ws-2hz", Title: "Split pricing service", Status: "open", IssueType: "feature", Priority: 2, CreatedAt: at(144 * h), UpdatedAt: at(6 * h)},
+		{ID: "ws-2hz", Title: "Split pricing service", Status: "open", IssueType: "feature", Priority: 2, CreatedAt: at(144 * h), UpdatedAt: at(6 * h), Dependencies: []model.Edge{{From: "ws-2hz", To: "ws-9qe", Type: "blocks"}}},
 		{ID: "ws-8np", Title: "Search: typo tolerance", Status: "deferred", IssueType: "feature", Priority: 3, CreatedAt: at(288 * h), UpdatedAt: at(12 * h)},
 		{ID: "ws-5ca", Title: "Update analytics consent banner", Status: "closed", IssueType: "chore", Priority: 3, CreatedAt: at(96 * h), UpdatedAt: at(8 * h), ClosedAt: at(8 * h)},
 		{ID: "ws-old", Title: "Legacy checkout removal", Status: "closed", IssueType: "epic", Priority: 2, CreatedAt: at(400 * h), UpdatedAt: at(300 * h), ClosedAt: at(300 * h)},

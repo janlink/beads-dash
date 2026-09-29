@@ -36,18 +36,6 @@ func TestMoveTo(t *testing.T) {
 	}
 }
 
-func TestMidTruncate(t *testing.T) {
-	if got := midTruncate("short", 10, "…"); got != "short" {
-		t.Errorf("short: %q", got)
-	}
-	if got := midTruncate("abcdefghijklmnop", 9, "…"); got != "abcd…mnop" {
-		t.Errorf("long: %q", got)
-	}
-	if got := midTruncate("abcdefghijklmnop", 9, "..."); got != "abc...nop" {
-		t.Errorf("ascii ellipsis: %q", got)
-	}
-}
-
 func TestScopeInfoFit(t *testing.T) {
 	si := scopeInfo{active: true, query: "label:ui p1", marker: "⌕", ellipsis: "…", shown: 23, total: 140, closedHidden: true, plusClosed: 4, unknown: []string{"foo"}}
 	if got, want := si.fit(200), "⌕ label:ui p1 · 23/140 · closed hidden · +4 closed · unknown: foo"; got != want {

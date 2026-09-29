@@ -66,6 +66,9 @@ func Default() *Map {
 		{Keys: []string{"z M"}, Action: FoldAll, Label: "zM", Desc: "fold all"},
 		{Keys: []string{"z R"}, Action: UnfoldAll, Label: "zR", Desc: "unfold all"},
 	}
+	m.by[Overview] = []Binding{
+		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the detail, or the view that owns the row", Hint: 4, HintDesc: "open"},
+	}
 	m.by[Panel] = []Binding{
 		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "scroll down", Hint: 3, HintKey: "j/k", HintDesc: "scroll"},
 		{Keys: []string{"k", "up"}, Action: NavUp, Label: "k/Up", Desc: "scroll up"},

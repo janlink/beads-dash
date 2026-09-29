@@ -346,5 +346,5 @@ func (v *Ready) At(y int) (string, bool) {
 
 // IssueViews returns the views that list issues, keyed by the slot they take.
 func IssueViews() map[int]View {
-	return map[int]View{2: NewTree(), 4: NewReady()}
+	return map[int]View{1: NewOverview(), 2: NewTree(), 3: NewKanban(), 4: NewReady()}
 }

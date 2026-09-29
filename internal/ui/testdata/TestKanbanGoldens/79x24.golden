@@ -1,0 +1,24 @@
+ Kanban                                                             * 12:00:00 
+- [Open] 5 --------------------------------------------------------------------
+|   P0 ws-9qe     Payment provider timeout retries                             
+    P1 ws-4k2.1   Address form validation                                      
+    P2 ws-lost    Follow-up from a deleted epic                          @alice
+    P3 ws-4k2.5   Shipping options                                   ------ 0/1
+    P3 ws-4k2.5.1 Pickup point lookup                                    @carol
+- In progress 2 ---------------------------------------------------------------
+    P1 ws-4k2     Checkout: guest orders                             ##---- 2/5
+    P2 ws-7mt     Cart badge shows stale count                             @bob
+- Blocked 2 -------------------------------------------------------------------
+    P2 ws-2hz     Split pricing service                                     ! 1
+    P2 ws-4k2.2   Guest order confirmation mail                             ! 1
+- Frozen 1 --------------------------------------------------------------------
+    P3 ws-8np     Search: typo tolerance                                       
+- Other 0 ---------------------------------------------------------------------
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+ ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view             

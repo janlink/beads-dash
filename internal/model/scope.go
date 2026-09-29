@@ -101,6 +101,12 @@ func (s Scope) NamesType(t string) bool {
 	return false
 }
 
+// NamesStatus reports whether the scope has a status facet, positive or
+// negated.
+func (s Scope) NamesStatus() bool {
+	return slices.ContainsFunc(s.facets, func(f facetTerm) bool { return f.key == facetStatus })
+}
+
 type token struct {
 	text   string
 	quoted bool

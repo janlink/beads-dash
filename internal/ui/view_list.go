@@ -5,10 +5,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/charmbracelet/x/ansi"
-
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/keys"
+	"github.com/janlink/beads-dash/internal/ui/rows"
 )
 
 // listRow is one row of a list view; sel says whether the cursor can rest on
@@ -113,21 +112,7 @@ func (si scopeInfo) fit(w int) string {
 	if len(si.unknown) > 0 {
 		parts = append(parts, "unknown: "+strings.Join(si.unknown, ", "))
 	}
-	return midTruncate(strings.Join(parts, " · "), w, si.ellipsis)
-}
-
-// midTruncate shortens s to w cells by cutting out the middle and putting
-// ellipsis there.
-func midTruncate(s string, w int, ellipsis string) string {
-	total := ansi.StringWidth(s)
-	ew := ansi.StringWidth(ellipsis)
-	if total <= w || w <= ew {
-		return s
-	}
-	keep := w - ew
-	head := (keep + 1) / 2
-	tail := keep - head
-	return ansi.Truncate(s, head, "") + ellipsis + ansi.TruncateLeft(s, total-tail, "")
+	return rows.MidCut(strings.Join(parts, " · "), w, si.ellipsis)
 }
 
 func itoa(n int) string { return strconv.Itoa(n) }

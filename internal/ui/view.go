@@ -31,6 +31,10 @@ type Actions interface {
 	Marked(id string) bool
 	ToggleMark(id string)
 	MarkedIDs() []string
+	// Show makes the numbered view (1-6) the current one with id as the
+	// current issue; the view and issue it left go on the back stack even
+	// when the issue stays current.
+	Show(view int, id string)
 }
 
 // Env is what a view reads to draw and gives it access to the session.
@@ -50,6 +54,10 @@ type Env struct {
 	Now     time.Time
 	// Cols is the width of the whole terminal, of which a view may get less.
 	Cols int
+	// Docked reports a detail panel docked beside or below the view.
+	Docked bool
+	// Feed is the activity events, newest first.
+	Feed []model.Event
 }
 
 // View is one of the numbered views.
@@ -87,13 +95,22 @@ type Syncer interface {
 	Sync(env Env)
 }
 
+// Pointer is implemented by views that map a click to an issue by column as
+// well as row; the coordinates are cells of the view's body.
+type Pointer interface {
+	AtXY(x, y int) (id string, ok bool)
+}
+
 // Updater is implemented by views that receive messages, such as lazy loads.
 type Updater interface {
 	Update(msg tea.Msg) tea.Cmd
 }
 
 // sessionActions gives views the session without the dialog layer.
-type sessionActions struct{ s *state.Session }
+type sessionActions struct {
+	s    *state.Session
+	show func(view int, id string)
+}
 
 func (a sessionActions) Current() string       { return a.s.Current() }
 func (a sessionActions) SetCurrent(id string)  { a.s.SetCurrent(id) }
@@ -101,6 +118,8 @@ func (a sessionActions) Jump(id string)        { a.s.Jump(id) }
 func (a sessionActions) Marked(id string) bool { return a.s.Marked(id) }
 func (a sessionActions) ToggleMark(id string)  { a.s.ToggleMark(id) }
 func (a sessionActions) MarkedIDs() []string   { return a.s.MarkedIDs() }
+
+func (a sessionActions) Show(view int, id string) { a.show(view, id) }
 
 func (a sessionActions) OpenLayer(l state.Layer) {
 	if l != state.LayerDialog && !a.s.Has(l) {
