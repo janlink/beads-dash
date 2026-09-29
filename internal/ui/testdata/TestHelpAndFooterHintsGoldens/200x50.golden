@@ -9,10 +9,8 @@
     ! P2 ws-4k2.2 Guest order confirmation mail                                                                                                                                                         
     x P3 ws-5ca   Update analytics consent banner                                                                                                                                                       
     * P2 ws-7mt   Cart badge shows stale count                                                                                                                                                       bob
-    ~ P3 ws-8np   Search: typo tolerance                                                                                                                                                                
-    o P0 ws-9qe   Payment provider timeout retries                                                                                                                                                      
-                                                            +- Keys ------------------------------------------------------------ 23 shown -+                                                            
-                                                            | Lists                                                                        |                                                            
+    ~ P3 ws-8np   Search: typo tolerance                    +- Keys ------------------------------------------------------------ 27 shown -+                                                            
+    o P0 ws-9qe   Payment provider timeout retries          | Lists                                                                        |                                                            
                                                             |   q        quit                                                              |                                                            
                                                             |   j/Down   move down                                                         |                                                            
                                                             |   k/Up     move up                                                           |                                                            
@@ -25,6 +23,10 @@
                                                             |   Space    mark                                                              |                                                            
                                                             |   h/Left   column, collapse                                                  |                                                            
                                                             |   l/Right  column, expand                                                    |                                                            
+                                                            |   zh       scroll left                                                       |                                                            
+                                                            |   zl       scroll right                                                      |                                                            
+                                                            |   zH       scroll half a screen left                                         |                                                            
+                                                            |   zL       scroll half a screen right                                        |                                                            
                                                             |   Enter    open the detail, fold row                                         |                                                            
                                                             |                                                                              |                                                            
                                                             | Everywhere                                                                   |                                                            
@@ -40,8 +42,6 @@
                                                             |   ctrl+c     quit                                                            |                                                            
                                                             |                                                                              |                                                            
                                                             +-------------------------------------------- Esc close  j/k scroll  / filter -+                                                            
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
                                                                                                                                                                                                         
                                                                                                                                                                                                         
                                                                                                                                                                                                         

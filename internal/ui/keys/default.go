@@ -37,10 +37,10 @@ func Default() *Map {
 		{Keys: []string{"space"}, Action: Mark, Label: "Space", Desc: "mark", Hint: 3},
 		{Keys: []string{"h", "left"}, Action: Left, Label: "h/Left", Desc: "column, collapse"},
 		{Keys: []string{"l", "right"}, Action: Right, Label: "l/Right", Desc: "column, expand"},
-		{Keys: []string{"z h"}, Action: "scroll.left", Label: "zh", Desc: "scroll left", Later: true},
-		{Keys: []string{"z l"}, Action: "scroll.right", Label: "zl", Desc: "scroll right", Later: true},
-		{Keys: []string{"z H"}, Action: "scroll.halfleft", Label: "zH", Desc: "scroll half a screen left", Later: true},
-		{Keys: []string{"z L"}, Action: "scroll.halfright", Label: "zL", Desc: "scroll half a screen right", Later: true},
+		{Keys: []string{"z h"}, Action: ScrollLeft, Label: "zh", Desc: "scroll left"},
+		{Keys: []string{"z l"}, Action: ScrollRight, Label: "zl", Desc: "scroll right"},
+		{Keys: []string{"z H"}, Action: ScrollHalfLeft, Label: "zH", Desc: "scroll half a screen left"},
+		{Keys: []string{"z L"}, Action: ScrollHalfRight, Label: "zL", Desc: "scroll half a screen right"},
 		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the detail, fold row", Hint: 4, HintDesc: "open"},
 		{Keys: []string{"e"}, Action: "edit", Desc: "edit", Later: true},
 		{Keys: []string{"n"}, Action: "new", Desc: "new issue", Later: true},
@@ -69,6 +69,14 @@ func Default() *Map {
 	m.by[Overview] = []Binding{
 		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the detail, or the view that owns the row", Hint: 4, HintDesc: "open"},
 	}
+	m.by[Graph] = []Binding{
+		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "focus the graph on the issue; on the focus, open the detail", Hint: 4, HintDesc: "focus"},
+		{Keys: []string{"z M"}, Action: FoldAll, Label: "zM", Desc: "fold all"},
+		{Keys: []string{"z R"}, Action: UnfoldAll, Label: "zR", Desc: "unfold all"},
+		{Keys: []string{"i"}, Action: ToggleIsolated, Desc: "show or hide issues without dependencies"},
+		{Keys: []string{"+"}, Action: DepthMore, Desc: "deeper focus graph"},
+		{Keys: []string{"-"}, Action: DepthLess, Desc: "shallower focus graph"},
+	}
 	m.by[Panel] = []Binding{
 		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "scroll down", Hint: 3, HintKey: "j/k", HintDesc: "scroll"},
 		{Keys: []string{"k", "up"}, Action: NavUp, Label: "k/Up", Desc: "scroll up"},
@@ -84,6 +92,8 @@ func Default() *Map {
 		{Keys: []string{"l", "right"}, Action: Right, Label: "l/Right", Desc: "open section, show all lines"},
 		{Keys: []string{"enter"}, Action: Jump, Label: "Enter", Desc: "jump to the issue on the row; open or close a section", Hint: 5, HintDesc: "jump"},
 		{Keys: []string{"o"}, Action: SectionsAll, Desc: "open or close all sections"},
+		{Keys: []string{"+"}, Action: DepthMore, Desc: "deeper focus graph"},
+		{Keys: []string{"-"}, Action: DepthLess, Desc: "shallower focus graph"},
 		{Keys: []string{"m"}, Action: Markdown, Desc: "markdown or source", Hint: 6},
 		{Keys: []string{"y"}, Action: "copy.id", Desc: "copy ID", Later: true},
 	}

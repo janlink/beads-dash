@@ -12,13 +12,17 @@ import (
 	"github.com/janlink/beads-dash/internal/ui/look"
 )
 
+// NarrowWidth is the row width, gutter included, below which facts shrink to
+// the bare minimum: progress without its bar, priority without the assignee.
+const NarrowWidth = 80
+
+// Narrow reports whether a row body of width w is drawn in the narrow form.
+func Narrow(w int) bool { return w+GutterWidth < NarrowWidth }
+
 const (
 	treeIndent = 2
-	// narrowWidth is the row width below which facts shrink to the bare
-	// minimum: progress without its bar, priority without the assignee.
-	narrowWidth = 80
-	treeBarW    = 6
-	treeWho     = 10
+	treeBarW   = 6
+	treeWho    = 10
 	// guideShare is the largest part of a row, in percent, the guides may take.
 	guideShare = 40
 	// minTitle cells stay for the title however deep the row sits.
@@ -47,7 +51,7 @@ func (r *Renderer) tree(row model.TreeRow, w int, sel bool) string {
 		paint = r.look.PaintSel
 	}
 	g := r.look.Glyphs
-	narrow := w+GutterWidth < narrowWidth
+	narrow := Narrow(w)
 
 	fold := "  "
 	if row.Foldable {

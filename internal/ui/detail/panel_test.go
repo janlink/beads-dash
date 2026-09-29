@@ -120,12 +120,13 @@ func TestSectionKeys(t *testing.T) {
 	snap := fixture()
 	render := func() string { return text(p.Render(input(t, snap, "d-1", Overlay, 100, 30))) }
 	render()
-	for _, want := range []Section{Design, Children, Details, Details} {
+	for _, want := range []Section{Design, Children, Details, Audit, Audit} {
 		p.Next()
 		if p.Cursor() != want {
 			t.Fatalf("cursor %v, want %v", p.Cursor(), want)
 		}
 	}
+	p.Prev()
 	p.Prev()
 	if p.Cursor() != Children {
 		t.Fatalf("Prev: cursor %v", p.Cursor())
@@ -217,7 +218,7 @@ func TestChangedLine(t *testing.T) {
 
 func TestDependenciesAndChildren(t *testing.T) {
 	got := text(New().Render(input(t, fixture(), "d-1.2", Overlay, 100, 30)))
-	for _, want := range []string{"parent", "d-1 Epic with children", "waits on 1 (1 open)", "d-2 Blocker", "focus graph"} {
+	for _, want := range []string{"parent", "d-1 Epic with children", "waits on (1 · 1 open)", "d-2 Blocker", "d-1.2 Second child"} {
 		if !strings.Contains(got, want) {
 			t.Errorf("missing %q in\n%s", want, got)
 		}
@@ -229,7 +230,7 @@ func TestDependenciesAndChildren(t *testing.T) {
 		}
 	}
 	got = text(New().Render(input(t, fixture(), "d-2", Overlay, 100, 30)))
-	if !strings.Contains(got, "holds up 1") || !strings.Contains(got, "d-1.2 Second child") {
+	if !strings.Contains(got, "holds up (1)") || !strings.Contains(got, "d-1.2 Second child") {
 		t.Errorf("holds up:\n%s", got)
 	}
 }
@@ -238,9 +239,7 @@ func TestDetailsSectionAndLabelOverflow(t *testing.T) {
 	p := New()
 	in := input(t, fixture(), "d-1", Overlay, 60, 60)
 	p.Render(in)
-	for range 8 {
-		p.Next()
-	}
+	toSection(p, Details)
 	if p.Cursor() != Details {
 		t.Fatalf("cursor %v", p.Cursor())
 	}
@@ -308,8 +307,7 @@ func TestOnlyDescriptionIsCappedAndInputIsBounded(t *testing.T) {
 	p := New()
 	in := input(t, snap, "n-1", Overlay, 100, 120)
 	p.Render(in)
-	p.Next()
-	p.Next()
+	toSection(p, Notes)
 	p.Expand()
 	out := text(p.Render(in))
 	if !strings.Contains(out, "note 40") {

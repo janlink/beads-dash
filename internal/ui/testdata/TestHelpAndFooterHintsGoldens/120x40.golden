@@ -4,15 +4,13 @@
  [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                           * live 12:00:00 
 |   ? P4 ws-1zz   Mystery status issue                                                                                  
     ! P2 ws-2hz   Split pricing service                                                                                 
-    * P1 ws-4k2   Checkout: guest orders                                                                           alice
-    o P1 ws-4k2.1 Address form validation                                                                               
-    ! P2 ws-4k2.2 Gu+- Keys ------------------------------------------------------------ 23 shown -+                    
-    x P3 ws-5ca   Up| Lists                                                                        |                    
-    * P2 ws-7mt   Ca|   q        quit                                                              |                 bob
-    ~ P3 ws-8np   Se|   j/Down   move down                                                         |                    
-    o P0 ws-9qe   Pa|   k/Up     move up                                                           |                    
-                    |   gg       first                                                             |                    
-                    |   G        last                                                              |                    
+    * P1 ws-4k2   Ch+- Keys ------------------------------------------------------------ 27 shown -+               alice
+    o P1 ws-4k2.1 Ad| Lists                                                                        |                    
+    ! P2 ws-4k2.2 Gu|   q        quit                                                              |                    
+    x P3 ws-5ca   Up|   j/Down   move down                                                         |                    
+    * P2 ws-7mt   Ca|   k/Up     move up                                                           |                 bob
+    ~ P3 ws-8np   Se|   gg       first                                                             |                    
+    o P0 ws-9qe   Pa|   G        last                                                              |                    
                     |   Ctrl+D   half page down                                                    |                    
                     |   Ctrl+U   half page up                                                      |                    
                     |   PgDn     page down                                                         |                    
@@ -20,6 +18,10 @@
                     |   Space    mark                                                              |                    
                     |   h/Left   column, collapse                                                  |                    
                     |   l/Right  column, expand                                                    |                    
+                    |   zh       scroll left                                                       |                    
+                    |   zl       scroll right                                                      |                    
+                    |   zH       scroll half a screen left                                         |                    
+                    |   zL       scroll half a screen right                                        |                    
                     |   Enter    open the detail, fold row                                         |                    
                     |                                                                              |                    
                     | Everywhere                                                                   |                    
@@ -35,8 +37,6 @@
                     |   ctrl+c     quit                                                            |                    
                     |                                                                              |                    
                     +-------------------------------------------- Esc close  j/k scroll  / filter -+                    
-                                                                                                                        
-                                                                                                                        
                                                                                                                         
                                                                                                                         
                                                                                                                         

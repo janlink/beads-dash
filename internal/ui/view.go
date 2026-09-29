@@ -23,6 +23,9 @@ type Actions interface {
 	SetCurrent(id string)
 	// Jump moves the current issue and pushes the old one on the back stack.
 	Jump(id string)
+	// JumpFocus is Jump for a view that changes its focus: Back returns to
+	// the current issue with prev as the view's focus.
+	JumpFocus(slot int, prev, id string)
 	// OpenLayer and CloseLayer manage the detail, detail focus and bar
 	// layers; dialogs belong to the shell.
 	OpenLayer(l state.Layer)
@@ -95,6 +98,19 @@ type Syncer interface {
 	Sync(env Env)
 }
 
+// Closer is implemented by views with a state Esc steps out of, such as a
+// focus. It is asked when no layer is open and nothing is marked, and reports
+// whether it acted.
+type Closer interface {
+	Close(env Env) bool
+}
+
+// Restorer is implemented by views whose Origins carry state; it puts the
+// state back when Back returns to the view.
+type Restorer interface {
+	Restore(env Env, focus string)
+}
+
 // Pointer is implemented by views that map a click to an issue by column as
 // well as row; the coordinates are cells of the view's body.
 type Pointer interface {
@@ -112,9 +128,12 @@ type sessionActions struct {
 	show func(view int, id string)
 }
 
-func (a sessionActions) Current() string       { return a.s.Current() }
-func (a sessionActions) SetCurrent(id string)  { a.s.SetCurrent(id) }
-func (a sessionActions) Jump(id string)        { a.s.Jump(id) }
+func (a sessionActions) Current() string      { return a.s.Current() }
+func (a sessionActions) SetCurrent(id string) { a.s.SetCurrent(id) }
+func (a sessionActions) Jump(id string)       { a.s.Jump(id) }
+func (a sessionActions) JumpFocus(slot int, prev, id string) {
+	a.s.JumpFocus(slot, prev, id)
+}
 func (a sessionActions) Marked(id string) bool { return a.s.Marked(id) }
 func (a sessionActions) ToggleMark(id string)  { a.s.ToggleMark(id) }
 func (a sessionActions) MarkedIDs() []string   { return a.s.MarkedIDs() }

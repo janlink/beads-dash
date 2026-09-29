@@ -150,3 +150,38 @@ func Tree() (*model.Snapshot, model.Statuses) {
 	}
 	return model.NewSnapshot(issues, ready, T0), model.BuiltinStatuses()
 }
+
+// Graph is a workspace for the dependency graph: a diamond, a chain, an epic
+// whose entry child holds back a sibling, a dependency cycle, a closed
+// blocker, issues without edges and a long title.
+func Graph() (*model.Snapshot, model.Statuses) {
+	h := time.Hour
+	mk := func(id, title, status string, parent string, blocks ...string) model.Issue {
+		is := model.Issue{ID: id, Title: title, Status: status, IssueType: "task", Priority: 2, Parent: parent, CreatedAt: T0.Add(-48 * h), UpdatedAt: T0.Add(-h)}
+		if status == "closed" {
+			is.ClosedAt = is.UpdatedAt
+		}
+		for _, to := range blocks {
+			is.Dependencies = append(is.Dependencies, model.Edge{From: id, To: to, Type: "blocks"})
+		}
+		return is
+	}
+	issues := []model.Issue{
+		mk("gr-a", "Extract pricing client", "in_progress", ""),
+		mk("gr-b", "Migrate cart totals", "open", "", "gr-a"),
+		mk("gr-c", "Migrate invoice totals with a rather long title that needs cutting somewhere", "open", "", "gr-a"),
+		mk("gr-d", "Remove legacy pricing", "open", "", "gr-b", "gr-c"),
+		mk("gr-e", "Checkout epic", "open", ""),
+		mk("gr-e1", "Address form", "open", "gr-e"),
+		mk("gr-e2", "Confirmation mail", "open", "gr-e", "gr-e1"),
+		mk("gr-x", "Cache warmup", "open", "", "gr-z"),
+		mk("gr-y", "Cache eviction", "open", "", "gr-x"),
+		mk("gr-z", "Cache sizing", "open", "", "gr-y"),
+		mk("gr-w", "Cache metrics", "open", "", "gr-z"),
+		mk("gr-k", "Closed prerequisite", "closed", ""),
+		mk("gr-l", "Depends on closed", "open", "", "gr-k"),
+		mk("gr-lone1", "Standalone chore", "open", ""),
+		mk("gr-lone2", "Another standalone chore", "deferred", ""),
+	}
+	return model.NewSnapshot(issues, model.Readiness{}, T0), model.BuiltinStatuses()
+}

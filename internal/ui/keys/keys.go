@@ -25,6 +25,8 @@ const (
 	Tree
 	// Overview holds the keys the Overview overrides.
 	Overview
+	// Graph holds the keys the dependency graph adds or overrides.
+	Graph
 	// Panel holds the keys of a focused detail panel or Overview panel.
 	Panel
 	// Bar holds the keys of the docked search, filter and command bars.
@@ -46,7 +48,7 @@ const (
 )
 
 var contextNames = [contextCount]string{
-	Always: "always", Global: "global", View: "view", Memories: "memories", Tree: "tree", Overview: "overview", Panel: "panel",
+	Always: "always", Global: "global", View: "view", Memories: "memories", Tree: "tree", Overview: "overview", Graph: "graph", Panel: "panel",
 	Bar: "docked bar", Form: "form", Help: "help", Appearance: "appearance",
 	Details: "details", Startup: "startup", TooSmall: "too small",
 }
@@ -133,7 +135,7 @@ func (m *Map) Active(c Context) []Binding {
 // Layered lists the contexts a key press in c is resolved against, most
 // specific first.
 func Layered(c Context) []Context {
-	if c == Memories || c == Tree || c == Overview {
+	if c == Memories || c == Tree || c == Overview || c == Graph {
 		return []Context{c, View, Global, Always}
 	}
 	if c == View || c == Panel {
@@ -146,9 +148,10 @@ func Layered(c Context) []Context {
 }
 
 // checked lists the contexts whose keys must not collide with those of c. The
-// Memories and Overview views override View keys on purpose, so the two are not compared.
+// Memories, Tree, Overview and Graph views override View keys on purpose, so
+// those are not compared.
 func checked(c Context) []Context {
-	if c == Memories || c == Tree || c == Overview {
+	if c == Memories || c == Tree || c == Overview || c == Graph {
 		return []Context{c, Global, Always}
 	}
 	return Layered(c)

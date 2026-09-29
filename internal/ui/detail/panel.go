@@ -27,13 +27,14 @@ const (
 	Dependencies
 	Children
 	Details
+	Audit
 
 	sectionCount
 )
 
 var sectionTitles = [sectionCount]string{
 	Description: "Description", Design: "Design", Acceptance: "Acceptance",
-	Notes: "Notes", Dependencies: "Dependencies", Children: "Children", Details: "Details",
+	Notes: "Notes", Dependencies: "Dependencies", Children: "Children", Details: "Details", Audit: "Audit trail",
 }
 
 // Title is the heading of the section.
@@ -42,7 +43,6 @@ func (s Section) Title() string { return sectionTitles[s] }
 const (
 	proseCap     = 12
 	readingWidth = 100
-	refCap       = 5
 	childCap     = 30
 	barW         = 8
 	maxCachedMD  = 256
@@ -109,6 +109,13 @@ type Panel struct {
 	source   bool
 	expanded [sectionCount]bool
 	forID    string
+	depth    int // session adjustment of the focus graph depth
+
+	audit       map[string]*auditEntry
+	pending     map[auditKey]int
+	seq         int
+	tick        int
+	historyOpen bool
 
 	starts    [sectionCount]int
 	focusable [sectionCount]bool
@@ -130,7 +137,7 @@ type Panel struct {
 
 // New returns a panel with Description, Dependencies and Children open.
 func New() *Panel {
-	p := &Panel{row: -1, md: map[mdKey][]string{}, inflight: map[mdKey]bool{}}
+	p := &Panel{row: -1, md: map[mdKey][]string{}, inflight: map[mdKey]bool{}, audit: map[string]*auditEntry{}, pending: map[auditKey]int{}}
 	p.open[Description], p.open[Dependencies], p.open[Children] = true, true, true
 	for i := range p.starts {
 		p.starts[i] = -1
@@ -201,7 +208,7 @@ func (p *Panel) Move(d int) bool {
 // Row is the issue the cursor stands on, if it stands on an issue row.
 func (p *Panel) Row() (id string, ok bool) {
 	t := p.targets[p.cursor]
-	if p.row < 0 || p.row >= len(t) || t[p.row].fold {
+	if p.row < 0 || p.row >= len(t) || t[p.row].fold || t[p.row].hist {
 		return "", false
 	}
 	return t[p.row].id, true
@@ -230,6 +237,8 @@ func (p *Panel) Enter() {
 	switch {
 	case p.OnFold():
 		p.closedOpen = !p.closedOpen
+	case p.onHistory():
+		p.historyOpen = !p.historyOpen
 	case p.row < 0:
 		p.Toggle()
 	}
@@ -239,6 +248,10 @@ func (p *Panel) Enter() {
 func (p *Panel) Expand() {
 	if p.OnFold() {
 		p.closedOpen = true
+		return
+	}
+	if p.onHistory() {
+		p.historyOpen = true
 		return
 	}
 	switch {
@@ -258,6 +271,12 @@ func (p *Panel) Collapse() {
 		p.reveal = true
 		return
 	}
+	if p.cursor == Audit && p.historyOpen && p.row >= 0 {
+		p.historyOpen = false
+		p.row = p.historyRow()
+		p.reveal = true
+		return
+	}
 	p.open[p.cursor] = false
 	p.row = -1
 }
@@ -270,6 +289,18 @@ func (p *Panel) Toggle() {
 		return
 	}
 	p.Expand()
+}
+
+// DepthMore shows one more level of the focus graph, for the rest of the session.
+func (p *Panel) DepthMore(f Frame) {
+	base := focusBase(f)
+	p.depth = min(max(p.depth, 1-base)+1, model.FocusMaxDepth-base)
+}
+
+// DepthLess shows one level less of the focus graph.
+func (p *Panel) DepthLess(f Frame) {
+	base := focusBase(f)
+	p.depth = max(min(p.depth, model.FocusMaxDepth-base)-1, 1-base)
 }
 
 // ToggleAll closes every section, or opens them all when none is open.
@@ -290,11 +321,7 @@ func (p *Panel) Render(in Input) []string {
 		clear(p.md)
 		clear(p.inflight)
 	}
-	if in.ID != p.forID {
-		p.forID = in.ID
-		p.expanded = [sectionCount]bool{}
-		p.scroll, p.cursor, p.row, p.closedOpen = 0, Description, -1, false
-	}
+	p.switchTo(in.ID)
 	l := in.Look
 	g := l.Glyphs
 	innerW, innerH := in.W, in.H
@@ -352,7 +379,9 @@ func (p *Panel) compose(in Input, is *model.Issue, w, h int) []string {
 	l := in.Look
 	head := []string{p.headLine(in, is), " " + l.Paint(theme.Strong, ansi.Truncate(oneLine(is.Title), max(w-1, 0), l.Glyphs.Ellipsis))}
 	var content []string
-	p.starts = [sectionCount]int{-1, -1, -1, -1, -1, -1, -1}
+	for i := range p.starts {
+		p.starts[i] = -1
+	}
 	p.focusable = [sectionCount]bool{}
 	p.capped = [sectionCount]bool{}
 	p.targets = [sectionCount][]target{}
@@ -418,10 +447,11 @@ type block struct {
 }
 
 // target is a body line the cursor can stand on: a line naming another issue,
-// or the closed-children row.
+// the closed-children row or the recorded-changes row.
 type target struct {
 	id   string
 	fold bool
+	hist bool
 	line int
 }
 
@@ -461,6 +491,8 @@ func (p *Panel) section(in Input, is *model.Issue, s Section, bw, pw int) block 
 		return p.dependencies(in, is, bw)
 	case Children:
 		return p.children(in, is, bw)
+	case Audit:
+		return p.auditTrail(in, is, bw, pw)
 	case Details, sectionCount:
 	}
 	return p.details(in, is, bw)

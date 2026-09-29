@@ -18,6 +18,8 @@ type Engine interface {
 	Updates() <-chan refresh.Update
 	Refresh()
 	SetFocus(focused bool)
+	// Do runs a lazy bd read in the serialized queue.
+	Do(ctx context.Context, fn func(context.Context, bd.Client) error) error
 }
 
 // Persister writes one setting to the config file.

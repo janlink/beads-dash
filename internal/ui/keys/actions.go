@@ -37,6 +37,14 @@ const (
 	SectionsAll  Action = "sections.all"
 	Markdown     Action = "markdown"
 
+	ScrollLeft      Action = "scroll.left"
+	ScrollRight     Action = "scroll.right"
+	ScrollHalfLeft  Action = "scroll.halfleft"
+	ScrollHalfRight Action = "scroll.halfright"
+	DepthMore       Action = "depth.more"
+	DepthLess       Action = "depth.less"
+	ToggleIsolated  Action = "graph.isolated"
+
 	Prev  Action = "prev"
 	Next  Action = "next"
 	Apply Action = "apply"

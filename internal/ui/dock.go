@@ -138,6 +138,10 @@ func (a *App) panelAct(act keys.Action) {
 		p.ToggleAll()
 	case keys.Markdown:
 		p.ToggleSource()
+	case keys.DepthMore:
+		p.DepthMore(a.frame().Frame)
+	case keys.DepthLess:
+		p.DepthLess(a.frame().Frame)
 	}
 }
 
@@ -167,22 +171,24 @@ type mdMsg struct{ res detail.Result }
 func (a *App) renderJobs() tea.Cmd {
 	d := a.frame()
 	if d.Frame == detail.Hidden {
+		for _, f := range a.panel.CancelAudit() {
+			a.endFetch(f.Seq)
+		}
 		return nil
 	}
-	jobs := a.panel.Plan(a.panelInput(d))
-	if len(jobs) == 0 {
-		return nil
-	}
+	in := a.panelInput(d)
+	jobs := a.panel.Plan(in)
 	if a.syncMD {
 		for _, j := range jobs {
 			a.panel.Apply(j.Run())
 		}
-		return nil
+		return a.auditJobs(in)
 	}
-	cmds := make([]tea.Cmd, len(jobs))
-	for i, j := range jobs {
-		cmds[i] = func() tea.Msg { return mdMsg{j.Run()} }
+	cmds := make([]tea.Cmd, 0, len(jobs)+1)
+	for _, j := range jobs {
+		cmds = append(cmds, func() tea.Msg { return mdMsg{j.Run()} })
 	}
+	cmds = append(cmds, a.auditJobs(in))
 	return tea.Batch(cmds...)
 }
 

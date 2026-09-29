@@ -23,6 +23,9 @@ type Snapshot struct {
 	reason      map[string]string
 	blockedIDs  []string
 	fingerprint string
+
+	cycOnce sync.Once
+	cyc     map[string]bool
 }
 
 // NewSnapshot derives children, dependents and the fingerprint from bd's
@@ -309,4 +312,18 @@ func (s *Snapshot) computeFingerprint() string {
 		h.list(s.blocked[id])
 	}
 	return h.sum()
+}
+
+// OnCycle reports whether id lies on a dependency cycle of blocking edges.
+func (s *Snapshot) OnCycle(id string) bool {
+	s.cycOnce.Do(func() {
+		g := newDepGraph(s)
+		s.cyc = map[string]bool{}
+		for i, on := range g.cyc {
+			if on {
+				s.cyc[g.ids[i]] = true
+			}
+		}
+	})
+	return s.cyc[id]
 }

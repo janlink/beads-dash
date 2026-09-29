@@ -57,9 +57,14 @@ func (s *Session) SetCurrent(id string) { s.current = id }
 
 // Origin is where a jump came from: the view slot, or NoView when the jump
 // stayed in one view, and the issue that was current.
+//
+// A view that keeps its own sub-state, the graph's focus, tags the Origin with
+// it: Focused is set and Focus names what the view showed.
 type Origin struct {
-	Slot int
-	ID   string
+	Slot    int
+	ID      string
+	Focus   string
+	Focused bool
 }
 
 // NoView marks an Origin that does not name a view.
@@ -71,14 +76,21 @@ func (s *Session) Jump(id string) {
 	if id == s.current {
 		return
 	}
-	s.push(Origin{NoView, s.current})
+	s.push(Origin{Slot: NoView, ID: s.current})
 	s.current = id
 }
 
 // JumpFrom moves the current issue to id from the view in slot and remembers
 // both, even when id is already current: the view is what Back returns to.
 func (s *Session) JumpFrom(slot int, id string) {
-	s.push(Origin{slot, s.current})
+	s.push(Origin{Slot: slot, ID: s.current})
+	s.current = id
+}
+
+// JumpFocus moves the current issue to id from a view in slot that changes
+// its focus: Back returns to the previous issue with prev as the focus.
+func (s *Session) JumpFocus(slot int, prev, id string) {
+	s.push(Origin{Slot: slot, ID: s.current, Focus: prev, Focused: true})
 	s.current = id
 }
 
@@ -93,15 +105,21 @@ func (s *Session) push(o Origin) {
 // accepts. It reports the view slot to restore (NoView when the jump stayed
 // in one view) and whether there was an origin.
 func (s *Session) Back(alive func(id string) bool) (slot int, ok bool) {
+	o, ok := s.BackTo(alive)
+	return o.Slot, ok
+}
+
+// BackTo is Back reporting the whole origin.
+func (s *Session) BackTo(alive func(id string) bool) (Origin, bool) {
 	for len(s.back) > 0 {
 		o := s.back[len(s.back)-1]
 		s.back = s.back[:len(s.back)-1]
 		if alive == nil || alive(o.ID) {
 			s.current = o.ID
-			return o.Slot, true
+			return o, true
 		}
 	}
-	return NoView, false
+	return Origin{Slot: NoView}, false
 }
 
 // NearestSurvivor picks where the current issue goes when it is no longer

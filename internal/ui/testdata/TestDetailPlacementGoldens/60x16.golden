@@ -7,10 +7,10 @@
    * back off between tries                                 
    * add jitter                                             
  v Dependencies  holds up 1                                 
-   holds up 1                                               
-     ! ws-2hz Split pricing service                         
-   focus graph comes with the graph view                    
+   o ws-9qe Payment provider timeout retries                
+   > holds up (1)                                           
+   `-! ws-2hz Split pricing service                         
  * Children  none                                           
  > Details  created 5 h ago · updated 5 h ago               
-                                                            
+ > Audit trail  no comments                                 
  ? help  j/k scroll  ]/[ section  1-6 switch view           

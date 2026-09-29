@@ -11,6 +11,7 @@ import (
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/look"
+	"github.com/janlink/beads-dash/internal/ui/rows"
 )
 
 // statusName is how the header names a presentation status, with the raw
@@ -96,25 +97,6 @@ func ago(d time.Duration) string {
 	return fmt.Sprintf("%d d ago", int(d/(24*time.Hour)))
 }
 
-// ref is one line naming another issue: status glyph, ID and title.
-func ref(in Input, id string, w int) string {
-	l := in.Look
-	is, ok := in.Snap.Issue(id)
-	if !ok {
-		return l.Paint(theme.Faint, ansi.Truncate("? "+id+" (not in the snapshot)", w, l.Glyphs.Ellipsis))
-	}
-	pres := in.Snap.Present(id, in.Statuses)
-	idx := look.StatusIndex(int(pres.Status))
-	glyph := strings.TrimRight(l.Glyphs.Status[idx], " ")
-	idRole, titleRole := theme.Dim, theme.Text
-	if pres.Status == model.Closed {
-		idRole, titleRole = theme.Faint, theme.Dim
-	}
-	head := glyph + " " + id + " "
-	room := max(w-ansi.StringWidth(head), 0)
-	return l.Paint(theme.StatusRole(idx), glyph) + " " + l.Paint(idRole, id) + " " + l.Paint(titleRole, ansi.Truncate(oneLine(is.Title), room, l.Glyphs.Ellipsis))
-}
-
 func (p *Panel) dependencies(in Input, is *model.Issue, bw int) block {
 	l := in.Look
 	snap := in.Snap
@@ -170,36 +152,38 @@ func (p *Panel) dependencies(in Input, is *model.Issue, bw int) block {
 		sum = append(sum, fmt.Sprintf("holds up %d", len(holds)))
 	}
 	b := block{summary: strings.Join(sum, " · ")}
-	label := func(s string) string { return l.Paint(theme.Faint, fmt.Sprintf("%-9s", s)) }
-	target := func(id string) {
-		if _, ok := snap.Issue(id); ok {
-			b.targets = append(b.targets, target{id: id, line: len(b.body)})
+	if parent != "" || len(waits) > 0 || len(holds) > 0 {
+		graph := model.BuildFocus(snap, in.Statuses, is.ID, model.FocusOptions{Depth: p.focusDepth(in.Frame)})
+		style := rows.OutlineStyle{Narrow: rows.Narrow(bw)}
+		for i, r := range graph {
+			if r.Kind.Selectable() && r.Kind != model.OutSelf {
+				b.targets = append(b.targets, target{id: r.ID, line: len(b.body)})
+			}
+			b.body = append(b.body, in.Rows.Outline(graph, i, bw, style))
 		}
 	}
-	if parent != "" {
-		target(parent)
-		b.body = append(b.body, label("parent")+ref(in, parent, bw-9))
-	}
-	list := func(head string, ids []string) {
-		if len(ids) == 0 {
-			return
-		}
-		b.body = append(b.body, l.Paint(theme.Dim, head))
-		for _, id := range ids[:min(len(ids), refCap)] {
-			target(id)
-			b.body = append(b.body, "  "+ref(in, id, bw-2))
-		}
-		if len(ids) > refCap {
-			b.body = append(b.body, "  "+l.Paint(theme.Faint, fmt.Sprintf("+%d more", len(ids)-refCap)))
-		}
-	}
-	list(fmt.Sprintf("waits on %d (%d open)", len(waits), open), waits)
-	list(fmt.Sprintf("holds up %d", len(holds)), holds)
 	if len(related) > 0 {
-		b.body = append(b.body, label("related")+l.Paint(theme.Dim, ansi.Truncate(strings.Join(related, ", "), max(bw-9, 0), l.Glyphs.Ellipsis)))
+		b.body = append(b.body, l.Paint(theme.Faint, fmt.Sprintf("%-9s", "related"))+l.Paint(theme.Dim, ansi.Truncate(strings.Join(related, ", "), max(bw-9, 0), l.Glyphs.Ellipsis)))
 	}
-	b.body = append(b.body, l.Paint(theme.Faint, "focus graph comes with the graph view"))
 	return b
+}
+
+const (
+	focusDepthBottom = 2
+	focusDepthWide   = 3
+)
+
+// focusDepth is how many levels the focus graph shows: two in a bottom panel,
+// three elsewhere, moved by the session's adjustment.
+func (p *Panel) focusDepth(f Frame) int {
+	return min(max(focusBase(f)+p.depth, 1), model.FocusMaxDepth)
+}
+
+func focusBase(f Frame) int {
+	if f == Bottom {
+		return focusDepthBottom
+	}
+	return focusDepthWide
 }
 
 func (p *Panel) children(in Input, is *model.Issue, bw int) block {

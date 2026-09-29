@@ -1,0 +1,16 @@
+ Tree                                            * 12:00:00 
+ gr-b  o Open  task  P2                                     
+ Migrate cart totals                                        
+ * Description  none                                        
+ v Dependencies  waits on 1 (1 open) · holds up 1           
+   < waits on (1 · 1 open)                                  
+   `-* gr-a Extract pricing client                          
+   o gr-b Migrate cart totals                               
+   > holds up (1)                                           
+   `-o gr-d Remove legacy pricing                           
+ * Children  none                                           
+ > Details  created 2 d ago · updated 1 h ago               
+ > Audit trail  no comments                                 
+                                                            
+                                                            
+ ? help  j/k scroll  ]/[ section  1-6 switch view           

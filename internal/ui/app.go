@@ -80,8 +80,10 @@ type App struct {
 	panel  *detail.Panel
 	docked bool
 	// syncMD renders markdown inside Update; tests use it to see the final page.
-	syncMD  bool
-	lookGen int
+	syncMD bool
+	// fetching holds the cancel of each audit read still running, by its seq.
+	fetching map[int]context.CancelFunc
+	lookGen  int
 
 	bds        bd.Session
 	startErr   error
@@ -297,6 +299,9 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 		return tea.Batch(a.apply(m.u), waitUpdate(a.eng))
 	case mdMsg:
 		a.panel.Apply(m.res)
+	case auditMsg:
+		a.endFetch(m.res.Seq)
+		a.panel.ApplyAudit(m.res)
 	case closedMsg:
 	case recheckMsg:
 		if m.gen == a.checkGen && a.startErr != nil && !a.checking {
@@ -649,10 +654,18 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 	case keys.SwitchView:
 		a.switchView(key)
 	case keys.Back:
-		if slot, ok := a.sess.Back(a.visible); ok && slot != state.NoView {
-			a.switchTo(slot, "")
+		if o, ok := a.sess.BackTo(a.visible); ok && o.Slot != state.NoView {
+			if r, restores := a.views[o.Slot].(Restorer); restores && o.Focused {
+				r.Restore(a.env(), o.Focus)
+			}
+			a.switchTo(o.Slot, "")
 		}
 	case keys.Close:
+		if _, layered := a.sess.Top(); !layered && len(a.sess.MarkedIDs()) == 0 {
+			if c, ok := a.view().(Closer); ok && c.Close(a.env()) {
+				return nil
+			}
+		}
 		if a.sess.Esc() == state.EscScope {
 			a.setScope(model.ParseScope("", a.scope.ShowClosed()))
 		}
@@ -860,6 +873,7 @@ func (a *App) retry() tea.Cmd {
 		a.startFails = 0
 		return a.recheck()
 	}
+	a.panel.RetryAudit()
 	if a.eng != nil {
 		a.eng.Refresh()
 	}

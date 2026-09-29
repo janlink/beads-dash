@@ -55,6 +55,7 @@ var sectionTitles = [contextCount]string{
 	Memories:   "Memories",
 	Tree:       "Tree",
 	Overview:   "Overview",
+	Graph:      "Graph",
 	Panel:      "Panel",
 	Bar:        "Docked bar",
 	Form:       "Forms",
