@@ -207,3 +207,49 @@ func TestUpdateSchemeEventRequestsBackgroundThenApplies(t *testing.T) {
 		t.Error("fixed background must ignore scheme events")
 	}
 }
+
+func TestPreviewChangesChoicesWithoutProbing(t *testing.T) {
+	p := &probeLog{res: term.Result{Dark: false, Interactive: true}}
+	a := appearance.Resolve(input(settings(nil), nil, p))
+	calls := len(p.calls)
+
+	b := a.Preview(env(nil), "ocean", "dark", "ascii")
+	if len(p.calls) != calls {
+		t.Error("Preview probed the terminal")
+	}
+	if b.Theme.Name != "ocean" || !b.Dark || b.Tier != theme.TierASCII || b.Glyphs.Tier != theme.TierASCII || !b.Palette.Dark() {
+		t.Errorf("preview = %+v", b)
+	}
+	if b.Depth != a.Depth {
+		t.Error("Preview changed the colour depth")
+	}
+	if c := b.Preview(env(nil), "nope", "auto", "nope"); c.Theme.Name != "ocean" || c.Dark || c.Tier != theme.TierASCII {
+		t.Errorf("unknown theme/glyphs must leave that part alone, auto follows the probe: %+v", c)
+	}
+}
+
+func TestPreviewKeepsAmbiguousFallback(t *testing.T) {
+	p := &probeLog{res: term.Result{AmbiguousWide: true, AmbiguousKnown: true, Dark: true}}
+	a := appearance.Resolve(input(settings(nil), nil, p))
+	if a.Tier != theme.TierASCII || a.Notice == "" {
+		t.Fatalf("setup: %+v", a)
+	}
+	if b := a.Preview(env(nil), "default", "auto", "fancy"); b.Tier != theme.TierASCII || b.Notice == "" {
+		t.Errorf("fancy on a wide terminal = %v %q, want the ascii fallback", b.Tier, b.Notice)
+	}
+}
+
+func TestFixedBackgroundIgnoresSchemeReports(t *testing.T) {
+	p := &probeLog{res: term.Result{Dark: true, Interactive: true}}
+	a := appearance.Resolve(input(settings(nil), nil, p)).Preview(env(nil), "default", "dark", "auto")
+	b, _ := a.Update(tea.BackgroundColorMsg{Color: color.White})
+	if !b.Dark {
+		t.Error("a fixed dark background followed the terminal")
+	}
+	if b.ProbedDark {
+		t.Error("the probed background was not remembered")
+	}
+	if c := b.Preview(env(nil), "default", "auto", "auto"); c.Dark {
+		t.Error("switching back to auto ignored the remembered background")
+	}
+}

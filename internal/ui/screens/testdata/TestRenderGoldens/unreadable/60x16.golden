@@ -1,0 +1,16 @@
+                                                            
+  ! bd couldn't read this workspace                         
+                                                            
+  + bd           found                                      
+  + version      1.2.3 - supported 1.2.2 – 1.3.x            
+  + JSON schema  1                                          
+  + workspace    /work/demo/.beads                          
+  x snapshot     bd list failed, exit 1                     
+                                                            
+  What to do                                                
+  > $ bd doctor      # bd's own health check                
+    $ ls -la .beads  # check owner and permissions          
+    Another bd process holding the database? Wait for it,   
+    then r.                                                 
+                                                            
+  q quit  r recheck now  Up/Dn pick  y copy fix             

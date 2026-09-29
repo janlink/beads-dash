@@ -114,6 +114,9 @@ type Glyphs struct {
 	Ellipsis string
 	Arrow    string
 	Bullet   string
+	// Live and Stale mark the snapshot state in the header.
+	Live  string
+	Stale string
 }
 
 // Slot is one named glyph of a set.
@@ -141,6 +144,8 @@ func (g Glyphs) Slots() []Slot {
 		{"ellipsis", g.Ellipsis},
 		{"arrow", g.Arrow},
 		{"bullet", g.Bullet},
+		{"live", g.Live},
+		{"stale", g.Stale},
 	}
 	return append(out, g.statusSlots()...)
 }
@@ -197,6 +202,7 @@ func GlyphsFor(t Tier) Glyphs {
 			BarFull: "#", BarEmpty: "-",
 			Checked: "[x]", Unchecked: "[ ]",
 			Rule: "-", Ellipsis: "...", Arrow: "->", Bullet: "*",
+			Live: "*", Stale: "o",
 		}
 	case TierSafe:
 		g = Glyphs{
@@ -207,6 +213,7 @@ func GlyphsFor(t Tier) Glyphs {
 			BarFull: "█", BarEmpty: "░",
 			Checked: "■", Unchecked: "□",
 			Rule: "─", Ellipsis: "…", Arrow: "→", Bullet: "•",
+			Live: "●", Stale: "○",
 		}
 	case TierAuto, TierFancy:
 		t = TierFancy
@@ -218,6 +225,7 @@ func GlyphsFor(t Tier) Glyphs {
 			BarFull: "█", BarEmpty: "░",
 			Checked: "▪", Unchecked: "▫",
 			Rule: "─", Ellipsis: "…", Arrow: "→", Bullet: "•",
+			Live: "●", Stale: "◌",
 		}
 	}
 	g.Tier = t

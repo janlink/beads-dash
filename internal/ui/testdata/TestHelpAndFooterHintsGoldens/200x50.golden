@@ -1,0 +1,53 @@
+ [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                                                                                                           * live 12:00:00 
+ ? help  q quit  j/k move  Space mark  1-6 switch view  t appearance  r refresh                                                                                                                         
+
+ [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                                                                                                           * live 12:00:00 
+|   ? P4 ws-1zz   Mystery status issue                                                                                                                                                                  
+    ! P2 ws-2hz   Split pricing service                                                                                                                                                                 
+    * P1 ws-4k2   Checkout: guest orders                                                                                                                                                           alice
+    o P1 ws-4k2.1 Address form validation                                                                                                                                                               
+    ! P2 ws-4k2.2 Guest order confirmation mail                                                                                                                                                         
+    x P3 ws-5ca   Update analytics consent banner                                                                                                                                                       
+    * P2 ws-7mt   Cart badge shows stale count                                                                                                                                                       bob
+    ~ P3 ws-8np   Search: typo tolerance                                                                                                                                                                
+    o P0 ws-9qe   Payment provider timeout retries                                                                                                                                                      
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                            +- Keys ------------------------------------------------------------ 18 shown -+                                                            
+                                                            | Lists                                                                        |                                                            
+                                                            |   q       quit                                                               |                                                            
+                                                            |   j/Down  move down                                                          |                                                            
+                                                            |   k/Up    move up                                                            |                                                            
+                                                            |   gg      first                                                              |                                                            
+                                                            |   G       last                                                               |                                                            
+                                                            |   Ctrl+D  half page down                                                     |                                                            
+                                                            |   Ctrl+U  half page up                                                       |                                                            
+                                                            |   PgDn    page down                                                          |                                                            
+                                                            |   PgUp    page up                                                            |                                                            
+                                                            |   Space   mark                                                               |                                                            
+                                                            |                                                                              |                                                            
+                                                            | Everywhere                                                                   |                                                            
+                                                            |   ?          help                                                            |                                                            
+                                                            |   1-6        switch view                                                     |                                                            
+                                                            |   t          appearance                                                      |                                                            
+                                                            |   r          refresh                                                         |                                                            
+                                                            |   Esc        close, then clear marks and scope                               |                                                            
+                                                            |   Backspace  back to the previous issue                                      |                                                            
+                                                            |   !          error details                                                   |                                                            
+                                                            |   ctrl+c     quit                                                            |                                                            
+                                                            |                                                                              |                                                            
+                                                            +-------------------------------------------- Esc close  j/k scroll  / filter -+                                                            
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        
+ Esc close  j/k scroll  / filter                                                                                                                                                                        

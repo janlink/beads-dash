@@ -245,3 +245,22 @@ func TestBdVersionLineResolvesBinaryAndScalesTimeout(t *testing.T) {
 		t.Errorf("looked %q, probed %q, timeouts %+v", looked, probed, timeouts)
 	}
 }
+
+func TestBdVersionTextAddsTheChecklistWhenBdIsUnusable(t *testing.T) {
+	getenv := func(string) string { return "" }
+	missing := func(string) (string, error) { return "", errors.New("nope") }
+	probe := func(context.Context, string, bd.Timeouts) (bd.VersionInfo, error) { return bd.CheckVersion("1.3.0") }
+	got := bdVersionText(context.Background(), getenv, missing, probe)
+	for _, want := range []string{"bd: not found (PATH)", "x bd", "What to do", "- snapshot"} {
+		if !strings.Contains(got, want) {
+			t.Errorf("text lacks %q:\n%s", want, got)
+		}
+	}
+	if strings.Contains(got, "\x1b") {
+		t.Errorf("text has styling: %q", got)
+	}
+	found := func(string) (string, error) { return "/opt/bd", nil }
+	if got := bdVersionText(context.Background(), getenv, found, probe); got != "bd 1.3.0 at /opt/bd: supported" {
+		t.Errorf("a supported bd needs no checklist: %q", got)
+	}
+}

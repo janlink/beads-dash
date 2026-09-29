@@ -1,0 +1,16 @@
+                                                            
+  ! bd speaks a different JSON format                       
+                                                            
+  + bd           found                                      
+  + version      1.2.3 - supported 1.2.2 – 1.3.x            
+  x JSON schema  not 1 - bdash reads 1                      
+  - workspace    not run                                    
+  - snapshot     not run                                    
+                                                            
+  What to do                                                
+  > $ go install github.com/janlink/beads-dash/cmd/bdash@...
+      # a newer bdash may read this schema                  
+    $ go install github.com/gastownhall/beads/cmd/bd@v1.3.0 
+      # or go back to a tested bd                           
+                                                            
+  q quit  r recheck now  Up/Dn pick  y copy fix             

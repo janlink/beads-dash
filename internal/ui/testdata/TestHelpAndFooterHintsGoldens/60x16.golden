@@ -1,0 +1,19 @@
+ Overview                                        * 12:00:00 
+ ? help  q quit  j/k move  Space mark  1-6 switch view      
+
++- Keys ---------------------------------------- 18 shown -+
+| Lists                                                    |
+|   q       quit                                           |
+|   j/Down  move down                                      |
+|   k/Up    move up                                        |
+|   gg      first                                          |
+|   G       last                                           |
+|   Ctrl+D  half page down                                 |
+|   Ctrl+U  half page up                                   |
+|   PgDn    page down                                      |
+|   PgUp    page up                                        |
+|   Space   mark                                           |
+|                                                          |
+| Everywhere                                               |
+| ... 9 more                                               |
++------------------------ Esc close  j/k scroll  / filter -+

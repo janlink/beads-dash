@@ -40,6 +40,11 @@ type Appearance struct {
 	TrackScheme bool
 	// ProbedDark is the background found by the probe, dark when unknown.
 	ProbedDark bool
+	// Background is the background mode in force.
+	Background theme.Background
+	// AmbiguousWide is set when ambiguous-width glyphs are drawn wide, which
+	// keeps the glyph tier at ascii.
+	AmbiguousWide bool
 }
 
 // Resolve computes the appearance. Unknown probe answers fall back to a dark
@@ -68,6 +73,7 @@ func Resolve(in Input) Appearance {
 	case "narrow":
 		wide = false
 	}
+	requested := tier
 	tier, notice := theme.FallbackForAmbiguous(tier, wide && tier != theme.TierASCII)
 
 	depth, _ := theme.ParseDepth(s.Color)
@@ -80,16 +86,40 @@ func Resolve(in Input) Appearance {
 
 	dark := bgMode.IsDark(res.Dark)
 	return Appearance{
-		Theme:       th,
-		Dark:        dark,
-		Depth:       depth,
-		Tier:        tier,
-		Palette:     theme.NewPalette(th, dark, depth),
-		Glyphs:      theme.GlyphsFor(tier),
-		Notice:      notice,
-		TrackScheme: needBackground && res.Interactive,
-		ProbedDark:  res.Dark,
+		Theme:         th,
+		Dark:          dark,
+		Depth:         depth,
+		Tier:          tier,
+		Palette:       theme.NewPalette(th, dark, depth),
+		Glyphs:        theme.GlyphsFor(tier),
+		Notice:        notice,
+		TrackScheme:   needBackground && res.Interactive,
+		ProbedDark:    res.Dark,
+		Background:    bgMode,
+		AmbiguousWide: wide && requested != theme.TierASCII,
 	}
+}
+
+// Preview re-resolves the appearance for other choices without probing the
+// terminal again: theme name, background mode (auto follows the probed
+// background) and glyph tier (auto|fancy|safe|ascii). Unknown values leave that
+// part unchanged. The colour depth and the ambiguous-width verdict stay.
+func (a Appearance) Preview(getenv func(string) string, themeName, background, glyphs string) Appearance {
+	if th, ok := theme.Lookup(themeName); ok {
+		a.Theme = th
+	}
+	if bg, ok := theme.ParseBackground(background); ok {
+		a.Background = bg
+		a.Dark = bg.IsDark(a.ProbedDark)
+	}
+	if tier, ok := theme.ParseTier(glyphs); ok {
+		tier = theme.ResolveTier(tier, getenv)
+		tier, a.Notice = theme.FallbackForAmbiguous(tier, a.AmbiguousWide)
+		a.Tier = tier
+		a.Glyphs = theme.GlyphsFor(tier)
+	}
+	a.Palette = theme.NewPalette(a.Theme, a.Dark, a.Depth)
+	return a
 }
 
 // WithBackground returns the appearance re-resolved for a freshly probed
@@ -99,7 +129,11 @@ func (a Appearance) WithBackground(dark bool) Appearance {
 	if !a.TrackScheme {
 		return a
 	}
-	a.Dark, a.ProbedDark = dark, dark
+	a.ProbedDark = dark
+	if a.Background != theme.BackgroundAuto {
+		return a
+	}
+	a.Dark = dark
 	a.Palette = theme.NewPalette(a.Theme, dark, a.Depth)
 	return a
 }

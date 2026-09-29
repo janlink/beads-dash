@@ -2,12 +2,17 @@ package main
 
 import (
 	"os"
+	"os/exec"
 	"runtime"
+	"strings"
 
 	tea "charm.land/bubbletea/v2"
 	"github.com/charmbracelet/colorprofile"
 
 	"github.com/janlink/beads-dash/internal/appearance"
+	"github.com/janlink/beads-dash/internal/bd"
+	"github.com/janlink/beads-dash/internal/cli"
+	"github.com/janlink/beads-dash/internal/refresh"
 	"github.com/janlink/beads-dash/internal/term"
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui"
@@ -30,8 +35,60 @@ func start(s Session) (err error) {
 	}
 
 	opts := []tea.ProgramOption{tea.WithColorProfile(profileFor(s.Appearance.Depth))}
-	_, err = tea.NewProgram(ui.New(), opts...).Run()
+	_, err = tea.NewProgram(ui.New(uiOptions(s)), opts...).Run()
 	return err
+}
+
+// uiOptions wires the session into the shell: the bd client, the actor and
+// the facts the failure screens quote.
+func uiOptions(s Session) ui.Options {
+	getenv := s.Getenv
+	bin := s.Settings.BdBinary
+	dir := s.Options.Path
+	if dir == "" {
+		dir, _ = os.Getwd()
+	}
+	client := bd.NewExec(bd.ExecOptions{
+		Bin:      bin,
+		Dir:      s.Options.Path,
+		Timeouts: bd.DefaultTimeouts().Scaled(s.Settings.TimeoutScale),
+	})
+	tunables := refresh.TunablesFrom(s.Settings.Settings.Refresh)
+	o := ui.Options{
+		Client:       client,
+		Tunables:     &tunables,
+		Actor:        resolveActor(getenv, gitUserName),
+		Settings:     s.Settings,
+		Appearance:   s.Appearance,
+		Getenv:       getenv,
+		Warnings:     s.Warnings,
+		NoMouse:      s.Options.NoMouse,
+		Dir:          dir,
+		BdPath:       lookBd(bin),
+		BeadsDir:     getenv("BEADS_DIR"),
+		BdashVersion: cli.NewBuildInfo(version, commit).Version,
+		BdashViaBrew: installedViaBrew(),
+	}
+	if s.Store != nil {
+		o.Store = s.Store
+	}
+	return o
+}
+
+func installedViaBrew() bool {
+	exe, _ := os.Executable()
+	return strings.Contains(exe, "/Cellar/") || strings.Contains(exe, "/homebrew/")
+}
+
+func lookBd(bin string) string {
+	if bin == "" {
+		bin = "bd"
+	}
+	p, err := exec.LookPath(bin)
+	if err != nil {
+		return ""
+	}
+	return p
 }
 
 // probeTTY runs the probes on the real terminal. Windows consoles are not

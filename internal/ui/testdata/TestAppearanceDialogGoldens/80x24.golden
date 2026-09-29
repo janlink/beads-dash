@@ -1,0 +1,24 @@
+ [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+|   ? P4 ws-1zz   Mystery status issue                                          
+    ! P2 ws-2hz   Split pricing service                                         
+    * P1 ws-4k2   Checkout: guest orders                                   alice
+    o P1 ws-4k2.1 Address form validation                                       
+    ! P2 ws-4k2.2 Guest order confirmation mail                                 
+  +- Appearance -------------------------------------------------------------+  
+  | > Theme       < default >                                                |ob
+  |   Background    dark                                                     |  
+  |   Glyphs        ascii                                                    |  
+  |                                                                          |  
+  | Preview                                                                  |  
+  | o open  * in progress  ! blocked                                         |  
+  | ~ frozen  x closed  ? other                                              |  
+  | P0 P1 P2 P3 P4  match  error  ok  warn                                   |  
+  |  |#+ selected row                                                        |  
+  +------------------- Enter apply  Esc revert  Up/Dn row  Left/Right value -+  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+ Enter apply  Esc revert  Up/Dn row  Left/Right value                           

@@ -1,0 +1,16 @@
+                                                            
+  ! The workspace is gone                                   
+                                                            
+  + bd           found                                      
+  + version      1.2.3 - supported 1.2.2 – 1.3.x            
+  + JSON schema  1                                          
+  x workspace    /work/demo/.beads was here and is gone     
+  - snapshot     not run                                    
+                                                            
+  What to do                                                
+  > $ bd init                                               
+      # create a workspace again                            
+    $ BEADS_DIR=/path/to/.beads bdash                       
+      # point bd at an existing workspace                   
+                                                            
+  q quit  r recheck now  Up/Dn pick  y copy fix             

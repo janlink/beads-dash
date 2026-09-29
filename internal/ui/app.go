@@ -1,38 +1,917 @@
-// Package ui holds the Bubble Tea program: shell, views and dialogs.
 package ui
 
 import (
-	"charm.land/bubbles/v2/key"
+	"context"
+	"errors"
+	"fmt"
+	"path/filepath"
+	"slices"
+	"sort"
+	"strings"
+	"time"
+
 	tea "charm.land/bubbletea/v2"
-	"charm.land/lipgloss/v2"
+
+	"github.com/janlink/beads-dash/internal/appearance"
+	"github.com/janlink/beads-dash/internal/bd"
+	"github.com/janlink/beads-dash/internal/model"
+	"github.com/janlink/beads-dash/internal/refresh"
+	"github.com/janlink/beads-dash/internal/ui/dialog"
+	"github.com/janlink/beads-dash/internal/ui/keys"
+	"github.com/janlink/beads-dash/internal/ui/look"
+	"github.com/janlink/beads-dash/internal/ui/rows"
+	"github.com/janlink/beads-dash/internal/ui/screens"
+	"github.com/janlink/beads-dash/internal/ui/state"
 )
 
-var quitKey = key.NewBinding(key.WithKeys("q", "ctrl+c"))
+type (
+	sessionMsg struct {
+		sess bd.Session
+		err  error
+	}
+	engineMsg struct {
+		eng    Engine
+		cancel context.CancelFunc
+		sess   bd.Session
+	}
+	updateMsg  struct{ u refresh.Update }
+	closedMsg  struct{}
+	recheckMsg struct{ gen int }
+	clockMsg   struct{}
+	hlTickMsg  struct{ gen int }
+	savedMsg   struct{ err error }
+)
 
-// App is the root model.
+const (
+	wheelStep     = 3
+	vanishedAfter = 3
+)
+
+// App is the root model. Update never blocks: everything that touches bd,
+// the config file or the clipboard is a returned command, except the engine's
+// focus and refresh posts, which only enqueue a request.
 type App struct {
-	style lipgloss.Style
+	o  Options
+	km *keys.Map
+	mx *keys.Matcher
+
+	app     appearance.Appearance
+	look    look.Look
+	rend    *rows.Renderer
+	choices dialog.Choices
+
+	cols, rows int
+	focused    bool
+
+	sess    *state.Session
+	acts    sessionActions
+	hl      *state.Highlights
+	hlGen   int
+	hlDue   time.Time
+	views   [6]View
+	slot    int
+	slotCur [6]string
+
+	bds        bd.Session
+	startErr   error
+	checking   bool
+	checkGen   int
+	startFails int
+	nextCheck  time.Time
+	report     *screens.Report
+	vanished   bool
+	pick       int
+	eng        Engine
+	cancel     context.CancelFunc
+	snap       *model.Snapshot
+	status     refresh.Status
+	ticking    bool
+	notices    []screens.Notice
+	hint       string
+	dialogs    []Dialog
+	quitting   bool
 }
 
 // New returns the root model.
-func New() App {
-	return App{style: lipgloss.NewStyle().Bold(true)}
+func New(o Options) *App {
+	o.fill()
+	a := &App{
+		o: o, km: o.Keys, mx: keys.NewMatcher(o.Keys),
+		app: o.Appearance, cols: 80, rows: 24, focused: true,
+		sess: state.New(),
+		hl:   state.NewHighlights(time.Duration(o.Settings.Settings.HighlightSeconds) * time.Second),
+		choices: dialog.Choices{
+			Theme: o.Settings.Settings.Theme, Background: o.Settings.Settings.Background, Glyphs: o.Settings.Settings.Glyphs,
+		},
+	}
+	a.acts = sessionActions{a.sess}
+	a.setLook()
+	a.rend = rows.New(a.look)
+	for n, v := range o.Views {
+		if n >= 1 && n <= 6 {
+			a.views[n-1] = v
+		}
+	}
+	if !hasView(a.views) {
+		a.views[0] = &placeholder{}
+	}
+	a.slot = a.startSlot()
+	for _, w := range o.Warnings {
+		a.notices = append(a.notices, screens.Notice{Text: w, Warn: true})
+	}
+	if o.Appearance.Notice != "" {
+		a.notices = append(a.notices, screens.Notice{Text: o.Appearance.Notice})
+	}
+	return a
 }
 
+func hasView(vs [6]View) bool {
+	for _, v := range vs {
+		if v != nil {
+			return true
+		}
+	}
+	return false
+}
+
+func (a *App) startSlot() int {
+	name := strings.ToLower(a.o.Settings.Settings.View)
+	for i, n := range ViewNames {
+		if strings.ToLower(n) == name && a.views[i] != nil {
+			return i
+		}
+	}
+	for i, v := range a.views {
+		if v != nil {
+			return i
+		}
+	}
+	return 0
+}
+
+func (a *App) setLook() {
+	a.look = look.New(a.app.Palette, a.app.Glyphs)
+	if a.rend != nil {
+		a.rend.SetLook(a.look)
+	}
+}
+
+func (a *App) now() time.Time { return a.o.Now() }
+
+func (a *App) view() View { return a.views[a.slot] }
+
+func (a *App) mouseOn() bool { return a.o.Settings.Settings.Mouse && !a.o.NoMouse }
+
 // Init implements tea.Model.
-func (App) Init() tea.Cmd { return nil }
+func (a *App) Init() tea.Cmd { return a.openSession() }
+
+func (a *App) openSession() tea.Cmd {
+	c := a.o.Client
+	a.checking = true
+	return func() tea.Msg {
+		s, err := bd.OpenSession(context.Background(), c)
+		return sessionMsg{s, err}
+	}
+}
+
+// recheck costs one bd call while the failure persists: it repeats only the
+// step that failed and opens the whole session once that step passes.
+func (a *App) recheck() tea.Cmd {
+	c, prev, failed := a.o.Client, a.bds, a.startErr
+	a.checking = true
+	return func() tea.Msg {
+		ctx := context.Background()
+		switch {
+		case prev.Version.Parsed == (bd.Version{}) || bd.IsClass(failed, bd.ClassUnsupported):
+			v, err := c.Version(ctx)
+			if err != nil {
+				prev.Version, prev.Untested = v, v.Support == bd.Untested
+				return sessionMsg{prev, err}
+			}
+		case prev.Workspace.Path == "":
+			if _, err := c.Where(ctx); err != nil {
+				return sessionMsg{prev, err}
+			}
+		default:
+			if _, err := c.Statuses(ctx); err != nil {
+				return sessionMsg{prev, err}
+			}
+		}
+		s, err := bd.OpenSession(ctx, c)
+		return sessionMsg{s, err}
+	}
+}
+
+func (a *App) startEngine(s bd.Session) tea.Cmd {
+	newEngine := a.o.NewEngine
+	return func() tea.Msg {
+		e := newEngine(s)
+		ctx, cancel := context.WithCancel(context.Background())
+		e.Start(ctx)
+		return engineMsg{e, cancel, s}
+	}
+}
+
+func waitUpdate(e Engine) tea.Cmd {
+	return func() tea.Msg {
+		u, ok := <-e.Updates()
+		if !ok {
+			return closedMsg{}
+		}
+		return updateMsg{u}
+	}
+}
 
 // Update implements tea.Model.
-func (a App) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-	if k, ok := msg.(tea.KeyPressMsg); ok && key.Matches(k, quitKey) {
-		return a, tea.Quit
+func (a *App) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+	cmd := a.update(msg)
+	if a.needsClock() && !a.ticking && !a.quitting {
+		a.ticking = true
+		cmd = tea.Batch(cmd, tea.Tick(time.Second, func(time.Time) tea.Msg { return clockMsg{} }))
 	}
-	return a, nil
+	return a, cmd
+}
+
+func (a *App) needsClock() bool {
+	return a.startErr != nil || a.status.Stale || a.status.Err != nil
+}
+
+func (a *App) update(msg tea.Msg) tea.Cmd {
+	switch m := msg.(type) {
+	case tea.WindowSizeMsg:
+		a.cols, a.rows = m.Width, m.Height
+	case tea.KeyPressMsg:
+		return a.key(m)
+	case tea.MouseClickMsg:
+		a.click(tea.Mouse(m))
+	case tea.MouseWheelMsg:
+		a.wheel(tea.Mouse(m))
+	case tea.FocusMsg:
+		return a.setFocus(true)
+	case tea.BlurMsg:
+		return a.setFocus(false)
+	case sessionMsg:
+		return a.onSession(m)
+	case engineMsg:
+		return a.onEngine(m)
+	case updateMsg:
+		return tea.Batch(a.apply(m.u), waitUpdate(a.eng))
+	case closedMsg:
+	case recheckMsg:
+		if m.gen == a.checkGen && a.startErr != nil && !a.checking {
+			return a.recheck()
+		}
+	case clockMsg:
+		a.ticking = false
+	case hlTickMsg:
+		if m.gen == a.hlGen {
+			a.hlDue = time.Time{}
+			a.hl.Expire(a.now())
+			return a.hlSchedule()
+		}
+	case savedMsg:
+		if m.err != nil {
+			a.notices = append(a.notices, screens.Notice{Text: fmt.Sprintf("could not save the choice: %v; it lasts for this session only", m.err), Warn: true})
+		}
+	default:
+		return a.forward(msg)
+	}
+	return nil
+}
+
+func (a *App) onSession(m sessionMsg) tea.Cmd {
+	a.checking = false
+	a.bds = m.sess
+	if m.err == nil {
+		a.startErr, a.report, a.startFails = nil, nil, 0
+		if m.sess.Untested {
+			a.notices = append(a.notices, screens.Notice{
+				Text: fmt.Sprintf("bd %s is newer than the tested %d.%d line; bdash may misread it", m.sess.Version.Parsed, bd.TestedCeiling.Major, bd.TestedCeiling.Minor),
+				Warn: true,
+			})
+		}
+		return a.startEngine(m.sess)
+	}
+	a.startErr = m.err
+	a.startFails++
+	a.computeReport()
+	back := min(a.o.RecheckMin<<(a.startFails-1), a.o.RecheckMax)
+	a.nextCheck = a.now().Add(back)
+	a.checkGen++
+	gen := a.checkGen
+	return tea.Tick(back, func(time.Time) tea.Msg { return recheckMsg{gen} })
+}
+
+func (a *App) onEngine(m engineMsg) tea.Cmd {
+	a.eng, a.cancel = m.eng, m.cancel
+	if !a.focused {
+		m.eng.SetFocus(false)
+	}
+	return waitUpdate(m.eng)
+}
+
+func (a *App) setFocus(on bool) tea.Cmd {
+	a.focused = on
+	if a.eng != nil {
+		a.eng.SetFocus(on)
+	}
+	return a.syncPause()
+}
+
+// forward hands a message nobody above consumed to the appearance, the views
+// and the open dialogs.
+func (a *App) forward(msg tea.Msg) tea.Cmd {
+	var cmds []tea.Cmd
+	next, cmd := a.app.Update(msg)
+	if next.Dark != a.app.Dark || next.Palette != a.app.Palette {
+		a.app = next
+		a.setLook()
+	}
+	cmds = append(cmds, cmd)
+	for _, v := range a.views {
+		if u, ok := v.(Updater); ok {
+			cmds = append(cmds, u.Update(msg))
+		}
+	}
+	for _, d := range a.dialogs {
+		cmds = append(cmds, d.Update(msg))
+	}
+	return tea.Batch(cmds...)
+}
+
+// syncPause pauses the highlight clock on blur and while a dialog is open.
+func (a *App) syncPause() tea.Cmd {
+	a.hl.SetPaused(a.now(), !a.focused || len(a.dialogs) > 0)
+	return a.hlSchedule()
+}
+
+// hlSchedule arms the tick for the earliest highlight deadline; it does
+// nothing while a tick for that deadline is already armed.
+func (a *App) hlSchedule() tea.Cmd {
+	now := a.now()
+	d, ok := a.hl.Next(now)
+	if !ok {
+		if !a.hlDue.IsZero() {
+			a.hlGen++
+			a.hlDue = time.Time{}
+		}
+		return nil
+	}
+	due := now.Add(d)
+	if due.Equal(a.hlDue) {
+		return nil
+	}
+	a.hlGen++
+	a.hlDue = due
+	gen := a.hlGen
+	return tea.Tick(d, func(time.Time) tea.Msg { return hlTickMsg{gen} })
+}
+
+func (a *App) apply(u refresh.Update) tea.Cmd {
+	a.status = u.Status
+	if u.Session.Workspace.Path != "" {
+		a.bds = u.Session
+	}
+	if a.status.Err == nil {
+		a.vanished = false
+	}
+	var cmds []tea.Cmd
+	if u.Snapshot != nil && u.Snapshot != a.snap && !a.vanished {
+		old := a.view().Visible(a.env())
+		a.snap = u.Snapshot
+		a.rend.Bind(a.snap, a.bds.Statuses)
+		exists := func(id string) bool { _, ok := a.snap.Issue(id); return ok }
+		a.sess.Prune(exists)
+		a.hl.Prune(exists)
+		a.keepCurrent(old)
+	}
+	if len(u.Highlights) > 0 {
+		a.hl.Trigger(a.now(), u.Highlights, u.Events)
+		cmds = append(cmds, a.hlSchedule())
+	}
+	a.computeReport()
+	if a.report != nil {
+		cmds = append(cmds, a.cancelDialogs())
+	}
+	return tea.Batch(cmds...)
+}
+
+// keepCurrent moves the current issue to its nearest neighbour when the view
+// no longer shows it.
+func (a *App) keepCurrent(old []string) {
+	env := a.env()
+	v := a.view()
+	cur := a.sess.Current()
+	if cur != "" && v.Has(env, cur) {
+		return
+	}
+	if next := state.NearestSurvivor(old, cur, func(id string) bool { return v.Has(env, id) }); next != "" {
+		a.sess.SetCurrent(next)
+		return
+	}
+	if cur != "" && a.snap != nil {
+		if _, ok := a.snap.Issue(cur); ok {
+			return
+		}
+	}
+	a.sess.SetCurrent("")
+	if vis := v.Visible(env); len(vis) > 0 {
+		a.sess.SetCurrent(vis[0])
+	}
+}
+
+func (a *App) computeReport() {
+	if a.snap != nil && bd.IsClass(a.status.Err, bd.ClassNotWorkspace) && a.status.Failures >= vanishedAfter {
+		a.vanished = true
+		a.snap = nil
+		a.rend.Bind(nil, a.bds.Statuses)
+	}
+	var r screens.Report
+	switch {
+	case a.startErr != nil:
+		r = screens.Diagnose(a.reportInput(a.startErr, false, false))
+	case a.vanished:
+		r = screens.Diagnose(a.reportInput(a.status.Err, false, true))
+	case a.snap == nil && a.status.Err != nil:
+		r = screens.Diagnose(a.reportInput(a.status.Err, true, false))
+	default:
+		a.report = nil
+		return
+	}
+	if a.report == nil || a.report.Kind != r.Kind {
+		a.pick = 0
+	}
+	a.report = &r
+}
+
+func (a *App) env() Env {
+	now := a.now()
+	return Env{
+		Snap: a.snap, Statuses: a.bds.Statuses, Look: a.look, Rows: a.rend, Current: a.sess.Current(),
+		Marked:  a.sess.Marked,
+		Changed: func(id string) bool { return a.hl.Live(id, now) },
+		Act:     a.acts,
+	}
+}
+
+func (a *App) visible(id string) bool { return a.view().Has(a.env(), id) }
+
+func (a *App) tooSmall() bool { return a.cols < MinCols || a.rows < MinRows }
+
+func (a *App) context() keys.Context {
+	switch {
+	case a.tooSmall():
+		return keys.TooSmall
+	case a.report != nil:
+		return keys.Startup
+	}
+	if d := a.topDialog(); d != nil {
+		return d.Context()
+	}
+	return a.baseContext()
+}
+
+// baseContext is the key context below the dialogs.
+func (a *App) baseContext() keys.Context {
+	if top, ok := a.sess.Top(); ok {
+		switch top {
+		case state.LayerDetailFocus:
+			return keys.Panel
+		case state.LayerBar:
+			return keys.Bar
+		case state.LayerDetail, state.LayerDialog:
+		}
+	}
+	return a.view().Context()
+}
+
+func (a *App) topDialog() Dialog {
+	if n := len(a.dialogs); n > 0 {
+		return a.dialogs[n-1]
+	}
+	return nil
+}
+
+func (a *App) bodyHeight() int {
+	h := a.rows - 2
+	if _, ok := a.notice(); ok {
+		h--
+	}
+	return max(h, 1)
+}
+
+func (a *App) refreshNotice() (screens.Notice, bool) {
+	if a.snap == nil || a.report != nil || a.status.Err == nil {
+		return screens.Notice{}, false
+	}
+	text := "refresh failed: " + firstLine(a.status.Err)
+	if d := a.status.NextRetry.Sub(a.now()); d > 0 {
+		text += fmt.Sprintf(" - retrying in %ds", int((d+time.Second-1)/time.Second))
+	}
+	return screens.Notice{Text: text, Warn: true, Keys: []keys.Hint{{Key: "r", Desc: "retry"}, {Key: "!", Desc: "details"}}}, true
+}
+
+// queueShown reports whether the first queued notice is on screen.
+func (a *App) queueShown() bool {
+	if len(a.notices) == 0 || a.report != nil || a.tooSmall() {
+		return false
+	}
+	if _, ok := a.refreshNotice(); ok {
+		return false
+	}
+	return len(a.dialogs) == 0 || !dialog.FullScreen(a.cols, a.rows)
+}
+
+func (a *App) notice() (screens.Notice, bool) {
+	if n, ok := a.refreshNotice(); ok {
+		return n, true
+	}
+	if a.queueShown() {
+		return a.notices[0], true
+	}
+	return screens.Notice{}, false
+}
+
+func firstLine(err error) string {
+	var be *bd.Error
+	msg := err.Error()
+	if errors.As(err, &be) && be.Message != "" {
+		msg = be.Message
+	}
+	line, _, _ := strings.Cut(strings.TrimSpace(msg), "\n")
+	return line
+}
+
+func (a *App) key(m tea.KeyPressMsg) tea.Cmd {
+	a.hint = ""
+	if a.queueShown() {
+		a.notices = a.notices[1:]
+	}
+	k := m.String()
+	if act, ok := a.always(k); ok {
+		return a.act(act, k)
+	}
+	if d, ok := a.topDialog().(rawKeys); ok && d.RawKeys() && a.report == nil && !a.tooSmall() {
+		return a.topDialog().Update(m)
+	}
+	b, res := a.mx.Feed(a.context(), k)
+	if res != keys.Matched {
+		return nil
+	}
+	return a.act(b.Action, k)
+}
+
+// always resolves the keys that work in every state, text input included.
+func (a *App) always(k string) (keys.Action, bool) {
+	for _, b := range a.km.Active(keys.Always) {
+		if slices.Contains(b.Keys, k) {
+			return b.Action, true
+		}
+	}
+	return "", false
+}
+
+func (a *App) act(act keys.Action, key string) tea.Cmd {
+	switch act { //nolint:exhaustive // the action set is open: views add their own
+	case keys.QuitForce, keys.Quit:
+		return a.quit()
+	}
+	if a.report != nil {
+		return a.reportAct(act)
+	}
+	if d := a.topDialog(); d != nil {
+		cmd, closed := d.Handle(act)
+		if closed {
+			a.popDialog()
+		}
+		return tea.Batch(cmd, a.syncPause())
+	}
+	switch act { //nolint:exhaustive // the action set is open: views add their own
+	case keys.Retry, keys.Refresh:
+		return a.retry()
+	case keys.OpenHelp:
+		a.pushDialog(&helpDialog{a: a, under: a.baseContext()})
+	case keys.OpenAppearance:
+		a.pushDialog(a.newAppearanceDialog())
+	case keys.OpenDetails:
+		if a.status.Err == nil && a.startErr == nil {
+			a.hint = "no error to show"
+			return nil
+		}
+		a.pushDialog(&detailsDialog{a: a})
+	case keys.SwitchView:
+		a.switchView(key)
+	case keys.Back:
+		a.sess.Back(a.visible)
+	case keys.Close:
+		if a.sess.Esc() == state.EscScope {
+			return a.viewAct(act)
+		}
+	case keys.Mark:
+		if id := a.sess.Current(); id != "" {
+			a.sess.ToggleMark(id)
+		}
+	default:
+		return a.viewAct(act)
+	}
+	return a.syncPause()
+}
+
+// viewAct offers an action to the view; cursor movement the view declines
+// falls back to the shell's own navigation of the base list.
+func (a *App) viewAct(act keys.Action) tea.Cmd {
+	cmd, ok := a.view().Handle(act, a.env())
+	if !ok && isNav(act) && a.baseContext() == a.view().Context() {
+		a.navigate(act)
+	}
+	return cmd
+}
+
+func (a *App) reportAct(act keys.Action) tea.Cmd {
+	switch act { //nolint:exhaustive // the startup context binds only these
+	case keys.Retry, keys.Refresh:
+		return a.retry()
+	case keys.Copy:
+		if a.report == nil {
+			return nil
+		}
+		text := strings.Join(a.report.Raw, "\n")
+		if len(a.report.Fixes) > 0 {
+			text = a.report.Fixes[min(a.pick, len(a.report.Fixes)-1)].Cmd
+		}
+		return a.clip(text)
+	case keys.PickDn:
+		a.pick++
+	case keys.PickUp:
+		a.pick--
+	}
+	n := 0
+	if a.report != nil {
+		n = len(a.report.Fixes)
+	}
+	a.pick = min(max(a.pick, 0), max(n-1, 0))
+	return nil
+}
+
+func (a *App) pushDialog(d Dialog) {
+	a.dialogs = append(a.dialogs, d)
+	a.sess.Push(state.LayerDialog)
+}
+
+func (a *App) popDialog() {
+	if n := len(a.dialogs); n > 0 {
+		a.dialogs = a.dialogs[:n-1]
+		a.sess.Remove(state.LayerDialog)
+	}
+}
+
+// cancelDialogs closes every dialog through its cancel path, top first.
+func (a *App) cancelDialogs() tea.Cmd {
+	var cmds []tea.Cmd
+	for len(a.dialogs) > 0 {
+		cmd, _ := a.topDialog().Handle(keys.Close)
+		cmds = append(cmds, cmd)
+		a.popDialog()
+	}
+	cmds = append(cmds, a.syncPause())
+	return tea.Batch(cmds...)
+}
+
+func (a *App) preview(c dialog.Choices) {
+	a.app = a.app.Preview(a.o.Getenv, c.Theme, c.Background, c.Glyphs)
+	a.setLook()
+}
+
+func (a *App) persist(changes map[string]string) tea.Cmd {
+	store := a.o.Store
+	if store == nil || len(changes) == 0 {
+		return nil
+	}
+	names := make([]string, 0, len(changes))
+	for k := range changes {
+		names = append(names, k)
+	}
+	sort.Strings(names)
+	return func() tea.Msg {
+		for _, k := range names {
+			if err := store.Set(k, changes[k]); err != nil {
+				return savedMsg{err}
+			}
+		}
+		return savedMsg{}
+	}
+}
+
+func (a *App) switchView(key string) {
+	n := int(key[0] - '1')
+	if n < 0 || n > 5 {
+		return
+	}
+	if a.views[n] == nil {
+		a.hint = fmt.Sprintf("%s is not available yet", ViewNames[n])
+		return
+	}
+	if n == a.slot {
+		return
+	}
+	cur := a.sess.Current()
+	a.slotCur[a.slot] = cur
+	a.slot = n
+	env := a.env()
+	v := a.views[n]
+	if cur != "" && v.Has(env, cur) {
+		return
+	}
+	if last := a.slotCur[n]; last != "" && v.Has(env, last) {
+		a.sess.SetCurrent(last)
+		return
+	}
+	if vis := v.Visible(env); len(vis) > 0 {
+		a.sess.SetCurrent(vis[0])
+	}
+}
+
+func isNav(act keys.Action) bool {
+	switch act { //nolint:exhaustive // only the navigation actions matter here
+	case keys.NavDown, keys.NavUp, keys.NavFirst, keys.NavLast, keys.NavHalfDown, keys.NavHalfUp, keys.NavPageDown, keys.NavPageUp:
+		return true
+	}
+	return false
+}
+
+func (a *App) navigate(act keys.Action) {
+	env := a.env()
+	order := a.view().Visible(env)
+	if len(order) == 0 {
+		return
+	}
+	i := slices.Index(order, env.Current)
+	h := a.bodyHeight()
+	to := i
+	switch act { //nolint:exhaustive // the action set is open: views add their own
+	case keys.NavDown:
+		to = i + 1
+	case keys.NavUp:
+		to = i - 1
+	case keys.NavFirst:
+		to = 0
+	case keys.NavLast:
+		to = len(order) - 1
+	case keys.NavHalfDown:
+		to = i + max(h/2, 1)
+	case keys.NavHalfUp:
+		to = i - max(h/2, 1)
+	case keys.NavPageDown:
+		to = i + h
+	case keys.NavPageUp:
+		to = i - h
+	}
+	if i < 0 {
+		to = 0
+	}
+	a.sess.SetCurrent(order[min(max(to, 0), len(order)-1)])
+}
+
+func (a *App) retry() tea.Cmd {
+	if a.startErr != nil {
+		if a.checking {
+			return nil
+		}
+		a.startFails = 0
+		return a.recheck()
+	}
+	if a.eng != nil {
+		a.eng.Refresh()
+	}
+	return nil
+}
+
+func (a *App) clip(text string) tea.Cmd {
+	if text == "" {
+		return nil
+	}
+	return tea.SetClipboard(text)
+}
+
+func (a *App) quit() tea.Cmd {
+	a.quitting = true
+	e, cancel := a.eng, a.cancel
+	stop := func() tea.Msg {
+		if e != nil {
+			e.Stop()
+			cancel()
+		}
+		return nil
+	}
+	return tea.Sequence(stop, tea.Quit)
+}
+
+func (a *App) click(m tea.Mouse) {
+	if !a.mouseOn() || m.Button != tea.MouseLeft || len(a.dialogs) > 0 || a.report != nil || a.tooSmall() {
+		return
+	}
+	switch {
+	case m.Y == 0:
+		if BreakpointOf(a.cols) == Narrow {
+			return
+		}
+		_, spans := a.tabs()
+		for i, s := range spans {
+			if m.X >= s.from && m.X < s.to {
+				a.switchView(fmt.Sprintf("%d", i+1))
+			}
+		}
+	case m.Y-1 < a.bodyHeight():
+		if id, ok := a.view().At(m.Y - 1); ok {
+			a.sess.SetCurrent(id)
+		}
+	}
+}
+
+func (a *App) wheel(m tea.Mouse) {
+	if !a.mouseOn() || len(a.dialogs) > 0 || a.report != nil || a.tooSmall() {
+		return
+	}
+	switch m.Button { //nolint:exhaustive // only the wheel is handled
+	case tea.MouseWheelUp:
+		a.view().Scroll(-wheelStep)
+	case tea.MouseWheelDown:
+		a.view().Scroll(wheelStep)
+	}
+}
+
+func (a *App) workspaceName() string {
+	p := a.bds.Workspace.Path
+	if p == "" {
+		return ""
+	}
+	if filepath.Base(p) == ".beads" { // lintcheck:allow workspace directory name
+		p = filepath.Dir(p)
+	}
+	return filepath.Base(p)
 }
 
 // View implements tea.Model.
-func (a App) View() tea.View {
-	v := tea.NewView(a.style.Render("bdash") + "\npress q to quit\n")
+func (a *App) View() tea.View {
+	v := tea.NewView(a.render())
 	v.AltScreen = true
+	v.ReportFocus = true
+	if a.mouseOn() {
+		v.MouseMode = tea.MouseModeCellMotion
+	}
+	v.WindowTitle = "bdash"
+	if n := a.workspaceName(); n != "" {
+		v.WindowTitle += " · " + n
+	}
 	return v
+}
+
+func (a *App) render() string {
+	l := a.look
+	switch {
+	case a.tooSmall():
+		return strings.Join(screens.TooSmall(l, a.cols, a.rows, MinCols, MinRows), "\n")
+	case a.report != nil:
+		retry := time.Duration(0)
+		switch {
+		case a.startErr != nil:
+			retry = max(a.nextCheck.Sub(a.now()), 0)
+		case !a.status.NextRetry.IsZero():
+			retry = max(a.status.NextRetry.Sub(a.now()), 0)
+		}
+		return strings.Join(screens.Render(screens.View{
+			Look: l, Hints: a.hintsFor(keys.Startup), Sel: a.pick, RetryIn: retry, Cols: a.cols, Rows: a.rows,
+		}, *a.report), "\n")
+	}
+	h := a.bodyHeight()
+	lines := make([]string, 0, a.rows)
+	lines = append(lines, a.header())
+	lines = append(lines, a.body(h)...)
+	if n, ok := a.noticeRow(); ok {
+		lines = append(lines, n)
+	}
+	lines = append(lines, a.footer())
+	page := strings.Join(lines, "\n")
+	for _, d := range a.dialogs {
+		page = dialog.Overlay(l, a.cols, a.rows, page, d.Frame(l, a.cols, a.rows))
+	}
+	return page
+}
+
+func (a *App) body(h int) []string {
+	switch {
+	case a.snap == nil:
+		return screens.RenderEmpty(a.look, screens.Empty{Title: "Reading the workspace"}, a.cols, h)
+	case a.snap.Len() == 0:
+		return screens.RenderEmpty(a.look, a.emptyWorkspace(), a.cols, h)
+	}
+	return a.view().Render(a.env(), a.cols, h)
+}
+
+func (a *App) emptyWorkspace() screens.Empty {
+	newKey := false
+	for _, b := range a.km.Active(keys.View) {
+		newKey = newKey || slices.Contains(b.Keys, "n")
+	}
+	return screens.EmptyWorkspace(a.workspaceName(), newKey)
 }

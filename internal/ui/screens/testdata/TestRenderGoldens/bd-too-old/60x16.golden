@@ -1,0 +1,16 @@
+                                                            
+  ! bd 1.1.0 is too old                                     
+                                                            
+  + bd           /usr/bin/bd                                
+  x version      1.1.0 - needs 1.2.2 or newer               
+  - JSON schema  not run                                    
+  - workspace    not run                                    
+  - snapshot     not run                                    
+                                                            
+  What to do                                                
+  > $ go install github.com/gastownhall/beads/cmd/bd@latest 
+      # your bd was built with Go                           
+    $ brew upgrade beads                                    
+      # or with Homebrew                                    
+                                                            
+  q quit  r recheck now  Up/Dn pick  y copy fix             

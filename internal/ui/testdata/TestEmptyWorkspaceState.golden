@@ -1,0 +1,24 @@
+ [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                             No issues in demo yet.                             
+       bdash picks up new issues within about 2 s, whoever creates them.        
+                                                                                
+                 bd create "First task" -t task  bd quickstart                  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+ bd create "First task" -t task  bd quickstart  ? help  q quit  j/k move        

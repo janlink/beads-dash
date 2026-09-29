@@ -1,0 +1,24 @@
+                                                                                
+  ! bd is not installed                                                         
+                                                                                
+  bdash reads and writes everything through the bd CLI, and there is no bd on   
+  PATH.                                                                         
+                                                                                
+  x bd           not found on PATH                                              
+  - version      not run                                                        
+  - JSON schema  not run                                                        
+  - workspace    not run                                                        
+  - snapshot     not run                                                        
+                                                                                
+  What to do                                                                    
+  > $ brew install beads                                                        
+      # Homebrew (macOS, Linux)                                                 
+    $ go install github.com/gastownhall/beads/cmd/bd@latest                     
+      # Go toolchain                                                            
+    $ BDASH_BD=/path/to/bd bdash                                                
+      # bd is installed somewhere else                                          
+    Installed already? Put its directory on PATH and press r.                   
+                                                                                
+  same report: bdash -v                                                         
+                                                                                
+  q quit  r recheck now  Up/Dn pick  y copy fix                                 

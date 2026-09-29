@@ -1,0 +1,16 @@
+                                                            
+  ! bd is not installed                                     
+                                                            
+  x bd           not found on PATH                          
+  - version      not run                                    
+  - JSON schema  not run                                    
+  - workspace    not run                                    
+  - snapshot     not run                                    
+                                                            
+  What to do                                                
+  > $ brew install beads                                    
+      # Homebrew (macOS, Linux)                             
+    $ go install github.com/gastownhall/beads/cmd/bd@latest 
+      # Go toolchain                                        
+                                                            
+  q quit  r recheck now  Up/Dn pick  y copy fix             
