@@ -1,0 +1,26 @@
+Usage: bdash [flags] [path]
+
+Terminal dashboard for the bd (beads) issue tracker.
+[path] is the workspace directory bd runs from (default: current directory).
+
+Flags:
+  --view <name>   start view: overview|tree|kanban|ready|memories|graph
+  --no-mouse      turn mouse support off
+  -v, --version   print the bdash version and the bd support check, then exit
+  -h, --help      print this help, then exit
+
+Files:
+  config     /home/jan/.config/bdash/config.toml
+  history    /home/jan/.local/state/bdash/history
+  workspaces /home/jan/.local/state/bdash/workspaces.json
+
+Environment:
+  BDASH_CONFIG_DIR      directory holding config.toml
+  BDASH_GLYPHS          glyph tier: auto|fancy|safe|ascii
+  BDASH_COLOR           colour depth: auto|truecolor|256|16|none
+  NO_COLOR              any non-empty value turns colour off (config color wins)
+  BDASH_BD              path to the bd binary
+  BDASH_TIMEOUT_SCALE   factor applied to bd timeouts
+  BEADS_DIR             passed through to bd, which reads it itself
+
+Precedence: flag > environment > config file > default.
