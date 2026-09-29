@@ -42,8 +42,9 @@ func journalRecipe(e testbd.Env) error {
 	return nil
 }
 
-// visibleWithin bounds the wait for a change made by another process; the
-// design promises about 2 s, the guard only keeps a broken run from hanging.
+// visibleWithin bounds the wait for a change made by another process; a
+// change should show within about 2 s, the guard only keeps a broken run from
+// hanging.
 const visibleWithin = 20 * time.Second
 
 // seenBound is the assertion: the update itself runs about 1 s, the gate or

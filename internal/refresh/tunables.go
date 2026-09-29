@@ -7,8 +7,7 @@ import (
 )
 
 // Tunables are the engine's timing knobs. The first six mirror the
-// refresh.* settings; the rest are fixed by the design and only tests change
-// them.
+// refresh.* settings; the rest are fixed and only tests change them.
 type Tunables struct {
 	// GatePolling and GateEvents are the vc status gate intervals per mode.
 	GatePolling time.Duration
@@ -51,7 +50,7 @@ type Tunables struct {
 	SeqResetRefreshes int
 }
 
-// DefaultTunables returns the values of the design.
+// DefaultTunables returns the default timing values.
 func DefaultTunables() Tunables {
 	return TunablesFrom(config.Defaults().Refresh)
 }

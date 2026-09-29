@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# M1 fixture gaps that capture.sh and capture-extras.sh do not cover: custom
+# Fixture gaps that capture.sh and capture-extras.sh do not cover: custom
 # statuses without a category, config get, error shapes in envelope mode with
 # exit codes, and the schema-skew error. Runs the bd on PATH.
 # Usage: capture-m1.sh <empty-dir> <out-dir>
