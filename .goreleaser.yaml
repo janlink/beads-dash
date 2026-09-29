@@ -1,0 +1,23 @@
+version: 2
+
+project_name: bdash
+
+builds:
+  - main: ./cmd/bdash
+    binary: bdash
+    env:
+      - CGO_ENABLED=0
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+    ignore:
+      - goos: windows
+        goarch: arm64
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [binary]
+
+checksum:
+  name_template: checksums.txt

@@ -1,0 +1,49 @@
+version: "2"
+
+run:
+  timeout: 5m
+
+linters:
+  default: standard
+  enable:
+    - errorlint
+    - exhaustive
+    - forbidigo
+    - gocritic
+    - misspell
+    - nolintlint
+    - revive
+  settings:
+    exhaustive:
+      default-signifies-exhaustive: false
+    forbidigo:
+      analyze-types: true
+      forbid:
+        - pattern: ^exec\.Command(Context)?$
+          msg: exec.Command is confined to internal/bd and internal/testbd
+    gocritic:
+      enabled-checks:
+        - ruleguard
+      settings:
+        ruleguard:
+          failOn: all
+          rules: tools/ruleguard/rules.go
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+  exclusions:
+    presets:
+      - comments
+      - std-error-handling
+    rules:
+      - path: internal/(bd|testbd)/
+        linters: [forbidigo]
+
+formatters:
+  enable:
+    - gofumpt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/janlink/beads-dash

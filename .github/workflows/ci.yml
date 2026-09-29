@@ -1,0 +1,73 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  full:
+    name: full (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - uses: extractions/setup-just@v4
+      - uses: actions/cache@v6
+        with:
+          path: .cache
+          key: tools-bd-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('justfile', 'scripts/install-bd.sh') }}
+      - run: just ci
+
+  race:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - uses: extractions/setup-just@v4
+      - uses: actions/cache@v6
+        with:
+          path: .cache
+          key: tools-bd-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('justfile', 'scripts/install-bd.sh') }}
+      - run: just test-race
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - uses: extractions/setup-just@v4
+      - run: just ci-windows
+        shell: bash
+
+  bd:
+    name: bd ${{ matrix.bd }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        bd: ["1.2.2", "1.3.0"]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - uses: extractions/setup-just@v4
+      - uses: actions/cache@v6
+        with:
+          path: .cache
+          key: tools-bd-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('justfile', 'scripts/install-bd.sh') }}
+      - run: just integration ${{ matrix.bd }}

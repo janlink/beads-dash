@@ -6,3 +6,11 @@
 .beads/proxieddb/
 
 .beads/
+
+# Go / tooling
+.cache/
+dist/
+/bdash
+/bdash.exe
+*.test
+*.out
