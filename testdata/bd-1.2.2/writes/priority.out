@@ -1,0 +1,18 @@
+{
+  "created_at": "2026-09-29T07:40:54Z",
+  "created_by": "janlink",
+  "description": "new desc",
+  "id": "r3a-vgk",
+  "issue_type": "feature",
+  "labels": [
+    "a",
+    "b"
+  ],
+  "owner": "tester@example.com",
+  "priority": 0,
+  "schema_version": 1,
+  "started_at": "2026-09-29T07:41:03Z",
+  "status": "open",
+  "title": "Renamed",
+  "updated_at": "2026-09-29T07:41:21Z"
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "r3a-vgk",
+    "title": "Renamed",
+    "description": "new desc",
+    "status": "open",
+    "priority": 1,
+    "issue_type": "story",
+    "assignee": "carol",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:40:54Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:41:36Z",
+    "started_at": "2026-09-29T07:41:03Z",
+    "labels": [
+      "a",
+      "b",
+      "multi"
+    ]
+  }
+]

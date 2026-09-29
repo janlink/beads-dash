@@ -1,0 +1,1092 @@
+[
+  {
+    "id": "r3n50-00019",
+    "title": "Issue 19 fix fix api refactor docs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 0,
+    "issue_type": "chore",
+    "assignee": "agent-1",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "docs",
+      "ui"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00020",
+    "title": "Issue 20 docs ui ui api perf",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 0,
+    "issue_type": "bug",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00023",
+    "title": "Issue 23 refactor perf ui docs docs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 0,
+    "issue_type": "chore",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "labels": [
+      "sec"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00034",
+    "title": "Issue 34 add add api fix ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 0,
+    "issue_type": "decision",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "infra",
+      "perf",
+      "sec"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00039",
+    "title": "Issue 39 add refactor fix fix add",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 0,
+    "issue_type": "decision",
+    "assignee": "agent-1",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "docs"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00040",
+    "title": "Issue 40 add perf perf docs docs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "blocked",
+    "priority": 0,
+    "issue_type": "chore",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00040",
+        "depends_on_id": "r3n50-00025",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00045",
+    "title": "Issue 45 refactor api api perf ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 0,
+    "issue_type": "decision",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "backend",
+      "infra"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00003",
+    "title": "Issue 3 ui perf api refactor api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "in_progress",
+    "priority": 0,
+    "issue_type": "bug",
+    "assignee": "bob",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "docs",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00003",
+        "depends_on_id": "r3n50-00002",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00007",
+    "title": "Issue 7 api add refactor fix ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 0,
+    "issue_type": "decision",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "docs",
+      "perf"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00008",
+    "title": "Issue 8 api docs docs fix docs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "in_progress",
+    "priority": 0,
+    "issue_type": "task",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "perf",
+      "sec",
+      "ui"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00013",
+    "title": "Issue 13 api refactor perf perf fix",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 0,
+    "issue_type": "task",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "closed_at": "2026-09-29T07:45:38Z",
+    "close_reason": "done",
+    "labels": [
+      "docs",
+      "sec"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00024",
+    "title": "Issue 24 api api docs ui refactor",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "in_progress",
+    "priority": 1,
+    "issue_type": "bug",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "infra",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00024",
+        "depends_on_id": "r3n50-00017",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00032",
+    "title": "Issue 32 ui refactor docs perf perf",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "deferred",
+    "priority": 1,
+    "issue_type": "decision",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "infra",
+      "perf",
+      "sec"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00041",
+    "title": "Issue 41 perf ui refactor refactor api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 1,
+    "issue_type": "feature",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "labels": [
+      "docs",
+      "sec"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00041",
+        "depends_on_id": "r3n50-00030",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00042",
+    "title": "Issue 42 docs api fix api refactor",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 1,
+    "issue_type": "feature",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "labels": [
+      "backend",
+      "infra",
+      "sec"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00044",
+    "title": "Issue 44 perf refactor fix api perf",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "deferred",
+    "priority": 1,
+    "issue_type": "epic",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "perf",
+      "sec",
+      "ui"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00002",
+    "title": "Issue 2 fix add refactor api fix",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "in_progress",
+    "priority": 1,
+    "issue_type": "bug",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "perf",
+      "sec"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00002",
+        "depends_on_id": "r3n50-00001",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 2,
+    "comment_count": 0,
+    "parent": "r3n50-00001"
+  },
+  {
+    "id": "r3n50-00005",
+    "title": "Issue 5 perf docs docs perf api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 1,
+    "issue_type": "chore",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "closed_at": "2026-09-29T07:45:38Z",
+    "close_reason": "done",
+    "labels": [
+      "infra",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00005",
+        "depends_on_id": "r3n50-00003",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r3n50-00003"
+  },
+  {
+    "id": "r3n50-00006",
+    "title": "Issue 6 fix perf ui docs docs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 1,
+    "issue_type": "bug",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "closed_at": "2026-09-29T07:45:38Z",
+    "close_reason": "done",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00009",
+    "title": "Issue 9 perf ui ui perf docs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 1,
+    "issue_type": "chore",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00009",
+        "depends_on_id": "r3n50-00003",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r3n50-00003"
+  },
+  {
+    "id": "r3n50-00010",
+    "title": "Issue 10 fix add fix refactor ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 1,
+    "issue_type": "epic",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "perf"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00022",
+    "title": "Issue 22 refactor refactor ui refactor refactor",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "in_progress",
+    "priority": 2,
+    "issue_type": "chore",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00022",
+        "depends_on_id": "r3n50-00018",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00026",
+    "title": "Issue 26 api docs api docs api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "epic",
+    "assignee": "agent-1",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00028",
+    "title": "Issue 28 add fix refactor perf perf",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 2,
+    "issue_type": "task",
+    "assignee": "bob",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "labels": [
+      "infra",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00028",
+        "depends_on_id": "r3n50-00019",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      },
+      {
+        "issue_id": "r3n50-00028",
+        "depends_on_id": "r3n50-00015",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r3n50-00019"
+  },
+  {
+    "id": "r3n50-00031",
+    "title": "Issue 31 api add api refactor refactor",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "deferred",
+    "priority": 2,
+    "issue_type": "feature",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "docs",
+      "perf",
+      "sec"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00031",
+        "depends_on_id": "r3n50-00015",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00033",
+    "title": "Issue 33 api add perf refactor api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "task",
+    "assignee": "agent-1",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "backend",
+      "infra",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00033",
+        "depends_on_id": "r3n50-00032",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r3n50-00032"
+  },
+  {
+    "id": "r3n50-00038",
+    "title": "Issue 38 ui api api docs api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 2,
+    "issue_type": "chore",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "labels": [
+      "docs",
+      "perf",
+      "sec"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00047",
+    "title": "Issue 47 add api fix refactor ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 2,
+    "issue_type": "bug",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "labels": [
+      "backend",
+      "infra",
+      "perf"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00047",
+        "depends_on_id": "r3n50-00010",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r3n50-00010"
+  },
+  {
+    "id": "r3n50-00011",
+    "title": "Issue 11 ui perf fix add docs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "in_progress",
+    "priority": 2,
+    "issue_type": "epic",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "ui"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00016",
+    "title": "Issue 16 add docs docs api perf",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 2,
+    "issue_type": "chore",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "closed_at": "2026-09-29T07:45:38Z",
+    "close_reason": "done",
+    "labels": [
+      "backend"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00017",
+    "title": "Issue 17 add fix add add api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 3,
+    "issue_type": "decision",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00017",
+        "depends_on_id": "r3n50-00002",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 1,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00018",
+    "title": "Issue 18 add api fix add add",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "blocked",
+    "priority": 3,
+    "issue_type": "task",
+    "assignee": "bob",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "backend",
+      "infra",
+      "sec"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 2,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00021",
+    "title": "Issue 21 refactor perf ui perf docs",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 3,
+    "issue_type": "epic",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "labels": [
+      "ui"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00025",
+    "title": "Issue 25 ui docs refactor perf ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "in_progress",
+    "priority": 3,
+    "issue_type": "feature",
+    "assignee": "agent-1",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "backend"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 1,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00027",
+    "title": "Issue 27 fix fix perf refactor perf",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "blocked",
+    "priority": 3,
+    "issue_type": "task",
+    "assignee": "bob",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "backend",
+      "docs",
+      "infra"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00029",
+    "title": "Issue 29 refactor docs ui fix ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 3,
+    "issue_type": "bug",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "labels": [
+      "backend"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00029",
+        "depends_on_id": "r3n50-00001",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00030",
+    "title": "Issue 30 fix refactor api docs api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 3,
+    "issue_type": "epic",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "closed_at": "2026-09-29T07:45:39Z",
+    "close_reason": "done",
+    "dependency_count": 0,
+    "dependent_count": 1,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00036",
+    "title": "Issue 36 docs docs ui docs add",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 3,
+    "issue_type": "feature",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "docs",
+      "sec"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 1,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00037",
+    "title": "Issue 37 docs api ui fix ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 3,
+    "issue_type": "bug",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "infra",
+      "perf",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00037",
+        "depends_on_id": "r3n50-00035",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      },
+      {
+        "issue_id": "r3n50-00037",
+        "depends_on_id": "r3n50-00036",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r3n50-00036"
+  },
+  {
+    "id": "r3n50-00043",
+    "title": "Issue 43 ui add fix docs fix",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 3,
+    "issue_type": "bug",
+    "assignee": "agent-2",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00043",
+        "depends_on_id": "r3n50-00030",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r3n50-00030"
+  },
+  {
+    "id": "r3n50-00001",
+    "title": "Issue 1 docs api refactor refactor ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "blocked",
+    "priority": 3,
+    "issue_type": "feature",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "backend",
+      "perf"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 1,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00012",
+    "title": "Issue 12 ui refactor docs refactor fix",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "closed",
+    "priority": 3,
+    "issue_type": "feature",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "closed_at": "2026-09-29T07:45:38Z",
+    "close_reason": "done",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00015",
+    "title": "Issue 15 docs add add fix ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "blocked",
+    "priority": 3,
+    "issue_type": "task",
+    "assignee": "bob",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "dependency_count": 0,
+    "dependent_count": 2,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00048",
+    "title": "Issue 48 api docs perf docs add",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 4,
+    "issue_type": "feature",
+    "created_at": "2026-09-29T07:45:39Z",
+    "updated_at": "2026-09-29T07:45:39Z",
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00049",
+    "title": "Issue 49 ui perf fix ui fix",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 4,
+    "issue_type": "bug",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:39Z",
+    "updated_at": "2026-09-29T07:45:39Z",
+    "labels": [
+      "backend",
+      "docs",
+      "ui"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00050",
+    "title": "Issue 50 ui add add add perf",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 4,
+    "issue_type": "chore",
+    "assignee": "agent-1",
+    "created_at": "2026-09-29T07:45:39Z",
+    "updated_at": "2026-09-29T07:45:39Z",
+    "labels": [
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00050",
+        "depends_on_id": "r3n50-00036",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00035",
+    "title": "Issue 35 perf api refactor api ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "in_progress",
+    "priority": 4,
+    "issue_type": "decision",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "docs",
+      "perf",
+      "ui"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 1,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00046",
+    "title": "Issue 46 add add perf docs ui",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "blocked",
+    "priority": 4,
+    "issue_type": "epic",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:38Z",
+    "updated_at": "2026-09-29T07:45:38Z",
+    "labels": [
+      "perf",
+      "sec"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00046",
+        "depends_on_id": "r3n50-00018",
+        "type": "blocks",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00004",
+    "title": "Issue 4 ui perf docs add refactor",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 4,
+    "issue_type": "epic",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "perf",
+      "sec",
+      "ui"
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0
+  },
+  {
+    "id": "r3n50-00014",
+    "title": "Issue 14 api ui perf add api",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "open",
+    "priority": 4,
+    "issue_type": "decision",
+    "assignee": "alice",
+    "created_at": "2026-09-29T07:45:37Z",
+    "updated_at": "2026-09-29T07:45:37Z",
+    "labels": [
+      "infra"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r3n50-00014",
+        "depends_on_id": "r3n50-00009",
+        "type": "parent-child",
+        "created_at": "2026-09-29T07:45:39Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r3n50-00009"
+  }
+]

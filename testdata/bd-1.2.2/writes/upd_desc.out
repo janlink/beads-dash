@@ -1,0 +1,19 @@
+[
+  {
+    "id": "r3a-vgk",
+    "title": "Renamed",
+    "description": "new desc",
+    "status": "open",
+    "priority": 1,
+    "issue_type": "bug",
+    "assignee": "alice",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:40:54Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:41:02Z",
+    "labels": [
+      "backend",
+      "ui"
+    ]
+  }
+]

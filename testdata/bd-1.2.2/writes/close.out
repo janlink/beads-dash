@@ -1,0 +1,21 @@
+[
+  {
+    "id": "r3a-vgk",
+    "title": "Renamed",
+    "description": "new desc",
+    "status": "closed",
+    "priority": 3,
+    "issue_type": "feature",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T07:40:54Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T07:41:18Z",
+    "started_at": "2026-09-29T07:41:03Z",
+    "closed_at": "2026-09-29T07:41:18Z",
+    "close_reason": "done it",
+    "labels": [
+      "a",
+      "b"
+    ]
+  }
+]

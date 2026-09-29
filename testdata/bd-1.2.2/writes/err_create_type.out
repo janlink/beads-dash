@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-09-29T07:41:39.89998212Z",
+  "created_by": "janlink",
+  "id": "r3a-w8k",
+  "issue_type": "story",
+  "owner": "tester@example.com",
+  "priority": 2,
+  "schema_version": 1,
+  "status": "open",
+  "title": "x",
+  "updated_at": "2026-09-29T07:41:39.89998212Z"
+}

@@ -8,3 +8,4 @@ Real `--json` output captured from bd 1.2.2 in a throwaway workspace. Parser tes
 
 Workspace paths were rewritten to `/tmp/` and author e-mails to `tester@example.com`.
 - `history-memories/`: `bd history`, `bd diff`, `bd comments`, `bd memories`/`recall`/`remember`, `bd kv`, `bd status`, `bd stale`, `bd vc status` samples (not covered by `capture.sh`). `history-scale-413.json` is one issue's history in a workspace with ~413 Dolt commits.
+- `writes/`: stdout (`*.out`) and stderr (`*.err`) of `bd create`, `update`, `close`, `reopen`, `priority`, `assign`, `label`, plus `err_*` failure cases and `vc status` samples. Large 500/5000-issue list dumps were left out.
