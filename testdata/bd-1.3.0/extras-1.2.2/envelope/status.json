@@ -1,0 +1,17 @@
+{
+  "data": {
+    "summary": {
+      "total_issues": 19,
+      "open_issues": 11,
+      "in_progress_issues": 1,
+      "closed_issues": 1,
+      "blocked_issues": 6,
+      "deferred_issues": 1,
+      "ready_issues": 5,
+      "pinned_issues": 0,
+      "epics_eligible_for_closure": 0,
+      "average_lead_time_hours": 0
+    }
+  },
+  "schema_version": 1
+}

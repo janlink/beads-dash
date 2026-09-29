@@ -1,0 +1,125 @@
+{
+  "data": [
+    {
+      "id": "r1-t6o.1",
+      "title": "Child task A1",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:39Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:55Z",
+      "started_at": "2026-09-29T08:09:55Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "blocked_by_count": 1,
+      "blocked_by": [
+        "r1-t6o"
+      ]
+    },
+    {
+      "id": "r1-t6o",
+      "title": "Epic A",
+      "description": "Epic **markdown**",
+      "status": "open",
+      "priority": 1,
+      "issue_type": "epic",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:38Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:38Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "blocked_by_count": 1,
+      "blocked_by": [
+        "r1-0ae"
+      ]
+    },
+    {
+      "id": "r1-t6o.1.1",
+      "title": "Grandchild of A1",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:44Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:44Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "blocked_by_count": 1,
+      "blocked_by": [
+        "r1-t6o.1"
+      ]
+    },
+    {
+      "id": "r1-5gt",
+      "title": "Decision X",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "decision",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:42Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:42Z",
+      "blocked_by_count": 1,
+      "blocked_by": [
+        "r1-t6o.3"
+      ]
+    },
+    {
+      "id": "r1-t6o.2",
+      "title": "Child bug A2",
+      "design": "design text",
+      "acceptance_criteria": "AC here",
+      "notes": "some notes",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "bug",
+      "assignee": "agent-7",
+      "owner": "tester@example.com",
+      "estimated_minutes": 90,
+      "created_at": "2026-09-29T08:09:40Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:57Z",
+      "due_at": "2026-10-14T22:00:00Z",
+      "external_ref": "gh-12",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "blocked_by_count": 1,
+      "blocked_by": [
+        "r1-t6o"
+      ]
+    },
+    {
+      "id": "r1-t6o.3",
+      "title": "Feature blocked by A1",
+      "status": "open",
+      "priority": 3,
+      "issue_type": "feature",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:41Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:41Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "blocked_by_count": 1,
+      "blocked_by": [
+        "r1-t6o.1"
+      ]
+    }
+  ],
+  "schema_version": 1
+}

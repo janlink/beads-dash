@@ -1,0 +1,75 @@
+[
+  {
+    "id": "r1-ao5.2",
+    "title": "Child bug A2",
+    "design": "design text",
+    "acceptance_criteria": "AC here",
+    "notes": "some notes",
+    "status": "open",
+    "priority": 2,
+    "issue_type": "bug",
+    "assignee": "agent-7",
+    "owner": "tester@example.com",
+    "estimated_minutes": 90,
+    "created_at": "2026-09-29T08:08:53Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T08:09:10Z",
+    "due_at": "2026-10-15T00:00:00Z",
+    "external_ref": "gh-12",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r1-ao5.2",
+        "depends_on_id": "r1-ao5",
+        "type": "parent-child",
+        "created_at": "2026-09-29T10:08:53Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 0,
+    "dependent_count": 0,
+    "comment_count": 0,
+    "parent": "r1-ao5"
+  },
+  {
+    "id": "r1-ao5.3",
+    "title": "Feature blocked by A1",
+    "status": "open",
+    "priority": 3,
+    "issue_type": "feature",
+    "owner": "tester@example.com",
+    "created_at": "2026-09-29T08:08:54Z",
+    "created_by": "janlink",
+    "updated_at": "2026-09-29T08:08:54Z",
+    "labels": [
+      "area:core",
+      "ui"
+    ],
+    "dependencies": [
+      {
+        "issue_id": "r1-ao5.3",
+        "depends_on_id": "r1-ao5.1",
+        "type": "blocks",
+        "created_at": "2026-09-29T10:09:02Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      },
+      {
+        "issue_id": "r1-ao5.3",
+        "depends_on_id": "r1-ao5",
+        "type": "parent-child",
+        "created_at": "2026-09-29T10:08:54Z",
+        "created_by": "janlink",
+        "metadata": "{}"
+      }
+    ],
+    "dependency_count": 1,
+    "dependent_count": 1,
+    "comment_count": 0,
+    "parent": "r1-ao5"
+  }
+]

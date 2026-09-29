@@ -1,0 +1,83 @@
+{
+  "data": [
+    {
+      "id": "r1-ao5.1",
+      "title": "Child task A1",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:08:53Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:09Z",
+      "started_at": "2026-09-29T08:09:09Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "dependency_count": 0,
+      "dependent_count": 1,
+      "comment_count": 2
+    },
+    {
+      "id": "r1-b26",
+      "title": "Hooked task",
+      "status": "hooked",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:00Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:07Z",
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0
+    },
+    {
+      "id": "r1-2gj",
+      "title": "Pinned task",
+      "status": "pinned",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:08:59Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:07Z",
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0
+    },
+    {
+      "id": "r1-8kg",
+      "title": "Deferred task",
+      "status": "deferred",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:08:59Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:06Z",
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0
+    },
+    {
+      "id": "r1-o2s",
+      "title": "Closed task",
+      "status": "closed",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:08:58Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:06Z",
+      "closed_at": "2026-09-29T08:09:06Z",
+      "close_reason": "done for test",
+      "dependency_count": 0,
+      "dependent_count": 1,
+      "comment_count": 0
+    }
+  ],
+  "schema_version": 1
+}

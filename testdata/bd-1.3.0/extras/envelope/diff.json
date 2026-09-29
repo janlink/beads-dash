@@ -1,0 +1,6 @@
+{
+  "data": {
+    "error": "failed to get diff: invalid fromRef: invalid ref format: HEAD~1"
+  },
+  "schema_version": 1
+}

@@ -1,0 +1,651 @@
+{
+  "data": [
+    {
+      "CommitHash": "1sirlnu22252ig0tjmnngvsjd2qptddp",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:10.525+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:09Z"
+      }
+    },
+    {
+      "CommitHash": "1doh3hnahp058k6gc3d020otafueim2n",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:10.318+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:09Z"
+      }
+    },
+    {
+      "CommitHash": "vo5hmvqurmmf69rdh9bftiktrflhp0v2",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:10.088+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:09Z"
+      }
+    },
+    {
+      "CommitHash": "90cdk6pbto081pj2a8221s7srfi1t4gm",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:09.764+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:09Z"
+      }
+    },
+    {
+      "CommitHash": "8ehf87sgosq8fri06dab3udig6p7d1c2",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:09.491+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:09Z"
+      }
+    },
+    {
+      "CommitHash": "3uh4g55isffmtfdjagsunq9qn9f1fqql",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:09.174+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:09Z"
+      }
+    },
+    {
+      "CommitHash": "di693tk28f6idolk7eciqtlhr3edsm7h",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:08.81+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:09Z"
+      }
+    },
+    {
+      "CommitHash": "dg60vpo9fi52lr5riuvnabrkpe6uj485",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:08.486+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "fdmgvcan33i6fff4fj1sthjsqjghj5kh",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:07.957+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "2ti48j16j49et627g8b87iha2fa6qcm3",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:07.535+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "4mlv93u32l0b6hm9isb55ed9i8d9j3nn",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:06.952+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "q6eogpkot3cc1fia9h4j9tqk2mog14tt",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:06.472+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "2l9voo4jhesfkksfnldc3tckfmks8c3j",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:06.019+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "bthtfno9at8s4jdfqgoe19mu2mt4u38u",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:05.253+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "imiv03fdrf4f11mbqha5bglnutvfqf3v",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:04.694+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "8icond7q8njdch64o7r0t58cbsgasjdb",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:04.234+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "ek0254i8o3ov3m6b3l4c4q60mcpt4oab",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:03.749+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "6s42a074sck4mi2mbio41m8q0pqi0v62",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:03.205+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "j7po3a1r2i36n58boeomtc7gv333gg8r",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:02.704+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "m9hc1kd472b5chsd8l18qso6v0h0bhb4",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:02.201+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "0g50bedu77ksi4skbv2q2pd4hrr2mkjn",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:01.765+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "rfjg6ieb74tv0irf972qird6qqvpd8iv",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:01.334+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "578sruaass8c3ganerhga758dgslkfg8",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:00.84+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "ua6rdgmjjf6fickp9t8vj2pgiukd2lq9",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:00.401+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "vbods96hs2399vj85r92k3bpih8gs7ok",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:59.808+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "a1eco5bpm3ior594feere8lf3e2joq4l",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:59.21+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "47e6deq0pii8hs0re6hmtqo0kcifi5uu",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:58.681+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "7khqa8upe9l53c6s7u6fp45qepoctq7l",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:58.262+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "5spartksoaq4fg049oj640q5a31d1d2n",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:57.805+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "kqm7a5f0su49hauti4jnmlr6vhfb780d",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:57.125+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "ueml7t4aae918aotqk7dgfcf56l54h87",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:56.723+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "2dktj36nt85m0lsbf1p75mkjrj29cvv0",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:56.271+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "3sil3u2s334jdsniueb191hcrf9b7el4",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:55.82+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "4nmtgtcq5kqjep91r656gleg3ioc1v09",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:55.405+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "18vsne8upjp8jr8lc7kaqcluciq3ce00",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:54.938+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "1sg97b3qct2di1dleifbvdcqjur74hvh",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:54.375+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "m6eskrh81j4q62gh2vemvsqeitu1f9sh",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:53.541+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    },
+    {
+      "CommitHash": "its94e408p1t851qsks6femlir5qrbc8",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:08:52.701+02:00",
+      "Issue": {
+        "id": "r1-ao5.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:08:53Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:08:53Z"
+      }
+    }
+  ],
+  "schema_version": 1
+}

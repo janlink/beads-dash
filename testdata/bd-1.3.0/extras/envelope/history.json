@@ -1,0 +1,719 @@
+{
+  "data": [
+    {
+      "CommitHash": "jlnmfj3v1ucgd6j6tstjqrkakeuac8p0",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:57.226+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:55Z"
+      }
+    },
+    {
+      "CommitHash": "hlkdpug9vu62msg6lbrn9cr3ak9n6nn5",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:56.979+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:55Z"
+      }
+    },
+    {
+      "CommitHash": "cnrtf2ndupo8jaam5bq0olmbn634r0vk",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:56.721+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:55Z"
+      }
+    },
+    {
+      "CommitHash": "olkqp90m0fomo27cbrtqe2pr9urp7fkh",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:56.349+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:55Z"
+      }
+    },
+    {
+      "CommitHash": "puh10n4f4fbs1ii60qd44ed3o9tu4ncb",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:55.979+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:55Z"
+      }
+    },
+    {
+      "CommitHash": "i7tctiennqpo2khmtgrdus8s3s1fd4cp",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:55.629+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:55Z"
+      }
+    },
+    {
+      "CommitHash": "773dgbuqdo6q1937lrb625o3eou695f0",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:55.139+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "in_progress",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:55Z"
+      }
+    },
+    {
+      "CommitHash": "3av5bi2b5qve9sdqndju4110j9oi7sko",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:54.709+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "q77kaarksfk07n2pnreaoufjgv4sk5jm",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:54.354+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "rt997usb177us656am1b3i734vavchp0",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:53.996+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "or4k5uor3es8j07bpbplgobsrpcrkdlk",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:53.637+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "3fu7qv564cni8cdhm94qd00jj2llkoa7",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:53.189+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "9totvcs08mvdjddod8svl1nd835tulqh",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:52.783+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "1ohoaq9i5jq48pog3ehudrphmhl4iu81",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:52.319+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "p7tqum4urao2lt0f09t2qsm8si0sjqpb",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:52.201+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "lc3dta8rr4rlo4qu1qv642u1t934v0st",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:51.622+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "d4e48k20mubovmmg7epajve405ttt7b1",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:51.149+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "543fhh559ujkdmbbhu23nee4cfsvh195",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:50.749+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "qk0as8prv3t9shtmhifp8ur033bnui13",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:50.646+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "b6sot3be3j8fki7o18l25uoqb886bf9h",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:50.1+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "vfku2kvbgrtcpn2i0fh6jdn537glhvu1",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:49.628+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "8hipvr1p1padp9c9g1irbtm9etuof7ap",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:49.496+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "vib0i6n1k4laps4gg3hs8875he4ltj6e",
+      "Committer": "root",
+      "CommitDate": "2026-09-29T10:09:49.062+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "t8b7vj2abqck9r86sr6q6dmj59tl50eu",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:48.943+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "kb88jpldm4hhcki03j9v46c8q2nmesfs",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:48.523+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "jes040gueb36mabt4fopkebm9ktkqbui",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:48.011+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "elksunknmrqnia1oa12ssgcgb2rk1ufh",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:47.527+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "8d4dj7jvkeeceepg1635e0e55kgqnalu",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:47.017+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "jphdrpjop6qjrecmvtre5d2dqtv8nfjd",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:46.517+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "uft056q5f76j46gslef0spmf09kvl7l0",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:46.034+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "eu07vhhoatdgb184ms8airflp75rh1cp",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:45.551+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "lb1ldshd028kcre0tc8orb9nkpkc43m0",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:45.032+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "lcvb834k659oeq4ofjq0355h2j55loa2",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:44.49+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "druil6oe9dvc2g3gs1c0b87l3pq6vcim",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:43.699+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "3t920m725se4bn91cm6eskra6s0i67p4",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:43.216+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "ikj7vnea58sd2667e0fu2tdi6r25dabp",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:42.721+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "gttp5csrd11e6qetic1f1c4ofocrq200",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:42.172+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "ahb2ohjcmbhosmaeusnnud76d4hgpdsa",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:41.688+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "atduseart2asvhs74co48slv3lsq381c",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:41.222+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "ncr0jg55oenr5sagpqpgnfa37e1ddf54",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:40.73+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "6fhqmjsjat472n7h0eofhq3qovcca86m",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:40.072+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    },
+    {
+      "CommitHash": "0k2orpt6n1ndk0beh1ulgmd3ij9165os",
+      "Committer": "beads",
+      "CommitDate": "2026-09-29T10:09:39.422+02:00",
+      "Issue": {
+        "id": "r1-t6o.1",
+        "title": "Child task A1",
+        "status": "open",
+        "priority": 0,
+        "issue_type": "task",
+        "assignee": "alice",
+        "owner": "tester@example.com",
+        "created_at": "2026-09-29T08:09:39Z",
+        "created_by": "janlink",
+        "updated_at": "2026-09-29T08:09:39Z"
+      }
+    }
+  ],
+  "schema_version": 1
+}

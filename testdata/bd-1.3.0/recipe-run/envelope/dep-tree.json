@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "id": "r1-5gt",
+      "title": "Decision X",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "decision",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:42Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:42Z",
+      "depth": 0,
+      "parent_id": "",
+      "truncated": false
+    },
+    {
+      "id": "r1-t6o.3",
+      "title": "Feature blocked by A1",
+      "status": "open",
+      "priority": 3,
+      "issue_type": "feature",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:41Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:41Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "depth": 1,
+      "parent_id": "r1-5gt",
+      "edge_from_parent": "blocks",
+      "truncated": false
+    },
+    {
+      "id": "r1-t6o.1",
+      "title": "Child task A1",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:39Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:55Z",
+      "started_at": "2026-09-29T08:09:55Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "depth": 2,
+      "parent_id": "r1-t6o.3",
+      "edge_from_parent": "blocks",
+      "truncated": false
+    },
+    {
+      "id": "r1-t6o",
+      "title": "Epic A",
+      "description": "Epic **markdown**",
+      "status": "open",
+      "priority": 1,
+      "issue_type": "epic",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:38Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:38Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "depth": 3,
+      "parent_id": "r1-t6o.1",
+      "edge_from_parent": "parent-child",
+      "truncated": false
+    },
+    {
+      "id": "r1-0ae",
+      "title": "Epic B blocker",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "epic",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:48Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:48Z",
+      "depth": 4,
+      "parent_id": "r1-t6o",
+      "edge_from_parent": "blocks",
+      "truncated": false
+    }
+  ],
+  "schema_version": 1
+}

@@ -1,0 +1,7 @@
+{
+  "data": {
+    "bdash.test": "value1",
+    "memory.fixture-mem": "fixture memory"
+  },
+  "schema_version": 1
+}

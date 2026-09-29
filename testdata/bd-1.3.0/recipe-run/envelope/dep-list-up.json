@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": "r1-t6o.1.1",
+      "title": "Grandchild of A1",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:44Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:44Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "dependency_type": "parent-child"
+    },
+    {
+      "id": "r1-t6o.3",
+      "title": "Feature blocked by A1",
+      "status": "open",
+      "priority": 3,
+      "issue_type": "feature",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T08:09:41Z",
+      "created_by": "janlink",
+      "updated_at": "2026-09-29T08:09:41Z",
+      "labels": [
+        "area:core",
+        "ui"
+      ],
+      "dependency_type": "blocks"
+    }
+  ],
+  "schema_version": 1
+}
