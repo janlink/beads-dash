@@ -71,3 +71,15 @@ jobs:
           path: .cache
           key: tools-bd-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('justfile', 'scripts/install-bd.sh') }}
       - run: just integration ${{ matrix.bd }}
+
+  fixtures:
+    name: fixture freshness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: extractions/setup-just@v4
+      - uses: actions/cache@v6
+        with:
+          path: .cache
+          key: tools-bd-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('justfile', 'scripts/install-bd.sh') }}
+      - run: just fixture-freshness

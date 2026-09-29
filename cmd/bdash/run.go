@@ -81,17 +81,21 @@ func systemDeps() deps {
 		getenv:    os.Getenv,
 		paths:     config.SystemPaths,
 		build:     cli.NewBuildInfo(version, commit),
-		bdVersion: nil,
+		bdVersion: systemBdVersion(os.Getenv),
 		start:     start,
 	}
 }
 
-// versionTimeout bounds the bd call behind --version: 5 s scaled by
+// timeoutScale is BDASH_TIMEOUT_SCALE, 1 when unset or invalid.
+func timeoutScale(getenv func(string) string) float64 {
+	if v, err := strconv.ParseFloat(getenv(config.EnvTimeoutScale), 64); err == nil && v > 0 {
+		return v
+	}
+	return 1
+}
+
+// versionTimeout bounds the whole --version bd call: 5 s scaled by
 // BDASH_TIMEOUT_SCALE.
 func versionTimeout(getenv func(string) string) time.Duration {
-	scale := 1.0
-	if v, err := strconv.ParseFloat(getenv(config.EnvTimeoutScale), 64); err == nil && v > 0 {
-		scale = v
-	}
-	return time.Duration(float64(5*time.Second) * scale)
+	return time.Duration(float64(5*time.Second) * timeoutScale(getenv))
 }

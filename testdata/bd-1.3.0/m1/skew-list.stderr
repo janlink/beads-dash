@@ -1,0 +1,12 @@
+{
+  "data": {
+    "error": "schema version mismatch: database is at v66, binary knows up to v53 (13 migrations ahead)",
+    "hint": "BD_IGNORE_SCHEMA_SKEW=1 bd \u003ccommand\u003e  or  bd --ignore-schema-skew \u003ccommand\u003e"
+  },
+  "schema_skew": {
+    "current_version": 66,
+    "delta": 13,
+    "required_version": 53
+  },
+  "schema_version": 1
+}

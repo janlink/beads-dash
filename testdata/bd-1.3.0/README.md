@@ -10,3 +10,6 @@ Real `--json` output captured from bd 1.3.0 (f45b249ce) in a throwaway workspace
 `dep-cycles.json` is `[]` in both versions: bd refuses to create a blocking cycle through `dep add`, `--no-cycle-check` and `import` alike.
 
 Workspace paths were rewritten to `/tmp/` and author e-mails to `tester@example.com`.
+
+- `../capture-m1.sh <empty-dir> <out-dir>`: M1 gaps in envelope mode with exit codes (`*.rc`): custom statuses without a category (`unspecified`), `config get`, missing-workspace and missing-issue errors, and with `BD_OLD=<older bd>` the schema-skew error. Output is `m1/` here and `../bd-1.2.2/m1/` (no skew there).
+- `contract-corpus/`: bd's own contract corpus (`beads_1.3.0_contract_corpus.tar.gz`, `flat/` and `envelope/` blobs with a `manifest.json`) as extra parser input, fetched by `../../scripts/vendor-contract-corpus.sh 1.3.0`. Timestamps are canonicalised to `<TS>`.

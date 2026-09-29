@@ -8,7 +8,9 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+	"time"
 
+	"github.com/janlink/beads-dash/internal/bd"
 	"github.com/janlink/beads-dash/internal/cli"
 	"github.com/janlink/beads-dash/internal/config"
 )
@@ -180,5 +182,66 @@ func TestRunNilBdVersionPrintsBdashOnly(t *testing.T) {
 	})
 	if code != 0 || out.String() != "bdash dev (go1.26)\n" {
 		t.Errorf("exit %d out %q", code, out.String())
+	}
+}
+
+func TestBdVersionLine(t *testing.T) {
+	found := func(string) (string, error) { return "/opt/bd", nil }
+	probeOf := func(raw string) func(context.Context, string, bd.Timeouts) (bd.VersionInfo, error) {
+		return func(_ context.Context, _ string, _ bd.Timeouts) (bd.VersionInfo, error) { return bd.CheckVersion(raw) }
+	}
+	tests := []struct {
+		name   string
+		env    map[string]string
+		look   func(string) (string, error)
+		probe  func(context.Context, string, bd.Timeouts) (bd.VersionInfo, error)
+		want   string
+		wantIn string
+	}{
+		{name: "supported", look: found, probe: probeOf("1.3.0"), want: "bd 1.3.0 at /opt/bd: supported"},
+		{name: "untested", look: found, probe: probeOf("1.9.0"), wantIn: "bd 1.9.0 at /opt/bd: untested ("},
+		{name: "unsupported", look: found, probe: probeOf("1.2.1"), wantIn: "bd at /opt/bd: unsupported"},
+		{
+			name: "not on PATH", look: func(string) (string, error) { return "", errors.New("nope") },
+			probe: probeOf("1.3.0"), want: "bd: not found (PATH)",
+		},
+		{
+			name: "BDASH_BD missing", env: map[string]string{"BDASH_BD": "/x/bd"},
+			look:  func(string) (string, error) { return "", errors.New("nope") },
+			probe: probeOf("1.3.0"), want: "bd: not found (BDASH_BD)",
+		},
+		{
+			name: "probe fails", look: found,
+			probe: func(context.Context, string, bd.Timeouts) (bd.VersionInfo, error) {
+				return bd.VersionInfo{}, &bd.Error{Class: bd.ClassTimeout, Message: "no answer in time"}
+			},
+			want: "bd at /opt/bd: version unknown (no answer in time)",
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			getenv := func(k string) string { return tc.env[k] }
+			got := bdVersionLine(context.Background(), getenv, tc.look, tc.probe)
+			if tc.want != "" && got != tc.want || tc.wantIn != "" && !strings.Contains(got, tc.wantIn) {
+				t.Errorf("line = %q, want %q%s", got, tc.want, tc.wantIn)
+			}
+		})
+	}
+}
+
+func TestBdVersionLineResolvesBinaryAndScalesTimeout(t *testing.T) {
+	var looked, probed string
+	var timeouts bd.Timeouts
+	getenv := func(k string) string {
+		return map[string]string{"BDASH_BD": "/custom/bd", "BDASH_TIMEOUT_SCALE": "2"}[k]
+	}
+	bdVersionLine(context.Background(), getenv,
+		func(n string) (string, error) { looked = n; return n, nil },
+		func(_ context.Context, bin string, t bd.Timeouts) (bd.VersionInfo, error) {
+			probed, timeouts = bin, t
+			return bd.CheckVersion("1.3.0")
+		})
+	if looked != "/custom/bd" || probed != "/custom/bd" || timeouts.Probe != 10*time.Second {
+		t.Errorf("looked %q, probed %q, timeouts %+v", looked, probed, timeouts)
 	}
 }

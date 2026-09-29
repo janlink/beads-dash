@@ -59,6 +59,19 @@ integration version:
     scripts/install-bd.sh {{ version }}
     BDASH_TEST_REQUIRE_BD={{ version }} go test -count=1 -run Integration ./...
 
+# Coverage floor for the pure model package (percent).
+model-coverage floor="85":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    out=$(go test -count=1 -cover ./internal/model)
+    echo "$out"
+    pct=$(sed -nE 's/.*coverage: ([0-9]+)\.[0-9]+% of statements.*/\1/p' <<<"$out")
+    [ -n "$pct" ] && [ "$pct" -ge {{ floor }} ] || { echo "internal/model coverage below {{ floor }}%" >&2; exit 1; }
+
+# Re-capture fixtures with the pinned bd binaries and fail when committed testdata is stale.
+fixture-freshness: bd-install
+    scripts/fixture-freshness.sh
+
 # Rewrite golden files after an intended rendering change.
 golden-update:
     pkgs=$(go list -f '{{ "{{" }}.ImportPath{{ "}}" }} {{ "{{" }}join .TestImports " "{{ "}}" }} {{ "{{" }}join .XTestImports " "{{ "}}" }}' ./... | grep internal/testgolden | awk '{ print $1 }'); \
@@ -83,7 +96,7 @@ workflows-check: tools
     PATH="{{ tools_bin }}:$PATH" actionlint
 
 # Mirrored 1:1 by the GitHub Actions jobs on ubuntu and macOS. test-race runs as its own ubuntu-only job.
-ci: tidy-check fmt-check lint vet build test release-check workflows-check
+ci: tidy-check fmt-check lint vet build test model-coverage release-check workflows-check
 
 # Windows runs build and the non-bd tests only.
 ci-windows: build test-short

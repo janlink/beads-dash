@@ -38,5 +38,5 @@ X=$(c --title="Cycle X" --type=task --priority=2)
 Y=$(c --title="Cycle Y" --type=task --priority=2)
 bd dep add "$X" "$Y" >/dev/null
 bd dep add "$Y" "$X" >"$OUT/dep-add-cycle.stdout" 2>"$OUT/dep-add-cycle.stderr" || true
-bd dep add "$Y" "$X" --no-cycle-check >/dev/null
+bd dep add "$Y" "$X" --no-cycle-check >/dev/null 2>&1 || true
 cap dep-cycles dep cycles
