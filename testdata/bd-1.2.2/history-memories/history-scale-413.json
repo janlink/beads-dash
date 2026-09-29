@@ -1,0 +1,6634 @@
+[
+  {
+    "CommitHash": "rac7e5vkq3oca8ou0oi7d5igdv0g2on7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:57:38.363+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "jdqlfmikvj6te69g9dnscjvu1tksajo0",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:57:36.657+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rgkblchrgrql3d5dd7drbgoqgajn0ufo",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:29.771+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "pkgrmkd65a55ilvabcdka88n74hpuefu",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:28.17+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "r943j1k9jmhs6bdekch3s42qii420vm3",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:26.165+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kr1k0v2ndrcsnmjmemiulstbt2hbdou2",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:24.96+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "d05r7ilt854pvgjpbbsjb0uod93fiq10",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:23.621+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "o2digd5mn7egb7ijk598p9v838rsjvv6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:22.396+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ronp457o1h7glc8i6lm7tsvmr4q38ibc",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:20.912+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "oc9o7s90to963d00kmmq5ng7c8ed8tq4",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:19.577+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "a0plo2at0crla3ataeb4mf0ehmo764qk",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:18.411+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "9ks8n8ki5r569fbfcs1a812eeq2t0jlf",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:17.075+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8njb8cqp361u7duht67qg5mpshlnmtpu",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:15.731+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3ugqrmm3mfb5drhovflnpjkla4c1883v",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:14.225+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "pvgb5p7sqqk789pfuu5c3ndf7pkdccq9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:13.042+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7luj91bu8sn0t608tf14gjhvt6v1fijb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:11.803+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "s4sml6r818pjlm44b219bo5b121qktfs",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:10.505+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8kaf2mhk1h4tg2cpv014kvkegks6o1r2",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:08.956+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "h561jcvbe2j6mil7npv9rmptlcmme4vl",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:07.624+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "elu9vh4qafp6jj6ean5dqo4dbegld4ki",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:06.401+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kloveh1hld3hu357m7e6poorhgat1i2l",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:05.096+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "a0ju5vvbbovh2ci05cnl33svdqf5e1q0",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:03.878+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "egp1f1ajuci811ucc6opg7cnk5pcqubo",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:02.644+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "1m91031nc68l25q1gt41viqsv77ok8pq",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:52:01.141+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "b8bv4f6jicj6as70bo8eqi42b2jo71gl",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:59.546+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "k1bctva7cacctltitsgjmv8bnufsosr3",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:58.079+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rihqvs1nsiuj36tmd5cpp7vsslbmdvcv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:56.367+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tgehv4trmudo3e6ua9epf4hpa5cjtk1v",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:54.681+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "l7k9ki6lh5ki9kh918ljp8johbnm78a5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:53.363+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "pedbf0121frohgobkfuupdsibsfj16rm",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:51.431+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "1oducr6ao6pgee7t3sm58j1ondg7ch1n",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:49.521+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8hpcvkv6ijl8on6amdpgfb9inotutm6e",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:47.942+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "e2ip2ipk24rf69v66ecq07h1uiulns22",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:46.527+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "9fjb09j2ao8229itbr4gler0e2o4qkg8",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:44.999+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "nf5bciibuh5i8587jch3lsecrj0ekk1s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:43.556+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "on09e310poa692s024j85s1m879ldo3r",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:41.775+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "cc644bimcspi7oogdcu3fqm9kfrb5imt",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:40.208+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5nj66qocc8c5lg18n37jnl5qlvsqhce3",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:38.71+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "6uf1d8ppes36lusa8lv4f7kvgn9gsbv6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:37.185+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sg5c0m6u1luf6b88t9j1sn2n1r9n7v67",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:35.496+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "jit43cr348v76iggheb2tcggtvmael4v",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:33.997+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "uf4cm73du1q8o8f4v06bnq140bhjg50g",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:32.466+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "djb03qk6fgeg7pubomh2st4d63chv6n1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:31.077+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tc6n99ssca7gcqtsgin3fjp4nr6id88a",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:29.463+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "i63vc2gvd4cqhc17mpoog3s70nieg7at",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:27.665+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8lmm6jqr39tj1r8p1q0n8o2jj2kulsev",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:26.201+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "nrrsvmk83goqcd9oqnk1djosfo2nseoe",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:24.494+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "52mrgg3tf6aoek26fdrk8o0h5e41q09m",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:22.851+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "hpu22e4e6uk9490n8fppsmho0cmuof2v",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:21.473+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "45oo3rh9k6keijr8i1ck0l8g8u8a1qmk",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:19.676+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "6vg83h0t0f0nmravpb28nt0jefoubqpm",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:17.921+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0f5gtv9p63d7plll9k21p5frsdujv40r",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:16.195+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "abphc75uha23p7g7609s05lao9oahhee",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:14.317+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "t05i8c7lqn539jnh1ffm0sm10ki69egv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:13.034+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "26st4t49a8qa55tafjs07ber6up83nf1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:11.69+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0lmn13dgpjnapmmbuh3h1oos7np9n8ko",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:10.267+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "prsfalp4q4stcq9moj28l3lkivrai67o",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:09.069+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "alrul5n86f28pnaulk54488kn7rv2mf6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:07.777+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "mpfeh09iaiheq897j32gb9k9kov7p3al",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:06.477+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8ckbjlh4ptqo405f0drl1m3jrouovtr3",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:05.145+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "90a4qpu275i1a5356ba3en75723el3ta",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:03.77+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tcuiv51hfk0adu1l1ki8njeb861hit5f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:02.563+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "34vs3te956dla40ps0urqhf566dd6h17",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:51:01.255+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "e6fni83599vic1ltka4ftnr3ji71pir7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:59.947+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "4bauebu8v1c0df2bpdbga0n92unc4v1f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:58.65+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rtuk2pkfgou66q9qcc2q81ev0p0eaeh9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:57.422+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "snlatossql7e9p89l25qih4u0af3nmsu",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:56.159+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "b0p73tecadu3gtqc4re9lvusvh1mevll",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:54.846+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rd7ebrgmf2ffb5e7kh9qjeuon83qog7e",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:53.567+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ve9711eooaee31rd621qdgorlts2cnd6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:52.266+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ss31v90sl54n21n9evsmsss1r9htva8k",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:50.98+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ncft2sfvt15cli5jkeb11f645kubga3j",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:49.727+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "svf3j1hu5glbdpu3vr4tor102j0e7liq",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:48.442+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "81a9sbuvp3ofenguu30uq56gu786k0d7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:47.255+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "79p9li7loodqb4mrqpj4sulto4eueo9o",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:46.161+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ofg6p4v6uthe0mu3pqluulqkpk8tsssu",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:44.724+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "lna7nh9suec78nrjo0q6lgmi4rb3eoc9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:43.145+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7vjl9oauloehljbca2i18o8o2ar2kb2s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:41.964+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ll69f9p6c8jn5fs3qgh8roug8holthod",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:40.942+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "u553j4ui980m3706598vhprt12n3lg4p",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:40.057+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ild0d9to2ogg27p48lti2va6tfvmib9j",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:38.863+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "qrceu53vb82kssnplp66r3hn4tpfm9uo",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:37.639+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ih8ve3m1puubu89nrg75h5bmlknkt25i",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:36.228+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "k72u1pgcnaa5i4854ouqr1847s863p84",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:34.496+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "iukdu3ki7h2napboovds6jt72uedc9qh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:33.113+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "24tcpq4l3s0c86f3njec1qfg22lknkgh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:31.706+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "c6hjdrrau3bmkhh5mcn56ps57aeke666",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:29.657+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "f6htp3co9k4bifohskhsgijdpnpdqug9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:27.645+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "dqidoea819s3gqu2f68qap3e5f3k3m30",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:26.015+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2dbm7s783pr4re3c1ja60198ntfdjnbk",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:24.519+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "u0168ui62cu33p8u6816043ogcjsptl2",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:23.106+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sm7jranr23f54r6pj99epn6t2590m8nb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:21.655+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5kua0nctlksbi14obirj4r9g9soucu3j",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:20.229+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "e2o6b0h8eqajrb77185tqmdcal7bgcmi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:18.252+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "forg0n6g1466h7mtm7l69petm8kv6u63",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:16.533+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tlrtdp76jtui10d1krcqcisqgag41oc1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:14.808+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "6e37qtqv098fbcp9r5mvdqe3e7d0vtnc",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:13.361+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rd2sqok3betdqou6q51r8at6n0vv22lr",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:10.526+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "a0fj34i0hqtpsnvvsan1t0nopnq789fj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:09.169+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "d1u51lgck0tjt7j7a2ot7e1op73pmf4v",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:07.909+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "6k208s7qm6ooqcu12jutfdcp69qu8tac",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:06.489+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5t0tpd3cppug246rf1o92sfsg74o2sde",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:04.493+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tp4vah6iatmmh2qj5h4ee4ijijp24nsb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:02.853+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "82mfuevfmctnu4fe9o4lc8drog5kjf12",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:01.556+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "htll27t1v5ti4v31opsmcoh92340la7g",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:50:00.529+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "hoccnodmloqc8tgllkafjh99tek2qs1f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:59.287+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "444dgct76oaod9u4eot9l6j4m7gabq1p",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:58.152+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "593k54ojbb1nfoahg2shiktfvgr2bl0u",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:55.374+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8advojimkeq7tg20o0ldgibhh47uba4k",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:53.412+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "9vq76ksn6jmdi9fr4f4navfggco7371d",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:51.221+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8b36na7lqhrek9mplaifrh9se3iksiev",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:49.007+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "vgb2ocpbgj672aq67135vahnktl4fhkh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:44.793+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "dm9j8mv32s587ccl0jfh655rsgi0dllo",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:43.737+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0akmvj2p4ek1os9b2i1g7obeutel248e",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:42.662+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "j3gvu7c1rkaou3glpqspv2hn35oi79q3",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:41.024+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3hon5qrapmccef50jedf2jreh851ccsa",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:39.898+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "h7c9m49coim8rs4gir1dq2vbi45nilkb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:37.599+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "82v05jdsd9t97e96fiufci3coc33fp72",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:35.702+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "b6vu5hhmctgmoossjd887kjamm3d7vl6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:34.787+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2sercc73csd0u76eo8fh4k7jekudainl",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:33.923+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "36kk9qp0hgkg777uk31m2f47si9c75jm",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:32.923+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "1g3brmgmu1hba6b917fkd4d1rqm6m77s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:31.483+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "u6if7gsdfec56nfqag73fs5epdn367qf",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:28.893+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "pbktu42es97f4vi03hm7dt6jc1pi2s7o",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:26.116+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ls6gm63868s4blp052c6isgkg2cjcuar",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:25.055+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "iugenb03sv2j5k80phu51aj2smghplv6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:24.181+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "oeh4cnt30upfuc5h1mn3fq7p7aomb8u2",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:22.952+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "vpcavhdt1bkeb0nrlfk3f98t052pcql8",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:21.713+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "4r1evureqhm6p3eicnov46fg4f2ofome",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:19.948+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "bb0vo47pfe3d3f48k0rcsbto4hgrchr7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:18.13+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "p2dslkchtm9s2cg6a6di2g09kngierv6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:16.328+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "jr1lg3iijrfhap62l0ksli3o1fsftont",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:14.538+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kv2k786rd6l075uh8s1ts525unatiqt3",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:12.158+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2negtgg76sd4uig7h156arfsisvep499",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:09.974+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rvb9g9kbmnc0fgki69ko9r4k6ihnluod",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:07.769+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "f0iarpphk783e8i1jr0u4mj68slhkjij",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:05.503+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "064gm6klgjkmf6aa96677dqa5rcn8lbg",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:03.53+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "otk1hvj75bpmb8gbah7gjenj3u88fdoe",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:02.693+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7ticreo2ohjl2h46ir3kmo9mkjgnc6s1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:01.893+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8irk5fnt4jco3ggemekodppbv5ldfght",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:01.046+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3v3l4b07t8letdmvietfsds2eputcobi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:49:00.139+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "volrmmg0ssf30db171j2qe3fi6sam8vh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:59.323+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "cbrjgp7e397aseudee9se87qv63c2pjj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:58.329+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "08ruva0n2s4eq577q91uap2n6uc69e7t",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:56.633+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "asi6ap1j15f90chertf80915jq7qf0m1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:55.389+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "6254facich3bome2isp3q5qnos375ekh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:54.424+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "1kchqro7dvl2614d648ntnmuihp319gm",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:53.44+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "lvc6p9paaa02j563kn5k7ddbel2s4dcb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:52.487+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ssdjfs4ua8a2lm1bim0p09n4p09ar4op",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:51.391+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ovt2fqfqmv6c04u6pasps61aganuob6p",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:50.235+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "n31vsfo6uh3sseio1oa1hdu8c7dkonol",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:49.306+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "gjk7gibodug1vr2jer1edgm4gl560n1m",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:48.201+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "htbfknustuhif7ncqhmtch346ilpuls5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:46.822+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "09g74cjepabb5kchpob8pbvqsigl0boa",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:45.642+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "36p869hdfeoll209latlu95j35jsqvlo",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:44.749+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sfbnk8sfidh7c9ovnrajt1kugjaet323",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:43.809+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "qvguk7ruvqfq40q9d1mfe4h4dvh18n0a",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:42.823+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "v5vamcetllo2d45ul3bfoqqfbkk7sn2h",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:41.908+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "amalanegjcso4t70j8j344lbov8dn2sa",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:41.095+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3sk8edlm7k0vo7b12fmfmitmr8ev1u1s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:40.256+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "iueemibpdgk5nentvevti7c7p1ro3m8f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:39.433+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "d2k34gfor9daqj1holdi5lfund61v7u9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:38.532+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "d2n1vaamsvj6nlb0uvejgpso4188bvgj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:37.581+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "fb6l7sne6el3vhdlhm3o8dj98ub887nr",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:36.756+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "irhhmgcjc16i23h73a7i2g3k0iuqn1ai",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:35.902+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ublakjnis40t5g9mettuci1efmom6vos",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:35.059+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7ht150313g7p6e9su0rc926femb0im4k",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:34.262+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "6ad6bis4shu47ja1oko0f66v7podg825",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:33.47+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "opabhe9l24lls8bsmi30gojp378dtns9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:32.677+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "peapbbq5ftib3183q1tbkfa4vbtb51f2",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:31.467+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tum2b9v3uouujfeui1vj8an2l77kbu3n",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:30.529+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "hrlemk0i678up6ocd3lsbq3r31ui8rp4",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:29.873+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rlvm0iesnji2p3ftp1duqt0r7t1cfe4n",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:28.909+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "mql58l7kbfst4s6anmcn8ubfigjbcgt4",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:28.009+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ec8drgjqo9e26uj3mhfqdftabev2lnkh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:27.285+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rid34lre7pjobvbn4gkm5b8qmheap8bm",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:26.445+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "nmh623e9p61ntbbsdg1ktfh63l4kuoa2",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:25.569+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "009cvnadpc4fmtqnr91qei7ni4eds2ta",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:24.564+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "r68471hapbrl2gl58jtvc06du0kummkv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:23.605+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "d8i66o4md2i2iv1378nn5b9uls4lllcd",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:22.885+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "q87l8rfj3pflirhp4g10ir8b2u1eerpf",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:22.077+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tm7pojrlu2h026fu62o3dhks56l3tjm9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:21.248+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "00ksis7cld9p3l1098hgv19amsq0rjvn",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:20.263+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "j8ol31c32kt2iv29okaol314h5epr354",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:19.341+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "uhhksntsvpef2n7hgq87fu9n62gamlll",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:18.139+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sgj3k890oj81i46c3843i25pta5dsn2v",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:17.282+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "r27n82vilp3g7m3rjvck7kv4k57gg9bi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:16.318+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "i05uo8ga8abro59fuh0928l1gkv3qmnd",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:15.354+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ihtav05liuc3ggqb9gs4uahn771es08e",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:14.373+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "j39n839qv6rveurb3odde7pc6ru8o7da",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:13.385+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "lssn5eb4auhkd4q436ggvnqrl61e1id5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:11.49+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0lf4op58entm0ubit7fqn7o970721keb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:10.303+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "t9d6hlt1iq5pr7dn7nvc4k0l6ret4gui",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:09.022+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3jg4e35sd5glru7ebrekntdi7jilblf7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:08.036+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "50oovtg602u699coddqo99jhgbktgv1a",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:06.807+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kjgul9h85cot42jeqvbdukei02chmkmd",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:05.728+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "jo7a54508oi6ua9qekb2mml9p8bbn25o",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:04.19+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2tfje3a8eqee4nmugd0ldi9qogjbn92t",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:03.16+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "qm9bv7spvsp856civcthclvtn8m9bbq7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:02.098+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "4jhhrshfa0411il2c4b5a6he93pp6n57",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:01.149+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "mmfmgbtj7b3r0343pb1ri79iotuhl7dp",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:48:00.302+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5tnq6utt59gcq45ubaa2nvcniisfqvge",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:59.474+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "548ev8uaj1cuh6jko4lh6l10h0nk8rbh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:58.14+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "mraq4va1hkn55vub2v00417082ri98ov",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:56.851+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "na24jernl7l5hk5qo86u6l9abnbgiikn",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:55.925+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "iff29oiukhafss2vtei9i61c7jbe84vj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:55.065+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "udinfndpmt6tn1nm0rggqbei70pk17kv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:54.039+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ihp68p5t9fdcdc5l959tprieg51busrh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:52.83+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "g42harjh6g66ab1rn96foo9e0oe4mgnr",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:51.09+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kbsuj7qpq3cq714bkufmk30lfghrcc6g",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:49.401+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tv8pkfldg7mcacg60rkoqicnofb76cr7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:48.182+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "04m92hnbpq0m5pvc7p5e78lbvfl81mlk",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:47.117+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rip7mkuicm9110km3lmv3qoheqjdlcnj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:46.11+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ufl9r3urdmfes0kn12jq594a3pd7a9qj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:45.091+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "prl2qptiobi5bai85dkh4obe8e5b56d3",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:43.957+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0cqjtvqacumj83cmsc72dbcom0k6t2mt",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:42.781+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "et8s3cafov6clhakuq27p04n4jb3j8fl",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:41.58+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3f8j7dr5gbfms1490idhncbrnh2hl4fq",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:40.548+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "n67g075ds5t2icghrfp660i23j2ivbk5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:39.467+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rb5rb18d11ilvrjfsc2o8fh3ohadvgs0",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:38.115+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8rdkbh43a04i3vlitv0b73nv4nnlen7o",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:37.136+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "oqm65hgb535469avfjtn0q30ttaa6sb7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:36.15+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "11b8ukiagcb7sr70vnb8me8m66q5mgnf",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:34.976+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "b00ivc5q7v16tapid2h305gt90lhp78f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:33.972+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "i3q0mbsr48l2on0jc2dl7n5ucnjcpcb9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:33.085+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "epr2v7h2s6u78puq7e9k94asimn82k60",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:32.024+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ej8ois18ncrqqcfisng0klhud5j3g92d",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:30.812+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5lq9a8qe2lbvpg48tqk7f57r0hkf0rnv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:29.466+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ho22fu59u7cmd9d84narmvbjfo336ke1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:28.374+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "602l43anv3ioki2056nguhncu0gpm7ft",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:25.866+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "vbjn9d2vkace2cs3hrnphmlqvfr65aeu",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:23.677+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "f6ot816tmgtbh227a6gfgbshv1lj6tjc",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:22.134+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3veet3qfmvfq2s716e3m0ibjcrbsc330",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:20.886+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ovuc5e3dfo52lslcl78ddo9intd9r4t2",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:19.653+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kbpjghva5fhrsdddpnv43s49urg3435n",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:18.266+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "c67ru8uicvviv550jo79tp4us4iqudsg",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:15.862+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7lg3tm7jriscb5p8e6jocqogplgt6ima",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:14.211+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "nhlmvadhnv8ul6n79fqmihcp3987vtal",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:13.044+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "oi9dq1ts8rh2629p2pbpbrrtfvpuvnq5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:11.819+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "1t80gc5nkgbqu6cccrgsri9qrs8et2jg",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:10.525+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "pqcl077vue9al4tjojmbg2sesjrn64bp",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:09.208+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "25gei314amv5r6n6q68d8375t17k0jeu",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:07.484+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "1gv4jv15j0c1u1utkn2ptq5di9d2ciqt",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:06.216+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "da85ao80bmp48fekumlhkhhcaekju05c",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:04.916+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "jc927d5q3e4dvnjsj0ahq1lf85q3hhso",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:03.695+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2brcvtaetpgn8r1ficolblgit4u0onor",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:02.313+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0a5hojfmt8rrpps0ia0gqccvsd9o4q9u",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:47:01.028+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7ftaeaca00abflk2uugdv3kegr1fn6s8",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:59.714+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ugcb6itvpcanu21t2s3vsc3n3toevcfs",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:58.28+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "24l7e2nmjl67fbe302p88sb34300bc26",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:56.895+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "t6cijp6mgced418t43mbqn7mg17q5qpc",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:55.111+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "645qcjdevpv9ml2h723hhk32o36uoi4c",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:53.307+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "1h81iv1mp076qsisbvhlcdea9bvd4spq",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:45.268+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "apu9dngemqjt6i9sa8mblr5bb024e9n5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:44.137+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "m9a86c8hptg5sjqm7mc28e5u0ep5663t",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:43.083+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "qrm4sln1cvscs08156h8k4kfiaknouak",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:42.002+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7qi4t8l7iidkmitjnnev9dpvkd1t90ea",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:40.69+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "v4sd99t16p3nl5angqh8c8p62duf41bp",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:39.312+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2mo75uoufa20r15bec426t91sgs1d5j7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:38.361+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "j5l4sgkjm595oar56u6icdvaa56n1nmj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:37.538+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kg8mad9r4p5cadqtmdho1krevbnh056c",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:36.791+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3ahf3cg7mj1j2fu5t3it62f2lc68bd7p",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:35.88+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "snlr9e4mdaah2rvairri16eh41ui3812",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:35.093+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5ah8o1hv53ror6c5c4am7dtcmbcan61d",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:34.256+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "nt4qkijj9b1beq2o5v0lp2eglkefo4e9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:33.38+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ugq8nb3e8ns12sp324s1bc7sbedia35f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:32.514+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "gtokjrbmngg37taeecp12g5e6q3lakge",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:31.763+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tvnqpqs3c9j96jonsr42km25tekpbuiv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:30.853+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "l5nc418ko8lm446ijerr2s292u4a9u4j",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:29.917+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sooevgu358f8g74udql5ddh5gm80kfka",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:28.71+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "d17ogv3pk80hq8g3vfdckqk41c7df0td",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:27.683+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "m4o092r6por7stft5cqelv6lo56b5gat",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:26.471+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "871cues2jchhctcb0j8e9sofc8mt830r",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:25.588+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "hqbvuuhju19o107tthuapvov3jid2861",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:24.63+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7qrb3rld1bem61n094r5jmtub0vu4nld",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:23.599+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "hau90vl9f29idthelcfa9m33d9lcp3f0",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:22.68+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "e8gfagb31grv5j25uectlmflhf12aqle",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:21.762+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0itdj0uuqs4i0et3pfbs5e5bq4i2qe28",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:20.415+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "4co7aqfiq7hc7s0l5jus2eo4r7vq2ps6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:19.308+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "gdmhos9r0tl7in9mllb0lero0afp8t56",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:18.206+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "qr98h3058nuoohkv47bs8dc0a6hs9onp",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:17.243+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "8erdo007vmu0lbr28rtsr70i5184bb2g",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:16.291+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "32a4trik6cl2i9htmsqtv2u0mff810gi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:15.17+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "57odtki0kihj2br46er1m5otjiu3docm",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:14.197+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3s6fojlq570ggi66d7l9vtcaf635ev60",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:13.064+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tgu3n4sgjqt451du33gmrimdnp16n2oh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:11.796+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kln4q14gc30s9tta0cdc1jpm68k2v93k",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:10.851+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "r4j3g4v2idi5o5v0t2ge8ce6u3gvhhj7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:09.979+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "9s364tbjodu0q9moiccre80514leiu3h",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:09.136+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "s9hi9kiul4kcteva2sdntoffd18nuvi0",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:08.293+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "un3qgt81uukl42uspbrldeq59ibjtls6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:07.539+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5bsutb0lcqcc0vv4a83fhqg2r4id0632",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:06.802+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "4nhchl6kpjtnjtnntph8m1o8dsj2t68r",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:05.888+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "dqjm0ogcefucinkmt6kmm8cu5vpg2q3s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:04.653+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "emvdho1licgc05j4ngmqjh8kp28358b0",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:03.663+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ect4vjqe70ntg60t2ir0r7q2v9iqbo6p",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:02.821+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tjep8e1mgkajgahui7qga5emc4bam8gv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:01.986+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "k5g8f9k2kkma4d9utm53njjaankq2ggi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:01.156+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "6siqsoe7ced5mrjml5cev50k2fqb3nca",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:46:00.254+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "gido9daub54fv74lpqa0pdqlccg9fje8",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:59.448+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "k9vnaroku1c8cq5cfamhj2b36icl8f5s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:58.512+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2tcp5v3rsj8mkru5m1dg6o6ejja665l7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:57.621+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "fcuse3o1udu7i3kq5jeklhn5kjr6bd3l",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:56.7+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "idvgm9deu01q0bo1f552a9mfv9mas3iv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:55.754+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "54qakt1djmddnhchb9hq8hrg3jm8pa2s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:54.801+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5ie7bt326ths2lrhe5kbma42edd9f52m",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:53.932+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ijmg3toec9j8g2g0sot9b3hjic0mbu9c",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:53.072+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "6samq4cndisfogeuda0unbhmnjr8vptd",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:52.206+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ejk74l67utja0ipnbrdaktj8nq1nakv7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:50.89+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rjtt98fhfimh2pvisd0qtmu1rl26dblu",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:49.724+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ti2b5o8q4bu17qe6s6k9hcmqvfdrq9ec",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:48.856+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "c0gt4qei4ipks7s4gjlmrjbii0oegrc9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:47.969+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "vv6b3hb7h0m9eb4a0179h3knbbld5dm1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:47.061+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ufppe3go7ao6ujbr5snfsfb6lg7lk3c8",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:46.21+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "uf78aoi9ba1r207obt6pvac7doivkjt7",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:44.725+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sqv3s80o9029074o92mr6bd6m1l24v42",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:43.254+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "fiqihlcuied3d4i91rlr25jnadi7hdmt",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:41.288+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "jlehmhqvdpbj0vqe8esa95c120k0j5h6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:40.5+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "lf8be4n2asokq3gkeijfva2mb1v80flp",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:39.616+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "df37e987dpoqcho0ko8c72nqanjlc37u",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:38.655+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ckum0p37108l1lqlo0c0ss94dr0mj0at",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:36.767+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "nm6b8g2lk33428vme5s2nftu1qngolck",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:35.381+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2q7s596bk2ofnrplsp1knmaephnjajmj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:34.401+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "4cal3bqdpgklni12442ip2k345iln1ru",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:33.545+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "epq2r3tbb91usjhmpqfjkrd1j9c5u2jb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:32.689+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "4kpfhuke6oh9gpg8oaj4eha3j5f2j0ik",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:31.819+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "lu285ie7kalgithfn2l77e2mhenldii6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:30.867+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "b3qbm11elspma48t97imsjigusidel1d",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:29.929+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "nd0n43aq0v9ntplbcaj3ahdkm97kprth",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:28.744+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "djq6v2bdi902crcjcl11dk5nr57f2k0t",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:27.833+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "c7gtvu8omabqp2ekh71bop82tm1aukgi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:26.96+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "o491imkklj5vu5r08f8ognbd73mrmmf6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:26.128+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2cc4c2a8tnfvhngrcldafivblr2coh4i",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:25.332+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "22t2fr5f32qv35eat8pc6uv1ofl41jjv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:24.532+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tf3rrm3q1cqn9t9qfrg6engdqmdclvvu",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:23.809+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kf7umtj6lgusfbtsg6i1bri87qpvasgj",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:22.896+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "67oc5n3ca7adbiita92qn252k38kmq5o",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:21.892+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "68rlom410udm1noku45ir8plpu8iiofl",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:20.942+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sveegh5ada4r7duo2f9skgqd02pu6s9c",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:19.899+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "dn9l8qasbusu1magm1p4euqac2eto1mi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:18.807+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "u4er0jbcv53oc6isc17pb8a3bda66i9c",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:17.913+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kddq9iue2ulm71eklrpipv3n2ibngud6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:16.987+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2g8tr35i36g80kl1aumkuc04g367mp5i",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:15.945+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5eqi501esv0jmpj9bi5s328pduotj8hd",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:14.74+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0i75n6pdi2pgevpepj6qlgfiq3folggq",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:13.367+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0gnmbiqri36ajn93rbjhe9qvuejcurj9",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:12.291+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "mhlvtaecggmvqde3c976mq5gc8f4qv0f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:10.191+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "9r9oqsgcn9ehf0rs1u4tvc0mkko8n8da",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:08.621+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "niqgb3nihmapltvavt17odg5j09nbipr",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:07.521+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "gln78tkgpqm0h4ssif2h1kgs8b2ar3vq",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:06.847+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "aa42jdp0q4gjt1mou5eqhnvarogiklch",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:06.162+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "25p26dcn6bbk0ktnn2ukjsod7v3epobi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:05.502+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "j7oldl0k3f03d39d102ek661d54o9e7k",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:04.758+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "adpqhi393t26apbuut0qoohr8mq6t8fi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:04.024+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "473e73anm20hlg8a2rsc45fb1qf94f0g",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:03.393+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "f1qufj1k7u87h7dt1rsoba5q2d78lifh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:02.831+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ek9m9vl7pk5uerrl1klit57s83u0840o",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:02.27+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kqtj4s5uf8d744bbs2sctod1c51telbr",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:01.623+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "eumvc8cr17ta4770dpcmf74s8tkdo83o",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:00.845+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "vmr11jton8nnqsi7293i79h3nf3gd27r",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:45:00.196+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "riabjbof6h29kg99596t7sc4ps28g633",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:59.477+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "rq367vrj7fbvhpfekifsvkka0cc30btn",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:58.931+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "08vtrtatqeq4647qqobjn2b8chm0fdt6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:58.37+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7k11p6b5o3mg7vsh5ahvnftllbm0e129",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:57.749+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "5m2mruqtkcbp81ab3vfeqjmnu1u9cfkk",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:57.212+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "4gh1fe3dnafn8iv3oqm844v1m5gdh4o6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:56.667+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ei3ub25emh5tik065g4p094ep7nqrha5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:55.793+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "lstopt7i49he46cj5pama7c0mvs4o27s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:55.059+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "04kg7hhv7slkce1mt0jl8gqbvf5gtmas",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:54.413+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "anbl23bp6nldlqjrh539g7lied16lqga",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:53.803+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "k4vqg3kg1asj5cj9h8ia4o6vqc7gid55",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:52.907+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "c70l6g111r8sak0jvk8jiqmuj1fjhfkv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:51.984+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "grt3u9fee10d17ld3g0fvpvrtel6cuik",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:50.808+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "35ilifn0e0d59u7ctu9rbr4dn7u3mndh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:50.21+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "9acubtr74171mijo8gm0nj63rkfgft5f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:49.628+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "l6c9prut52ab8lakngsoics7ohjeom92",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:48.056+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "0rnga227lqqcmcfulic6a4rakdkr12t1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:46.952+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "j1ce07u5sl7t4c178pndeu8jbc2nro6d",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:46.36+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "hdll7luke0p9qlt502vh031gkvma6c4l",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:45.532+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "72dkp4hlvq0liig96lecojn5gisht2gb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:44.821+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "gcb32krp3em7s5uolvij0oa9kpcmu7s5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:44.108+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "p1t7tsc3km87cldb993f6t1d0j5p1smk",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:43.237+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "pjna7v7tasar4snoemhqca5h0g27tm84",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:42.674+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "np4grjr3b7obqmg6mpapcs3k2o7dqd9k",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:41.818+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "iv7t2s29lfdvajmevtojceh2ok5mun5f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:40.472+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "v4qv27hm1hk4vdbrq4ivmm2flrcbjve6",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:39.318+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "itdqmvn3dqtq3hoa8upq0pfted30q97u",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:38.6+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "idjjeoe7iegps232mk0tn13ji2nr3qgd",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:37.903+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "em6aatjdl78i8rjntksh33a81j7dkilg",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:37.226+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "tmvcu0ubberg5oo8otqh4vsv3vecncb4",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:36.573+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "n64n5nln8p0mqf06tn072ji1jq7i9k4u",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:35.861+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "ol5oqf57tg2ba3ar0mspe2r6l9pc20rb",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:35.292+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "i1600rto0rvd01qq53g6vckmvq09t562",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:34.719+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3pqobilqkfrpm99gnmhps56i2krpl75n",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:34.075+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "3gbhf62q2fiiet204bd5c7q6o2ibpsk1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:33.324+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "m10ua1q8idts5gql5dfqucifl1qom41f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:32.591+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "2bepr9d1ho6fu4aco0q0d5al5o2oan7f",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:31.874+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "vuqkdsdb44n1evpscbkrh00jrlu2hcqi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:31.117+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "kj8kjpfog25c9ht48msfkp85f1l18gaq",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:30.451+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "7gt2gi7c139lnmfj785oh034hlj4cnao",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:29.709+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "j3kq5usrlnu9m8dsie74coen8so925qf",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:29.113+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "qata45h2re90f0maj9arjboirfeaa4hv",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:44:28.55+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "r0k58hai0ees3fqcq1g9847rjab88fpn",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:42:58.997+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "k2ngen95aucmtmsmabk14aqolefagt1s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:45.541+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "9ifa90r39mhgm0k9dqq6sdtvsm4gi0oi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:45.317+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sd6jbf88c6qieddbkru456k20lggigku",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:45.098+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sdhd3e1iifbge30ipsro2g43oh5t77rr",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:44.785+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:44Z"
+    }
+  },
+  {
+    "CommitHash": "v9ainikm8qhsj33525imln0n2uoknl0e",
+    "Committer": "beads",
+    "CommitDate": "2026-09-29T09:40:44.306+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:44Z"
+    }
+  },
+  {
+    "CommitHash": "btc6hfbeq40dh8lcae2g7ouf6h3be370",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:44.079+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:44Z"
+    }
+  },
+  {
+    "CommitHash": "mhkab896qc3rekv2jh7vlb6shq01o8q1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:43.757+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:43Z"
+    }
+  },
+  {
+    "CommitHash": "b5mp82tm4r1rucvfo8q5aqvgu0qosgk0",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:43.339+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:43Z"
+    }
+  },
+  {
+    "CommitHash": "n1980t0ihqcdup8ndclku09a1uu7m83m",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:42.86+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:43Z"
+    }
+  },
+  {
+    "CommitHash": "abtf87pg8r3hu4ng4sdkgte5mf2fpilh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:42.33+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "in_progress",
+      "priority": 2,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:42Z"
+    }
+  },
+  {
+    "CommitHash": "a0u96aoa5c2f7dp5ul9ot2a6f168ull5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:41.876+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:41Z"
+    }
+  },
+  {
+    "CommitHash": "99jk87n7om220g0nmbh5sdaamll64kgt",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:41.517+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:41Z"
+    }
+  }
+]

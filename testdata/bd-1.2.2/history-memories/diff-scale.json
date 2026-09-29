@@ -1,0 +1,1999 @@
+[
+  {
+    "IssueID": "bdws-r2-01i",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-01i",
+      "title": "Scale issue 58",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-04w",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-04w",
+      "title": "Scale issue 146",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-09m",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-09m",
+      "title": "Scale issue 11",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-0ac",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-0ac",
+      "title": "Scale issue 72",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-0bu",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-0bu",
+      "title": "Scale issue 83",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-0ea",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-0ea",
+      "title": "Scale issue 121",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-0ou",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-0ou",
+      "title": "Scale issue 66",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-128",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-128",
+      "title": "Scale issue 107",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-19a",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-19a",
+      "title": "Scale issue 48",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-19x",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-19x",
+      "title": "Scale issue 143",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-1a5",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-1a5",
+      "title": "Scale issue 71",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-1nz",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-1nz",
+      "title": "Scale issue 127",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-1oy",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-1oy",
+      "title": "Scale issue 25",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-1v2",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-1v2",
+      "title": "Scale issue 88",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-1v3",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-1v3",
+      "title": "Scale issue 32",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-277",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-277",
+      "title": "Scale issue 41",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2cf",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2cf",
+      "title": "Beta blocker",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2cx",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2cx",
+      "title": "Scale issue 54",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2gb",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2gb",
+      "title": "Scale issue 70",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2iv",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2iv",
+      "title": "Scale issue 82",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2ko",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2ko",
+      "title": "Scale issue 137",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2nw",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2nw",
+      "title": "Scale issue 101",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2ny",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2ny",
+      "title": "Scale issue 114",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2qz",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2qz",
+      "title": "Scale issue 95",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2r4",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2r4",
+      "title": "Scale issue 57",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2vr",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2vr",
+      "title": "Scale issue 18",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2xe",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2xe",
+      "title": "Scale issue 80",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2xl",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2xl",
+      "title": "Scale issue 86",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-2yt",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2yt",
+      "title": "Scale issue 136",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-33c",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-33c",
+      "title": "Scale issue 46",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-3b6",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-3b6",
+      "title": "Scale issue 67",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-3bk",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-3bk",
+      "title": "Scale issue 14",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-3dw",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-3dw",
+      "title": "Scale issue 133",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-3jj",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-3jj",
+      "title": "Scale issue 42",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-3lh",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-3lh",
+      "title": "Scale issue 93",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-3ro",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-3ro",
+      "title": "Scale issue 50",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-405",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-405",
+      "title": "Scale issue 110",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-42g",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-42g",
+      "title": "Scale issue 131",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-46o",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-46o",
+      "title": "Scale issue 132",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-46t",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-46t",
+      "title": "Scale issue 135",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-4c3",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-4c3",
+      "title": "Scale issue 118",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-4hq",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-4hq",
+      "title": "Scale issue 5",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-4nr",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-4nr",
+      "title": "Scale issue 103",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-4r5",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-4r5",
+      "title": "Scale issue 116",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-4rt",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-4rt",
+      "title": "Scale issue 84",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-5c8",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-5c8",
+      "title": "Scale issue 69",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-5ox",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-5ox",
+      "title": "Scale issue 34",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-5p1",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-5p1",
+      "title": "Gamma unrelated",
+      "status": "open",
+      "priority": 2,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-5xo",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-5xo",
+      "title": "Scale issue 53",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-5zs",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-5zs",
+      "title": "Scale issue 141",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-60o",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-60o",
+      "title": "Scale issue 112",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-64k",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-64k",
+      "title": "Scale issue 85",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-6am",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-6am",
+      "title": "Scale issue 7",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-6rh",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-6rh",
+      "title": "Scale issue 98",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-6yu",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-6yu",
+      "title": "Scale issue 8",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-76w",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-76w",
+      "title": "Scale issue 97",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-78v",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-78v",
+      "title": "Scale issue 125",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-7e4",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-7e4",
+      "title": "Scale issue 100",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-7ix",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-7ix",
+      "title": "Scale issue 142",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-7kd",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-7kd",
+      "title": "Scale issue 15",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-7kr",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-7kr",
+      "title": "Scale issue 147",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-7qw",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-7qw",
+      "title": "Scale issue 138",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-8cg",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-8cg",
+      "title": "Scale issue 61",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-8cy",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-8cy",
+      "title": "Scale issue 6",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-8rg",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-8rg",
+      "title": "Scale issue 60",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-8ts",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-8ts",
+      "title": "Scale issue 148",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-8wb",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-8wb",
+      "title": "Scale issue 22",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-9un",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-9un",
+      "title": "Scale issue 102",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-9uz",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-9uz",
+      "title": "Scale issue 129",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-9w4",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-9w4",
+      "title": "Scale issue 94",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-a33",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-a33",
+      "title": "Scale issue 51",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-a5g",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-a5g",
+      "title": "Scale issue 74",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-aht",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-aht",
+      "title": "Scale issue 33",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-apf",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-apf",
+      "title": "Scale issue 27",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-ar1",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-ar1",
+      "title": "Scale issue 124",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-b0j",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-b0j",
+      "title": "Scale issue 26",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-b4g",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-b4g",
+      "title": "Scale issue 109",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-bai",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-bai",
+      "title": "Scale issue 68",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-bea",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-bea",
+      "title": "Scale issue 28",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-bej",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-bej",
+      "title": "Scale issue 87",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-bjd",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-bjd",
+      "title": "Scale issue 81",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-bro",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-bro",
+      "title": "Scale issue 20",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-cjs",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-cjs",
+      "title": "Scale issue 77",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-d3h",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-d3h",
+      "title": "Scale issue 63",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-d4s",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-d4s",
+      "title": "Scale issue 126",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-de3",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-de3",
+      "title": "Scale issue 23",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-di7",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-di7",
+      "title": "Scale issue 73",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-diw",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-diw",
+      "title": "Scale issue 17",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-dpz",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-dpz",
+      "title": "Scale issue 29",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-e25",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-e25",
+      "title": "Scale issue 123",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-e54",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-e54",
+      "title": "Scale issue 89",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-eoi",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-eoi",
+      "title": "Scale issue 45",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-fe1",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-fe1",
+      "title": "Scale issue 3",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-fex",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-fex",
+      "title": "Scale issue 47",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-flp",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-flp",
+      "title": "Scale issue 78",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-fno",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-fno",
+      "title": "Scale issue 104",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-fuk",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-fuk",
+      "title": "Scale issue 130",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-g7c",
+    "DiffType": "modified",
+    "OldValue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "open",
+      "priority": 2,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    },
+    "NewValue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-g8m",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-g8m",
+      "title": "Scale issue 49",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-g94",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-g94",
+      "title": "Scale issue 2",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-glg",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-glg",
+      "title": "Scale issue 12",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-h20",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-h20",
+      "title": "Scale issue 117",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-he9",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-he9",
+      "title": "Scale issue 37",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-hk5",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-hk5",
+      "title": "Scale issue 140",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-hmo",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-hmo",
+      "title": "Scale issue 19",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-i16",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-i16",
+      "title": "Scale issue 120",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-i36",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-i36",
+      "title": "Scale issue 144",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-i7m",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-i7m",
+      "title": "Scale issue 16",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-idb",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-idb",
+      "title": "Scale issue 139",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-j0l",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-j0l",
+      "title": "Scale issue 56",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-jsj",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-jsj",
+      "title": "Scale issue 65",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-jwa",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-jwa",
+      "title": "Scale issue 59",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-jya",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-jya",
+      "title": "Scale issue 90",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-jyr",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-jyr",
+      "title": "Scale issue 96",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-k1t",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-k1t",
+      "title": "Scale issue 150",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-lue",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-lue",
+      "title": "Scale issue 64",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-mlq",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-mlq",
+      "title": "Scale issue 30",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-nhi",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-nhi",
+      "title": "Scale issue 91",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-obw",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-obw",
+      "title": "Scale issue 1",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-oiy",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-oiy",
+      "title": "Scale issue 113",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-ojg",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-ojg",
+      "title": "Scale issue 106",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-ort",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-ort",
+      "title": "Scale issue 38",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-os6",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-os6",
+      "title": "Scale issue 79",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-ov7",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-ov7",
+      "title": "Scale issue 35",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-pae",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-pae",
+      "title": "Scale issue 36",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-ph2",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-ph2",
+      "title": "Scale issue 40",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-pkq",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-pkq",
+      "title": "Scale issue 52",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-psa",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-psa",
+      "title": "Scale issue 62",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-pwm",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-pwm",
+      "title": "Scale issue 122",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-qol",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-qol",
+      "title": "Scale issue 149",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-r99",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-r99",
+      "title": "Scale issue 21",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-rmf",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-rmf",
+      "title": "Scale issue 55",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-s88",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-s88",
+      "title": "Scale issue 10",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-s8m",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-s8m",
+      "title": "Scale issue 145",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-t3x",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-t3x",
+      "title": "Scale issue 9",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-tje",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-tje",
+      "title": "Scale issue 92",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-u0w",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-u0w",
+      "title": "Scale issue 13",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-vpi",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-vpi",
+      "title": "Scale issue 111",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-vqe",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-vqe",
+      "title": "Scale issue 24",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-w0r",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-w0r",
+      "title": "Scale issue 4",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-w36",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-w36",
+      "title": "Scale issue 43",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-wcu",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-wcu",
+      "title": "Scale issue 108",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-wqc",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-wqc",
+      "title": "Scale issue 119",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-wsv",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-wsv",
+      "title": "Scale issue 134",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-wuo",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-wuo",
+      "title": "Scale issue 115",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-xf4",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-xf4",
+      "title": "Scale issue 44",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-xia",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-xia",
+      "title": "Scale issue 31",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-xts",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-xts",
+      "title": "Scale issue 99",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-ycl",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-ycl",
+      "title": "Scale issue 39",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-ylt",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-ylt",
+      "title": "Scale issue 76",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-z8a",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-z8a",
+      "title": "Scale issue 105",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-zdb",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-zdb",
+      "title": "Scale issue 75",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-zpy",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-zpy",
+      "title": "Scale issue 128",
+      "status": "open",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  }
+]

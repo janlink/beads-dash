@@ -1,0 +1,186 @@
+[
+  {
+    "CommitHash": "k2ngen95aucmtmsmabk14aqolefagt1s",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:45.541+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "9ifa90r39mhgm0k9dqq6sdtvsm4gi0oi",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:45.317+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sd6jbf88c6qieddbkru456k20lggigku",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:45.098+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "alice",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:45Z"
+    }
+  },
+  {
+    "CommitHash": "sdhd3e1iifbge30ipsro2g43oh5t77rr",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:44.785+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:44Z"
+    }
+  },
+  {
+    "CommitHash": "v9ainikm8qhsj33525imln0n2uoknl0e",
+    "Committer": "beads",
+    "CommitDate": "2026-09-29T09:40:44.306+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:44Z"
+    }
+  },
+  {
+    "CommitHash": "btc6hfbeq40dh8lcae2g7ouf6h3be370",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:44.079+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:44Z"
+    }
+  },
+  {
+    "CommitHash": "mhkab896qc3rekv2jh7vlb6shq01o8q1",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:43.757+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:43Z"
+    }
+  },
+  {
+    "CommitHash": "b5mp82tm4r1rucvfo8q5aqvgu0qosgk0",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:43.339+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:43Z"
+    }
+  },
+  {
+    "CommitHash": "n1980t0ihqcdup8ndclku09a1uu7m83m",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:42.86+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "in_progress",
+      "priority": 0,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:43Z"
+    }
+  },
+  {
+    "CommitHash": "abtf87pg8r3hu4ng4sdkgte5mf2fpilh",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:42.33+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "in_progress",
+      "priority": 2,
+      "issue_type": "task",
+      "assignee": "janlink",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:42Z"
+    }
+  },
+  {
+    "CommitHash": "a0u96aoa5c2f7dp5ul9ot2a6f168ull5",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:41.876+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:41Z"
+    }
+  },
+  {
+    "CommitHash": "99jk87n7om220g0nmbh5sdaamll64kgt",
+    "Committer": "root",
+    "CommitDate": "2026-09-29T09:40:41.517+02:00",
+    "Issue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "created_at": "2026-09-29T07:40:41Z",
+      "updated_at": "2026-09-29T07:40:41Z"
+    }
+  }
+]

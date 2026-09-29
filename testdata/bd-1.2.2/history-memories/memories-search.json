@@ -1,0 +1,4 @@
+{
+  "always-run-tests-with-race": "always run tests with -race",
+  "schema_version": 1
+}

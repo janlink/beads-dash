@@ -1,0 +1,7 @@
+{
+  "data": {
+    "always-run-tests-with-race": "always run tests with -race",
+    "dolt-phantoms": "dolt phantoms hide in three places"
+  },
+  "schema_version": 1
+}

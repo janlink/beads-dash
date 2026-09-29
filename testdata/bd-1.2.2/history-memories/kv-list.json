@@ -1,0 +1,6 @@
+{
+  "foo": "bar",
+  "memory.always-run-tests-with-race": "always run tests with -race",
+  "memory.dolt-phantoms": "dolt phantoms hide in three places",
+  "schema_version": 1
+}

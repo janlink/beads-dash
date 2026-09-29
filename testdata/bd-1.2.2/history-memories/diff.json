@@ -1,0 +1,36 @@
+[
+  {
+    "IssueID": "bdws-r2-2cf",
+    "DiffType": "added",
+    "OldValue": null,
+    "NewValue": {
+      "id": "bdws-r2-2cf",
+      "title": "Beta blocker",
+      "status": "closed",
+      "priority": 1,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  },
+  {
+    "IssueID": "bdws-r2-g7c",
+    "DiffType": "modified",
+    "OldValue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "status": "open",
+      "priority": 2,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    },
+    "NewValue": {
+      "id": "bdws-r2-g7c",
+      "title": "Alpha task",
+      "description": "desc v2",
+      "status": "in_progress",
+      "priority": 0,
+      "created_at": "0001-01-01T00:00:00Z",
+      "updated_at": "0001-01-01T00:00:00Z"
+    }
+  }
+]
