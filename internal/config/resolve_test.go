@@ -1,9 +1,11 @@
 package config_test
 
 import (
+	"slices"
 	"testing"
 
 	"github.com/janlink/beads-dash/internal/config"
+	"github.com/janlink/beads-dash/internal/model"
 )
 
 func loadedWith(t *testing.T, content string) config.Loaded {
@@ -131,5 +133,16 @@ func TestResolveBdAndTimeoutScale(t *testing.T) {
 	r := config.Resolve(loadedWith(t, ""), config.Flags{}, envOf(map[string]string{"BDASH_BD": "/opt/bd", "BDASH_TIMEOUT_SCALE": "2.5"}))
 	if r.BdBinary != "/opt/bd" || r.TimeoutScale != 2.5 {
 		t.Errorf("got %q %v", r.BdBinary, r.TimeoutScale)
+	}
+}
+
+func TestNotifyKindsAreTheModelKinds(t *testing.T) {
+	if !slices.Equal(config.NotifyKinds, model.KindNames()) {
+		t.Errorf("NotifyKinds = %v, model kinds = %v", config.NotifyKinds, model.KindNames())
+	}
+	for _, k := range config.Defaults().NotifyKinds {
+		if _, ok := model.ParseKind(k); !ok {
+			t.Errorf("default notify kind %q is no model kind", k)
+		}
 	}
 }

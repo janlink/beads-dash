@@ -1,0 +1,10 @@
+{
+  "data": {
+    "code": "events_journal_truncated",
+    "error": "events journal truncated: checkpoint 2 is below the retained window [6..12]; records 3..5 were pruned",
+    "floor": 6,
+    "head": 12,
+    "since": 2
+  },
+  "schema_version": 1
+}

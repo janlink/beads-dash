@@ -6,6 +6,7 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/theme"
 )
 
@@ -172,14 +173,9 @@ func stringKey(name string, f func(*Settings) *string) keyDef {
 	}
 }
 
-// NotifyKinds lists the activity-event kinds notifications can be enabled for,
-// named after the spec's wording: created, claimed, unassigned, closed,
-// reopened, status changed, became blocked, unblocked, became ready, priority
-// changed, deleted, edited, commented.
-var NotifyKinds = []string{
-	"created", "claimed", "unassigned", "closed", "reopened", "status", "blocked",
-	"unblocked", "ready", "priority", "deleted", "edited", "commented",
-}
+// NotifyKinds lists the activity-event kinds notifications can be enabled
+// for: every kind of the model.
+var NotifyKinds = model.KindNames()
 
 func stringsKey(name string, allowed []string, f func(*Settings) *[]string) keyDef {
 	return keyDef{

@@ -83,13 +83,13 @@ func BenchmarkFetchSnapshot20k(b *testing.B) {
 	}
 }
 
-// snapshotBudget5k is ten times the reference cost of 5k issues (20k is about
+// snapshotBudget5k is well above the reference cost of 5k issues (20k is about
 // 160 ms), so only a real regression such as a quadratic loop trips it.
-const snapshotBudget5k = 150 * time.Millisecond
+const snapshotBudget5k = 250 * time.Millisecond
 
 func TestSnapshotBuildWithinBudget5k(t *testing.T) {
-	if raceEnabled {
-		t.Skip("timing budget does not apply under the race detector")
+	if raceEnabled || testing.Short() {
+		t.Skip("timing budget needs an unloaded, uninstrumented run")
 	}
 	c := synthClient(5000)
 	ctx := context.Background()

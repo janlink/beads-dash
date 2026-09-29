@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"time"
 
 	"github.com/janlink/beads-dash/internal/model"
@@ -119,14 +120,42 @@ type Event struct {
 	Time    time.Time
 	Op      string
 	IssueID string
-	Actor   string
+	// Actor is empty for derived maintenance.
+	Actor string
+	// Issue is the issue after the mutation; nil for a delete.
+	Issue *model.Issue
+	// Blocked is the record's is_blocked flag for Issue.
+	Blocked bool
 	Raw     json.RawMessage
 }
 
-// EventStream yields journal events until the stream ends or fails.
+// Record converts the event to the model's journal record.
+func (e Event) Record() model.JournalRecord {
+	return model.JournalRecord{
+		Seq: e.Seq, Time: e.Time, Op: e.Op, IssueID: e.IssueID, Actor: e.Actor,
+		Issue: e.Issue, Blocked: e.Blocked,
+	}
+}
+
+// EventStream yields journal events until the stream ends or fails. Next
+// blocks until the next record; it returns [io.EOF] when bd exited cleanly,
+// a [*JournalTruncatedError] when the requested start fell below the
+// retained window, and a bd [*Error] for any other failure. Close stops the
+// process and unblocks Next; it is safe to call more than once and from
+// another goroutine.
 type EventStream interface {
 	Next() (Event, error)
 	Close() error
+}
+
+// JournalTruncatedError says that bd pruned records the follower still
+// needed. Resuming from Floor-1 continues with a known gap.
+type JournalTruncatedError struct {
+	Since, Floor, Head int64
+}
+
+func (e *JournalTruncatedError) Error() string {
+	return fmt.Sprintf("bd events tail: journal truncated: since %d is below the retained floor %d (head %d)", e.Since, e.Floor, e.Head)
 }
 
 // CreateSpec describes a new issue. Zero fields are left to bd's defaults.

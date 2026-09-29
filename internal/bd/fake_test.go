@@ -157,9 +157,6 @@ func TestFakeReadsAndSetters(t *testing.T) {
 	if v, err := f.Version(ctx); !IsClass(err, ClassUnsupported) || v.Raw != "1.2.1" {
 		t.Errorf("Version 1.2.1 = %+v, %v", v, err)
 	}
-	if _, err := f.EventsFollow(ctx, 0); !errors.Is(err, ErrNotImplemented) {
-		t.Error("EventsFollow")
-	}
 	if got := f.Calls(); len(got) == 0 || got[0] != "Where" {
 		t.Errorf("Calls = %v", got)
 	}

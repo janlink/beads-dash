@@ -4,9 +4,11 @@ import (
 	"bytes"
 	"context"
 	"errors"
+	"io"
 	"os"
 	"os/exec"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -79,4 +81,107 @@ func (r ExecRunner) environ() []string {
 	}
 	env = append(env, r.Env...)
 	return append(env, "BD_JSON_ENVELOPE=1", "BD_DISABLE_METRICS=1")
+}
+
+// Streamer is the runner extension for long-lived commands whose output is
+// read while they run.
+type Streamer interface {
+	Stream(ctx context.Context, argv []string) (ProcessStream, error)
+}
+
+// ProcessStream is a running bd process. Read yields its stdout. Wait
+// returns the exit code and stderr once stdout has ended, or after Close.
+// Close kills the process group and is safe to call repeatedly.
+type ProcessStream interface {
+	io.Reader
+	Wait() (Result, error)
+	Close() error
+}
+
+var _ Streamer = ExecRunner{}
+
+// Stream implements [Streamer]. The process is killed with its group when
+// ctx ends or the stream is closed.
+func (r ExecRunner) Stream(ctx context.Context, argv []string) (ProcessStream, error) {
+	bin := r.Bin
+	if bin == "" {
+		bin = "bd"
+	}
+	sctx, cancel := context.WithCancel(ctx)
+	cmd := exec.CommandContext(sctx, bin, argv...)
+	cmd.Dir = r.Dir
+	cmd.Env = r.environ()
+	cmd.WaitDelay = killGrace
+	setProcessGroup(cmd)
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		cancel()
+		return nil, err
+	}
+	p := &execStream{cmd: cmd, out: stdout, cancel: cancel, ctx: sctx}
+	cmd.Stderr = &p.stderr
+	if err := cmd.Start(); err != nil {
+		cancel()
+		return nil, err
+	}
+	return p, nil
+}
+
+type execStream struct {
+	cmd    *exec.Cmd
+	out    io.Reader
+	ctx    context.Context
+	cancel context.CancelFunc
+	stderr limitedBuffer
+
+	once sync.Once
+	res  Result
+	err  error
+}
+
+func (p *execStream) Read(b []byte) (int, error) { return p.out.Read(b) }
+
+func (p *execStream) Wait() (Result, error) {
+	p.once.Do(func() {
+		err := p.cmd.Wait()
+		p.res.Stderr = p.stderr.Bytes()
+		var exitErr *exec.ExitError
+		switch {
+		case p.ctx.Err() != nil:
+			p.err = p.ctx.Err()
+		case errors.As(err, &exitErr):
+			p.res.ExitCode = exitErr.ExitCode()
+		default:
+			p.err = err
+		}
+	})
+	return p.res, p.err
+}
+
+func (p *execStream) Close() error {
+	p.cancel()
+	_, _ = p.Wait()
+	return nil
+}
+
+// limitedBuffer keeps the first stderrKeep*2 bytes written and discards the
+// rest, so a chatty follower cannot grow memory.
+type limitedBuffer struct {
+	mu  sync.Mutex
+	buf bytes.Buffer
+}
+
+func (l *limitedBuffer) Write(b []byte) (int, error) {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	if room := stderrKeep*2 - l.buf.Len(); room > 0 {
+		l.buf.Write(b[:min(room, len(b))])
+	}
+	return len(b), nil
+}
+
+func (l *limitedBuffer) Bytes() []byte {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	return bytes.Clone(l.buf.Bytes())
 }

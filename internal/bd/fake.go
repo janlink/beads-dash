@@ -32,6 +32,8 @@ type Fake struct {
 	calls     []string
 	nextID    int
 	now       func() time.Time
+	hook      func(method string)
+	journal   journalState
 }
 
 // NewFake returns a fake speaking as bd 1.3.0 in workspace /fake with the
@@ -123,6 +125,12 @@ func (f *Fake) FailWith(method string, err error) {
 	})
 }
 
+// SetHook runs fn at the start of every client call, before the injected
+// failure is looked up and outside the fake's lock. Tests use it to advance a
+// fake clock so a call takes time, or to change the fake's state at a precise
+// moment.
+func (f *Fake) SetHook(fn func(method string)) { f.locked(func() { f.hook = fn }) }
+
 // Calls returns the names of the methods called so far, in order.
 func (f *Fake) Calls() []string {
 	f.mu.Lock()
@@ -147,11 +155,17 @@ func (f *Fake) locked(fn func()) {
 // context first like a real bd process would.
 func (f *Fake) enter(ctx context.Context, method string) error {
 	f.mu.Lock()
-	defer f.mu.Unlock()
 	f.calls = append(f.calls, method)
+	hook := f.hook
+	f.mu.Unlock()
+	if hook != nil {
+		hook(method)
+	}
 	if err := ctx.Err(); err != nil {
 		return err
 	}
+	f.mu.Lock()
+	defer f.mu.Unlock()
 	return f.errs[method]
 }
 
@@ -298,14 +312,6 @@ func (f *Fake) ConfigGet(ctx context.Context, key string) (ConfigValue, error) {
 		return v, nil
 	}
 	return ConfigValue{Key: key}, nil
-}
-
-// EventsFollow is not implemented yet.
-func (f *Fake) EventsFollow(ctx context.Context, _ int64) (EventStream, error) {
-	if err := f.enter(ctx, "EventsFollow"); err != nil {
-		return nil, err
-	}
-	return nil, ErrNotImplemented
 }
 
 func (f *Fake) find(id string) (int, error) {

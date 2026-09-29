@@ -26,8 +26,8 @@ type ExecOptions struct {
 	Runner Runner
 }
 
-// ExecClient is the [Client] backed by the bd CLI. The read methods are
-// implemented; the write methods and EventsFollow return
+// ExecClient is the [Client] backed by the bd CLI. The read methods and
+// EventsFollow are implemented; the write methods return
 // [ErrNotImplemented].
 type ExecClient struct {
 	runner   Runner
@@ -295,11 +295,6 @@ func (c *ExecClient) ConfigGet(ctx context.Context, key string) (ConfigValue, er
 		return ConfigValue{}, c.decodeErr("config get", err)
 	}
 	return v, nil
-}
-
-// EventsFollow is not implemented yet.
-func (c *ExecClient) EventsFollow(context.Context, int64) (EventStream, error) {
-	return nil, ErrNotImplemented
 }
 
 // Create is not implemented yet.

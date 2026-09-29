@@ -2,9 +2,12 @@ package bd
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"strings"
 	"testing"
+
+	"go.uber.org/goleak"
 
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/testbd"
@@ -13,7 +16,14 @@ import (
 const seeded = "seeded"
 
 func TestMain(m *testing.M) {
-	os.Exit(testbd.Run(m, testbd.Options{Recipes: map[string]testbd.Recipe{seeded: seedWorkspace}}))
+	code := testbd.Run(m, testbd.Options{Recipes: map[string]testbd.Recipe{seeded: seedWorkspace}})
+	if code == 0 {
+		if err := goleak.Find(); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			code = 1
+		}
+	}
+	os.Exit(code)
 }
 
 // seedWorkspace builds an epic that bd calls blocked (by another epic), so
