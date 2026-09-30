@@ -229,7 +229,9 @@ func TestEditWithoutAnEditorReportsFalse(t *testing.T) {
 
 func TestEditTouchesNoFileUntilTheCommandRuns(t *testing.T) {
 	dir := t.TempDir()
-	t.Setenv("TMPDIR", dir)
+	for _, k := range []string{"TMPDIR", "TMP", "TEMP"} {
+		t.Setenv(k, dir)
+	}
 	get := func(k string) string {
 		if k == "EDITOR" {
 			return "true"

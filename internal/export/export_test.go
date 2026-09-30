@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -228,13 +229,36 @@ func TestSize(t *testing.T) {
 }
 
 func TestResolvePath(t *testing.T) {
+	vol := ""
+	if runtime.GOOS == "windows" {
+		vol = "C:"
+	}
+	at := func(p string) string { return vol + filepath.FromSlash(p) }
 	for _, c := range []struct{ p, want string }{
-		{"a.md", "/work/a.md"},
-		{"~/x/a.md", "/home/u/x/a.md"},
-		{"/abs/a.md", "/abs/a.md"},
-		{"sub/../a.md", "/work/a.md"},
+		{"a.md", at("/work/a.md")},
+		{"~/x/a.md", at("/home/u/x/a.md")},
+		{"/abs/a.md", at("/abs/a.md")},
+		{"sub/../a.md", at("/work/a.md")},
 	} {
-		if got := ResolvePath(c.p, "/work", "/home/u"); got != c.want {
+		if got := ResolvePath(c.p, at("/work"), at("/home/u")); got != c.want {
+			t.Errorf("ResolvePath(%q) = %q, want %q", c.p, got, c.want)
+		}
+	}
+}
+
+func TestResolvePathWindowsForms(t *testing.T) {
+	if runtime.GOOS != "windows" {
+		t.Skip("volume and backslash forms only exist on Windows")
+	}
+	for _, c := range []struct{ p, want string }{
+		{`D:\x\a.md`, `D:\x\a.md`},
+		{`D:/x/a.md`, `D:\x\a.md`},
+		{`\\srv\share\a.md`, `\\srv\share\a.md`},
+		{`\abs\a.md`, `C:\abs\a.md`},
+		{`~\x\a.md`, `C:\home\u\x\a.md`},
+		{`sub\..\a.md`, `C:\work\a.md`},
+	} {
+		if got := ResolvePath(c.p, `C:\work`, `C:\home\u`); got != c.want {
 			t.Errorf("ResolvePath(%q) = %q, want %q", c.p, got, c.want)
 		}
 	}
@@ -290,7 +314,14 @@ func TestWriteFileOverwriteKeepsMode(t *testing.T) {
 	if err := WriteFile(path, []byte("new"), true); err != nil {
 		t.Fatal(err)
 	}
-	if st, _ := os.Stat(path); st.Mode().Perm() != 0o640 {
+	st, _ := os.Stat(path)
+	if runtime.GOOS == "windows" {
+		if st.Mode().Perm()&0o200 == 0 {
+			t.Errorf("mode %v, want writable", st.Mode().Perm())
+		}
+		return
+	}
+	if st.Mode().Perm() != 0o640 {
 		t.Errorf("mode %v, want 0640", st.Mode().Perm())
 	}
 }

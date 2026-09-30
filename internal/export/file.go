@@ -11,18 +11,27 @@ import (
 	"strings"
 )
 
-// ResolvePath expands ~ and anchors a relative path at dir.
+// ResolvePath expands ~ and anchors a relative path at dir. A path rooted
+// without a volume (/x on Windows) takes the volume of dir.
 func ResolvePath(p, dir, home string) string {
 	switch {
 	case p == "~":
 		p = home
-	case strings.HasPrefix(p, "~/"):
+	case strings.HasPrefix(p, "~/"), strings.HasPrefix(p, "~"+string(filepath.Separator)):
 		p = filepath.Join(home, p[2:])
 	}
 	if !filepath.IsAbs(p) && dir != "" {
-		p = filepath.Join(dir, p)
+		if rooted(p) {
+			p = filepath.VolumeName(dir) + p
+		} else {
+			p = filepath.Join(dir, p)
+		}
 	}
 	return filepath.Clean(p)
+}
+
+func rooted(p string) bool {
+	return p != "" && os.IsPathSeparator(p[0]) && filepath.VolumeName(p) == ""
 }
 
 // Exists reports whether path is taken.
