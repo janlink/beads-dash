@@ -213,3 +213,15 @@ func TestRuneHitsConvertsFuzzyByteOffsets(t *testing.T) {
 		t.Errorf("highlighted %q, want %q", string(got), "änd")
 	}
 }
+
+func TestTailHitsFollowTheFrontCut(t *testing.T) {
+	id := "beads-dash-www.32"
+	hit := map[int]bool{0: true, 15: true, 16: true}
+	got := tailHits(id, "…www.32", "…", hit)
+	if len(got) != 2 || !got[5] || !got[6] {
+		t.Errorf("hits %v, want the last two runes of the tail", got)
+	}
+	if same := tailHits(id, id, "…", hit); len(same) != 3 {
+		t.Errorf("an uncut id keeps its hits: %v", same)
+	}
+}

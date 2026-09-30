@@ -1,5 +1,5 @@
- 1 Overview  2 Tree  [3 Kanban]  4 Ready  5 Memories  6 Graph                                           * live 12:00:00 
-- [Open] 5 ---------------------------- - In progress 2 ----------------------- - Blocked 2 ------------------------ 2> 
+- 1 Overview  2 Tree  [3 Kanban]  4 Ready  5 Memories  6 Graph --------------------------------------- * live 12:00:00 -
+- [Open] 5 ---------------------------- - In progress 2 ----------------------- - Blocked 2 ---------------------- 2> - 
 |   P0 Payment provider timeout retries     P1 Checkout: guest or... ##---- 2/5     P2 Split pricing service        ! 1 
     P1 Address form validation              P2 Cart badge shows stale c... @bob     P2 Guest order confirmation ... ! 1 
     P2 Follow-up from a delet... @alice                                                                                 
@@ -36,5 +36,5 @@
                                                                                                                         
                                                                                                                         
                                                                                                                         
-                                                                                                                        
+----------------------------------------------------------------------------------------------------------------- 1/10 -
  ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view  t appearance  / search  r refresh  f filter         

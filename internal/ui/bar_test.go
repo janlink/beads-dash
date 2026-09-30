@@ -634,7 +634,7 @@ func TestHeaderScopeLabelIsMiddleTruncated(t *testing.T) {
 	typeText(a, "status:open,in_progress type:bug,task,feature label:backend,frontend needle")
 	press(a, "enter")
 	head := lines(a)[0]
-	if !strings.Contains(head, "...") || !strings.Contains(head, "status:") || !strings.Contains(head, "needle · 0/15 · closed hidden") {
+	if !strings.Contains(head, "...") || !strings.Contains(head, "/ sta") || !strings.Contains(head, "0/15 · closed hidden") {
 		t.Errorf("label not cut out of the middle: %q", head)
 	}
 	testgolden.Equal(t, screen(a))

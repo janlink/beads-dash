@@ -131,7 +131,7 @@ func (r *Renderer) feed(l FeedLine, w int, sel bool) string {
 		b.WriteString(paint(role(theme.Text), r.look.Fit(e.Kind.Label(), feedKindW)))
 		b.WriteString(sp)
 	}
-	b.WriteString(paint(theme.Dim, r.look.Fit(e.IssueID, r.idW)))
+	b.WriteString(paint(theme.Dim, r.look.FitID(e.IssueID, r.idW)))
 	b.WriteString(sp)
 	b.WriteString(paint(role(theme.Text), r.look.Fit(oneLine(title), titleW)))
 	if tail != "" {

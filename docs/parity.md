@@ -35,10 +35,10 @@ Statuses come from the code, key map, command table and test inventory of the re
 
 | Item | Status | Note |
 | --- | --- | --- |
-| Header rule with view, workspace, stats, live or stale marker | done | stale shows the error and its age |
-| Fork junctions where the side panel starts | done | |
-| Footer tabs, filter note, hints that drop in a fixed order | done | hints are generated from the key map |
-| Toast row with ASCII icons | done | notices queue instead of replacing each other |
+| Header rule with view tabs, scope label, live or stale marker | done | stale shows the age; parts drop in a fixed order: scope, bd warning, marker word, tab names |
+| Fork junctions where the side panel starts | done | `┬` in the header rule and `┴` in the footer rule; ascii uses `+` |
+| Footer rule with marks, changes, scope note and position; hints row below | done | hints are generated from the key map and drop in a fixed order |
+| Toast row with ASCII icons | done | a notice takes the hints row; notices queue instead of replacing each other |
 | Docked search, filter and command bars | done | |
 | Kanban column count by width, panel beside at wide terminals | done | breakpoints follow bdash ADR and goldens |
 | Minimum size guard | done | "too small" screen below the minimum size |

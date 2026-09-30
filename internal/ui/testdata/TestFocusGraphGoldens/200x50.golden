@@ -1,4 +1,4 @@
- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph                                                                                                                           * live 12:00:00 
+- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ----------------------------- * live 12:00:00 -+- gr-b ----------------------------------------------------------------------------------
       * gr-a Extract pricing client                                                                         P2|  gr-b  o Open  task  P2                                                                 
 |     o gr-b Migrate cart totals                                                                            P2|  Migrate cart totals                                                                    
       o gr-c Migrate invoice totals with a rather long title that needs cutting somewhere                   P2|  * Description  none                                                                    
@@ -46,5 +46,5 @@
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
-                                                                                                              |                                                                                         
+------------------------------------------------------------------------------------------------------- 2/14 -+-----------------------------------------------------------------------------------------
  ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  / search  m markdown or source  r refresh  f filter  : command  Ctrl+P jump                                                

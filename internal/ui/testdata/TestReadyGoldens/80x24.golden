@@ -1,11 +1,11 @@
- 1 Overview  2 Tree  3 Kanban  [4 Ready]  5 Memories  6 Graph   * live 12:00:00 
-   Unassigned (2)                                                               
+- 1 Overview  2 Tree  3 Kanban  [4 Ready]  5 Memories  6 Graph ---- * 12:00:00 -
+   - Unassigned 2 --------------------------------------------------------------
 |   o ws-9qe     P0 Payment provider timeout retries                            
     o ws-4k2.1   P1 Address form validation                                     
-   Assigned, not started (2)                                                    
+   - Assigned, not started 2 ---------------------------------------------------
     o ws-lost    P2 Follow-up from a deleted epic                   alice       
     o ws-4k2.5.1 P3 Pickup point lookup                             carol       
-   > Blocked (2)                                                                
+   - > Blocked 2 ---------------------------------------------------------------
                                                                                 
                                                                                 
                                                                                 
@@ -20,5 +20,5 @@
                                                                                 
                                                                                 
                                                                                 
-                                                                                
- ? help  q quit  j/k move  Space mark  Enter open           1 container hidden  
+- 1 container hidden ----------------------------------------------------- 1/4 -
+ ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view              

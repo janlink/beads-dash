@@ -90,14 +90,17 @@ func TestHeaderTabsFromRegularWidth(t *testing.T) {
 	}
 }
 
-func TestHeaderAndFooterAreOneLine(t *testing.T) {
+func TestHeaderIsOneRuleAndFooterTwoRows(t *testing.T) {
 	a := sample(t, plain, 80, 24)
 	ls := lines(a)
-	if !strings.Contains(ls[0], "live 12:00:00") {
+	if !strings.Contains(ls[0], "12:00:00 -") || !strings.HasPrefix(ls[0], "- [1 Overview]") {
 		t.Errorf("header %q", ls[0])
 	}
+	if !strings.HasPrefix(ls[22], "---") || strings.Contains(ls[22], "help") {
+		t.Errorf("footer rule %q", ls[22])
+	}
 	if !strings.Contains(ls[23], "? help") {
-		t.Errorf("footer %q", ls[23])
+		t.Errorf("footer hints %q", ls[23])
 	}
 }
 
@@ -328,8 +331,8 @@ func TestChangedCounterCountsHidden(t *testing.T) {
 	snap := snapOf(t)
 	ids := []string{snap.IDs()[0], "ghost-1"}
 	send(a, updateMsg{refresh.Update{Snapshot: snap, Highlights: ids, Status: liveStatus()}})
-	if !strings.Contains(lines(a)[29], "2 changed (1 hidden)") {
-		t.Errorf("footer %q", lines(a)[29])
+	if !strings.Contains(lines(a)[28], "2 changed (1 hidden)") {
+		t.Errorf("footer %q", lines(a)[28])
 	}
 }
 
@@ -337,8 +340,8 @@ func TestMarksCounterShowsHidden(t *testing.T) {
 	a := sample(t, plain, 100, 30)
 	press(a, "space")
 	a.sess.ToggleMark("elsewhere")
-	if !strings.Contains(lines(a)[29], "2 marked (1 hidden)") {
-		t.Errorf("footer %q", lines(a)[29])
+	if !strings.Contains(lines(a)[28], "2 marked (1 hidden)") {
+		t.Errorf("footer %q", lines(a)[28])
 	}
 }
 
@@ -348,7 +351,7 @@ func TestHealthChips(t *testing.T) {
 	st := liveStatus()
 	st.Slow, st.GCHint, st.Fallback = true, true, true
 	send(a, updateMsg{refresh.Update{Snapshot: snap, Status: st}})
-	f := lines(a)[29]
+	f := lines(a)[28]
 	for _, want := range []string{"slow", "gc", "journal-limited"} {
 		if !strings.Contains(f, want) {
 			t.Errorf("footer %q lacks %q", f, want)
@@ -357,7 +360,7 @@ func TestHealthChips(t *testing.T) {
 }
 
 func TestStaleAndUntestedHeader(t *testing.T) {
-	a := sample(t, plain, 100, 30)
+	a := sample(t, plain, 120, 30)
 	ws := workspace()
 	ws.Untested = true
 	ws.Version = bd.VersionInfo{Raw: "1.4.0", Parsed: bd.MinSupported}
@@ -368,7 +371,7 @@ func TestStaleAndUntestedHeader(t *testing.T) {
 	if !strings.Contains(h, "stale") || !strings.Contains(h, "untested") {
 		t.Errorf("header %q", h)
 	}
-	if n := lines(a)[28]; !strings.Contains(n, "refresh failed: database busy") {
+	if n := lines(a)[29]; !strings.Contains(n, "refresh failed: database busy") {
 		t.Errorf("notice row %q", n)
 	}
 	press(a, "!")
@@ -381,8 +384,8 @@ func TestExitedNoticeDismissedByNextKey(t *testing.T) {
 	a := New(testOptions(plain, func(o *Options) { o.Warnings = []string{"config is broken"} }))
 	send(a, tea.WindowSizeMsg{Width: 100, Height: 30}, sessionMsg{sess: workspace()},
 		updateMsg{refresh.Update{Snapshot: snapOf(t), Status: liveStatus()}})
-	if !strings.Contains(lines(a)[28], "config is broken") {
-		t.Fatalf("notice row %q", lines(a)[28])
+	if !strings.Contains(lines(a)[29], "config is broken") {
+		t.Fatalf("notice row %q", lines(a)[29])
 	}
 	press(a, "j")
 	if strings.Contains(screen(a), "config is broken") {

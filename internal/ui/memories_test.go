@@ -276,8 +276,8 @@ func TestJournalDeclinedShowsHint(t *testing.T) {
 	r.a.bds.Version = journalVersion(t)
 	r.a.maybeAskJournal()
 	r.key("N")
-	if !strings.Contains(r.a.chips(), "limited: no actors") {
-		t.Errorf("chips %q", r.a.chips())
+	if !strings.Contains(chipText(r.a), "limited: no actors") {
+		t.Errorf("chips %q", chipText(r.a))
 	}
 	if r.a.o.Journal.Journal(r.a.bds.Workspace.Path) != config.JournalDeclined {
 		t.Error("not stored")
@@ -368,7 +368,7 @@ func TestForgottenElsewhereIsCounted(t *testing.T) {
 		t.Fatal(err)
 	}
 	refreshMemories(r)
-	if c := r.a.chips(); !strings.Contains(c, "1 forgotten elsewhere") {
+	if c := chipText(r.a); !strings.Contains(c, "1 forgotten elsewhere") {
 		t.Errorf("chips %q", c)
 	}
 }
@@ -471,8 +471,8 @@ func TestJournalNotNowKeepsTheChipAndStoresNothing(t *testing.T) {
 	r := journalRig(t)
 	r.a.maybeAskJournal()
 	r.key("n")
-	if !strings.Contains(r.a.chips(), "limited: no actors") {
-		t.Errorf("chips %q", r.a.chips())
+	if !strings.Contains(chipText(r.a), "limited: no actors") {
+		t.Errorf("chips %q", chipText(r.a))
 	}
 	if got := r.a.o.Journal.Journal(r.a.bds.Workspace.Path); got != config.JournalUnasked {
 		t.Errorf("stored %q", got)

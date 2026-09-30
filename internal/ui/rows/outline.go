@@ -168,9 +168,9 @@ func (r *Renderer) outlineLabel(row model.OutlineRow, w int, paint func(theme.Ro
 	}
 	switch row.Kind {
 	case model.OutHeader:
-		return paint(theme.Dim, r.look.Fit(fmt.Sprintf("%s%s %d issues", g.Rule, g.Rule, row.Count), w))
+		return r.look.Rule(w, r.look.Words(look.Word(theme.Dim, fmt.Sprintf("%d issues", row.Count))), nil)
 	case model.OutIsolated:
-		return paint(theme.Dim, r.look.Fit(fmt.Sprintf("%s%s without dependencies (%d)", g.Rule, g.Rule, row.Count), w))
+		return r.look.Rule(w, r.look.Words(look.Word(theme.Dim, fmt.Sprintf("without dependencies (%d)", row.Count))), nil)
 	case model.OutWaits:
 		return paint(theme.Dim, r.look.Fit(fmt.Sprintf("%s waits on (%d · %d open)", WaitsGlyph(g), row.Count, row.Aux), w))
 	case model.OutHolds:
@@ -190,7 +190,7 @@ func (r *Renderer) outlineLabel(row model.OutlineRow, w int, paint func(theme.Ro
 
 func (r *Renderer) refLabel(row model.OutlineRow, w int, text func(theme.Role, string) string) string {
 	g := r.look.Glyphs
-	head := RefGlyph(g) + " " + ansi.Truncate(row.ID, maxIDWidth, g.Ellipsis)
+	head := RefGlyph(g) + " " + r.look.TruncID(row.ID, maxIDWidth)
 	title := ""
 	if is, ok := r.snap.Issue(row.ID); ok {
 		title = oneLine(is.Title)
@@ -227,7 +227,7 @@ func (r *Renderer) issueLabel(row model.OutlineRow, w int, text func(theme.Role,
 	}
 	head.WriteString(text(statusRole, g.Status[idx]))
 	head.WriteString(text(theme.Text, " "))
-	id := ansi.Truncate(is.ID, maxIDWidth, g.Ellipsis)
+	id := r.look.TruncID(is.ID, maxIDWidth)
 	head.WriteString(r.hl(text, idRole, id))
 	headW := ansi.StringWidth(head.String())
 	if row.Member {

@@ -86,13 +86,13 @@ func (r *Renderer) tree(row model.TreeRow, w int, sel bool) string {
 		textRole = theme.Dim
 	}
 
-	id := ansi.Truncate(is.ID, maxIDWidth, g.Ellipsis)
+	id := r.look.TruncID(is.ID, maxIDWidth)
 	sw := ansi.StringWidth(g.Status[idx])
 
 	prog, container := r.snap.Progress(row.ID, r.statuses)
 	orphan := ""
 	if row.Orphan != "" {
-		orphan = UpGlyph(g) + " " + ansi.Truncate(row.Orphan, maxIDWidth, g.Ellipsis)
+		orphan = UpGlyph(g) + " " + r.look.TruncID(row.Orphan, maxIDWidth)
 	}
 	who := ansi.Truncate(oneLine(is.Assignee), treeWho, g.Ellipsis)
 	showBar, showWho, showOrphan := !narrow, !narrow && who != "", orphan != ""

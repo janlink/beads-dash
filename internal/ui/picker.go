@@ -290,8 +290,9 @@ func (p *picker) row(l look.Look, i, w int) string {
 	b.WriteString(paint(theme.Primary, mark))
 	b.WriteString(paint(statusRole, glyph))
 	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(paintMatch(paint, idRole, ansi.Truncate(it.id, idCells, l.Glyphs.Ellipsis), 0, hit))
-	b.WriteString(paint(theme.Text, strings.Repeat(" ", max(idCells-ansi.StringWidth(it.id), 0)+1)))
+	id := l.TruncID(it.id, idCells)
+	b.WriteString(paintMatch(paint, idRole, id, 0, tailHits(it.id, id, l.Glyphs.Ellipsis, hit)))
+	b.WriteString(paint(theme.Text, strings.Repeat(" ", max(idCells-ansi.StringWidth(id), 0)+1)))
 	b.WriteString(paintMatch(paint, role, title, utf8.RuneCountInString(it.id)+1, hit))
 	if suffix != "" {
 		b.WriteString(paint(theme.Text, strings.Repeat(" ", max(titleW-ansi.StringWidth(title), 0))))
@@ -317,6 +318,22 @@ func (p *picker) idCells() int {
 		n = max(n, ansi.StringWidth(it.id))
 	}
 	return min(n, 16)
+}
+
+// tailHits moves the hits on id to the runes of shown, which is id cut from
+// the front behind an ellipsis; the ellipsis itself takes no hit.
+func tailHits(id, shown, ellipsis string, hit map[int]bool) map[int]bool {
+	if shown == id {
+		return hit
+	}
+	total, kept, lead := utf8.RuneCountInString(id), utf8.RuneCountInString(shown), utf8.RuneCountInString(ellipsis)
+	out := make(map[int]bool, len(hit))
+	for k := lead; k < kept; k++ {
+		if hit[total-kept+k] {
+			out[k] = true
+		}
+	}
+	return out
 }
 
 // paintMatch paints the runes of s whose position in "id title" is in hit in

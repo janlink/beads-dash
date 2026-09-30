@@ -280,7 +280,7 @@ func (v *Overview) Handle(a keys.Action, env Env) (tea.Cmd, bool) {
 		for i := range lr {
 			lr[i].sel = true
 		}
-		page := max(v.boxes[focus].h-2, 1)
+		page := max(v.boxes[focus].h-1, 1)
 		if to := moveTo(lr, v.cursor(focus, env.Current), a, page); to >= 0 {
 			v.move(env, focus, to)
 		}
@@ -309,7 +309,7 @@ func (*Overview) At(int) (string, bool) { return "", false }
 // AtXY implements Pointer: a click focuses the region and selects the line.
 func (v *Overview) AtXY(x, y int) (string, bool) {
 	for r, b := range v.boxes {
-		if b.w == 0 || x <= b.x || x >= b.x+b.w-1 || y <= b.y || y >= b.y+b.h-1 {
+		if b.w == 0 || x < b.x || x >= b.x+b.w || y <= b.y || y >= b.y+b.h {
 			continue
 		}
 		line := v.off[r] + y - b.y - 1

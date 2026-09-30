@@ -271,7 +271,7 @@ func (v *memoriesView) previewLines(env Env, cur model.Memory, lay memLayout) []
 		lead = l.Paint(theme.Border, l.Glyphs.Vertical) + " "
 		inner = w - 2
 	} else {
-		out = append(out, l.Paint(theme.Border, strings.Repeat(l.Glyphs.Rule, w)))
+		out = append(out, l.Rule(w, nil, nil))
 	}
 	out = append(out, lead+l.Fit(a.memHeader(cur, inner, m.focus), inner))
 	body := a.memBody(cur, inner)

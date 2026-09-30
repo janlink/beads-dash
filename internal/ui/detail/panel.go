@@ -333,10 +333,7 @@ func (p *Panel) Render(in Input) []string {
 		if in.Focused {
 			role, label = theme.Primary, " Detail (focused) "
 		}
-		rule := strings.TrimRight(g.Rule, " ")
-		lead := strings.Repeat(rule, 2)
-		fill := max(in.W-ansi.StringWidth(lead)-ansi.StringWidth(label), 0)
-		top = []string{l.Paint(theme.Rule, lead) + l.Paint(role, label) + l.Paint(theme.Rule, strings.Repeat(rule, fill))}
+		top = []string{l.Rule(in.W, l.Words(look.Word(role, strings.TrimSpace(label))), nil)}
 		innerH--
 	case Side:
 		role := theme.Rule

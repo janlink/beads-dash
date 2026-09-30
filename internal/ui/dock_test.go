@@ -41,11 +41,11 @@ func TestDetailPlacementEdges(t *testing.T) {
 	}{
 		{199, 50, detail.Bottom},
 		{200, 50, detail.Side},
-		{200, 22, detail.Side},
+		{200, 23, detail.Side},
+		{200, 22, detail.Overlay},
 		{200, 21, detail.Overlay},
-		{200, 20, detail.Overlay},
-		{80, 21, detail.Overlay},
-		{80, 22, detail.Bottom},
+		{80, 22, detail.Overlay},
+		{80, 23, detail.Bottom},
 		{79, 30, detail.Overlay},
 	} {
 		t.Run(fmt.Sprintf("%dx%d", tc.cols, tc.rows), func(t *testing.T) {
@@ -54,7 +54,7 @@ func TestDetailPlacementEdges(t *testing.T) {
 			if got := a.frame().Frame; got != tc.want {
 				t.Fatalf("frame %v, want %v", got, tc.want)
 			}
-			if tc.cols == 199 || tc.cols == 200 || tc.rows == 20 || tc.rows == 21 || tc.rows == 22 {
+			if tc.cols == 199 || tc.cols == 200 || tc.rows == 21 || tc.rows == 22 || tc.rows == 23 {
 				testgolden.Equal(t, screen(a))
 			}
 			for i, l := range lines(a) {

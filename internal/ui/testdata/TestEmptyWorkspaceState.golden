@@ -1,5 +1,4 @@
- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
-                                                                                
+- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
                                                                                 
                                                                                 
                                                                                 
@@ -21,4 +20,5 @@
                                                                                 
                                                                                 
                                                                                 
+--------------------------------------------------------------------------------
  n new issue  bd create "First task" -t task  bd quickstart  ? help  q quit     

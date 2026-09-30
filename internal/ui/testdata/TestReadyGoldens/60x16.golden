@@ -1,16 +1,16 @@
- Ready                                           * 12:00:00 
-   Unassigned (2)                                           
+- Ready --------------------------------------- * 12:00:00 -
+   - Unassigned 2 ------------------------------------------
 |   o ws-9qe     P0 Payment provider timeout retries        
     o ws-4k2.1   P1 Address form validation                 
-   Assigned, not started (2)                                
+   - Assigned, not started 2 -------------------------------
     o ws-lost    P2 Follow-up from a deleted epic           
     o ws-4k2.5.1 P3 Pickup point lookup                     
-   > Blocked (2)                                            
+   - > Blocked 2 -------------------------------------------
                                                             
                                                             
                                                             
                                                             
                                                             
                                                             
-                                                            
- ? help  q quit  j/k move  Space mark   1 container hidden  
+- 1 container hidden --------------------------------- 1/4 -
+ ? help  q quit  j/k move  Space mark  Enter open           

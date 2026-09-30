@@ -615,12 +615,12 @@ func (a *App) topDialog() Dialog {
 	return nil
 }
 
+// chromeRows are the header rule and the footer's two rows.
+const chromeRows = 3
+
+// bodyHeight is the rows left for the body between the header and the footer.
 func (a *App) bodyHeight() int {
-	h := a.rows - 2 - a.barHeight()
-	if _, ok := a.notice(); ok {
-		h--
-	}
-	return max(h, 1)
+	return max(a.rows-chromeRows-a.barHeight(), 1)
 }
 
 func (a *App) refreshNotice() (screens.Notice, bool) {
@@ -1054,10 +1054,10 @@ func (a *App) click(m tea.Mouse) {
 	}
 	switch {
 	case m.Y == 0:
-		if BreakpointOf(a.cols) == Narrow {
+		if a.tabsCollapsed() {
 			return
 		}
-		_, spans := a.tabs()
+		_, spans := a.tabSegs(false)
 		for i, s := range spans {
 			if m.X >= s.from && m.X < s.to {
 				a.switchView(fmt.Sprintf("%d", i+1))
@@ -1139,10 +1139,7 @@ func (a *App) render() string {
 	lines := make([]string, 0, a.rows)
 	lines = append(lines, a.header())
 	lines = append(lines, body...)
-	if n, ok := a.noticeRow(); ok {
-		lines = append(lines, n)
-	}
-	lines = append(lines, a.footer())
+	lines = append(lines, a.footer()...)
 	if a.bar != nil {
 		lines = append(lines, a.barLines()...)
 	}

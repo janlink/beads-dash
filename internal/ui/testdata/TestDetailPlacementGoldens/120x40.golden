@@ -1,4 +1,4 @@
- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph                                           * live 12:00:00 
+- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph --------------------------------------- * live 12:00:00 -
 |     o ws-9qe Payment provider timeout retries                                                                       P0
     v * ws-4k2 Checkout: guest orders                                                                         2/5 ##----
     |-  o ws-4k2.1 Address form validation                                                                            P1
@@ -22,7 +22,7 @@
                                                                                                                         
                                                                                                                         
                                                                                                                         
--- Detail (focused) ----------------------------------------------------------------------------------------------------
+- Detail (focused) -----------------------------------------------------------------------------------------------------
  ws-9qe  o Open  bug  P0                                                                                                
  Payment provider timeout retries                                                                                       
 |v Description  markdown                                                                                                
@@ -36,5 +36,5 @@
    `- ! ws-2hz Split pricing service                                                                                    
  * Children  none                                                                                                       
  > Details  created 5 h ago · updated 5 h ago                                                                           
- > Audit trail  no comments                                                                                             
+----------------------------------------------------------------------------------------------------------------- 1/10 -
  ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  / search  m markdown or source  r refresh  

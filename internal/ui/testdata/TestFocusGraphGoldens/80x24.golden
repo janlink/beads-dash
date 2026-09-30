@@ -1,4 +1,4 @@
- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
       * gr-a Extract pricing client                                           P2
 |     o gr-b Migrate cart totals                                              P2
       o gr-c Migrate invoice totals with a rather long title that needs cu... P2
@@ -10,8 +10,7 @@
       o gr-lone1 Standalone chore                                             P2
       ~ gr-lone2 Another standalone chore                                     P2
       o gr-w Cache metrics                                                    P2
-      o gr-x Cache warmup                                                     P2
--- Detail (focused) ------------------------------------------------------------
+- Detail (focused) -------------------------------------------------------------
  gr-b  o Open  task  P2                                                         
  Migrate cart totals                                                            
  * Description  none                                                            
@@ -21,4 +20,5 @@
    o gr-b Migrate cart totals                                                   
    > holds up (1)                                                               
    `- o gr-d Remove legacy pricing                                              
+------------------------------------------------------------------------- 2/14 -
  ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance     

@@ -1,4 +1,4 @@
- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph  / -type:...:alice · 1/15 · closed hidden * live 12:00:00 
+- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph --- / -ty...ce · 1/15 · closed hidden - * live 12:00:00 -
 |     * ws-4k2 Checkout: guest orders                                                                         2/5 ##----
                                                                                                                         
                                                                                                                         
@@ -27,7 +27,7 @@
                                                                                                                         
                                                                                                                         
                                                                                                                         
-                                                                                                                        
+------------------------------------------------------------------------------------------------------------------ 1/1 -
  Enter keep  Esc close  Space toggle  Tab column  Up/Dn option                                                          
  Filter  type to find an option                                                                             1/15 shown  
 Status                          Type                  Priority              Assignee (1)          Labels                

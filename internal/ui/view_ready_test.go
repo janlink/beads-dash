@@ -28,7 +28,7 @@ func TestReadyGoldens(t *testing.T) {
 func TestReadyGroupsContainersAndBlocked(t *testing.T) {
 	a := viewApp(t, plain, 120, 30, "ready", false)
 	out := screen(a)
-	for _, want := range []string{"Unassigned (", "Assigned, not started (", "Blocked (2)", "containers hidden"} {
+	for _, want := range []string{"Unassigned 2 -", "Assigned, not started 2 -", "Blocked 2 -", "containers hidden"} {
 		if want == "containers hidden" {
 			want = "1 container hidden"
 		}

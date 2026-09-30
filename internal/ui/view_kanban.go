@@ -10,6 +10,7 @@ import (
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/keys"
+	"github.com/janlink/beads-dash/internal/ui/look"
 	"github.com/janlink/beads-dash/internal/ui/rows"
 	"github.com/janlink/beads-dash/internal/ui/screens"
 )
@@ -254,18 +255,14 @@ func (v *Kanban) heading(env Env, c model.KanbanColumn, w int, current bool, ext
 			name = "[" + name + "]"
 		}
 	}
-	rule := l.Glyphs.Rule
-	count := " " + itoa(len(c.IDs)) + " "
-	hint, hintW := "", 0
+	count := " " + itoa(len(c.IDs))
+	var right []look.Seg
 	if extra != "" {
-		hintW = ansi.StringWidth(extra) + 1
-		hint = l.Paint(theme.Dim, " "+extra)
+		right = l.Words(look.Word(theme.Dim, extra))
 	}
-	room := max(w-2-ansi.StringWidth(count)-hintW, 1)
+	room := max(w-look.WordCost-1-ansi.StringWidth(count)-look.SegWidth(right), 1)
 	name = ansi.Truncate(name, room, l.Glyphs.Ellipsis)
-	head := l.Paint(theme.Rule, rule+" ") + l.Paint(role, name) + l.Paint(theme.Dim, count)
-	rest := max(w-ansi.StringWidth(head)-hintW, 0)
-	return l.Fit(head+l.Paint(theme.Rule, strings.Repeat(rule, rest))+hint, w)
+	return l.Rule(w, l.Words([]look.Seg{{Role: role, Text: name}, {Role: theme.Dim, Text: count}}), right)
 }
 
 func (v *Kanban) card(env Env, id string, w int) string {

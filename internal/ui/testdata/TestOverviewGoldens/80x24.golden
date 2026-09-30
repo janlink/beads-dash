@@ -1,24 +1,24 @@
- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
-+- >Activity ---------------------------------+ +- Now ------------------------+
-|-- just now                                  | |o Open                       5|
-|    now * ws-7mt     Cart badge shows ... bob| |> Ready                      4|
-||    3m ^ ws-9qe     Payment provider ... 2→0| |* In progress                2|
-|-- last hour                                 | |! Blocked                    2|
-|    20m ! ws-2hz     Split prici... by ws-9qe| |~ Frozen                     1|
-|-- today                                     | |x Closed                     5|
-|     5h + ws-9qe     Payment provider time...| |                              |
-|     8h x ws-5ca     Update analytics cons...| |closed/day, 14d               |
-|     9h x ws-4k2.3   Order summary page      | |.~...........#                |
-|    10h x ws-4k2.4   Guest cart merge        | |33% closed · 2 deps           |
-|-- yesterday                                 | +------------------------------+
-|     1d + ws-7mt     Cart badge shows stal...| +- Needs attention ------------+
-|     1d + ws-lost    Follow-up from a dele...| |> Ready 4 (2 unassigned)      |
-|-- earlier                                   | |    o P0 ws-9qe     Payment...|
-|     2d + ws-4k2.2   Guest order confirmat...| |    o P1 ws-4k2.1   Address...|
-|     2d + ws-4k2.5.1 Pickup point lookup     | +-------------------------- +6 +
-|     2d + ws-4k2.5   Shipping options        | +- Active ---------------------+
-|     3d + ws-4k2.1   Address form validation | |alice  1 in progress          |
-|     3d + ws-4k2     Checkout: guest orders  | |    * P1 ws-4k2     Checkou...|
-|     3d + ws-4k2.3   Order summary page      | |bob  1 in progress            |
-+----------------------------------------- +8 + +-------------------------- +1 +
+- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
+- >Activity ----------------------------- +8 -  - Now --------------------------
+- just now -----------------------------------  o Open                         5
+    now * ws-7mt     Cart badge shows s... bob  > Ready                        4
+|    3m ^ ws-9qe     Payment provider t... 2→0  * In progress                  2
+- last hour ----------------------------------  ! Blocked                      2
+    20m ! ws-2hz     Split pricin... by ws-9qe  ~ Frozen                       1
+- today --------------------------------------  x Closed                       5
+     5h + ws-9qe     Payment provider timeo...                                  
+     8h x ws-5ca     Update analytics conse...  closed/day, 14d                 
+     9h x ws-4k2.3   Order summary page         .~...........#                  
+    10h x ws-4k2.4   Guest cart merge           33% closed · 2 deps             
+- yesterday ----------------------------------  - Needs attention --------- +5 -
+     1d + ws-7mt     Cart badge shows stale...  > Ready 4 (2 unassigned)        
+     1d + ws-lost    Follow-up from a delet...      o P0 ws-9qe     Payment p...
+- earlier ------------------------------------      o P1 ws-4k2.1   Address f...
+     2d + ws-4k2.2   Guest order confirmati...      o P2 ws-lost    Follow-up...
+     2d + ws-4k2.5.1 Pickup point lookup        - Active -----------------------
+     2d + ws-4k2.5   Shipping options           alice  1 in progress            
+     3d + ws-4k2.1   Address form validation        * P1 ws-4k2     Checkout:...
+     3d + ws-4k2     Checkout: guest orders     bob  1 in progress              
+     3d + ws-4k2.3   Order summary page             * P2 ws-7mt     Cart badg...
+--------------------------------------------------------------------------------
  ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view              

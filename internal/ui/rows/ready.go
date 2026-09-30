@@ -115,7 +115,7 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 	b.WriteString(sp)
 	b.WriteString(paint(statusRole, g.Status[idx]))
 	b.WriteString(sp)
-	b.WriteString(r.hl(paint, theme.Dim, r.look.Fit(is.ID, r.idW)))
+	b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(is.ID, r.idW)))
 	b.WriteString(sp)
 	b.WriteString(paint(theme.PriorityRole(is.Priority), "P"+strconv.Itoa(min(max(is.Priority, 0), 9))))
 	b.WriteString(sp)

@@ -1,4 +1,4 @@
- 1 Overview  2 Tree  3 Kanban  4 Ready  5 Memories  [6 Graph]  focus gr-b           * live 12:00:00 
+- 1 Overview  2 Tree  3 Kanban  4 Ready  5 Memories  [6 Graph] ------ focus gr-b - * live 12:00:00 -
    < waits on (1 · 1 open)                                                                          
    `- * gr-a Extract pricing client                                                                 
 |  o gr-b Migrate cart totals                                                                       
@@ -26,5 +26,5 @@
                                                                                                     
                                                                                                     
                                                                                                     
-                                                                                                    
+---------------------------------------------------------------------------------------------- 2/3 -
  ? help  q quit  j/k move  Space mark  Enter focus  1-6 switch view  t appearance  / search         

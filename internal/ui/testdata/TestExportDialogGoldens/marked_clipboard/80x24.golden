@@ -1,4 +1,4 @@
- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
  #    o ws-9qe Payment provider timeout retries                               P0
     v * ws-4k2 Checkout: guest orders                                 0/2 ------
     |-  o ws-4k2.1 Address form validation                                    P1
@@ -20,5 +20,5 @@
                                                                                 
                                                                                 
                                                                                 
-                                                                                
- Ctrl+S export  Esc close  Tab field                                # 2 marked  
+- # 2 marked ------------------------------------------------------------- 5/8 -
+ Ctrl+S export  Esc close  Tab field                                            

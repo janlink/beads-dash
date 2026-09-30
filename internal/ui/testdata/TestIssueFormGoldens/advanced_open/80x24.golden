@@ -1,4 +1,4 @@
- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
 |     o ws-9qe Payment provider timeout retries                               P0
   +- Edit ws-9qe ----------------------------------------------- field 9/18 -+--
   |   Title*       Payment provider timeout retries                          |P1
@@ -20,5 +20,5 @@
   |                                                                          |  
   | ... 14 more                                                              |  
   +-------------------------------------- Ctrl+S save  Esc close  Tab field -+  
-                                                                                
+-------------------------------------------------------------------------- 1/8 -
  Ctrl+S save  Esc close  Tab field                                              

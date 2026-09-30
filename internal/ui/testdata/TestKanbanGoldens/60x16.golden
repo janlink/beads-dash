@@ -1,4 +1,4 @@
- Kanban                                          * 12:00:00 
+- Kanban -------------------------------------- * 12:00:00 -
 - [Open] 5 -------------------------------------------------
 |   P0 ws-9qe     Payment provider timeout retries          
     P1 ws-4k2.1   Address form validation                   
@@ -12,5 +12,5 @@
     P2 ws-2hz     Split pricing service                  ! 1
     P2 ws-4k2.2   Guest order confirmation mail          ! 1
 - Frozen 1 -------------------------------------------------
-    P3 ws-8np     Search: typo tolerance                    
+----------------------------------------------------- 1/10 -
  ? help  q quit  j/k move  Space mark  Enter open           

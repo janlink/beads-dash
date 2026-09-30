@@ -1,7 +1,7 @@
- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                           * live 12:00:00 
+- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph --------------------------------------- * live 12:00:00 -
  ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view  t appearance  / search  r refresh  f filter         
 
- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                           * live 12:00:00 
+- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph --------------------------------------- * live 12:00:00 -
 |   ? P4 ws-1zz   Mystery status issue                                                                                  
     ! P2 ws-2hz   Sp+- Keys ------------------------------------------------------------ 43 shown -+                    
     * P1 ws-4k2   Ch| Lists                                                                        |               alice
@@ -39,5 +39,5 @@
                     |   1-6        switch view                                                     |                    
                     | ... 14 more                                                                  |                    
                     +-------------------------------------------- Esc close  j/k scroll  / filter -+                    
-                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------
  Esc close  j/k scroll  / filter                                                                                        

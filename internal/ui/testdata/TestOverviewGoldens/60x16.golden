@@ -1,16 +1,16 @@
- Overview  15 issues · all                       * 12:00:00 
+- Overview ------------------ 15 issues · all - * 12:00:00 -
 o5 open >4 ready *2 in prog !2 blocked ~1 frozen x5 closed  
 .~...........# closed/day · > 4 ready · ! 2 blocked         
 active: alice *1  bob *1                                    
-+- >Activity ----------------------------------------------+
-|-- just now                                               |
-|    now * ws-7mt     Cart badge shows stale count      bob|
-||    3m ^ ws-9qe     Payment provider timeout retries  2→0|
-|-- last hour                                              |
-|    20m ! ws-2hz     Split pricing service       by ws-9qe|
-|-- today                                                  |
-|     5h + ws-9qe     Payment provider timeout retries     |
-|     8h x ws-5ca     Update analytics consent banner      |
-|     9h x ws-4k2.3   Order summary page                   |
-+----------------------------------------------------- +19 +
+- >Activity ------------------------------------------ +19 -
+- just now -------------------------------------------------
+    now * ws-7mt     Cart badge shows stale count        bob
+|    3m ^ ws-9qe     Payment provider timeout retries    2→0
+- last hour ------------------------------------------------
+    20m ! ws-2hz     Split pricing service         by ws-9qe
+- today ----------------------------------------------------
+     5h + ws-9qe     Payment provider timeout retries       
+     8h x ws-5ca     Update analytics consent banner        
+     9h x ws-4k2.3   Order summary page                     
+------------------------------------------------------------
  ? help  q quit  j/k move  Space mark  Enter open           

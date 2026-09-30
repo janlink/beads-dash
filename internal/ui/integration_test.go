@@ -85,7 +85,7 @@ func TestIntegrationTreeAndReadyRenderFromARealWorkspace(t *testing.T) {
 
 			press(a, "4")
 			out = screen(a)
-			for _, want := range []string{"Unassigned (", "Assigned, not started (1)", "Payment retries", "Address form", "Blocked (1)", "1 container hidden"} {
+			for _, want := range []string{"Unassigned ", "Assigned, not started 1", "Payment retries", "Address form", "Blocked 1", "1 container hidden"} {
 				if !strings.Contains(out, want) {
 					t.Errorf("ready lacks %q:\n%s", want, out)
 				}

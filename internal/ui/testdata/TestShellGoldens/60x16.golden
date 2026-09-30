@@ -1,4 +1,4 @@
- Overview                                        * 12:00:00 
+- Overview ------------------------------------ * 12:00:00 -
 |   ? P4 ws-1zz   Mystery status issue                      
     ! P2 ws-2hz   Split pricing service                     
     * P1 ws-4k2   Checkout: guest orders               alice
@@ -12,5 +12,5 @@
                                                             
                                                             
                                                             
-                                                            
+------------------------------------------------------------
  ? help  q quit  j/k move  Space mark  Enter open           

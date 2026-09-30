@@ -19,7 +19,8 @@ const (
 	ovSideWide  = 40
 	ovSideRoomy = 36
 	ovSideBase  = 32
-	minBoxH     = 4
+	minBoxH     = 3
+	ovGap       = 2
 )
 
 // ovLine is one body line of a box and the item it shows, -1 for none.
@@ -56,10 +57,10 @@ func (v *Overview) Render(env Env, w, h int) []string {
 
 func (v *Overview) wide(env Env, w, h int) []string {
 	aw := w * 28 / 100
-	fw := w - aw - ovSideWide - 2
+	fw := w - aw - ovSideWide - 2*ovGap
 	feed := v.region(env, regFeed, "Activity", 0, 0, fw, h)
-	active := v.region(env, regActive, "Active assignees", fw+1, 0, aw, h)
-	return hjoin(env.Look, h, 1, feed, active, v.side(env, fw+aw+2, ovSideWide, h, false))
+	active := v.region(env, regActive, "Active assignees", fw+ovGap, 0, aw, h)
+	return hjoin(env.Look, h, ovGap, feed, active, v.side(env, fw+aw+2*ovGap, ovSideWide, h, false))
 }
 
 func (v *Overview) sidebar(env Env, w, h int) []string {
@@ -67,15 +68,15 @@ func (v *Overview) sidebar(env Env, w, h int) []string {
 	if w >= 120 {
 		sw = ovSideRoomy
 	}
-	fw := w - sw - 1
+	fw := w - sw - ovGap
 	feed := v.region(env, regFeed, "Activity", 0, 0, fw, h)
-	return hjoin(env.Look, h, 1, feed, v.side(env, fw+1, sw, h, true))
+	return hjoin(env.Look, h, ovGap, feed, v.side(env, fw+ovGap, sw, h, true))
 }
 
 // side stacks Now, Needs attention and, when asked, the active assignees.
 func (v *Overview) side(env Env, x, w, h int, withActive bool) []string {
-	now := v.nowLines(env, w-2)
-	nh := min(len(now)+2, max(h-minBoxH, minBoxH))
+	now := v.nowLines(env, w)
+	nh := min(len(now)+1, max(h-minBoxH, minBoxH))
 	out := v.box(env, -1, "Now", now, w, nh, 0, 0)
 	rest := h - nh
 	if rest < minBoxH {
@@ -115,17 +116,17 @@ func (v *Overview) strip(env Env, w, h int) []string {
 	return append(head, v.region(env, regFeed, "Activity", 0, len(head), w, h-len(head))...)
 }
 
-// region draws a focusable box and records where it went.
+// region draws a focusable card and records where it went.
 func (v *Overview) region(env Env, r ovRegion, title string, x, y, w, h int) []string {
-	bh := h - 2
+	bh := h - 1
 	var lines []ovLine
 	switch r {
 	case regFeed:
-		lines = v.feedLines(env, w-2, bh)
+		lines = v.feedLines(env, w, bh)
 	case regAttention:
-		lines = v.attentionLines(env, w-2)
+		lines = v.attentionLines(env, w)
 	case regActive, regionCount:
-		lines = v.activeLines(env, w-2)
+		lines = v.activeLines(env, w)
 	}
 	return v.box(env, r, title, lines, w, h, x, y)
 }
@@ -149,7 +150,6 @@ func (v *Overview) feedLines(env Env, iw, bh int) []ovLine {
 		return out
 	}
 	l := env.Look
-	g := l.Glyphs
 	cur := v.cursorRow(env, regFeed)
 	seen := map[string]bool{}
 	var out []ovLine
@@ -157,7 +157,7 @@ func (v *Overview) feedLines(env Env, iw, bh int) []ovLine {
 	for i, e := range v.data.Feed {
 		if b := model.BucketOf(env.Now, e.Time); b != bucket {
 			bucket = b
-			out = append(out, textLine(l.Fit(l.Paint(theme.Faint, g.Rule+g.Rule+" "+b.Label()), iw)))
+			out = append(out, textLine(l.Rule(iw, l.Words(look.Word(theme.Faint, b.Label())), nil)))
 		}
 		first := !seen[e.IssueID]
 		seen[e.IssueID] = true
@@ -318,32 +318,19 @@ func sparkline(g theme.Glyphs, counts []int) string {
 	return b.String()
 }
 
-type borders struct{ tl, tr, bl, br, h, v string }
-
-func boxBorders(g theme.Glyphs) borders {
-	if g.Tier == theme.TierASCII {
-		return borders{"+", "+", "+", "+", "-", "|"}
-	}
-	return borders{"╭", "╮", "╰", "╯", "─", "│"}
-}
-
-// box draws a titled frame of exactly w x h. A focusable region (r >= 0)
-// keeps its cursor line in view and records where it was drawn.
+// box draws a card of exactly w x h: a rule with the title, then the lines. A
+// focusable region (r >= 0) keeps its cursor line in view and records where it
+// was drawn.
 func (v *Overview) box(env Env, r ovRegion, title string, lines []ovLine, w, h, x, y int) []string {
 	l := env.Look
 	g := l.Glyphs
-	bd := boxBorders(g)
 	focused := r >= 0 && v.focused(r)
-	borderRole, titleRole := theme.Border, theme.Strong
+	titleRole := theme.Strong
 	if focused {
-		borderRole, titleRole = theme.Primary, theme.Primary
+		titleRole = theme.Primary
 		title = g.FoldClosed + title
 	}
-	iw, bh := w-2, h-2
-	head := l.Paint(borderRole, bd.tl+bd.h) + l.Paint(titleRole, " "+ansi.Truncate(title, max(iw-3, 0), g.Ellipsis)+" ")
-	head += l.Paint(borderRole, strings.Repeat(bd.h, max(w-1-ansi.StringWidth(head), 0))+bd.tr)
-	out := []string{l.Fit(head, w)}
-
+	bh := h - 1
 	off := 0
 	if r >= 0 {
 		off = v.scrollTo(env, r, lines, bh)
@@ -354,20 +341,20 @@ func (v *Overview) box(env Env, r ovRegion, title string, lines []ovLine, w, h, 
 		}
 		v.boxes[r].at = at
 	}
-	side := l.Paint(borderRole, bd.v)
-	for i := range bh {
-		s := strings.Repeat(" ", iw)
-		if off+i < len(lines) {
-			s = l.Fit(lines[off+i].s, iw)
-		}
-		out = append(out, side+s+side)
-	}
-	more := ""
+	var right []look.Seg
 	if rest := len(lines) - off - bh; rest > 0 {
-		more = " +" + itoa(rest) + " "
+		right = l.Words(look.Word(theme.Dim, "+"+itoa(rest)))
 	}
-	foot := bd.bl + strings.Repeat(bd.h, max(iw-ansi.StringWidth(more), 0)) + more + bd.br
-	return append(out, l.Paint(borderRole, l.Fit(foot, w)))
+	title = ansi.Truncate(title, max(w-look.WordCost-1-look.SegWidth(right), 1), g.Ellipsis)
+	out := []string{l.Rule(w, l.Words(look.Word(titleRole, title)), right)}
+	for i := range bh {
+		s := ""
+		if off+i < len(lines) {
+			s = lines[off+i].s
+		}
+		out = append(out, l.Fit(s, w))
+	}
+	return out
 }
 
 // scrollTo returns the first shown line of a region, keeping its cursor line

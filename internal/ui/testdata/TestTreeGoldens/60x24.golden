@@ -1,4 +1,4 @@
- Tree                                            * 12:00:00 
+- Tree ---------------------------------------- * 12:00:00 -
 |     o ws-9qe Payment provider timeout retries           P0
     v * ws-4k2 Checkout: guest orders                    2/5
     |-  o ws-4k2.1 Address form validation                P1
@@ -20,5 +20,5 @@
                                                             
                                                             
                                                             
-                                                            
+----------------------------------------------------- 1/10 -
  ? help  q quit  j/k move  Space mark  Enter open           

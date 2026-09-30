@@ -8,6 +8,7 @@ import (
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/keys"
+	"github.com/janlink/beads-dash/internal/ui/look"
 	"github.com/janlink/beads-dash/internal/ui/rows"
 	"github.com/janlink/beads-dash/internal/ui/screens"
 )
@@ -304,23 +305,22 @@ func (v *Ready) Render(env Env, w, h int) []string {
 
 func (v *Ready) head(env Env, r readyRow, w int, cur bool) string {
 	l := env.Look
-	g := l.Glyphs
-	paint := l.Paint
-	if cur {
-		paint = l.PaintSel
-	}
-	text := fmt.Sprintf("%s (%d)", r.title, r.count)
 	role := theme.Strong
+	name := r.title
 	if r.kind == readyBlockedHead {
-		fold := g.FoldClosed
+		fold := l.Glyphs.FoldClosed
 		if v.blockedOpen {
-			fold = g.FoldOpen
+			fold = l.Glyphs.FoldOpen
 		}
-		text = fold + " " + text
+		name = fold + " " + name
 		role = theme.Dim
 	}
+	if cur {
+		role = theme.Primary
+	}
+	words := l.Words([]look.Seg{{Role: role, Text: name}, {Role: theme.Dim, Text: " " + itoa(r.count)}})
 	gutter := env.Rows.Gutter(rows.Row{Current: cur})
-	return gutter + l.Fit(paint(role, text), w-rows.GutterWidth)
+	return gutter + l.Rule(w-rows.GutterWidth, words, nil)
 }
 
 // Scroll implements View.

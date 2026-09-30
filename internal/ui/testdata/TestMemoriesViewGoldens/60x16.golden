@@ -1,4 +1,4 @@
- Memories  4 · 514 chars in bd prime             * 12:00:00 
+- Memories -------- 4 · 514 chars in bd prime - * 12:00:00 -
 |  dolt-push-needs-remote  Run bd dolt push only after th...
    golden-update           Regenerate goldens with `just ...
    no-tabs                 Go files use tabs; everything ...
@@ -12,5 +12,5 @@
                                                             
                                                             
                                                             
-                                                            
+------------------------------------------------------------
  ? help  n new  q quit  j/k move  Space mark  e edit        

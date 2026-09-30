@@ -13,6 +13,7 @@ import (
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/keys"
+	"github.com/janlink/beads-dash/internal/ui/look"
 	"github.com/janlink/beads-dash/internal/ui/state"
 )
 
@@ -408,25 +409,29 @@ func (a *App) memRefresh() {
 }
 
 // memChips are the footer chips of the Memories view.
-func (a *App) memChips() string {
-	l, m := a.look, a.mem
-	var parts []string
+func (a *App) memChips() []ruleItem {
+	m := a.mem
+	var items []ruleItem
+	chip := func(prio int, role theme.Role, text string) {
+		items = append(items, ruleItem{seg: look.Word(role, text), prio: prio})
+	}
+	g := a.look.Glyphs
 	if n := len(m.marks); n > 0 {
-		parts = append(parts, l.Paint(theme.Primary, fmt.Sprintf("%s %d marked", l.Glyphs.Mark, n)))
+		chip(0, theme.Primary, fmt.Sprintf("%s %d marked", g.Mark, n))
 	}
 	if n := a.memChangedCount(); n > 0 {
-		parts = append(parts, l.Paint(theme.Changed, fmt.Sprintf("%s %d changed", l.Glyphs.Change, n)))
+		chip(2, theme.Changed, fmt.Sprintf("%s %d changed", g.Change, n))
 	}
 	if m.gone > 0 {
-		parts = append(parts, l.Paint(theme.Warning, fmt.Sprintf("%d forgotten elsewhere", m.gone)))
+		chip(3, theme.Warning, fmt.Sprintf("%d forgotten elsewhere", m.gone))
 	}
 	if m.loaded && m.err != nil {
-		parts = append(parts, l.Paint(theme.Warning, l.Glyphs.Stale+" stale"))
+		chip(3, theme.Warning, g.Stale+" stale")
 	}
 	if a.status.Slow {
-		parts = append(parts, l.Paint(theme.Warning, "slow"))
+		chip(3, theme.Warning, "slow")
 	}
-	return strings.Join(parts, "  ")
+	return items
 }
 
 // memClick moves the cursor to the memory under the pointer, or focuses the

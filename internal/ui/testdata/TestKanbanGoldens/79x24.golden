@@ -1,4 +1,4 @@
- Kanban                                                             * 12:00:00 
+- Kanban --------------------------------------------------------- * 12:00:00 -
 - [Open] 5 --------------------------------------------------------------------
 |   P0 ws-9qe     Payment provider timeout retries                             
     P1 ws-4k2.1   Address form validation                                      
@@ -20,5 +20,5 @@
                                                                                
                                                                                
                                                                                
-                                                                               
+------------------------------------------------------------------------ 1/10 -
  ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view             

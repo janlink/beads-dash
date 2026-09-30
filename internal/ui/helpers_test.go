@@ -160,3 +160,14 @@ type answeredJournal struct{}
 func (answeredJournal) Journal(string) config.JournalAnswer { return config.JournalDeclined }
 
 func (answeredJournal) SetJournal(string, config.JournalAnswer) error { return nil }
+
+// chipText is the plain text of the chips the footer rule carries.
+func chipText(a *App) string {
+	var parts []string
+	for _, it := range a.chipItems() {
+		for _, s := range it.seg {
+			parts = append(parts, s.Text)
+		}
+	}
+	return strings.Join(parts, "  ")
+}

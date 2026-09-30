@@ -188,7 +188,7 @@ func TestUntestedNoticeShownOnce(t *testing.T) {
 	ws := workspace()
 	ws.Untested = true
 	ws.Version = bd.VersionInfo{Raw: "1.4.0", Parsed: bd.Version{Major: 1, Minor: 4}}
-	send(a, tea.WindowSizeMsg{Width: 100, Height: 30}, sessionMsg{sess: ws},
+	send(a, tea.WindowSizeMsg{Width: 120, Height: 30}, sessionMsg{sess: ws},
 		updateMsg{refresh.Update{Snapshot: snapOf(t), Status: liveStatus(), Session: ws}})
 	if !strings.Contains(screen(a), "newer than the tested 1.3 line") || !strings.Contains(lines(a)[0], "bd 1.4.0 untested") {
 		t.Errorf("notice or chip missing:\n%s", screen(a))

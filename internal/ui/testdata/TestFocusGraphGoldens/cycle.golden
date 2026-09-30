@@ -1,4 +1,4 @@
- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph                                           * live 12:00:00 
+- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph --------------------------------------- * live 12:00:00 -
       * gr-a Extract pricing client                                                                                   P2
       o gr-b Migrate cart totals                                                                                      P2
       o gr-c Migrate invoice totals with a rather long title that needs cutting somewhere                             P2
@@ -22,7 +22,7 @@
                                                                                                                         
                                                                                                                         
                                                                                                                         
--- Detail (focused) ----------------------------------------------------------------------------------------------------
+- Detail (focused) -----------------------------------------------------------------------------------------------------
  gr-z  o Open  task  P2                                                                                                 
  Cache sizing                                                                                                           
  * Description  none                                                                                                    
@@ -36,5 +36,5 @@
    |- o gr-w Cache metrics                                                                                              
    `- o gr-x @ Cache warmup                                                                                             
       `- o gr-y @ Cache eviction                                                                                        
-         `- @ gr-z (cycle)                                                                                              
+---------------------------------------------------------------------------------------------------------------- 14/14 -
  ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  / search  m markdown or source  r refresh  

@@ -110,7 +110,11 @@ type Glyphs struct {
 	Checked   string
 	Unchecked string
 
-	Rule     string
+	Rule string
+	// RuleDown and RuleUp are the junctions where a vertical border meets a
+	// rule from below and from above.
+	RuleDown string
+	RuleUp   string
 	Ellipsis string
 	Arrow    string
 	Bullet   string
@@ -141,6 +145,8 @@ func (g Glyphs) Slots() []Slot {
 		{"checked", g.Checked},
 		{"unchecked", g.Unchecked},
 		{"rule", g.Rule},
+		{"rule_down", g.RuleDown},
+		{"rule_up", g.RuleUp},
 		{"ellipsis", g.Ellipsis},
 		{"arrow", g.Arrow},
 		{"bullet", g.Bullet},
@@ -201,7 +207,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "|-", LastBranch: "`-", Vertical: "|",
 			BarFull: "#", BarEmpty: "-",
 			Checked: "[x]", Unchecked: "[ ]",
-			Rule: "-", Ellipsis: "...", Arrow: "->", Bullet: "*",
+			Rule: "-", RuleDown: "+", RuleUp: "+", Ellipsis: "...", Arrow: "->", Bullet: "*",
 			Live: "*", Stale: "o",
 		}
 	case TierSafe:
@@ -212,7 +218,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "├─", LastBranch: "└─", Vertical: "│",
 			BarFull: "█", BarEmpty: "░",
 			Checked: "■", Unchecked: "□",
-			Rule: "─", Ellipsis: "…", Arrow: "→", Bullet: "•",
+			Rule: "─", RuleDown: "┬", RuleUp: "┴", Ellipsis: "…", Arrow: "→", Bullet: "•",
 			Live: "●", Stale: "○",
 		}
 	case TierAuto, TierFancy:
@@ -224,7 +230,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "├─", LastBranch: "└─", Vertical: "│",
 			BarFull: "█", BarEmpty: "░",
 			Checked: "▪", Unchecked: "▫",
-			Rule: "─", Ellipsis: "…", Arrow: "→", Bullet: "•",
+			Rule: "─", RuleDown: "┬", RuleUp: "┴", Ellipsis: "…", Arrow: "→", Bullet: "•",
 			Live: "●", Stale: "◌",
 		}
 	}

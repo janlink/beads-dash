@@ -70,7 +70,7 @@ func TestGraphFoldFocusAndEsc(t *testing.T) {
 }
 
 func TestGraphIsolatedToggle(t *testing.T) {
-	a := graphApp(t, plain, 100, 30, false)
+	a := graphApp(t, plain, 120, 30, false)
 	if strings.Contains(screen(a), "gr-lone1") || !strings.Contains(screen(a), "2 isolated hidden") {
 		t.Fatalf("isolated issues are hidden and counted:\n%s", screen(a))
 	}
@@ -183,7 +183,7 @@ func TestFocusGraphGoldens(t *testing.T) {
 func TestFocusGraphDepthKeysAndJump(t *testing.T) {
 	a := focusApp(t, plain, 120, 40, "gr-w")
 	has := func(id string) bool {
-		_, panel, _ := strings.Cut(screen(a), "-- Detail")
+		_, panel, _ := strings.Cut(screen(a), "- Detail")
 		return strings.Contains(panel, id+" ")
 	}
 	if !has("gr-y") || has("gr-x") {

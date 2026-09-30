@@ -1,4 +1,4 @@
- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                                                                                                           * live 12:00:00 
+- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ----------------------------------------------------------------------------------------------------------------------- * live 12:00:00 -
 |   ? P4 ws-1zz   Mystery status issue                                                                                                                                                                  
     ! P2 ws-2hz   Split pricing service                                                                                                                                                                 
     * P1 ws-4k2   Checkout: guest orders                                                                                                                                                           alice
@@ -46,5 +46,5 @@
                                                                                                                                                                                                         
                                                                                                                                                                                                         
                                                                                                                                                                                                         
-                                                                                                                                                                                                        
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view  t appearance  / search  r refresh  f filter  : command  Ctrl+P jump                                                                 

@@ -106,7 +106,7 @@ func TestKanbanDemoWidthHeadings(t *testing.T) {
 			head = ln
 		}
 	}
-	if !strings.Contains(head, "Frozen 1 ") || !strings.HasSuffix(strings.TrimRight(head, " "), "1>") {
+	if !strings.Contains(head, "Frozen 1 ") || !strings.HasSuffix(strings.TrimRight(head, " "), "1> -") {
 		t.Errorf("Frozen heading = %q, want name and count followed by a right-aligned 1> hint", head)
 	}
 }
@@ -122,7 +122,7 @@ func TestKanbanHeadingKeepsCountWhenNarrow(t *testing.T) {
 		if ansi.StringWidth(got) != w {
 			t.Errorf("w=%d: heading %q is %d cells wide", w, got, ansi.StringWidth(got))
 		}
-		if !strings.Contains(got, " 12 ") || !strings.HasSuffix(got, "2>") {
+		if !strings.Contains(got, " 12 ") || (w >= 16 && !strings.HasSuffix(got, "2> -")) {
 			t.Errorf("w=%d: heading %q lost the count or the hint", w, got)
 		}
 	}

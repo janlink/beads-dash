@@ -172,7 +172,7 @@ func (r *Renderer) render(w int, id string, sel, withAssignee bool) string {
 	}
 
 	prio := "P" + string(rune('0'+min(max(is.Priority, 0), 9)))
-	idText := r.look.Fit(id, r.idW)
+	idText := r.look.FitID(id, r.idW)
 	var fact string
 	if withAssignee {
 		fact = ansi.Truncate(oneLine(is.Assignee), maxFactWidth, g.Ellipsis)

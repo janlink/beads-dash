@@ -65,7 +65,7 @@ func (r *Renderer) card(id string, w int, sel bool) string {
 	b.WriteString(paint(theme.PriorityRole(is.Priority), "P"+strconv.Itoa(min(max(is.Priority, 0), 9))))
 	b.WriteString(sp)
 	if withID {
-		b.WriteString(r.hl(paint, theme.Dim, r.look.Fit(id, r.idW)))
+		b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(id, r.idW)))
 		b.WriteString(sp)
 	}
 	b.WriteString(r.hl(paint, theme.Text, r.look.Fit(oneLine(is.Title), titleW)))
