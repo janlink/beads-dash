@@ -8,12 +8,14 @@ import (
 	"testing"
 	"time"
 
+	"github.com/charmbracelet/x/ansi"
 	"github.com/charmbracelet/x/exp/teatest/v2"
 
 	"github.com/janlink/beads-dash/internal/bd"
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/refresh"
 	"github.com/janlink/beads-dash/internal/testgolden"
+	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/state"
 	"github.com/janlink/beads-dash/internal/ui/uitest"
 )
@@ -277,5 +279,26 @@ func TestOverviewClickIgnoresStaleBoxes(t *testing.T) {
 	ov.items[regFeed] = ov.items[regFeed][:1]
 	for y := range 40 {
 		ov.AtXY(5, y)
+	}
+}
+
+func TestSparklineIsOneCellPerDay(t *testing.T) {
+	var counts [model.SparkDays]int
+	counts[model.SparkDays-1] = 1
+	for _, tier := range []theme.Tier{theme.TierFancy, theme.TierASCII} {
+		got := sparkline(theme.Glyphs{Tier: tier}, counts[:])
+		if w := ansi.StringWidth(got); w != model.SparkDays {
+			t.Errorf("tier %v: %q is %d cells wide, want %d", tier, got, w, model.SparkDays)
+		}
+		if strings.ContainsRune(got, '�') {
+			t.Errorf("tier %v: %q holds a replacement character", tier, got)
+		}
+	}
+}
+
+func TestOverviewNowCardHoldsOnlyTheSparkline(t *testing.T) {
+	out := screen(viewApp(t, plain, 140, 38, "overview", false))
+	if strings.ContainsRune(out, '�') {
+		t.Error("overview holds a replacement character")
 	}
 }

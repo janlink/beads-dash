@@ -255,17 +255,17 @@ func (v *Kanban) heading(env Env, c model.KanbanColumn, w int, current bool, ext
 		}
 	}
 	rule := l.Glyphs.Rule
-	var b strings.Builder
-	b.WriteString(l.Paint(theme.Rule, rule+" "))
-	b.WriteString(l.Paint(role, name))
-	b.WriteString(l.Paint(theme.Dim, " "+itoa(len(c.IDs))+" "))
+	count := " " + itoa(len(c.IDs)) + " "
+	hint, hintW := "", 0
 	if extra != "" {
-		b.WriteString(l.Paint(theme.Dim, extra+" "))
+		hintW = ansi.StringWidth(extra) + 1
+		hint = l.Paint(theme.Dim, " "+extra)
 	}
-	if rest := w - ansi.StringWidth(b.String()); rest > 0 {
-		b.WriteString(l.Paint(theme.Rule, strings.Repeat(rule, rest)))
-	}
-	return l.Fit(b.String(), w)
+	room := max(w-2-ansi.StringWidth(count)-hintW, 1)
+	name = ansi.Truncate(name, room, l.Glyphs.Ellipsis)
+	head := l.Paint(theme.Rule, rule+" ") + l.Paint(role, name) + l.Paint(theme.Dim, count)
+	rest := max(w-ansi.StringWidth(head)-hintW, 0)
+	return l.Fit(head+l.Paint(theme.Rule, strings.Repeat(rule, rest))+hint, w)
 }
 
 func (v *Kanban) card(env Env, id string, w int) string {

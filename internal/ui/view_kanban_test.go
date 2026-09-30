@@ -3,9 +3,13 @@ package ui
 import (
 	"fmt"
 	"slices"
+	"strings"
 	"testing"
 	"time"
 
+	"github.com/charmbracelet/x/ansi"
+
+	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/testgolden"
 	"github.com/janlink/beads-dash/internal/ui/uitest"
 )
@@ -90,4 +94,36 @@ func TestKanbanViewStaysWithinBudgetWithFiveThousandIssues(t *testing.T) {
 		t.Errorf("a step took %v on average, budget 8ms (worst %v)", per, worst)
 	}
 	t.Logf("average %v, worst %v", total/runs, worst)
+}
+
+func TestKanbanDemoWidthHeadings(t *testing.T) {
+	a := viewApp(t, plain, 140, 38, "kanban", false)
+	testgolden.Equal(t, screen(a))
+	lines := strings.Split(screen(a), "\n")
+	var head string
+	for _, ln := range lines {
+		if strings.Contains(ln, "Frozen") {
+			head = ln
+		}
+	}
+	if !strings.Contains(head, "Frozen 1 ") || !strings.HasSuffix(strings.TrimRight(head, " "), "1>") {
+		t.Errorf("Frozen heading = %q, want name and count followed by a right-aligned 1> hint", head)
+	}
+}
+
+func TestKanbanHeadingKeepsCountWhenNarrow(t *testing.T) {
+	a := viewApp(t, plain, 100, 30, "kanban", false)
+	_ = screen(a)
+	k := a.view().(*Kanban)
+	env := a.env()
+	col := model.KanbanColumn{Status: model.InProgress, IDs: make([]string, 12)}
+	for _, w := range []int{9, 12, 16, 30} {
+		got := ansi.Strip(k.heading(env, col, w, false, "2>"))
+		if ansi.StringWidth(got) != w {
+			t.Errorf("w=%d: heading %q is %d cells wide", w, got, ansi.StringWidth(got))
+		}
+		if !strings.Contains(got, " 12 ") || !strings.HasSuffix(got, "2>") {
+			t.Errorf("w=%d: heading %q lost the count or the hint", w, got)
+		}
+	}
 }

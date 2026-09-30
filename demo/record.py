@@ -5,6 +5,7 @@ asciicast v2 file. Standard library only.
 usage: record.py <workspace-dir> <out.cast> [bdash-binary]
 """
 
+import codecs
 import fcntl
 import json
 import os
@@ -27,14 +28,19 @@ RIGHT = ESC + "[C"
 LEFT = ESC + "[D"
 CTRL_S = "\x13"
 
+# The docked detail panel starts hidden so the views fill the screen; it is
+# shown once (D) in the Tree view, and Enter opens the detail as an overlay.
 # (seconds to wait before the keys, keys). Keys are typed one by one with TYPE_GAP.
 TAPE = [
     (1.5, ""),
+    (0.3, "D"),
     (1.0, "2"),
     (1.2, "j"),
     (0.6, "j"),
     (0.6, "j"),
-    (1.2, ENTER),
+    (1.0, "D"),
+    (3.0, "D"),
+    (0.8, ENTER),
     (1.8, ESC),
     (0.8, "3"),
     (1.6, "l"),
@@ -97,6 +103,7 @@ def main():
 
     start = time.monotonic()
     events = []
+    decoder = codecs.getincrementaldecoder("utf-8")("replace")
 
     def drain(timeout):
         end = time.monotonic() + timeout
@@ -113,7 +120,9 @@ def main():
                 return False
             if not data:
                 return False
-            events.append([round(time.monotonic() - start, 6), "o", data.decode("utf-8", "replace")])
+            text = decoder.decode(data)
+            if text:
+                events.append([round(time.monotonic() - start, 6), "o", text])
 
     wait_for(drain, events, " live ", 30)
     ready_at = events[-1][0]
