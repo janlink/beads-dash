@@ -7,11 +7,13 @@ import (
 	"time"
 )
 
-// resolveActor picks the name bd credits changes to: BEADS_ACTOR, then git's
-// user.name, then $USER.
+// resolveActor picks the name bd credits changes to: BEADS_ACTOR, BD_ACTOR,
+// then git's user.name, then $USER.
 func resolveActor(getenv func(string) string, gitUser func() string) string {
-	if a := strings.TrimSpace(getenv("BEADS_ACTOR")); a != "" {
-		return a
+	for _, k := range []string{"BEADS_ACTOR", "BD_ACTOR"} {
+		if a := strings.TrimSpace(getenv(k)); a != "" {
+			return a
+		}
 	}
 	if a := strings.TrimSpace(gitUser()); a != "" {
 		return a

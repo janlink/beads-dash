@@ -38,9 +38,13 @@ func TestFakeCoversEveryErrorClass(t *testing.T) {
 			return err
 		},
 		"Create": func(f *Fake) error { _, err := f.Create(ctx, CreateSpec{Title: "x"}); return err },
-		"Update": func(f *Fake) error { return f.Update(ctx, "a", UpdateSpec{}) },
+		"Update": func(f *Fake) error { return f.Update(ctx, []string{"a"}, UpdateSpec{Claim: true}) },
 		"Close":  func(f *Fake) error { _, err := f.Close(ctx, []string{"a"}, ""); return err },
-		"Reopen": func(f *Fake) error { _, err := f.Reopen(ctx, []string{"a"}); return err },
+		"Reopen": func(f *Fake) error {
+			_, _ = f.Close(ctx, []string{"a"}, "")
+			_, err := f.Reopen(ctx, []string{"a"}, "")
+			return err
+		},
 		"DepAdd": func(f *Fake) error { return f.DepAdd(ctx, "a", "b", "") },
 		"DepRemove": func(f *Fake) error {
 			return f.DepRemove(ctx, "a", "b")
@@ -53,7 +57,7 @@ func TestFakeCoversEveryErrorClass(t *testing.T) {
 	for method, call := range reads {
 		for _, class := range allClasses {
 			f := NewFake()
-			f.SetIssues(fakeIssue("a", "open"))
+			f.SetIssues(fakeIssue("a", "open"), fakeIssue("b", "open"))
 			f.FailWith(method, &Error{Class: class, Command: method})
 			err := call(f)
 			if !IsClass(err, class) {
@@ -176,10 +180,10 @@ func TestFakeWrites(t *testing.T) {
 		t.Errorf("create without title = %v", err)
 	}
 	title, status, assignee := "renamed", "in_progress", "alice"
-	if err := f.Update(ctx, id, UpdateSpec{Title: &title, Status: &status, Assignee: &assignee, AddLabels: []string{"y", "x"}, RemoveLabels: []string{"x"}}); err != nil {
+	if err := f.Update(ctx, []string{id}, UpdateSpec{Title: &title, Status: &status, Assignee: &assignee, AddLabels: []string{"y", "x"}, RemoveLabels: []string{"x"}}); err != nil {
 		t.Fatal(err)
 	}
-	if err := f.Update(ctx, "nope", UpdateSpec{}); !IsClass(err, ClassRejected) {
+	if err := f.Update(ctx, []string{"nope"}, UpdateSpec{Claim: true}); !IsClass(err, ClassRejected) {
 		t.Errorf("update of unknown issue = %v", err)
 	}
 	issues, _ := f.List(ctx)
@@ -194,14 +198,19 @@ func TestFakeWrites(t *testing.T) {
 		t.Errorf("created+updated issue = %+v", got)
 	}
 
-	done, err := f.Close(ctx, []string{"f-1", "ghost"}, "because")
-	if err != nil || !reflect.DeepEqual(done, []string{"f-1"}) {
-		t.Errorf("Close = %v, %v; unknown IDs are skipped", done, err)
+	done, err := f.Close(ctx, []string{id, "ghost"}, "because")
+	var be *Error
+	if !errors.As(err, &be) || be.Class != ClassPartialWrite || !reflect.DeepEqual(done, []string{id}) ||
+		!reflect.DeepEqual(be.Applied, []string{id}) || len(be.Failed) != 1 || be.Failed[0].ID != "ghost" {
+		t.Errorf("Close = %v, %v; want a partial write with ghost failed", done, err)
+	}
+	if done, err := f.Close(ctx, []string{"f-1"}, "because"); err != nil || len(done) != 1 {
+		t.Errorf("Close of the parent after its child = %v, %v", done, err)
 	}
 	if _, err := f.Close(ctx, []string{"ghost"}, ""); !IsClass(err, ClassRejected) {
 		t.Errorf("Close of only unknown IDs = %v", err)
 	}
-	if done, err := f.Reopen(ctx, []string{"f-1"}); err != nil || len(done) != 1 {
+	if done, err := f.Reopen(ctx, []string{"f-1"}, ""); err != nil || len(done) != 1 {
 		t.Errorf("Reopen = %v, %v", done, err)
 	}
 
@@ -246,5 +255,41 @@ func TestFakeWrites(t *testing.T) {
 	}
 	if len(f.Issues()) != 3 {
 		t.Errorf("Issues() = %d", len(f.Issues()))
+	}
+}
+
+func TestFakeDeferSetsAndClearsTheDeferral(t *testing.T) {
+	f := NewFake()
+	ctx := context.Background()
+	id, err := f.Create(ctx, CreateSpec{Title: "Later", Defer: "2030-01-15"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	get := func() model.Issue {
+		t.Helper()
+		for _, is := range f.Issues() {
+			if is.ID == id {
+				return is
+			}
+		}
+		t.Fatalf("no issue %s", id)
+		return model.Issue{}
+	}
+	if is := get(); is.Status != "deferred" || is.DeferUntil.Format("2006-01-02") != "2030-01-15" {
+		t.Fatalf("created %q until %v", is.Status, is.DeferUntil)
+	}
+	none := ""
+	if err := f.Update(ctx, []string{id}, UpdateSpec{Defer: &none}); err != nil {
+		t.Fatal(err)
+	}
+	if is := get(); is.Status != "open" || !is.DeferUntil.IsZero() {
+		t.Errorf("cleared: %q until %v", is.Status, is.DeferUntil)
+	}
+	date := "2031-02-03"
+	if err := f.Update(ctx, []string{id}, UpdateSpec{Defer: &date}); err != nil {
+		t.Fatal(err)
+	}
+	if is := get(); is.Status != "deferred" || is.DeferUntil.Format("2006-01-02") != date {
+		t.Errorf("set: %q until %v", is.Status, is.DeferUntil)
 	}
 }

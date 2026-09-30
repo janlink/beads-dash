@@ -1,0 +1,24 @@
+ 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+    v * ws-4k2 Checkout: guest orders                                 0/2 ------
+  +- Edit ws-9qe ----------------------- field 1/9 · 1 change · 1 to decide -+P1
+  | ! Changed since opened: title Payment provider timeou… -> Retries,       |P2
+  | ! reworded, priority P0 -> P3                                            |P2
+  |   Decide on the marked fields: keep mine or take theirs.                 |  
+  |                                                                          |P3
+| | * Title*       meout retries!  changed underneath: now Retries, reworded |P3
+  |   Type         bug                                                       |P4
+  |   Priority     P3                                                        |  
+  |   Status       open                                                      |  
+  |   Assignee                                                               |  
+  |   Labels                                                                 |  
+  |   Parent       -                                                         |  
+  |   Description                                                            |  
+  |                                                                          |  
+  |                                                                          |  
+  |                                                                          |  
+  |                                                                          |  
+  |   > Advanced                                                             |  
+  +---------- Ctrl+S save  Esc close  Tab field  Ctrl+O mine  Ctrl+T theirs -+  
+                                                                                
+                                                                                
+ Ctrl+S save  Esc close  Tab field  Ctrl+O mine  Ctrl+T theirs  Ctrl+R reload   

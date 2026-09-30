@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": "m8-eh6",
+      "title": "Alpha 2",
+      "status": "open",
+      "priority": 4,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "estimated_minutes": 30,
+      "created_at": "2026-09-29T23:46:27Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:46:31Z",
+      "labels": [
+        "y"
+      ]
+    }
+  ],
+  "schema_version": 1
+}

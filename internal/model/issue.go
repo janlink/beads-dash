@@ -40,6 +40,7 @@ type Issue struct {
 	StartedAt          time.Time
 	ClosedAt           time.Time
 	DueAt              time.Time
+	DeferUntil         time.Time
 	CloseReason        string
 	ExternalRef        string
 	EstimatedMinutes   int

@@ -378,7 +378,7 @@ func TestCommandThemeAndGlyphsPreviewAndPersist(t *testing.T) {
 }
 
 func TestCommandHelp(t *testing.T) {
-	a := treeApp(t, 120, 60)
+	a := treeApp(t, 120, 90)
 	runLine(a, "help")
 	if !isOpen[*helpDialog](a) {
 		t.Fatal(":help opens no dialog")
@@ -746,8 +746,8 @@ func TestShiftTabAfterTheCommonPrefixStepGoesToTheLastCandidate(t *testing.T) {
 
 func TestHelpCompletionFollowsPrefixAndArgumentIndex(t *testing.T) {
 	a := treeApp(t, 100, 30)
-	if got := a.cmds.Complete("help cl", nil).Cands; !slices.Equal(got, []string{"clear"}) {
-		t.Errorf("help cl completes to %q", got)
+	if got := a.cmds.Complete("help cle", nil).Cands; !slices.Equal(got, []string{"clear"}) {
+		t.Errorf("help cle completes to %q", got)
 	}
 	if got := a.cmds.Complete("help clear ", nil).Cands; len(got) != 0 {
 		t.Errorf("a second argument completes to %q", got)

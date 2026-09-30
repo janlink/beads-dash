@@ -2,6 +2,7 @@ package ui
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	tea "charm.land/bubbletea/v2"
@@ -276,4 +277,20 @@ func (d *helpDialog) commandLines(l look.Look, needle string, body []string, sho
 	body = append(body, l.Paint(theme.Primary, "Commands"))
 	body = append(body, lines...)
 	return append(body, ""), shown
+}
+
+// hinter is implemented by dialogs whose footer hints depend on their state.
+type hinter interface{ hints() []keys.Hint }
+
+// snapshotWatcher is implemented by dialogs that react to a new snapshot,
+// such as a form watching the issue it edits.
+type snapshotWatcher interface{ Snapshot() }
+
+// notifyDialogs tells the open dialogs about a new snapshot.
+func (a *App) notifyDialogs() {
+	for _, d := range slices.Clone(a.dialogs) {
+		if w, ok := d.(snapshotWatcher); ok {
+			w.Snapshot()
+		}
+	}
 }

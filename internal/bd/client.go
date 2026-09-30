@@ -45,13 +45,16 @@ type Client interface {
 
 	// Create returns the new issue's ID.
 	Create(ctx context.Context, spec CreateSpec) (string, error)
-	// Update changes one issue; claiming is an assignee update.
-	Update(ctx context.Context, id string, spec UpdateSpec) error
+	// Update applies one change to every ID in one bd call. A change that
+	// reached only some of them is a [ClassPartialWrite] error whose Applied
+	// and Failed say which.
+	Update(ctx context.Context, ids []string, spec UpdateSpec) error
 	// Close returns the IDs bd reports closed so a caller can detect a
-	// partial write.
+	// partial write. A refusal by one of bd's close guards is a
+	// [ClassRejected] or [ClassPartialWrite] error, never a success.
 	Close(ctx context.Context, ids []string, reason string) ([]string, error)
 	// Reopen returns the IDs bd reports reopened.
-	Reopen(ctx context.Context, ids []string) ([]string, error)
+	Reopen(ctx context.Context, ids []string, reason string) ([]string, error)
 	// DepAdd makes from depend on to.
 	DepAdd(ctx context.Context, from, to, depType string) error
 	DepRemove(ctx context.Context, from, to string) error
@@ -167,21 +170,56 @@ type CreateSpec struct {
 	Parent      string
 	Assignee    string
 	Labels      []string
+	// NoInheritLabels stops a child from taking its parent's labels.
+	NoInheritLabels bool
+
+	Design      string
+	Acceptance  string
+	Notes       string
+	ExternalRef string
+	// Due and Defer are dates in any format bd reads.
+	Due   string
+	Defer string
+	// Estimate is in minutes; nil leaves it unset.
+	Estimate *int
+	// Deps are issues the new one depends on: an ID, or "type:id".
+	Deps []string
 }
 
-// UpdateSpec changes fields of an issue; nil pointers leave a field alone.
+// UpdateSpec changes fields of an issue; nil pointers leave a field alone
+// and a pointer to "" clears a text field.
 type UpdateSpec struct {
-	Title        *string
-	Description  *string
-	Design       *string
-	Acceptance   *string
-	Notes        *string
-	Status       *string
-	Priority     *int
-	Assignee     *string
-	Type         *string
+	Title       *string
+	Description *string
+	Design      *string
+	Acceptance  *string
+	Notes       *string
+	Status      *string
+	Priority    *int
+	// Assignee "" unassigns.
+	Assignee    *string
+	Type        *string
+	ExternalRef *string
+	// Due and Defer take a date; "" clears.
+	Due   *string
+	Defer *string
+	// Estimate is in minutes; 0 clears.
+	Estimate *int
+	// Parent "" removes the parent.
+	Parent       *string
 	AddLabels    []string
 	RemoveLabels []string
+	// Claim sets the assignee to the actor and the status to in progress in
+	// one step, and fails when someone else holds the issue.
+	Claim bool
+}
+
+// Empty reports whether the spec changes nothing.
+func (u UpdateSpec) Empty() bool {
+	return u.Title == nil && u.Description == nil && u.Design == nil && u.Acceptance == nil &&
+		u.Notes == nil && u.Status == nil && u.Priority == nil && u.Assignee == nil && u.Type == nil &&
+		u.ExternalRef == nil && u.Due == nil && u.Defer == nil && u.Estimate == nil && u.Parent == nil &&
+		len(u.AddLabels) == 0 && len(u.RemoveLabels) == 0 && !u.Claim
 }
 
 // journalEnabled reports whether the workspace's events journal is on. It

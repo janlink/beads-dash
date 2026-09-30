@@ -87,13 +87,15 @@ func auditFixture(t *testing.T) auditEnv {
 		o.Client = fake
 	}))
 	send(a, tea.WindowSizeMsg{Width: 120, Height: 60})
-	drive(t, a, a.Init(), func() bool { return a.snap != nil && a.eng != nil })
+	p := newPump(t, a)
+	p.spawn(a.Init())
+	p.until(func() bool { return a.snap != nil && a.eng != nil })
 	t.Cleanup(func() {
 		a.eng.Stop()
 		a.cancel()
 	})
 	a.sess.SetCurrent("ws-9qe")
-	return auditEnv{newPump(t, a), fake}
+	return auditEnv{p, fake}
 }
 
 func (e auditEnv) openAudit() {
@@ -197,7 +199,6 @@ func TestAuditCacheHoldsUntilUpdatedAtChanges(t *testing.T) {
 	e.fake.SetComments("ws-9qe", bd.Comment{Author: "dee", Text: "late news", CreatedAt: time.Now()})
 	before := e.a.snap
 	e.a.eng.Refresh()
-	e.spawn(waitUpdate(e.a.eng))
 	e.until(func() bool { return e.a.snap != before })
 	e.until(func() bool { return strings.Contains(screen(e.a), "late news") })
 	if n := count(e.fake.Calls(), "Comments"); n != 3 {
@@ -220,7 +221,6 @@ func TestAuditRefetchesWhenOnlyCommentCountChanges(t *testing.T) {
 	e.fake.SetComments("ws-9qe", bd.Comment{Author: "dee", Text: "late news", CreatedAt: time.Now()})
 	before := e.a.snap
 	e.a.eng.Refresh()
-	e.spawn(waitUpdate(e.a.eng))
 	e.until(func() bool { return e.a.snap != before })
 	e.until(func() bool { return strings.Contains(screen(e.a), "late news") })
 }

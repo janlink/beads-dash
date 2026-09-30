@@ -149,6 +149,9 @@ func (a *App) footer() string {
 		left = " " + l.Paint(theme.Warning, a.hint)
 	} else {
 		hs := a.hintsFor(a.context())
+		if h, ok := a.topDialog().(hinter); ok {
+			hs = h.hints()
+		}
 		if a.escClears() {
 			hs = append([]keys.Hint{{Key: "Esc", Desc: "clear"}}, hs...)
 		}

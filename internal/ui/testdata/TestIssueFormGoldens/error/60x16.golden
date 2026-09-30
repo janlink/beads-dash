@@ -1,0 +1,16 @@
++- Edit ws-9qe --------------------- field 1/9 · 1 change -+
+| * Title*       Payment provider timeout retries!         |
+|   Type         bug                                       |
+|   Priority     P0                                        |
+|   Status       open                                      |
+|   Assignee                                               |
+|   Labels                                                 |
+|   Parent       -                                         |
+|   Description                                            |
+|                                                          |
+|                                                          |
+|                                                          |
+|                                                          |
+|   > Advanced                                             |
+| ! database is locked by another writer; ...  Ctrl+G more |
++-------- Ctrl+S save  Esc close  Tab field  Ctrl+G error -+

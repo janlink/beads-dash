@@ -65,7 +65,17 @@ type Error struct {
 	Message string
 	// Stderr is the leading part of bd's stderr, for diagnostics only.
 	Stderr string
-	Err    error
+	// Applied lists the IDs a write changed, and Failed the IDs it left
+	// alone with bd's reason. A write error carries them when bd said which.
+	Applied []string
+	Failed  []WriteFailure
+	Err     error
+}
+
+// WriteFailure is one issue a write did not change.
+type WriteFailure struct {
+	ID      string
+	Message string
 }
 
 func (e *Error) Error() string {

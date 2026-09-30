@@ -15,7 +15,7 @@ import (
 const treeWorkspace = "tree"
 
 func TestMain(m *testing.M) {
-	os.Exit(testbd.Run(m, testbd.Options{Recipes: map[string]testbd.Recipe{treeWorkspace: seedTree}}))
+	os.Exit(testbd.Run(m, testbd.Options{Recipes: map[string]testbd.Recipe{treeWorkspace: seedTree, testbd.DefaultName: testbd.DefaultRecipe}}))
 }
 
 func seedTree(e testbd.Env) error {

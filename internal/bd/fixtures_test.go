@@ -452,7 +452,7 @@ func TestFixtureConfigGet(t *testing.T) {
 	}
 }
 
-func rcOf(t *testing.T, rel ...string) int {
+func rcOf(t testing.TB, rel ...string) int {
 	t.Helper()
 	n, err := strconv.Atoi(strings.TrimSpace(string(fixture(t, rel...))))
 	if err != nil {

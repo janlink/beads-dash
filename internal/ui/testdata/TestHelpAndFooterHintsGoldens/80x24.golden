@@ -3,7 +3,7 @@
 
  [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
 |   ? P4 ws-1zz   Mystery status issue                                          
-  +- Keys -------------------------------------------------------- 31 shown -+  
+  +- Keys -------------------------------------------------------- 40 shown -+  
   | Lists                                                                    |ce
   |   q        quit                                                          |  
   |   j/Down   move down                                                     |  
@@ -21,7 +21,7 @@
   |   zl       scroll right                                                  |  
   |   zH       scroll half a screen left                                     |  
   |   zL       scroll half a screen right                                    |  
-  | ... 18 more                                                              |  
+  | ... 27 more                                                              |  
   +---------------------------------------- Esc close  j/k scroll  / filter -+  
                                                                                 
  Esc close  j/k scroll  / filter                                                

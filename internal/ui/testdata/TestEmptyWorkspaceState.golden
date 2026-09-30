@@ -11,7 +11,7 @@
                              No issues in demo yet.                             
        bdash picks up new issues within about 2 s, whoever creates them.        
                                                                                 
-                 bd create "First task" -t task  bd quickstart                  
+           n new issue  bd create "First task" -t task  bd quickstart           
                                                                                 
                                                                                 
                                                                                 
@@ -21,4 +21,4 @@
                                                                                 
                                                                                 
                                                                                 
- bd create "First task" -t task  bd quickstart  ? help  q quit  j/k move        
+ n new issue  bd create "First task" -t task  bd quickstart  ? help  q quit     

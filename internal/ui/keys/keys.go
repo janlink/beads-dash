@@ -37,6 +37,10 @@ const (
 	BarFilter
 	// Form holds the keys inside form dialogs.
 	Form
+	// Confirm holds the keys of the confirmation dialog.
+	Confirm
+	// Refused holds the keys of the close dialog once bd refused.
+	Refused
 	// Picker holds the keys of the issue picker.
 	Picker
 	// Help holds the keys of the help overlay.
@@ -55,7 +59,7 @@ const (
 
 var contextNames = [contextCount]string{
 	Always: "always", Global: "global", View: "view", Memories: "memories", Tree: "tree", Overview: "overview", Graph: "graph", Panel: "panel",
-	Bar: "search bar", BarCommand: "command bar", BarFilter: "filter bar", Form: "form", Picker: "picker", Help: "help", Appearance: "appearance",
+	Bar: "search bar", BarCommand: "command bar", BarFilter: "filter bar", Form: "form", Confirm: "confirm", Refused: "refused close", Picker: "picker", Help: "help", Appearance: "appearance",
 	Details: "details", Startup: "startup", TooSmall: "too small",
 }
 

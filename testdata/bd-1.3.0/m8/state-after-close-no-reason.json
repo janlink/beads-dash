@@ -1,0 +1,175 @@
+{
+  "data": [
+    {
+      "id": "m8-ec3",
+      "title": "First",
+      "description": "desc",
+      "status": "open",
+      "priority": 1,
+      "issue_type": "bug",
+      "assignee": "alice",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T23:46:46Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:46:46Z",
+      "labels": [
+        "backend",
+        "ui"
+      ],
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0
+    },
+    {
+      "id": "m8-486",
+      "title": "Gamma",
+      "status": "closed",
+      "priority": 2,
+      "issue_type": "task",
+      "assignee": "tester",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T23:46:50Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:47:00Z",
+      "started_at": "2026-09-29T23:46:56Z",
+      "closed_at": "2026-09-29T23:47:00Z",
+      "close_reason": "batch",
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0
+    },
+    {
+      "id": "m8-5kn",
+      "title": "Delta",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T23:46:50Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:46:50Z",
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0
+    },
+    {
+      "id": "m8-8pn",
+      "title": "Beta",
+      "status": "closed",
+      "priority": 2,
+      "issue_type": "task",
+      "assignee": "tester",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T23:46:49Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:47:03Z",
+      "started_at": "2026-09-29T23:46:55Z",
+      "closed_at": "2026-09-29T23:47:03Z",
+      "close_reason": "Closed",
+      "dependencies": [
+        {
+          "issue_id": "m8-8pn",
+          "depends_on_id": "m8-5n8",
+          "type": "blocks",
+          "created_at": "2026-09-29T23:46:59Z",
+          "created_by": "tester",
+          "metadata": "{}"
+        }
+      ],
+      "dependency_count": 1,
+      "dependent_count": 0,
+      "comment_count": 0
+    },
+    {
+      "id": "m8-3gf.1",
+      "title": "Child",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T23:46:48Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:46:48Z",
+      "labels": [
+        "team"
+      ],
+      "dependencies": [
+        {
+          "issue_id": "m8-3gf.1",
+          "depends_on_id": "m8-3gf",
+          "type": "parent-child",
+          "created_at": "2026-09-29T23:46:48Z",
+          "created_by": "tester",
+          "metadata": "{}"
+        }
+      ],
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0,
+      "parent": "m8-3gf"
+    },
+    {
+      "id": "m8-3gf.2",
+      "title": "Child2",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T23:46:48Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:46:48Z",
+      "dependencies": [
+        {
+          "issue_id": "m8-3gf.2",
+          "depends_on_id": "m8-3gf",
+          "type": "parent-child",
+          "created_at": "2026-09-29T23:46:48Z",
+          "created_by": "tester",
+          "metadata": "{}"
+        }
+      ],
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0,
+      "parent": "m8-3gf"
+    },
+    {
+      "id": "m8-3gf",
+      "title": "Epic",
+      "status": "open",
+      "priority": 2,
+      "issue_type": "epic",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T23:46:47Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:46:47Z",
+      "labels": [
+        "team"
+      ],
+      "dependency_count": 0,
+      "dependent_count": 0,
+      "comment_count": 0
+    },
+    {
+      "id": "m8-5n8",
+      "title": "Alpha 2",
+      "status": "closed",
+      "priority": 4,
+      "issue_type": "task",
+      "owner": "tester@example.com",
+      "estimated_minutes": 0,
+      "created_at": "2026-09-29T23:46:49Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:47:03Z",
+      "closed_at": "2026-09-29T23:47:03Z",
+      "close_reason": "done it",
+      "labels": [
+        "y"
+      ],
+      "dependency_count": 0,
+      "dependent_count": 1,
+      "comment_count": 0
+    }
+  ],
+  "schema_version": 1
+}

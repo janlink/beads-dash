@@ -1,0 +1,6 @@
+{
+  "data": {
+    "error": "validation failed: validation failed for issue : invalid issue type: nonsense"
+  },
+  "schema_version": 1
+}

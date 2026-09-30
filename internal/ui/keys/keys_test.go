@@ -71,8 +71,8 @@ func TestReservedKeysAreClaimed(t *testing.T) {
 func TestLaterBindingsAreInactive(t *testing.T) {
 	m := keys.Default()
 	x := keys.NewMatcher(m)
-	if _, r := x.Feed(keys.View, "s"); r != keys.NoMatch {
-		t.Errorf("reserved s resolved: %v", r)
+	if _, r := x.Feed(keys.View, "y"); r != keys.NoMatch {
+		t.Errorf("reserved y resolved: %v", r)
 	}
 	if b, r := x.Feed(keys.View, "j"); r != keys.Matched || b.Action != keys.NavDown {
 		t.Errorf("j = %v %v", b.Action, r)

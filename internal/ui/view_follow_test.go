@@ -11,35 +11,6 @@ import (
 	"github.com/janlink/beads-dash/internal/ui/uitest"
 )
 
-// drive feeds the commands' messages back into the app until done reports
-// true, the way the runtime would.
-func drive(t testing.TB, a *App, first tea.Cmd, done func() bool) {
-	t.Helper()
-	msgs := make(chan tea.Msg, 64)
-	spawn := func(c tea.Cmd) {
-		if c != nil {
-			go func() { msgs <- c() }()
-		}
-	}
-	spawn(first)
-	timeout := time.After(10 * time.Second)
-	for !done() {
-		select {
-		case m := <-msgs:
-			if b, ok := m.(tea.BatchMsg); ok {
-				for _, c := range b {
-					spawn(c)
-				}
-				continue
-			}
-			_, cmd := a.Update(m)
-			spawn(cmd)
-		case <-timeout:
-			t.Fatal("the app did not reach the expected state")
-		}
-	}
-}
-
 func treeFake(t testing.TB) *bd.Fake {
 	t.Helper()
 	fake := bd.NewFake()
@@ -64,7 +35,9 @@ func TestCurrentFollowsBetweenTreeAndReadyThroughTheEngine(t *testing.T) {
 		o.Client, o.Now = fake, time.Now
 	}))
 	send(a, tea.WindowSizeMsg{Width: 120, Height: 30})
-	drive(t, a, a.Init(), func() bool { return a.snap != nil && a.eng != nil })
+	p := newPump(t, a)
+	p.spawn(a.Init())
+	p.until(func() bool { return a.snap != nil && a.eng != nil })
 	defer func() {
 		a.eng.Stop()
 		a.cancel()
@@ -97,7 +70,7 @@ func TestCurrentFollowsBetweenTreeAndReadyThroughTheEngine(t *testing.T) {
 	})
 	before := a.snap
 	a.eng.Refresh()
-	drive(t, a, waitUpdate(a.eng), func() bool { return a.snap != before })
+	p.until(func() bool { return a.snap != before })
 
 	press(a, "4")
 	cur := a.sess.Current()

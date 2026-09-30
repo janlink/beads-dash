@@ -113,16 +113,18 @@ func (p *picker) refilter() {
 
 func (*picker) Context() keys.Context { return keys.Picker }
 
-func (p *picker) Type(m tea.KeyPressMsg) {
+func (p *picker) Type(m tea.KeyPressMsg) tea.Cmd {
 	if p.in.Update(m) {
 		p.refilter()
 	}
+	return nil
 }
 
-func (p *picker) Paste(text string) {
+func (p *picker) Paste(text string) tea.Cmd {
 	if p.in.Paste(text) {
 		p.refilter()
 	}
+	return nil
 }
 
 func (p *picker) Update(tea.Msg) tea.Cmd { return nil }

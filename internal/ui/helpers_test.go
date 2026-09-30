@@ -115,7 +115,8 @@ func keyMsg(k string) tea.KeyPressMsg {
 		return tea.KeyPressMsg{Code: tea.KeyUp}
 	case "left":
 		return tea.KeyPressMsg{Code: tea.KeyLeft}
-	case "ctrl+c", "ctrl+n", "ctrl+p", "ctrl+t", "ctrl+u":
+	}
+	if len(k) == len("ctrl+")+1 && strings.HasPrefix(k, "ctrl+") {
 		return tea.KeyPressMsg{Code: rune(k[len("ctrl+")]), Mod: tea.ModCtrl}
 	}
 	r := []rune(k)

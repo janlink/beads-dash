@@ -1,6 +1,7 @@
 package refresh
 
 import (
+	"context"
 	"reflect"
 	"testing"
 	"time"
@@ -553,5 +554,32 @@ func TestHashReprobeRestoresTheGate(t *testing.T) {
 	r.step(2 * time.Second)
 	if got := r.since(m); len(got) != 1 || got[0] != "VCStatus" {
 		t.Errorf("gate after restore: %v", got)
+	}
+}
+
+func TestOwnFromInsideAWriteMarksCreatedIssuesAndSkipsEmptyIDs(t *testing.T) {
+	r := newRig(t, rigOpts{})
+	setStatus(r, "f-1", "closed")
+	err := r.eng.Write(r.ctx, []string{"", "f-1"}, func(ctx context.Context, _ bd.Client) error {
+		setStatus(r, "f-2", "closed")
+		Own(ctx, "", "f-2")
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	events := r.last().Events
+	if len(events) != 2 {
+		t.Fatalf("events = %+v", events)
+	}
+	for _, e := range events {
+		if !e.Own {
+			t.Errorf("event for %s not own: %+v", e.IssueID, e)
+		}
+	}
+	setIssue(r, "f-2", func(is *model.Issue) { is.Priority = 0 })
+	r.refresh()
+	if e := r.last().Events; len(e) != 1 || e[0].Own {
+		t.Errorf("mark outlived the write: %+v", e)
 	}
 }

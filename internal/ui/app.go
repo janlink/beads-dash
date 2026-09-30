@@ -114,6 +114,12 @@ type App struct {
 	commandHist *recall
 	cmds        *command.Table
 	run         map[string]commandFunc
+
+	writeSeq int
+	pending  map[int]writeOp
+	// pendingCurrent is an issue the current one moves to as soon as a
+	// snapshot holds it.
+	pendingCurrent string
 }
 
 // New returns the root model.
@@ -199,6 +205,7 @@ func (a *App) matches() *model.Matches {
 func (a *App) setLook() {
 	a.lookGen++
 	a.look = look.New(a.app.Palette, a.app.Glyphs)
+	a.relayout()
 	if a.rend != nil {
 		a.rend.SetLook(a.look)
 	}
@@ -293,6 +300,7 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 	switch m := msg.(type) {
 	case tea.WindowSizeMsg:
 		a.cols, a.rows = m.Width, m.Height
+		a.relayout()
 	case tea.KeyPressMsg:
 		return a.key(m)
 	case tea.PasteMsg:
@@ -320,6 +328,8 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 	case auditMsg:
 		a.endFetch(m.res.Seq)
 		a.panel.ApplyAudit(m.res)
+	case writeDoneMsg:
+		return a.onWrite(m)
 	case closedMsg:
 	case recheckMsg:
 		if m.gen == a.checkGen && a.startErr != nil && !a.checking {
@@ -448,7 +458,11 @@ func (a *App) apply(u refresh.Update) tea.Cmd {
 		a.sess.Prune(exists)
 		a.hl.Prune(exists)
 		a.keepCurrent(old)
+		if a.pendingCurrent != "" {
+			a.focusIssue(a.pendingCurrent)
+		}
 		a.clampCursors()
+		a.notifyDialogs()
 	}
 	if len(u.Events) > 0 {
 		a.feed.Merge(u.Events...)
@@ -645,6 +659,14 @@ func (a *App) always(k string) (keys.Action, bool) {
 func (a *App) act(act keys.Action, key string) tea.Cmd {
 	switch act { //nolint:exhaustive // the action set is open: views add their own
 	case keys.QuitForce, keys.Quit:
+		if a.dirtyDialog() && !isConfirm(a.topDialog()) {
+			a.pushDialog(a.newConfirm(confirmOpts{
+				Title: "Discard changes and quit?",
+				Lines: []string{"An open form has unsaved changes."},
+				Yes:   func(a *App) tea.Cmd { return a.quit() },
+			}))
+			return nil
+		}
 		return a.quit()
 	}
 	if a.report != nil {
@@ -719,6 +741,24 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 		if id := a.sess.Current(); id != "" {
 			a.sess.ToggleMark(id)
 		}
+	case keys.New:
+		return a.openNew("")
+	case keys.Edit:
+		return a.openEdit()
+	case keys.ChangeStatus:
+		return a.openQuick(quickStatus)
+	case keys.ChangePriority:
+		return a.openQuick(quickPriority)
+	case keys.ChangeAssignee:
+		return a.openQuick(quickAssignee)
+	case keys.ChangeLabels:
+		return a.openQuick(quickLabels)
+	case keys.CloseReopen:
+		return a.openClose()
+	case keys.MoveLeft:
+		return a.moveCards(false)
+	case keys.MoveRight:
+		return a.moveCards(true)
 	default:
 		if a.baseContext() == keys.Panel {
 			a.panelAct(act)
@@ -768,6 +808,17 @@ func (a *App) reportAct(act keys.Action) tea.Cmd {
 func (a *App) pushDialog(d Dialog) {
 	a.dialogs = append(a.dialogs, d)
 	a.sess.Push(state.LayerDialog)
+	a.relayout()
+}
+
+// relayout hands the screen size and look to the dialogs that size their
+// content ahead of drawing.
+func (a *App) relayout() {
+	for _, d := range a.dialogs {
+		if l, ok := d.(interface{ layout(look.Look, int, int) }); ok {
+			l.layout(a.look, a.cols, a.rows)
+		}
+	}
 }
 
 func (a *App) popDialog() {
@@ -921,6 +972,20 @@ func (a *App) clip(text string) tea.Cmd {
 		return nil
 	}
 	return tea.SetClipboard(text)
+}
+
+func (a *App) dirtyDialog() bool {
+	for _, d := range a.dialogs {
+		if x, ok := d.(interface{ Dirty() bool }); ok && x.Dirty() {
+			return true
+		}
+	}
+	return false
+}
+
+func isConfirm(d Dialog) bool {
+	_, ok := d.(*confirmDialog)
+	return ok
 }
 
 func (a *App) quit() tea.Cmd {

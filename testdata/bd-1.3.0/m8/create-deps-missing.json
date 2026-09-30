@@ -1,0 +1,6 @@
+{
+  "data": {
+    "error": "resolving --deps target \"m8-zzz\": no issue found matching \"m8-zzz\""
+  },
+  "schema_version": 1
+}

@@ -19,7 +19,7 @@ bd_bin() { echo "$root/.cache/bd/$1/bd"; }
 norm_json='
 def scrub:
   gsub("[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+(Z|[+-][0-9:]+)?"; "<TS>")
-  | gsub("\\b(r1|m1|m2|uc)-[a-z0-9]+(\\.[0-9]+)*"; "<ID>")
+  | gsub("\\b(r1|m1|m2|m8|uc)-[a-z0-9]+(\\.[0-9]+)*"; "<ID>")
   | gsub("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"; "<UUID>")
   | gsub("/tmp/[^\" ]*"; "<PATH>")
   | gsub("\\b[0-9a-f]{7,40}\\b"; "<HASH>");
@@ -34,7 +34,7 @@ def mask: with_entries(if (masks[.key] != null) and (.value != null) then .value
 def clean:
   if type == "object" then
     mask as $o
-    | if ($o | keys | any(test("^(r1|m1|m2|uc)-"))) then
+    | if ($o | keys | any(test("^(r1|m1|m2|m8|uc)-"))) then
         $o | to_entries | map({k: (.key | scrub), v: (.value | clean)}) | sort_by(tojson)
       else $o | with_entries(.value |= clean) end
   elif type == "array" then map(clean) | sort_by(tojson)
@@ -47,7 +47,7 @@ normalise() { # file -> stdout
 		jq -S "$norm_json" "$1"
 	else
 		sed -E \
-			-e 's#\b(r1|m1|m2|uc)-[a-z0-9]+(\.[0-9]+)*#<ID>#g' \
+			-e 's#\b(r1|m1|m2|m8|uc)-[a-z0-9]+(\.[0-9]+)*#<ID>#g' \
 			-e 's#[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}#<UUID>#g' \
 			-e 's#/tmp/[^" ]*#<PATH>#g' \
 			-e 's#[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+(Z|[+-][0-9:]+)?#<TS>#g' \
@@ -107,10 +107,12 @@ for v in "${versions[@]}"; do
 		if [ -d "testdata/bd-$v/events" ]; then
 			capture testdata/capture-m2.sh "$work/m2ws-$v" "$work/m2-$v"
 		fi
+		capture testdata/capture-m8.sh "$work/m8ws-$v" "$work/m8-$v"
 	)
 	compare "$work/recipe-$v" "testdata/bd-$v/recipe-run"
 	compare "$work/m1-$v" "testdata/bd-$v/m1"
 	if [ -d "testdata/bd-$v/events" ]; then compare "$work/m2-$v" "testdata/bd-$v/events"; fi
+	compare "$work/m8-$v" "testdata/bd-$v/m8"
 	if [ -d "$work/extras-$v" ]; then compare "$work/extras-$v" "testdata/bd-$v/extras"; fi
 done
 

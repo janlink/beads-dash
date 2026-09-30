@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": "m8-a70",
+      "title": "Gamma",
+      "status": "closed",
+      "priority": 2,
+      "issue_type": "task",
+      "assignee": "tester",
+      "owner": "tester@example.com",
+      "created_at": "2026-09-29T23:46:27Z",
+      "created_by": "tester",
+      "updated_at": "2026-09-29T23:46:37Z",
+      "started_at": "2026-09-29T23:46:33Z",
+      "closed_at": "2026-09-29T23:46:37Z",
+      "close_reason": "batch"
+    }
+  ],
+  "schema_version": 1
+}

@@ -20,7 +20,7 @@ linters:
       analyze-types: true
       forbid:
         - pattern: ^exec\.Command(Context)?$
-          msg: exec.Command is confined to internal/bd and internal/testbd
+          msg: exec.Command is confined to internal/bd, internal/proc and internal/testbd
     gocritic:
       enabled-checks:
         - ruleguard
@@ -36,7 +36,7 @@ linters:
       - comments
       - std-error-handling
     rules:
-      - path: internal/(bd|testbd)/
+      - path: internal/(bd|proc|testbd)/
         linters: [forbidigo]
 
 formatters:

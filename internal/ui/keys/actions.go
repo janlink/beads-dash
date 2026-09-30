@@ -68,6 +68,22 @@ const (
 	PickerMark   Action = "picker.mark"
 	PickerClosed Action = "picker.closed"
 
+	Edit           Action = "edit"
+	New            Action = "new"
+	ChangeStatus   Action = "change.status"
+	ChangePriority Action = "change.priority"
+	ChangeAssignee Action = "change.assignee"
+	ChangeLabels   Action = "change.labels"
+	CloseReopen    Action = "close.reopen"
+	MoveLeft       Action = "move.left"
+	MoveRight      Action = "move.right"
+
+	Editor     Action = "editor"
+	FormError  Action = "form.error"
+	KeepMine   Action = "conflict.mine"
+	TakeTheirs Action = "conflict.theirs"
+	Reload     Action = "conflict.reload"
+
 	Retry  Action = "retry"
 	Copy   Action = "copy"
 	PickUp Action = "pick.up"

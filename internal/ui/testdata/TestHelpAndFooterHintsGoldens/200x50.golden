@@ -3,18 +3,14 @@
 
  [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                                                                                                           * live 12:00:00 
 |   ? P4 ws-1zz   Mystery status issue                                                                                                                                                                  
-    ! P2 ws-2hz   Split pricing service                                                                                                                                                                 
-    * P1 ws-4k2   Checkout: guest orders                                                                                                                                                           alice
-    o P1 ws-4k2.1 Address form validation                                                                                                                                                               
-    ! P2 ws-4k2.2 Guest order confirmation mail                                                                                                                                                         
-    x P3 ws-5ca   Update analytics consent banner           +- Keys ------------------------------------------------------------ 31 shown -+                                                            
-    * P2 ws-7mt   Cart badge shows stale count              | Lists                                                                        |                                                         bob
-    ~ P3 ws-8np   Search: typo tolerance                    |   q        quit                                                              |                                                            
-    o P0 ws-9qe   Payment provider timeout retries          |   j/Down   move down                                                         |                                                            
-                                                            |   k/Up     move up                                                           |                                                            
-                                                            |   gg       first                                                             |                                                            
-                                                            |   G        last                                                              |                                                            
-                                                            |   Ctrl+D   half page down                                                    |                                                            
+    ! P2 ws-2hz   Split pricing service                     +- Keys ------------------------------------------------------------ 40 shown -+                                                            
+    * P1 ws-4k2   Checkout: guest orders                    | Lists                                                                        |                                                       alice
+    o P1 ws-4k2.1 Address form validation                   |   q        quit                                                              |                                                            
+    ! P2 ws-4k2.2 Guest order confirmation mail             |   j/Down   move down                                                         |                                                            
+    x P3 ws-5ca   Update analytics consent banner           |   k/Up     move up                                                           |                                                            
+    * P2 ws-7mt   Cart badge shows stale count              |   gg       first                                                             |                                                         bob
+    ~ P3 ws-8np   Search: typo tolerance                    |   G        last                                                              |                                                            
+    o P0 ws-9qe   Payment provider timeout retries          |   Ctrl+D   half page down                                                    |                                                            
                                                             |   Ctrl+U   half page up                                                      |                                                            
                                                             |   PgDn     page down                                                         |                                                            
                                                             |   PgUp     page up                                                           |                                                            
@@ -26,6 +22,15 @@
                                                             |   zH       scroll half a screen left                                         |                                                            
                                                             |   zL       scroll half a screen right                                        |                                                            
                                                             |   Enter    open the detail, fold row                                         |                                                            
+                                                            |   e        edit                                                              |                                                            
+                                                            |   n        new issue                                                         |                                                            
+                                                            |   s        status                                                            |                                                            
+                                                            |   p        priority                                                          |                                                            
+                                                            |   a        assignee                                                          |                                                            
+                                                            |   #        labels                                                            |                                                            
+                                                            |   c        close or reopen with a reason                                     |                                                            
+                                                            |   <        Kanban: move the card back                                        |                                                            
+                                                            |   >        Kanban: move the card on                                          |                                                            
                                                             |                                                                              |                                                            
                                                             | Everywhere                                                                   |                                                            
                                                             |   ?          help                                                            |                                                            
@@ -44,10 +49,5 @@
                                                             |   ctrl+c     quit                                                            |                                                            
                                                             |                                                                              |                                                            
                                                             +-------------------------------------------- Esc close  j/k scroll  / filter -+                                                            
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        
                                                                                                                                                                                                         
  Esc close  j/k scroll  / filter                                                                                                                                                                        

@@ -266,6 +266,17 @@ func (e *Engine) Do(ctx context.Context, fn func(context.Context, bd.Client) err
 	return e.exec(ctx, nil, false, fn)
 }
 
+type ownKey struct{}
+
+// Own marks ids as the caller's own writes from inside a function passed to
+// [Engine.Write], for issues that only exist once the write has run, such as
+// a created one. Outside a write it does nothing.
+func Own(ctx context.Context, ids ...string) {
+	if own, ok := ctx.Value(ownKey{}).(func(...string)); ok {
+		own(ids...)
+	}
+}
+
 // Write runs a bd write in the queue: it marks ids as own writes, runs fn, and
 // refreshes at once, all in one queued step so no other refresh can slip in
 // between. The events those issues show are credited to the actor, highlighted
@@ -289,9 +300,15 @@ func (e *Engine) exec(ctx context.Context, ids []string, write bool, fn func(con
 			return
 		}
 		if write {
-			for _, id := range ids {
-				e.own[id] = struct{}{}
+			own := func(ids ...string) {
+				for _, id := range ids {
+					if id != "" {
+						e.own[id] = struct{}{}
+					}
+				}
 			}
+			own(ids...)
+			wctx = context.WithValue(wctx, ownKey{}, own)
 		}
 		err := fn(wctx, e.client)
 		if write {

@@ -3,9 +3,11 @@ package bd
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"slices"
 	"sort"
+	"strings"
 	"sync"
 	"time"
 
@@ -34,6 +36,9 @@ type Fake struct {
 	now       func() time.Time
 	hook      func(method string)
 	journal   journalState
+	writes    []FakeWrite
+	refused   map[string]string
+	actor     string
 }
 
 // NewFake returns a fake speaking as bd 1.3.0 in workspace /fake with the
@@ -55,6 +60,8 @@ func NewFake() *Fake {
 		memories:  map[string]string{},
 		config:    map[string]ConfigValue{},
 		errs:      map[string]error{},
+		refused:   map[string]string{},
+		actor:     "fake",
 		now:       time.Now,
 	}
 }
@@ -332,6 +339,72 @@ func (f *Fake) find(id string) (int, error) {
 	return -1, &Error{Class: ClassRejected, Message: fmt.Sprintf("no issue found matching %q", id)}
 }
 
+// FakeWrite records one write the fake took, so tests can tell one bd call
+// with several IDs from several calls.
+type FakeWrite struct {
+	Method string
+	IDs    []string
+	Update UpdateSpec
+	Create CreateSpec
+	Reason string
+}
+
+// Writes returns the write calls so far, in order.
+func (f *Fake) Writes() []FakeWrite {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	return slices.Clone(f.writes)
+}
+
+// Refuse makes a later close of id fail with msg, as one of bd's close
+// guards would; "" clears it.
+func (f *Fake) Refuse(id, msg string) {
+	f.locked(func() {
+		if msg == "" {
+			delete(f.refused, id)
+			return
+		}
+		f.refused[id] = msg
+	})
+}
+
+// SetActor sets who the fake acts as; a claim sets the assignee to it.
+func (f *Fake) SetActor(name string) { f.locked(func() { f.actor = name }) }
+
+func (f *Fake) record(w FakeWrite) { f.writes = append(f.writes, w) }
+
+func writeErr(cmd string, applied []string, failed []WriteFailure) error {
+	if len(failed) == 0 {
+		return nil
+	}
+	e := &Error{Class: ClassRejected, Command: cmd, ExitCode: 1, Applied: applied, Failed: failed, Message: failed[0].Message}
+	if len(applied) > 0 {
+		e.Class = ClassPartialWrite
+	}
+	return e
+}
+
+func (f *Fake) validPriority(p *int) error {
+	if p != nil && (*p < 0 || *p > 4) {
+		return &Error{Class: ClassRejected, Message: fmt.Sprintf("invalid priority %d (expected 0-4)", *p)}
+	}
+	return nil
+}
+
+func (f *Fake) validType(t string) error {
+	if t == "" || slices.ContainsFunc(f.types, func(i TypeInfo) bool { return i.Name == t }) {
+		return nil
+	}
+	return &Error{Class: ClassRejected, Message: fmt.Sprintf("invalid issue type: %s", t)}
+}
+
+func (f *Fake) validStatus(s string) error {
+	if _, ok := f.statuses.Lookup(s); ok {
+		return nil
+	}
+	return &Error{Class: ClassRejected, Message: fmt.Sprintf("invalid status %q", s)}
+}
+
 // Create implements [Client]. It adds an open issue and leaves readiness
 // alone.
 func (f *Fake) Create(ctx context.Context, spec CreateSpec) (string, error) {
@@ -340,8 +413,26 @@ func (f *Fake) Create(ctx context.Context, spec CreateSpec) (string, error) {
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.record(FakeWrite{Method: "Create", Create: spec})
 	if spec.Title == "" {
 		return "", &Error{Class: ClassRejected, Command: "create", Message: "title required"}
+	}
+	if err := errors.Join(f.validPriority(spec.Priority), f.validType(spec.Type)); err != nil {
+		return "", err
+	}
+	labels := slices.Clone(spec.Labels)
+	if spec.Parent != "" {
+		pi, err := f.find(spec.Parent)
+		if err != nil {
+			return "", err
+		}
+		if !spec.NoInheritLabels {
+			for _, l := range f.issues[pi].Labels {
+				if !slices.Contains(labels, l) {
+					labels = append(labels, l)
+				}
+			}
+		}
 	}
 	f.nextID++
 	id := fmt.Sprintf("%s-new%d", f.workspace.Prefix, f.nextID)
@@ -349,16 +440,40 @@ func (f *Fake) Create(ctx context.Context, spec CreateSpec) (string, error) {
 	is := model.Issue{
 		ID: id, Title: spec.Title, Status: "open", IssueType: orDefault(spec.Type, "task"), Priority: 2,
 		Description: spec.Description, Assignee: spec.Assignee, Parent: spec.Parent,
-		Labels: slices.Clone(spec.Labels), CreatedAt: now, UpdatedAt: now,
+		Design: spec.Design, AcceptanceCriteria: spec.Acceptance, Notes: spec.Notes,
+		ExternalRef: spec.ExternalRef, Labels: labels, CreatedAt: now, UpdatedAt: now,
+	}
+	if spec.Estimate != nil {
+		is.EstimatedMinutes = *spec.Estimate
 	}
 	if spec.Priority != nil {
 		is.Priority = *spec.Priority
 	}
+	is.DueAt, is.DeferUntil = parseDate(spec.Due), parseDate(spec.Defer)
+	if !is.DeferUntil.IsZero() {
+		is.Status = "deferred"
+	}
 	if spec.Parent != "" {
-		is.Dependencies = []model.Edge{{From: id, To: spec.Parent, Type: model.EdgeParentChild}}
+		is.Dependencies = append(is.Dependencies, model.Edge{From: id, To: spec.Parent, Type: model.EdgeParentChild})
+	}
+	for _, d := range spec.Deps {
+		typ, to := "blocks", d
+		if t, target, ok := strings.Cut(d, ":"); ok {
+			typ, to = t, target
+		}
+		is.Dependencies = append(is.Dependencies, model.Edge{From: id, To: to, Type: typ})
 	}
 	f.issues = append(f.issues, is)
 	return id, nil
+}
+
+// parseDate reads a YYYY-MM-DD date as local midnight; anything else is no date.
+func parseDate(s string) time.Time {
+	t, err := time.ParseInLocation("2006-01-02", s, time.Local)
+	if err != nil {
+		return time.Time{}
+	}
+	return t
 }
 
 func orDefault(s, d string) string {
@@ -368,18 +483,52 @@ func orDefault(s, d string) string {
 	return s
 }
 
-// Update implements [Client].
-func (f *Fake) Update(ctx context.Context, id string, spec UpdateSpec) error {
+// Update implements [Client]. Unknown IDs and claims on an issue someone else
+// holds fail per ID; the rest change, as in bd.
+func (f *Fake) Update(ctx context.Context, ids []string, spec UpdateSpec) error {
 	if err := f.enter(ctx, "Update"); err != nil {
 		return err
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
-	i, err := f.find(id)
-	if err != nil {
+	f.record(FakeWrite{Method: "Update", IDs: slices.Clone(ids), Update: spec})
+	if spec.Empty() {
+		return nil
+	}
+	checks := []error{f.validPriority(spec.Priority), f.validType(deref(spec.Type))}
+	if spec.Status != nil {
+		checks = append(checks, f.validStatus(*spec.Status))
+	}
+	if err := errors.Join(checks...); err != nil {
 		return err
 	}
-	is := &f.issues[i]
+	var applied []string
+	var failed []WriteFailure
+	for _, id := range ids {
+		i, err := f.find(id)
+		if err != nil {
+			failed = append(failed, WriteFailure{ID: id, Message: errMessage(err)})
+			continue
+		}
+		is := &f.issues[i]
+		if spec.Claim && is.Assignee != "" && is.Assignee != f.actor && is.Status == "in_progress" {
+			failed = append(failed, WriteFailure{ID: id, Message: "issue already claimed by " + is.Assignee})
+			continue
+		}
+		f.apply(is, spec)
+		applied = append(applied, id)
+	}
+	return writeErr("update", applied, failed)
+}
+
+func deref(s *string) string {
+	if s == nil {
+		return ""
+	}
+	return *s
+}
+
+func (f *Fake) apply(is *model.Issue, spec UpdateSpec) {
 	set := func(dst *string, src *string) {
 		if src != nil {
 			*dst = *src
@@ -393,8 +542,34 @@ func (f *Fake) Update(ctx context.Context, id string, spec UpdateSpec) error {
 	set(&is.Status, spec.Status)
 	set(&is.Assignee, spec.Assignee)
 	set(&is.IssueType, spec.Type)
+	set(&is.ExternalRef, spec.ExternalRef)
 	if spec.Priority != nil {
 		is.Priority = *spec.Priority
+	}
+	if spec.Estimate != nil {
+		is.EstimatedMinutes = *spec.Estimate
+	}
+	if spec.Due != nil {
+		is.DueAt = parseDate(*spec.Due)
+	}
+	if spec.Defer != nil {
+		is.DeferUntil = parseDate(*spec.Defer)
+		switch {
+		case !is.DeferUntil.IsZero() && spec.Status == nil:
+			is.Status = "deferred"
+		case is.DeferUntil.IsZero() && is.Status == "deferred":
+			is.Status = "open"
+		}
+	}
+	if spec.Parent != nil {
+		is.Parent = *spec.Parent
+		is.Dependencies = slices.DeleteFunc(is.Dependencies, func(e model.Edge) bool { return e.Type == model.EdgeParentChild })
+		if *spec.Parent != "" {
+			is.Dependencies = append(is.Dependencies, model.Edge{From: is.ID, To: *spec.Parent, Type: model.EdgeParentChild})
+		}
+	}
+	if spec.Claim {
+		is.Assignee, is.Status = f.actor, "in_progress"
 	}
 	for _, l := range spec.AddLabels {
 		if !slices.Contains(is.Labels, l) {
@@ -404,51 +579,92 @@ func (f *Fake) Update(ctx context.Context, id string, spec UpdateSpec) error {
 	is.Labels = slices.DeleteFunc(is.Labels, func(l string) bool { return slices.Contains(spec.RemoveLabels, l) })
 	is.UpdatedAt = f.now()
 	is.Raw = nil
-	return nil
 }
 
-func (f *Fake) setStatus(ids []string, status string) ([]string, error) {
-	var done []string
-	for _, id := range ids {
-		i, err := f.find(id)
-		if err != nil {
-			continue
+// closeRefusal is the close guard's verdict on an issue, "" when it may
+// close: an injected refusal, an open blocker or an open child.
+func (f *Fake) closeRefusal(id string) string {
+	if msg, ok := f.refused[id]; ok {
+		return msg
+	}
+	if open := f.openIDs(f.readiness.Blocked[id]); len(open) > 0 {
+		return fmt.Sprintf("cannot close blocked issue: %s is blocked by [%s] (use --force to override)", id, strings.Join(open, " "))
+	}
+	n := 0
+	for _, c := range f.issues {
+		if c.Parent == id && c.Status != "closed" {
+			n++
 		}
-		f.issues[i].Status = status
-		f.issues[i].UpdatedAt = f.now()
-		f.issues[i].Raw = nil
-		done = append(done, id)
 	}
-	if len(done) == 0 {
-		return nil, &Error{Class: ClassRejected, Message: "no issue found"}
+	if n > 0 {
+		return fmt.Sprintf("cannot close %s: %d open child issue(s); close children first or use --force to override", id, n)
 	}
-	return done, nil
+	return ""
 }
 
-// Close implements [Client]; unknown IDs are skipped like bd does.
+func (f *Fake) openIDs(ids []string) []string {
+	var out []string
+	for _, id := range ids {
+		if i, err := f.find(id); err == nil && f.issues[i].Status != "closed" {
+			out = append(out, id)
+		}
+	}
+	return out
+}
+
+// Close implements [Client]. Like bd it closes the issues its guards allow
+// and reports the others as failures; unknown IDs fail too.
 func (f *Fake) Close(ctx context.Context, ids []string, reason string) ([]string, error) {
 	if err := f.enter(ctx, "Close"); err != nil {
 		return nil, err
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
-	done, err := f.setStatus(ids, "closed")
-	for _, id := range done {
-		i, _ := f.find(id)
-		f.issues[i].CloseReason = reason
-		f.issues[i].ClosedAt = f.now()
+	f.record(FakeWrite{Method: "Close", IDs: slices.Clone(ids), Reason: reason})
+	var done []string
+	var failed []WriteFailure
+	for _, id := range ids {
+		i, err := f.find(id)
+		if err != nil {
+			failed = append(failed, WriteFailure{ID: id, Message: errMessage(err)})
+			continue
+		}
+		if msg := f.closeRefusal(id); msg != "" {
+			failed = append(failed, WriteFailure{ID: id, Message: msg})
+			continue
+		}
+		is := &f.issues[i]
+		is.Status, is.CloseReason, is.ClosedAt, is.UpdatedAt, is.Raw = "closed", orDefault(reason, "Closed"), f.now(), f.now(), nil
+		done = append(done, id)
 	}
-	return done, err
+	return done, writeErr("close", done, failed)
 }
 
-// Reopen implements [Client]; unknown IDs are skipped like bd does.
-func (f *Fake) Reopen(ctx context.Context, ids []string) ([]string, error) {
+// Reopen implements [Client]. An issue that is already open fails like it
+// does in bd.
+func (f *Fake) Reopen(ctx context.Context, ids []string, reason string) ([]string, error) {
 	if err := f.enter(ctx, "Reopen"); err != nil {
 		return nil, err
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
-	return f.setStatus(ids, "open")
+	f.record(FakeWrite{Method: "Reopen", IDs: slices.Clone(ids), Reason: reason})
+	var done []string
+	var failed []WriteFailure
+	for _, id := range ids {
+		i, err := f.find(id)
+		switch {
+		case err != nil:
+			failed = append(failed, WriteFailure{ID: id, Message: errMessage(err)})
+		case f.issues[i].Status != "closed":
+			failed = append(failed, WriteFailure{ID: id, Message: id + " is already open"})
+		default:
+			is := &f.issues[i]
+			is.Status, is.CloseReason, is.ClosedAt, is.UpdatedAt, is.Raw = "open", "", time.Time{}, f.now(), nil
+			done = append(done, id)
+		}
+	}
+	return done, writeErr("reopen", done, failed)
 }
 
 // DepAdd implements [Client].
@@ -458,14 +674,47 @@ func (f *Fake) DepAdd(ctx context.Context, from, to, depType string) error {
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.record(FakeWrite{Method: "DepAdd", IDs: []string{from, to}})
 	i, err := f.find(from)
 	if err != nil {
 		return err
+	}
+	if _, err := f.find(to); err != nil {
+		return err
+	}
+	if f.reaches(to, from) {
+		return &Error{Class: ClassRejected, Command: "dep add", Message: "adding dependency would create a cycle"}
 	}
 	f.issues[i].Dependencies = append(f.issues[i].Dependencies, model.Edge{From: from, To: to, Type: orDefault(depType, "blocks")})
 	f.issues[i].UpdatedAt = f.now()
 	f.issues[i].Raw = nil
 	return nil
+}
+
+// reaches reports whether a depends on b through any chain of edges.
+func (f *Fake) reaches(a, b string) bool {
+	seen := map[string]bool{}
+	var walk func(id string) bool
+	walk = func(id string) bool {
+		if id == b {
+			return true
+		}
+		if seen[id] {
+			return false
+		}
+		seen[id] = true
+		i, err := f.find(id)
+		if err != nil {
+			return false
+		}
+		for _, e := range f.issues[i].Dependencies {
+			if walk(e.To) {
+				return true
+			}
+		}
+		return false
+	}
+	return walk(a)
 }
 
 // DepRemove implements [Client].
@@ -475,6 +724,7 @@ func (f *Fake) DepRemove(ctx context.Context, from, to string) error {
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.record(FakeWrite{Method: "DepRemove", IDs: []string{from, to}})
 	i, err := f.find(from)
 	if err != nil {
 		return err
@@ -535,4 +785,12 @@ func (f *Fake) ConfigSet(ctx context.Context, key, value string) error {
 	defer f.mu.Unlock()
 	f.config[key] = ConfigValue{Key: key, Value: value, Location: "config.yaml"}
 	return nil
+}
+
+func errMessage(err error) string {
+	var e *Error
+	if errors.As(err, &e) {
+		return e.Message
+	}
+	return err.Error()
 }

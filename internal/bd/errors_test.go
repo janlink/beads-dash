@@ -195,23 +195,10 @@ func TestStderrIsClipped(t *testing.T) {
 	}
 }
 
-func TestWritesAndEventsNotImplemented(t *testing.T) {
+func TestUnbuiltCallsNotImplemented(t *testing.T) {
 	c := NewExec(ExecOptions{Runner: fixed(Result{}, errors.New("must not run"))})
 	ctx := context.Background()
-	if _, err := c.Create(ctx, CreateSpec{}); !errors.Is(err, ErrNotImplemented) {
-		t.Error("Create")
-	}
-	if !errors.Is(c.Update(ctx, "x", UpdateSpec{}), ErrNotImplemented) {
-		t.Error("Update")
-	}
-	if _, err := c.Close(ctx, nil, ""); !errors.Is(err, ErrNotImplemented) {
-		t.Error("Close")
-	}
-	if _, err := c.Reopen(ctx, nil); !errors.Is(err, ErrNotImplemented) {
-		t.Error("Reopen")
-	}
 	for name, err := range map[string]error{
-		"DepAdd": c.DepAdd(ctx, "", "", ""), "DepRemove": c.DepRemove(ctx, "", ""),
 		"Comment": c.Comment(ctx, "", ""), "Remember": c.Remember(ctx, "", ""),
 		"Forget": c.Forget(ctx, ""), "ConfigSet": c.ConfigSet(ctx, "", ""),
 	} {

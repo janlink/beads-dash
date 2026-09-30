@@ -26,9 +26,8 @@ type ExecOptions struct {
 	Runner Runner
 }
 
-// ExecClient is the [Client] backed by the bd CLI. The read methods and
-// EventsFollow are implemented; the write methods return
-// [ErrNotImplemented].
+// ExecClient is the [Client] backed by the bd CLI. Comment, Remember, Forget
+// and ConfigSet return [ErrNotImplemented].
 type ExecClient struct {
 	runner   Runner
 	timeouts Timeouts
@@ -296,32 +295,6 @@ func (c *ExecClient) ConfigGet(ctx context.Context, key string) (ConfigValue, er
 	}
 	return v, nil
 }
-
-// Create is not implemented yet.
-func (c *ExecClient) Create(context.Context, CreateSpec) (string, error) {
-	return "", ErrNotImplemented
-}
-
-// Update is not implemented yet.
-func (c *ExecClient) Update(context.Context, string, UpdateSpec) error { return ErrNotImplemented }
-
-// Close is not implemented yet.
-func (c *ExecClient) Close(context.Context, []string, string) ([]string, error) {
-	return nil, ErrNotImplemented
-}
-
-// Reopen is not implemented yet.
-func (c *ExecClient) Reopen(context.Context, []string) ([]string, error) {
-	return nil, ErrNotImplemented
-}
-
-// DepAdd is not implemented yet.
-func (c *ExecClient) DepAdd(context.Context, string, string, string) error {
-	return ErrNotImplemented
-}
-
-// DepRemove is not implemented yet.
-func (c *ExecClient) DepRemove(context.Context, string, string) error { return ErrNotImplemented }
 
 // Comment is not implemented yet.
 func (c *ExecClient) Comment(context.Context, string, string) error { return ErrNotImplemented }

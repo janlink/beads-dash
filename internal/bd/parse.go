@@ -54,6 +54,7 @@ type wireIssue struct {
 	StartedAt          lenientTime `json:"started_at"`
 	ClosedAt           lenientTime `json:"closed_at"`
 	DueAt              lenientTime `json:"due_at"`
+	DeferUntil         lenientTime `json:"defer_until"`
 	CloseReason        string      `json:"close_reason"`
 	ExternalRef        string      `json:"external_ref"`
 	EstimatedMinutes   int         `json:"estimated_minutes"`
@@ -69,7 +70,7 @@ func (w *wireIssue) issue(raw json.RawMessage) model.Issue {
 		Assignee: w.Assignee, Owner: w.Owner, CreatedBy: w.CreatedBy, Parent: w.Parent,
 		Labels:    w.Labels,
 		CreatedAt: w.CreatedAt.time(), UpdatedAt: w.UpdatedAt.time(),
-		StartedAt: w.StartedAt.time(), ClosedAt: w.ClosedAt.time(), DueAt: w.DueAt.time(),
+		StartedAt: w.StartedAt.time(), ClosedAt: w.ClosedAt.time(), DueAt: w.DueAt.time(), DeferUntil: w.DeferUntil.time(),
 		CloseReason: w.CloseReason, ExternalRef: w.ExternalRef,
 		EstimatedMinutes: w.EstimatedMinutes, CommentCount: w.CommentCount,
 		Raw: raw,

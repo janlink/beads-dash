@@ -27,6 +27,11 @@ type Runner interface {
 	Run(ctx context.Context, argv []string) (Result, error)
 }
 
+// InputRunner is the runner extension for writes whose text travels on stdin.
+type InputRunner interface {
+	RunInput(ctx context.Context, argv []string, stdin []byte) (Result, error)
+}
+
 // ExecRunner runs a real bd binary. It never goes through a shell.
 type ExecRunner struct {
 	// Bin is the bd binary; empty means "bd" on PATH.
@@ -46,6 +51,13 @@ const killGrace = 2 * time.Second
 // drops BEADS_MAX_ROWS (bd exits with code 2 when it trips) and, when the
 // context ends, kills the whole process group.
 func (r ExecRunner) Run(ctx context.Context, argv []string) (Result, error) {
+	return r.RunInput(ctx, argv, nil)
+}
+
+var _ InputRunner = ExecRunner{}
+
+// RunInput implements [InputRunner]; nil stdin leaves bd's stdin empty.
+func (r ExecRunner) RunInput(ctx context.Context, argv []string, stdin []byte) (Result, error) {
 	bin := r.Bin
 	if bin == "" {
 		bin = "bd"
@@ -54,6 +66,9 @@ func (r ExecRunner) Run(ctx context.Context, argv []string) (Result, error) {
 	cmd.Dir = r.Dir
 	cmd.Env = r.environ()
 	cmd.WaitDelay = killGrace
+	if stdin != nil {
+		cmd.Stdin = bytes.NewReader(stdin)
+	}
 	setProcessGroup(cmd)
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout, cmd.Stderr = &stdout, &stderr

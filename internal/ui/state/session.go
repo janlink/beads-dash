@@ -185,6 +185,13 @@ func (s *Session) HiddenMarks(visible func(id string) bool) int {
 	return n
 }
 
+// Unmark drops the marks on ids.
+func (s *Session) Unmark(ids ...string) {
+	for _, id := range ids {
+		delete(s.marks, id)
+	}
+}
+
 // ClearMarks drops every mark.
 func (s *Session) ClearMarks() { clear(s.marks) }
 

@@ -12,6 +12,7 @@ func TestResolveActorPrecedence(t *testing.T) {
 		want string
 	}{
 		{"beads actor wins", map[string]string{"BEADS_ACTOR": "ci-bot", "USER": "jan"}, "Jan Link", "ci-bot"},
+		{"bd actor after beads actor", map[string]string{"BD_ACTOR": "bot", "USER": "jan"}, "Jan Link", "bot"},
 		{"git user next", map[string]string{"USER": "jan"}, "Jan Link\n", "Jan Link"},
 		{"user last", map[string]string{"USER": "jan"}, "", "jan"},
 		{"nothing", nil, "", ""},

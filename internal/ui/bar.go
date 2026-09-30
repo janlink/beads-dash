@@ -265,7 +265,7 @@ func (a *App) typeKey(m tea.KeyPressMsg) tea.Cmd {
 	}
 	if d := a.topDialog(); d != nil {
 		if t, ok := d.(typing); ok {
-			t.Type(m)
+			return t.Type(m)
 		}
 		return nil
 	}
@@ -282,7 +282,7 @@ func (a *App) paste(text string) tea.Cmd {
 	}
 	if d := a.topDialog(); d != nil {
 		if t, ok := d.(pasting); ok {
-			t.Paste(text)
+			return t.Paste(text)
 		}
 		return nil
 	}
@@ -318,8 +318,8 @@ func (a *App) barTyped(changed bool) tea.Cmd {
 // typing is implemented by dialogs whose text field takes the keys the key
 // map leaves over; pasting by those that take pasted text too.
 type (
-	typing  interface{ Type(tea.KeyPressMsg) }
-	pasting interface{ Paste(string) }
+	typing  interface{ Type(tea.KeyPressMsg) tea.Cmd }
+	pasting interface{ Paste(string) tea.Cmd }
 )
 
 // barEdited applies what the search bar text says to the scope.

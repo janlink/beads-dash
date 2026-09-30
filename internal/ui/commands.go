@@ -87,6 +87,7 @@ func (a *App) registerBuiltins() {
 			return a.idsWith(prefix, maxIDCandidate)
 		},
 	}, (*App).cmdGo)
+	a.registerWrites()
 }
 
 // choose completes an argument from a fixed list.

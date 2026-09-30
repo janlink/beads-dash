@@ -20,6 +20,10 @@ type Engine interface {
 	SetFocus(focused bool)
 	// Do runs a lazy bd read in the serialized queue.
 	Do(ctx context.Context, fn func(context.Context, bd.Client) error) error
+	// Write runs a bd write in the serialized queue. ids are the issues it
+	// touches, so their events are credited to the user; the engine refreshes
+	// right after, even when fn fails.
+	Write(ctx context.Context, ids []string, fn func(context.Context, bd.Client) error) error
 }
 
 // Persister writes one setting to the config file.
