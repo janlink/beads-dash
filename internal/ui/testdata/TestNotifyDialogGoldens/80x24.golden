@@ -1,0 +1,24 @@
+ [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+|   ? P4 ws-1zz   Mystery status issue                                          
+  +- Notifications ------------------------------------------------ 4 kinds -+  
+  |   [x] Notifications on                                                   |ce
+  |                                                                          |  
+  | Tell me when an issue                                                    |  
+  |   [ ] created                                                            |  
+  | > [x] claimed                                                            |ob
+  |   [ ] unassigned                                                         |  
+  |   [x] closed                                                             |  
+  |   [ ] reopened                                                           |  
+  |   [ ] status changed                                                     |  
+  |   [x] became blocked                                                     |  
+  |   [ ] unblocked                                                          |  
+  |   [x] became ready                                                       |  
+  |   [ ] priority changed                                                   |  
+  |   [ ] deleted                                                            |  
+  |   [ ] edited                                                             |  
+  |   [ ] commented                                                          |  
+  |                                                                          |  
+  | Your own changes never notify. Method: auto                              |  
+  +------------------------ Enter save  Esc cancel  Space toggle  Up/Dn row -+  
+                                                                                
+ Enter save  Esc cancel  Space toggle  Up/Dn row                                

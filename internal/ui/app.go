@@ -1,6 +1,7 @@
 package ui
 
 import (
+	"cmp"
 	"context"
 	"errors"
 	"fmt"
@@ -15,6 +16,7 @@ import (
 	"github.com/janlink/beads-dash/internal/appearance"
 	"github.com/janlink/beads-dash/internal/bd"
 	"github.com/janlink/beads-dash/internal/model"
+	"github.com/janlink/beads-dash/internal/notify"
 	"github.com/janlink/beads-dash/internal/refresh"
 	"github.com/janlink/beads-dash/internal/ui/command"
 	"github.com/janlink/beads-dash/internal/ui/detail"
@@ -119,6 +121,17 @@ type App struct {
 	journalAsked, journalDeclined, journalLater bool
 	localJournal                                *memJournal
 
+	title        string
+	titleAt      time.Time
+	copyAt       time.Time
+	titleHeld    bool
+	notifyOn     bool
+	notifyNames  []string
+	notifyMethod string
+	// notifyPrev is the method to restore when notifications go back on.
+	notifyPrev   string
+	notifyWarned bool
+
 	writeSeq int
 	pending  map[int]writeOp
 	// pendingCurrent is an issue the current one moves to as soon as a
@@ -132,9 +145,13 @@ func New(o Options) *App {
 	a := &App{
 		o: o, km: o.Keys, mx: keys.NewMatcher(o.Keys),
 		app: o.Appearance, cols: 80, rows: 24, focused: true,
-		sess: state.New(),
-		mem:  newMemState(),
-		hl:   state.NewHighlights(time.Duration(o.Settings.Settings.HighlightSeconds) * time.Second),
+		sess:         state.New(),
+		mem:          newMemState(),
+		notifyOn:     o.Settings.Settings.NotifyMethod != "off",
+		notifyNames:  slices.Clone(o.Settings.Settings.NotifyKinds),
+		notifyMethod: o.Settings.Settings.NotifyMethod,
+		notifyPrev:   cmp.Or(notifyRestore(o.Settings.Settings.NotifyMethod), notify.MethodAuto),
+		hl:           state.NewHighlights(time.Duration(o.Settings.Settings.HighlightSeconds) * time.Second),
 		choices: dialog.Choices{
 			Theme: o.Settings.Settings.Theme, Background: o.Settings.Settings.Background, Glyphs: o.Settings.Settings.Glyphs,
 		},
@@ -291,7 +308,7 @@ func (a *App) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	if s, ok := a.view().(Syncer); ok && a.snap != nil {
 		s.Sync(a.env())
 	}
-	cmd = tea.Batch(cmd, a.renderJobs(), a.memSync())
+	cmd = tea.Batch(cmd, a.renderJobs(), a.memSync(), a.syncTitle())
 	if a.needsClock() && !a.ticking && !a.quitting {
 		a.ticking = true
 		cmd = tea.Batch(cmd, tea.Tick(time.Second, func(time.Time) tea.Msg { return clockMsg{} }))
@@ -344,6 +361,8 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 		if m.gen == a.checkGen && a.startErr != nil && !a.checking {
 			return a.recheck()
 		}
+	case titleHeldMsg:
+		a.titleHeld = false
 	case clockMsg:
 		a.ticking = false
 	case hlTickMsg:
@@ -352,6 +371,10 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 			a.hl.Expire(a.now())
 			return a.hlSchedule()
 		}
+	case copiedMsg:
+		a.onCopied(m)
+	case notifiedMsg:
+		return a.onNotified(m)
 	case savedMsg:
 		if m.err != nil {
 			a.notices = append(a.notices, screens.Notice{Text: fmt.Sprintf("could not save the choice: %v; it lasts for this session only", m.err), Warn: true})
@@ -390,6 +413,7 @@ func (a *App) onEngine(m engineMsg) tea.Cmd {
 	if !a.focused {
 		m.eng.SetFocus(false)
 	}
+	m.eng.SetNotify(a.notifyOn, a.notifyKinds())
 	return waitUpdate(m.eng)
 }
 
@@ -489,6 +513,7 @@ func (a *App) apply(u refresh.Update) tea.Cmd {
 		cmds = append(cmds, a.cancelDialogs())
 	}
 	a.maybeAskJournal()
+	cmds = append(cmds, a.deliver(u.Notification))
 	return tea.Batch(cmds...)
 }
 
@@ -717,6 +742,10 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 		a.pushDialog(&helpDialog{a: a, under: a.baseContext()})
 	case keys.OpenAppearance:
 		a.pushDialog(a.newAppearanceDialog())
+	case keys.Notifications:
+		a.pushDialog(a.newNotifyDialog())
+	case keys.CopyID:
+		return a.copyCurrentID()
 	case keys.OpenDetails:
 		if a.detailError() == nil {
 			a.hint = "no error to show"
@@ -809,7 +838,7 @@ func (a *App) reportAct(act keys.Action) tea.Cmd {
 		if len(a.report.Fixes) > 0 {
 			text = a.report.Fixes[min(a.pick, len(a.report.Fixes)-1)].Cmd
 		}
-		return a.clip(text)
+		return a.copy("fix", text)
 	case keys.PickDn:
 		a.pick++
 	case keys.PickUp:
@@ -986,13 +1015,6 @@ func (a *App) retry() tea.Cmd {
 	return nil
 }
 
-func (a *App) clip(text string) tea.Cmd {
-	if text == "" {
-		return nil
-	}
-	return tea.SetClipboard(text)
-}
-
 func (a *App) dirtyDialog() bool {
 	for _, d := range a.dialogs {
 		if x, ok := d.(interface{ Dirty() bool }); ok && x.Dirty() {
@@ -1083,9 +1105,9 @@ func (a *App) View() tea.View {
 	if a.mouseOn() {
 		v.MouseMode = tea.MouseModeCellMotion
 	}
-	v.WindowTitle = "bdash"
-	if n := a.workspaceName(); n != "" {
-		v.WindowTitle += " · " + n
+	v.WindowTitle = a.title
+	if v.WindowTitle == "" {
+		v.WindowTitle = a.windowTitle()
 	}
 	return v
 }

@@ -1,0 +1,16 @@
++- Notifications -------------------------------- 4 kinds -+
+|   [x] Notifications on                                   |
+|                                                          |
+| Tell me when an issue                                    |
+|   [ ] created                                            |
+| > [x] claimed                                            |
+|   [ ] unassigned                                         |
+|   [x] closed                                             |
+|   [ ] reopened                                           |
+|   [ ] status changed                                     |
+|   [x] became blocked                                     |
+|   [ ] unblocked                                          |
+|   [x] became ready                                       |
+|   [ ] priority changed                                   |
+| ... 5 more                                               |
++-------- Enter save  Esc cancel  Space toggle  Up/Dn row -+

@@ -3,7 +3,7 @@
 
  [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                           * live 12:00:00 
 |   ? P4 ws-1zz   Mystery status issue                                                                                  
-    ! P2 ws-2hz   Sp+- Keys ------------------------------------------------------------ 40 shown -+                    
+    ! P2 ws-2hz   Sp+- Keys ------------------------------------------------------------ 42 shown -+                    
     * P1 ws-4k2   Ch| Lists                                                                        |               alice
     o P1 ws-4k2.1 Ad|   q        quit                                                              |                    
     ! P2 ws-4k2.2 Gu|   j/Down   move down                                                         |                    
@@ -29,6 +29,7 @@
                     |   a        assignee                                                          |                    
                     |   #        labels                                                            |                    
                     |   c        close or reopen with a reason                                     |                    
+                    |   y        copy ID                                                           |                    
                     |   <        Kanban: move the card back                                        |                    
                     |   >        Kanban: move the card on                                          |                    
                     |                                                                              |                    
@@ -36,8 +37,7 @@
                     |   ?          help                                                            |                    
                     |   1-6        switch view                                                     |                    
                     |   t          appearance                                                      |                    
-                    |   r          refresh                                                         |                    
-                    | ... 11 more                                                                  |                    
+                    | ... 13 more                                                                  |                    
                     +-------------------------------------------- Esc close  j/k scroll  / filter -+                    
                                                                                                                         
  Esc close  j/k scroll  / filter                                                                                        

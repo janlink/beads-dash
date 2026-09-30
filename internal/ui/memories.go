@@ -333,7 +333,7 @@ func (a *App) memAct(act keys.Action) (tea.Cmd, bool) {
 	case keys.MemoryForget:
 		return a.openForget(), true
 	case keys.MemoryCopy:
-		return a.copyMemoryKey(), true
+		return a.copyMemory(), true
 	case keys.Close:
 		if _, layered := a.sess.Top(); layered {
 			return nil, false
@@ -381,18 +381,23 @@ func memScrolled(at int, act keys.Action, page int) int {
 // previewPage is the height of the docked preview's body from the last draw.
 func (m *memState) previewPage() int { return max(m.prevPage, 1) }
 
-// copyMemoryKey hands the current key to the copy hook.
-func (a *App) copyMemoryKey() tea.Cmd {
+// copyMemory copies the content of the current memory.
+func (a *App) copyMemory() tea.Cmd {
 	mem, ok := a.mem.current()
 	if !ok {
 		a.hint = "no memory to copy"
 		return nil
 	}
-	if a.o.CopyKey == nil {
-		a.hint = "copying is not available yet"
+	return a.copy("memory "+mem.Key, mem.Content)
+}
+
+func (a *App) copyMemoryByKey(key string) tea.Cmd {
+	mem, ok := a.mem.get(key)
+	if !ok {
+		a.hint = "no memory to copy"
 		return nil
 	}
-	return a.o.CopyKey(mem.Key)
+	return a.copy("memory "+key, mem.Content)
 }
 
 // memRefresh asks for a re-read after a write or a retry.

@@ -12,6 +12,7 @@ import (
 	"github.com/janlink/beads-dash/internal/appearance"
 	"github.com/janlink/beads-dash/internal/bd"
 	"github.com/janlink/beads-dash/internal/cli"
+	"github.com/janlink/beads-dash/internal/proc"
 	"github.com/janlink/beads-dash/internal/refresh"
 	"github.com/janlink/beads-dash/internal/term"
 	"github.com/janlink/beads-dash/internal/theme"
@@ -70,6 +71,7 @@ func uiOptions(s Session) ui.Options {
 		BdashVersion: cli.NewBuildInfo(version, commit).Version,
 		BdashViaBrew: installedViaBrew(),
 	}
+	wireHost(&o, getenv, s.Settings.Settings.NotifyMethod, proc.System{})
 	if s.Store != nil {
 		o.Store = s.Store
 	}

@@ -54,6 +54,8 @@ const (
 	Help
 	// Appearance holds the keys of the Appearance dialog.
 	Appearance
+	// Notify holds the keys of the notifications dialog.
+	Notify
 	// Details holds the keys of the error details overlay.
 	Details
 	// Startup holds the keys of the full-screen startup and fatal screens.
@@ -66,7 +68,7 @@ const (
 
 var contextNames = [contextCount]string{
 	Always: "always", Global: "global", View: "view", Memories: "memories", Tree: "tree", Overview: "overview", Graph: "graph", Panel: "panel",
-	Bar: "search bar", BarCommand: "command bar", BarFilter: "filter bar", Form: "form", MemoryPreview: "memory preview", Confirm: "confirm", Overwrite: "overwrite", Journal: "journal", Refused: "refused close", Picker: "picker", Help: "help", Appearance: "appearance",
+	Bar: "search bar", BarCommand: "command bar", BarFilter: "filter bar", Form: "form", MemoryPreview: "memory preview", Confirm: "confirm", Overwrite: "overwrite", Journal: "journal", Refused: "refused close", Picker: "picker", Help: "help", Appearance: "appearance", Notify: "notifications",
 	Details: "details", Startup: "startup", TooSmall: "too small",
 }
 

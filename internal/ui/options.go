@@ -4,11 +4,12 @@ import (
 	"context"
 	"time"
 
-	tea "charm.land/bubbletea/v2"
-
 	"github.com/janlink/beads-dash/internal/appearance"
 	"github.com/janlink/beads-dash/internal/bd"
+	"github.com/janlink/beads-dash/internal/clipboard"
 	"github.com/janlink/beads-dash/internal/config"
+	"github.com/janlink/beads-dash/internal/model"
+	"github.com/janlink/beads-dash/internal/notify"
 	"github.com/janlink/beads-dash/internal/refresh"
 	"github.com/janlink/beads-dash/internal/ui/keys"
 )
@@ -20,6 +21,10 @@ type Engine interface {
 	Updates() <-chan refresh.Update
 	Refresh()
 	SetFocus(focused bool)
+	// SetNotify says whether notifications are on and for which kinds; polling
+	// keeps running at a slower pace while the terminal is blurred only when
+	// they are on.
+	SetNotify(on bool, kinds model.KindSet)
 	// EnableEvents switches the engine to events mode once the journal is on.
 	EnableEvents()
 	// Do runs a lazy bd read in the serialized queue.
@@ -28,6 +33,17 @@ type Engine interface {
 	// touches, so their events are credited to the user; the engine refreshes
 	// right after, even when fn fails.
 	Write(ctx context.Context, ids []string, fn func(context.Context, bd.Client) error) error
+}
+
+// Clipboard is the helper routes of the clipboard: native tools and the tmux
+// buffer.
+type Clipboard interface {
+	Write(ctx context.Context, text string) clipboard.Result
+}
+
+// Notifier delivers notifications by the configured method.
+type Notifier interface {
+	Send(ctx context.Context, msgs []notify.Message) notify.Delivery
 }
 
 // Persister writes one setting to the config file.
@@ -56,8 +72,12 @@ type Options struct {
 	// Journal stores the events-journal opt-in answer per workspace; nil
 	// keeps it for the session.
 	Journal JournalStore
-	// CopyKey copies a memory key to the clipboard; nil leaves the hint.
-	CopyKey func(key string) tea.Cmd
+	// Clipboard writes to the helper routes beside OSC 52; nil sends OSC 52
+	// only.
+	Clipboard Clipboard
+	// Notifier delivers notifications; nil falls back to the bell and the
+	// footer.
+	Notifier Notifier
 	// Warnings and the appearance notice are shown once in the notice row.
 	Warnings []string
 	NoMouse  bool

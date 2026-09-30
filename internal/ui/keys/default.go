@@ -19,7 +19,7 @@ func Default() *Map {
 		{Keys: []string{"/"}, Action: OpenSearch, Desc: "search", Hint: 5},
 		{Keys: []string{"f"}, Action: OpenFilter, Desc: "filter", Hint: 7},
 		{Keys: []string{":"}, Action: OpenCommand, Desc: "command bar", Hint: 7, HintDesc: "command"},
-		{Keys: []string{"N"}, Action: "notifications", Desc: "notifications", Later: true},
+		{Keys: []string{"N"}, Action: Notifications, Desc: "notifications"},
 		{Keys: []string{"ctrl+p"}, Action: OpenPicker, Label: "Ctrl+P", Desc: "jump to an issue", Hint: 7, HintDesc: "jump"},
 		{Keys: []string{"tab"}, Action: FocusNext, Label: "Tab", Desc: "focus list or detail"},
 		{Keys: []string{"D"}, Action: DetailToggle, Desc: "show or hide the detail panel"},
@@ -49,7 +49,7 @@ func Default() *Map {
 		{Keys: []string{"a"}, Action: ChangeAssignee, Desc: "assignee"},
 		{Keys: []string{"#"}, Action: ChangeLabels, Desc: "labels"},
 		{Keys: []string{"c"}, Action: CloseReopen, Desc: "close or reopen with a reason"},
-		{Keys: []string{"y"}, Action: "copy.id", Desc: "copy ID", Later: true},
+		{Keys: []string{"y"}, Action: CopyID, Desc: "copy ID"},
 		{Keys: []string{"x"}, Action: "export", Desc: "export", Later: true},
 		{Keys: []string{"<"}, Action: MoveLeft, Desc: "Kanban: move the card back"},
 		{Keys: []string{">"}, Action: MoveRight, Desc: "Kanban: move the card on"},
@@ -61,7 +61,7 @@ func Default() *Map {
 		{Keys: []string{"n"}, Action: MemoryNew, Desc: "new memory", Hint: 2, HintDesc: "new"},
 		{Keys: []string{"e"}, Action: MemoryEdit, Desc: "edit memory", Hint: 4, HintDesc: "edit"},
 		{Keys: []string{"d"}, Action: MemoryForget, Desc: "forget memory, or the marked ones", Hint: 5, HintDesc: "forget"},
-		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the key", Hint: 6, HintDesc: "copy key"},
+		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the content", Hint: 6, HintDesc: "copy"},
 		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the full-screen preview below 80 columns"},
 	}
 	m.by[Tree] = []Binding{
@@ -97,7 +97,7 @@ func Default() *Map {
 		{Keys: []string{"+"}, Action: DepthMore, Desc: "deeper focus graph"},
 		{Keys: []string{"-"}, Action: DepthLess, Desc: "shallower focus graph"},
 		{Keys: []string{"m"}, Action: Markdown, Desc: "markdown or source", Hint: 6},
-		{Keys: []string{"y"}, Action: "copy.id", Desc: "copy ID", Later: true},
+		{Keys: []string{"y"}, Action: CopyID, Desc: "copy ID"},
 	}
 	m.by[MemoryPreview] = []Binding{
 		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "scroll down", Hint: 3, HintKey: "j/k", HintDesc: "scroll"},
@@ -109,7 +109,7 @@ func Default() *Map {
 		{Keys: []string{"pgdown"}, Action: NavPageDown, Label: "PgDn", Desc: "page down"},
 		{Keys: []string{"pgup"}, Action: NavPageUp, Label: "PgUp", Desc: "page up"},
 		{Keys: []string{"m"}, Action: Markdown, Desc: "markdown or source", Hint: 4},
-		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the key", Hint: 5, HintDesc: "copy key"},
+		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the content", Hint: 5, HintDesc: "copy"},
 	}
 	m.by[Bar] = []Binding{
 		{Keys: []string{"enter"}, Action: BarAccept, Label: "Enter", Desc: "keep the search and close", Hint: 1, HintDesc: "keep"},
@@ -198,6 +198,13 @@ func Default() *Map {
 		{Keys: []string{"up", "shift+tab", "k"}, Action: NavUp, Label: "Up/Shift+Tab/k", Desc: "previous row"},
 		{Keys: []string{"right", "l"}, Action: Next, Label: "Right/l", Desc: "next value", Hint: 4, HintKey: "Left/Right", HintDesc: "value"},
 		{Keys: []string{"left", "h"}, Action: Prev, Label: "Left/h", Desc: "previous value"},
+	}
+	m.by[Notify] = []Binding{
+		{Keys: []string{"enter"}, Action: Apply, Label: "Enter", Desc: "save", Hint: 1},
+		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "cancel", Hint: 2},
+		{Keys: []string{"space"}, Action: Toggle, Label: "Space", Desc: "toggle", Hint: 3},
+		{Keys: []string{"down", "tab", "j"}, Action: NavDown, Label: "Down/Tab/j", Desc: "next row", Hint: 4, HintKey: "Up/Dn", HintDesc: "row"},
+		{Keys: []string{"up", "shift+tab", "k"}, Action: NavUp, Label: "Up/Shift+Tab/k", Desc: "previous row"},
 	}
 	m.by[Details] = []Binding{
 		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "close", Hint: 1},

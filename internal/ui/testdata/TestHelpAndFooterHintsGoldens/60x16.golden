@@ -1,7 +1,7 @@
  Overview                                        * 12:00:00 
  ? help  q quit  j/k move  Space mark  Enter open           
 
-+- Keys ---------------------------------------- 40 shown -+
++- Keys ---------------------------------------- 42 shown -+
 | Lists                                                    |
 |   q        quit                                          |
 |   j/Down   move down                                     |
@@ -15,5 +15,5 @@
 |   Space    mark                                          |
 |   h/Left   column, collapse                              |
 |   l/Right  column, expand                                |
-| ... 31 more                                              |
+| ... 33 more                                              |
 +------------------------ Esc close  j/k scroll  / filter -+

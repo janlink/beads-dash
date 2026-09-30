@@ -49,3 +49,36 @@ func (a *App) cmdForget(args []command.Word) (tea.Cmd, error) {
 	a.confirmForget([]string{key})
 	return nil, nil
 }
+
+func (a *App) registerClipboard() {
+	a.register(command.Spec{
+		Name: "copy", Summary: "copy the current ID",
+		Help: "Copies the ID of the current issue; in Memories, the content of the current memory.",
+	}, (*App).cmdCopy)
+	a.register(command.Spec{
+		Name: "notify", Usage: "[on|off]", Summary: "switch notifications", Max: 1,
+		Help: "Switches notifications on or off and saves the choice; without an argument, opens the notifications dialog.",
+		Args: choose([]string{"on", "off"}),
+	}, (*App).cmdNotify)
+}
+
+func (a *App) cmdCopy([]command.Word) (tea.Cmd, error) {
+	if a.inMemories() {
+		return a.copyMemory(), nil
+	}
+	return a.copyCurrentID(), nil
+}
+
+func (a *App) cmdNotify(args []command.Word) (tea.Cmd, error) {
+	if len(args) == 0 {
+		a.pushDialog(a.newNotifyDialog())
+		return nil, nil
+	}
+	switch args[0].Text {
+	case "on", "off":
+		on := args[0].Text == "on"
+		a.toast("notifications " + args[0].Text)
+		return a.setNotify(on, a.notifyNames), nil
+	}
+	return nil, argError(args[0], "want on or off")
+}

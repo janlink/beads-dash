@@ -90,6 +90,7 @@ func (a *App) registerBuiltins() {
 	a.registerWrites()
 	a.registerMemories()
 	a.registerJournal()
+	a.registerClipboard()
 }
 
 // choose completes an argument from a fixed list.

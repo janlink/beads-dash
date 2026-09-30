@@ -182,7 +182,7 @@ func (d *detailsDialog) Handle(act keys.Action) (tea.Cmd, bool) {
 		return d.a.retry(), false
 	case keys.Copy:
 		r := d.a.errorReport()
-		return d.a.clip(strings.Join(r.Raw, "\n")), false
+		return d.a.copy("error details", strings.Join(r.Raw, "\n")), false
 	default:
 		d.handle(act)
 	}

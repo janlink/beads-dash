@@ -94,6 +94,10 @@ const (
 	JournalEnable Action = "journal.enable"
 	JournalNever  Action = "journal.never"
 
+	CopyID        Action = "copy.id"
+	Notifications Action = "notifications"
+	Toggle        Action = "toggle"
+
 	Retry  Action = "retry"
 	Copy   Action = "copy"
 	PickUp Action = "pick.up"

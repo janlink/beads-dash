@@ -22,6 +22,7 @@ type syncEngine struct {
 	publish func()
 	// events counts EnableEvents calls.
 	events int
+	notify []notifyCall
 }
 
 func (e *syncEngine) Start(context.Context)          {}
@@ -29,7 +30,10 @@ func (e *syncEngine) Stop()                          {}
 func (e *syncEngine) Updates() <-chan refresh.Update { return nil }
 func (e *syncEngine) Refresh()                       {}
 func (e *syncEngine) SetFocus(bool)                  {}
-func (e *syncEngine) EnableEvents()                  { e.events++ }
+func (e *syncEngine) SetNotify(on bool, kinds model.KindSet) {
+	e.notify = append(e.notify, notifyCall{on, kinds})
+}
+func (e *syncEngine) EnableEvents() { e.events++ }
 
 func (e *syncEngine) Do(ctx context.Context, fn func(context.Context, bd.Client) error) error {
 	return fn(ctx, e.client)
@@ -177,4 +181,9 @@ func (r *writeRig) issue(id string) model.Issue {
 		r.t.Fatalf("no issue %s", id)
 	}
 	return *is
+}
+
+type notifyCall struct {
+	on    bool
+	kinds model.KindSet
 }

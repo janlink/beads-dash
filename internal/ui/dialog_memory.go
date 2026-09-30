@@ -364,7 +364,7 @@ func (d *memPreviewDialog) Handle(act keys.Action) (tea.Cmd, bool) {
 	case keys.Markdown:
 		d.a.mem.source = !d.a.mem.source
 	case keys.MemoryCopy:
-		return d.a.copyKey(d.key), false
+		return d.a.copyMemoryByKey(d.key), false
 	case keys.NavDown, keys.NavUp, keys.NavFirst, keys.NavLast, keys.NavHalfDown, keys.NavHalfUp, keys.NavPageDown, keys.NavPageUp:
 		d.scroll = memScrolled(d.scroll, act, d.a.previewDialogPage())
 	}
@@ -393,15 +393,6 @@ func (d *memPreviewDialog) Frame(l look.Look, cols, rows int) dialog.Frame {
 		Title: mem.Key, Aside: fmt.Sprintf("%d %s · %d chars", lines, plural(lines, "line", "lines"), chars),
 		Hints: a.hintsFor(keys.MemoryPreview), Body: body, Scroll: d.scroll,
 	}
-}
-
-// copyKey hands key to the copy hook.
-func (a *App) copyKey(key string) tea.Cmd {
-	if a.o.CopyKey == nil {
-		a.hint = "copying is not available yet"
-		return nil
-	}
-	return a.o.CopyKey(key)
 }
 
 // openForget asks before every marked memory, else the current one, is

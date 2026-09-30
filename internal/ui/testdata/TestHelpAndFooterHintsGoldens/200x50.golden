@@ -3,7 +3,7 @@
 
  [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph                                                                                                                           * live 12:00:00 
 |   ? P4 ws-1zz   Mystery status issue                                                                                                                                                                  
-    ! P2 ws-2hz   Split pricing service                     +- Keys ------------------------------------------------------------ 40 shown -+                                                            
+    ! P2 ws-2hz   Split pricing service                     +- Keys ------------------------------------------------------------ 42 shown -+                                                            
     * P1 ws-4k2   Checkout: guest orders                    | Lists                                                                        |                                                       alice
     o P1 ws-4k2.1 Address form validation                   |   q        quit                                                              |                                                            
     ! P2 ws-4k2.2 Guest order confirmation mail             |   j/Down   move down                                                         |                                                            
@@ -29,6 +29,7 @@
                                                             |   a        assignee                                                          |                                                            
                                                             |   #        labels                                                            |                                                            
                                                             |   c        close or reopen with a reason                                     |                                                            
+                                                            |   y        copy ID                                                           |                                                            
                                                             |   <        Kanban: move the card back                                        |                                                            
                                                             |   >        Kanban: move the card on                                          |                                                            
                                                             |                                                                              |                                                            
@@ -43,11 +44,10 @@
                                                             |   /          search                                                          |                                                            
                                                             |   f          filter                                                          |                                                            
                                                             |   :          command bar                                                     |                                                            
+                                                            |   N          notifications                                                   |                                                            
                                                             |   Ctrl+P     jump to an issue                                                |                                                            
                                                             |   Tab        focus list or detail                                            |                                                            
-                                                            |   D          show or hide the detail panel                                   |                                                            
-                                                            |   ctrl+c     quit                                                            |                                                            
-                                                            |                                                                              |                                                            
+                                                            | ... 3 more                                                                   |                                                            
                                                             +-------------------------------------------- Esc close  j/k scroll  / filter -+                                                            
                                                                                                                                                                                                         
  Esc close  j/k scroll  / filter                                                                                                                                                                        

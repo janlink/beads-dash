@@ -98,5 +98,11 @@ workflows-check: tools
 # Mirrored 1:1 by the GitHub Actions jobs on ubuntu and macOS. test-race runs as its own ubuntu-only job.
 ci: tidy-check fmt-check lint vet build test model-coverage release-check workflows-check
 
-# Windows runs build and the non-bd tests only.
-ci-windows: build test-short
+# Builds bdash and checks what a real host picks: the clipboard and notification backends and the binary itself.
+smoke:
+    go test -short -count=1 -run 'Smoke' ./internal/host ./internal/clipboard ./internal/notify
+    go build -o ".cache/bdash-smoke$(go env GOEXE)" ./cmd/bdash
+    ".cache/bdash-smoke$(go env GOEXE)" --version
+
+# Windows runs build, the non-bd tests and the smoke checks.
+ci-windows: build test-short smoke
