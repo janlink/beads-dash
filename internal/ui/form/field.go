@@ -27,6 +27,8 @@ const (
 	Links
 	// Fold is the row that opens and closes the advanced fields.
 	Fold
+	// Check is a checkbox; Space toggles it.
+	Check
 )
 
 // Field is one row of a form.
@@ -39,6 +41,9 @@ type Field struct {
 	Advanced bool
 	// Skip hides the field while the owner does not need it.
 	Skip bool
+	// Faint reports whether a Choice value is drawn dim, as an option that
+	// cannot be used yet.
+	Faint func(value string) bool
 	// Note is dim text after the value.
 	Note        string
 	Placeholder string
@@ -57,6 +62,7 @@ type Field struct {
 	area   textarea.Model
 	choice int
 	ids    []string
+	on     bool
 }
 
 // NewText returns a one-line field holding value; Orig starts as value.
@@ -110,6 +116,16 @@ func NewLinks(key, label string, ids []string) *Field {
 	return f
 }
 
+// NewCheck returns a checkbox. Its value is "on" or "off".
+func NewCheck(key, label string, on bool) *Field {
+	f := &Field{Key: key, Label: label, Kind: Check, on: on}
+	f.Orig = f.Value()
+	return f
+}
+
+// On reports whether a Check is ticked.
+func (f *Field) On() bool { return f.Kind == Check && f.on }
+
 // NewFold returns the row that opens the advanced fields.
 func NewFold() *Field { return &Field{Key: "advanced", Kind: Fold} }
 
@@ -129,6 +145,11 @@ func (f *Field) Value() string {
 		}
 	case Links:
 		return strings.Join(f.ids, " ")
+	case Check:
+		if f.on {
+			return "on"
+		}
+		return "off"
 	case Fold:
 	}
 	return ""
@@ -148,7 +169,7 @@ func (f *Field) List() []string {
 			}
 		}
 		return out
-	case Text, Area, Choice, Fold:
+	case Text, Area, Choice, Check, Fold:
 	}
 	return nil
 }
@@ -172,6 +193,8 @@ func (f *Field) Set(v string) {
 				f.ids = append(f.ids, id)
 			}
 		}
+	case Check:
+		f.on = v == "on"
 	case Fold:
 	}
 }
@@ -243,6 +266,11 @@ func (f *Field) edit(k tea.KeyPressMsg) (bool, tea.Cmd) {
 			f.ids = f.ids[:len(f.ids)-1]
 			return true, nil
 		}
+	case Check:
+		if k.String() == "space" {
+			f.on = !f.on
+			return true, nil
+		}
 	case Fold:
 	}
 	return false, nil
@@ -283,7 +311,7 @@ func (f *Field) paste(s string) (bool, tea.Cmd) {
 		var cmd tea.Cmd
 		f.area, cmd = f.area.Update(tea.PasteMsg{Content: s})
 		return f.area.Value() != before, cmd
-	case Choice, Links, Fold:
+	case Choice, Links, Check, Fold:
 	}
 	return false, nil
 }

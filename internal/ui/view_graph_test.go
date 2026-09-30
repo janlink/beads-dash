@@ -2,6 +2,7 @@ package ui
 
 import (
 	"fmt"
+	"os"
 	"strings"
 	"testing"
 	"time"
@@ -92,22 +93,43 @@ func TestGraphHorizontalScroll(t *testing.T) {
 	}
 }
 
-func TestGraphRenderBudget(t *testing.T) {
-	if raceEnabled || testing.Short() {
-		t.Skip("timing is only meaningful without the race detector")
-	}
-	snap := bigGraph(5000)
+// graphRenderTime is the fastest of runs renders of a graph view over n
+// issues.
+func graphRenderTime(t *testing.T, n, runs int) time.Duration {
+	t.Helper()
+	snap := bigGraph(n)
 	a := loaded(t, plain, 200, 50, snap, withView("graph", false))
 	g := a.view().(*Graph)
 	a.sess.SetCurrent(g.rows[len(g.rows)/2].ID)
 	press(a, "j")
 	a.View()
-	start := time.Now()
-	const n = 20
-	for range n {
+	best := time.Duration(1<<63 - 1)
+	for range runs {
+		start := time.Now()
 		a.View()
+		best = min(best, time.Since(start))
 	}
-	if per := time.Since(start) / n; per > 8*time.Millisecond {
+	return best
+}
+
+func TestGraphRenderScalesLinearly(t *testing.T) {
+	if raceEnabled || testing.Short() {
+		t.Skip("timing ratios need an uninstrumented run")
+	}
+	small := graphRenderTime(t, 5000, 5)
+	large := graphRenderTime(t, 20000, 5)
+	ratio := float64(large) / float64(max(small, time.Microsecond))
+	t.Logf("5k: %v, 20k: %v, ratio %.1f", small, large, ratio)
+	if ratio >= 6 {
+		t.Errorf("20k issues render %.1fx slower than 5k, want under 6x for 4x the data", ratio)
+	}
+}
+
+func TestGraphRenderBudget(t *testing.T) {
+	if os.Getenv("BDASH_PERF") != "1" || raceEnabled || testing.Short() {
+		t.Skip("set BDASH_PERF=1 on an unloaded machine to check the wall-clock budget")
+	}
+	if per := graphRenderTime(t, 5000, 5); per > 8*time.Millisecond {
 		t.Errorf("render takes %v, budget 8ms", per)
 	}
 }

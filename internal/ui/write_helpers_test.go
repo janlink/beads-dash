@@ -135,7 +135,7 @@ func (r *writeRig) run(cmd tea.Cmd) {
 	for depth := 0; cmd != nil && depth < 20; depth++ {
 		var next []tea.Cmd
 		wait := 250 * time.Millisecond
-		if len(r.a.pending) > 0 || r.a.mem != nil && r.a.mem.reading {
+		if len(r.a.pending) > 0 || r.a.mem != nil && r.a.mem.reading || r.exportBusy() {
 			wait = 30 * time.Second
 		}
 		for _, m := range collect(cmd, wait) {

@@ -1,0 +1,24 @@
+ 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+ #    o ws-9qe Payment provider timeout retries                               P0
+    v * ws-4k2 Checkout: guest orders                                 0/2 ------
+    |-  o ws-4k2.1 Address form validation                                    P1
+  +- Export ----------------------------------------------------- field 1/4 -+P2
+|#|   Set          < Marked (2) >                                            |P2
+  |   Format       Markdown                                                  |  
+  |   Comments     [ ]                                                       |P3
+  |   Target       Clipboard                                                 |P4
+  |   2 issues · Markdown · 510 B                                            |  
+  |   # ws · 2 issues                                                        |  
+  |                                                                          |  
+  |   Marked · exported 2026-09-29 12:00 +00:00                              |  
+  |                                                                          |  
+  |   | ID | Title | Status | P |                                            |  
+  |   | --- | --- | --- | --- |                                              |  
+  |   | ws-9qe | Payment provider timeout retries | Open | P0 |              |  
+  |   | ws-2hz | Split pricing service | Blocked (open) | P2 |               |  
+  +------------------------------------ Ctrl+S export  Esc close  Tab field -+  
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+ Ctrl+S export  Esc close  Tab field                                # 2 marked  

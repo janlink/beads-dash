@@ -86,7 +86,10 @@ type Options struct {
 	Views map[int]View
 
 	// Startup facts for the failure screens.
-	Dir          string
+	Dir string
+	// StartDir is the working directory bdash started in; export paths that
+	// are not absolute resolve against it.
+	StartDir     string
 	BdPath       string
 	BeadsDir     string
 	BdashVersion string

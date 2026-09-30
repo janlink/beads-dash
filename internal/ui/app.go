@@ -77,13 +77,15 @@ type App struct {
 	slot    int
 	slotCur [6]string
 
-	scope  model.Scope
-	away   away
-	mset   *model.Matches
-	msnap  *model.Snapshot
-	mkey   string
-	panel  *detail.Panel
-	docked bool
+	scope model.Scope
+	away  away
+	mset  *model.Matches
+	msnap *model.Snapshot
+	mkey  string
+	// expComments caches comment threads read for exports.
+	expComments map[string]commentEntry
+	panel       *detail.Panel
+	docked      bool
 	// syncMD renders markdown inside Update; tests use it to see the final page.
 	syncMD bool
 	// fetching holds the cancel of each audit read still running, by its seq.
@@ -354,6 +356,8 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 		a.panel.ApplyAudit(m.res)
 	case writeDoneMsg:
 		return a.onWrite(m)
+	case exportMsg:
+		return m.apply(a)
 	case memReadMsg:
 		return a.onMemRead(m)
 	case closedMsg:
@@ -746,6 +750,8 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 		a.pushDialog(a.newNotifyDialog())
 	case keys.CopyID:
 		return a.copyCurrentID()
+	case keys.Export:
+		return a.openExport()
 	case keys.OpenDetails:
 		if a.detailError() == nil {
 			a.hint = "no error to show"

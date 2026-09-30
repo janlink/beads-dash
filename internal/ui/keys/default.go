@@ -50,7 +50,7 @@ func Default() *Map {
 		{Keys: []string{"#"}, Action: ChangeLabels, Desc: "labels"},
 		{Keys: []string{"c"}, Action: CloseReopen, Desc: "close or reopen with a reason"},
 		{Keys: []string{"y"}, Action: CopyID, Desc: "copy ID"},
-		{Keys: []string{"x"}, Action: "export", Desc: "export", Later: true},
+		{Keys: []string{"x"}, Action: Export, Desc: "export"},
 		{Keys: []string{"<"}, Action: MoveLeft, Desc: "Kanban: move the card back"},
 		{Keys: []string{">"}, Action: MoveRight, Desc: "Kanban: move the card on"},
 		{Keys: []string{"o"}, Action: "toggle.closed", Desc: "toggle closed", Later: true},
@@ -98,6 +98,7 @@ func Default() *Map {
 		{Keys: []string{"-"}, Action: DepthLess, Desc: "shallower focus graph"},
 		{Keys: []string{"m"}, Action: Markdown, Desc: "markdown or source", Hint: 6},
 		{Keys: []string{"y"}, Action: CopyID, Desc: "copy ID"},
+		{Keys: []string{"x"}, Action: Export, Desc: "export"},
 	}
 	m.by[MemoryPreview] = []Binding{
 		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "scroll down", Hint: 3, HintKey: "j/k", HintDesc: "scroll"},

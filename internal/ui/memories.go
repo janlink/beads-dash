@@ -347,7 +347,7 @@ func (a *App) memAct(act keys.Action) (tea.Cmd, bool) {
 			m.setQuery("")
 		}
 	case keys.New, keys.Edit, keys.ChangeStatus, keys.ChangePriority, keys.ChangeAssignee, keys.ChangeLabels,
-		keys.CloseReopen, keys.MoveLeft, keys.MoveRight, keys.DetailToggle:
+		keys.CloseReopen, keys.MoveLeft, keys.MoveRight, keys.DetailToggle, keys.Export:
 		a.hint = issueOnlyHint
 	case keys.Left, keys.Right, keys.ScrollLeft, keys.ScrollRight, keys.ScrollHalfLeft, keys.ScrollHalfRight:
 	default:

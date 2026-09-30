@@ -7,6 +7,10 @@ builds:
     binary: bdash
     env:
       - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X main.version={{ .Version }} -X main.commit={{ .FullCommit }}
     goos: [linux, darwin, windows]
     goarch: [amd64, arm64]
     ignore:
@@ -14,10 +18,32 @@ builds:
         goarch: arm64
 
 archives:
-  - formats: [tar.gz]
+  - id: unix
+    ids: [bdash]
+    formats: [tar.gz]
+    name_template: "bdash_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - LICENSE
+      - README.md
+      - CHANGELOG.md
     format_overrides:
       - goos: windows
         formats: [binary]
 
 checksum:
   name_template: checksums.txt
+  algorithm: sha256
+
+sboms:
+  - artifacts: archive
+    documents:
+      - "${artifact}.sbom.json"
+
+release:
+  prerelease: auto
+  github:
+    owner: janlink
+    name: beads-dash
+
+changelog:
+  disable: true

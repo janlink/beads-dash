@@ -49,6 +49,7 @@ func uiOptions(s Session) ui.Options {
 	if dir == "" {
 		dir, _ = os.Getwd()
 	}
+	startDir, _ := os.Getwd()
 	client := bd.NewExec(bd.ExecOptions{
 		Bin:      bin,
 		Dir:      s.Options.Path,
@@ -66,6 +67,7 @@ func uiOptions(s Session) ui.Options {
 		Warnings:     s.Warnings,
 		NoMouse:      s.Options.NoMouse,
 		Dir:          dir,
+		StartDir:     startDir,
 		BdPath:       lookBd(bin),
 		BeadsDir:     getenv("BEADS_DIR"),
 		BdashVersion: cli.NewBuildInfo(version, commit).Version,

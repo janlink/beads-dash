@@ -6,6 +6,7 @@ gofumpt := "v0.12.0"
 goimports := "v0.50.0"
 goreleaser := "v2.18.2"
 actionlint := "v1.7.12"
+syft := "v1.52.0"
 
 tools_bin := justfile_directory() / ".cache/tools/bin"
 bd_versions := "1.2.2 1.3.0"
@@ -91,6 +92,35 @@ tidy-check:
 
 release-check: tools
     PATH="{{ tools_bin }}:$PATH" goreleaser check
+
+# Builds every release artefact locally without publishing; installs the pinned Syft for the SBOMs.
+snapshot: tools
+    #!/usr/bin/env bash
+    set -euo pipefail
+    bin="{{ tools_bin }}"
+    stamp="$bin/.syft-{{ syft }}"
+    if [ ! -e "$stamp" ]; then
+        GOBIN="$bin" go install github.com/anchore/syft/cmd/syft@{{ syft }}
+        touch "$stamp"
+    fi
+    PATH="$bin:$PATH" goreleaser release --snapshot --clean
+    scripts/render-formula.sh "$(jq -r .version dist/metadata.json)" dist >/dev/null
+
+# Renders the Homebrew formula from the dist of the last snapshot and checks its syntax.
+formula-check:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    version=$(jq -r .version dist/metadata.json)
+    out=$(mktemp)
+    trap 'rm -f "$out"' EXIT
+    scripts/render-formula.sh "$version" dist > "$out"
+    if grep -q '@[A-Z_0-9]*@' "$out"; then echo "unrendered placeholder in the formula" >&2; exit 1; fi
+    if command -v ruby >/dev/null; then ruby -c "$out" >/dev/null; fi
+    echo "formula for $version renders"
+
+# Re-records the demo and renders assets/demo.gif; needs bd, git, python3 and agg.
+demo:
+    demo/render.sh
 
 workflows-check: tools
     PATH="{{ tools_bin }}:$PATH" actionlint

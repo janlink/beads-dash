@@ -1,0 +1,35 @@
+t · 2 issues
+============
+
+Marked · exported <time>
+
+========================================================================
+
+t-a1 · Export epic
+==================
+
+Open · P1 · epic
+Created <time> · updated <time>
+
+Description
+-----------
+
+Everything the export shows.
+
+Relations
+---------
+
+- Children: t-a2 Child with | pipe (Open)
+
+========================================================================
+
+t-a3 · Waits for the child
+==========================
+
+Blocked (open) · P2 · task
+Created <time> · updated <time>
+
+Relations
+---------
+
+- Waits on: t-a2 Child with | pipe (Open)

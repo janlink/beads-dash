@@ -1,0 +1,42 @@
+class Bdash < Formula
+  desc "Terminal dashboard for the bd (beads) issue tracker"
+  homepage "https://github.com/janlink/beads-dash"
+  version "@VERSION@"
+  license "MIT"
+
+  depends_on "beads"
+
+  on_macos do
+    if Hardware::CPU.arm?
+      url "@BASE@/bdash_@VERSION@_darwin_arm64.tar.gz"
+      sha256 "@SHA_DARWIN_ARM64@"
+    else
+      url "@BASE@/bdash_@VERSION@_darwin_amd64.tar.gz"
+      sha256 "@SHA_DARWIN_AMD64@"
+    end
+  end
+
+  on_linux do
+    if Hardware::CPU.arm?
+      url "@BASE@/bdash_@VERSION@_linux_arm64.tar.gz"
+      sha256 "@SHA_LINUX_ARM64@"
+    else
+      url "@BASE@/bdash_@VERSION@_linux_amd64.tar.gz"
+      sha256 "@SHA_LINUX_AMD64@"
+    end
+  end
+
+  def install
+    bin.install "bdash"
+  end
+
+  def caveats
+    <<~EOS
+      bdash runs the bd binary from your PATH (or BDASH_BD).
+    EOS
+  end
+
+  test do
+    assert_match "bdash", shell_output("#{bin}/bdash --version")
+  end
+end

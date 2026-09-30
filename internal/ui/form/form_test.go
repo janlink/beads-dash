@@ -278,3 +278,25 @@ func TestReadReturnsAndRemovesTheFile(t *testing.T) {
 		t.Error("temporary file left behind")
 	}
 }
+
+func TestCheckTogglesWithSpaceAndDrawsItsState(t *testing.T) {
+	c := form.NewCheck("comments", "Comments", false)
+	f := form.New(c, form.NewText("path", "Path", ""))
+	if c.On() || c.Value() != "off" || c.Changed() {
+		t.Fatalf("fresh check: on %v value %q changed %v", c.On(), c.Value(), c.Changed())
+	}
+	if ev := press(f, "space"); ev != form.Edited || !c.On() || !c.Changed() {
+		t.Fatalf("space: event %v on %v changed %v", ev, c.On(), c.Changed())
+	}
+	lines, _, _ := f.View(testLook(), 40)
+	if got := ansi.Strip(strings.Join(lines, "\n")); !strings.Contains(got, "[x]") {
+		t.Errorf("ticked check draws as %q", got)
+	}
+	if press(f, "enter"); f.Focused().Key != "path" {
+		t.Errorf("enter on a check left the focus on %q", f.Focused().Key)
+	}
+	c.Set("off")
+	if c.On() {
+		t.Error("Set(off) left the check on")
+	}
+}

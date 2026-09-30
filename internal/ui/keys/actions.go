@@ -95,6 +95,7 @@ const (
 	JournalNever  Action = "journal.never"
 
 	CopyID        Action = "copy.id"
+	Export        Action = "export"
 	Notifications Action = "notifications"
 	Toggle        Action = "toggle"
 

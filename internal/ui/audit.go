@@ -36,7 +36,8 @@ func (a *App) auditJobs(in detail.Input) tea.Cmd {
 			a.fetching = map[int]context.CancelFunc{}
 		}
 		a.fetching[f.Seq] = stop
-		cmds = append(cmds, func() tea.Msg { return auditMsg{fetchAudit(ctx, a.eng, f)} })
+		eng := a.eng
+		cmds = append(cmds, func() tea.Msg { return auditMsg{fetchAudit(ctx, eng, f)} })
 	}
 	return tea.Batch(cmds...)
 }

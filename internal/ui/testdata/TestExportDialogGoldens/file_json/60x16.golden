@@ -1,0 +1,16 @@
++- Export ------------------------------------- field 4/5 -+
+|   Set          Marked (3)                                |
+|   Format       JSON                                      |
+|   Comments     [ ]                                       |
+|   Target       < File >                                  |
+|   Path         ws-marked-20260929-1200.json              |
+|   3 issues · JSON · 292 B                                |
+|   [                                                      |
+|     {                                                    |
+|       "id": "ws-9qe",                                    |
+|       "status": "open",                                  |
+|       "title": "Payment provider timeout retries"        |
+|     },                                                   |
+|     {                                                    |
+|       "id": "ws-2hz",                                    |
++-------------------- Ctrl+S export  Esc close  Tab field -+

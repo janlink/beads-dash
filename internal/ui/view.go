@@ -14,6 +14,12 @@ import (
 )
 
 // ViewNames are the six view slots the number keys select, in order.
+// Slots of the views the export order depends on.
+const (
+	overviewSlot = 0
+	treeSlot     = 1
+)
+
 var ViewNames = [6]string{"Overview", "Tree", "Kanban", "Ready", "Memories", "Graph"}
 
 // Actions is the part of the session a view may change.

@@ -1,0 +1,83 @@
+r1 · 3 issues
+=============
+
+Marked · exported 2026-09-30 09:41 +02:00 · bdash v0.1.0
+
+========================================================================
+
+r1-w24 · Epic A
+===============
+
+Open · P1 · epic
+Created 2026-09-29 09:41 +02:00 · updated 2026-09-29 09:41 +02:00
+
+Description
+-----------
+
+The epic body.
+
+Second paragraph.
+
+Relations
+---------
+
+- Children: r1-w24.1 Child task A1 (In progress)
+- Related: r1-w24.3 Feature | blocked by A1 (Blocked)
+
+========================================================================
+
+r1-w24.1 · Child task A1
+========================
+
+In progress · P0 · task · @alice · area:core ui
+Created 2026-09-29 09:41 +02:00 · updated 2026-09-29 09:42 +02:00 · started 2026-09-29 09:42 +02:00
+
+Description
+-----------
+
+Do the thing.
+
+Design
+------
+
+Use a table.
+
+Acceptance criteria
+-------------------
+
+- it works
+
+Notes
+-----
+
+Watch the | pipe.
+
+Relations
+---------
+
+- Parent: r1-w24 Epic A (Open)
+- Children: r1-w24.1.1 Grandchild of A1 (Open)
+- Waits on: external:jira-1
+- Holds up: r1-w24.3 Feature | blocked by A1 (Blocked)
+
+Comments
+--------
+
+janlink · 2026-09-29 09:42 +02:00
+First comment by default actor
+
+bob · 2026-09-29 09:43 +02:00
+Second **comment**
+
+========================================================================
+
+r1-w24.1.1 · Grandchild of A1
+=============================
+
+Open · P2 · task
+Created 2026-09-29 09:41 +02:00 · updated 2026-09-29 09:41 +02:00
+
+Relations
+---------
+
+- Parent: r1-w24.1 Child task A1 (In progress)

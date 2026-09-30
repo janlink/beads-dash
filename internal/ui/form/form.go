@@ -191,7 +191,7 @@ func (f *Form) enter(cur *Field) (Event, tea.Cmd) {
 	case Fold:
 		f.toggle()
 		return Nothing, nil
-	case Text, Choice, Tokens:
+	case Text, Choice, Tokens, Check:
 	}
 	v := f.visible()
 	if len(v) > 0 && v[len(v)-1] == f.focus {
@@ -275,6 +275,8 @@ func (f *Form) draw(l look.Look, x *Field, focused bool, w int) []string {
 		out = append(out, f.drawArea(l, x, focused, w-2)...)
 	case Choice:
 		out = append(out, head+f.drawChoice(l, x, focused, vw))
+	case Check:
+		out = append(out, head+f.drawCheck(l, x, focused, vw))
 	case Links:
 		out = append(out, head+f.drawLinks(l, x, focused, vw))
 	case Text, Tokens:
@@ -347,11 +349,30 @@ func (f *Form) drawChoice(l look.Look, x *Field, focused bool, w int) string {
 	if focused {
 		role = theme.Strong
 	}
+	if x.Faint != nil && x.Faint(v) {
+		role = theme.Faint
+	}
 	tail := ""
 	if x.Note != "" {
 		tail = "  " + x.Note
 	}
 	return l.Fit(l.Paint(role, text)+l.Paint(theme.Faint, tail), w)
+}
+
+func (f *Form) drawCheck(l look.Look, x *Field, focused bool, w int) string {
+	box := "[ ]"
+	if x.on {
+		box = "[x]"
+	}
+	role := theme.Text
+	if focused {
+		role = theme.Strong
+	}
+	tail := ""
+	if x.Note != "" {
+		tail = "  " + x.Note
+	}
+	return l.Fit(l.Paint(role, box)+l.Paint(theme.Faint, tail), w)
 }
 
 func (f *Form) drawLinks(l look.Look, x *Field, focused bool, w int) string {

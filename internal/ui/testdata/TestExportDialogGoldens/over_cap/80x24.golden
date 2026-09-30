@@ -1,0 +1,24 @@
+ 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph   * live 12:00:00 
+|     o ws-9qe Payment provider timeout retries                               P0
+    v * ws-4k2 Checkout: guest orders                                 0/2 ------
+  +- Export ----------------------------------------------------- field 1/5 -+P1
+  | ! 908 KB, over the 700 KB clipboard limit, save to file                  |P2
+  |                                                                          |P2
+  |   Set          < Current >                                               |  
+  |   Format       Markdown                                                  |P3
+  |   Comments     [x]                                                       |P4
+  |   Target       File                                                      |  
+  |   Path         ws-9qe.md                                                 |  
+  |   1 issue · Markdown · 908 KB                                            |  
+  |   # ws-9qe · Payment provider timeout retries                            |  
+  |                                                                          |  
+  |   Open · P0 · bug                                                        |  
+  |   Created 2026-09-29 07:00 +00:00 · updated 2026-09-29 07:00 +00:00      |  
+  |                                                                          |  
+  |   ## Description                                                         |  
+  |                                                                          |  
+  |   a long line of the description                                         |  
+  +------------------------------------ Ctrl+S export  Esc close  Tab field -+  
+                                                                                
+                                                                                
+ Ctrl+S export  Esc close  Tab field                                            

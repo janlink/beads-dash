@@ -1,0 +1,23 @@
+# t-a2 · Child with | pipe
+
+Open · P0 · bug · @ana · `cli` `ui`
+Created <time> · updated <time>
+
+## Description
+
+First line.
+
+Second paragraph.
+
+## Relations
+
+- Parent: t-a1 Export epic (Open)
+- Holds up: t-a3 Waits for the child (Blocked)
+
+## Comments
+
+**<user>** · <time>
+First remark
+
+**<user>** · <time>
+Second remark

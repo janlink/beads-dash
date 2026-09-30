@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_call:
 
 permissions:
   contents: read
@@ -83,3 +84,31 @@ jobs:
           path: .cache
           key: tools-bd-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('justfile', 'scripts/install-bd.sh') }}
       - run: just fixture-freshness
+
+  snapshot:
+    name: release snapshot
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - uses: extractions/setup-just@v4
+      - uses: actions/cache@v6
+        with:
+          path: .cache
+          key: tools-snapshot-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('justfile') }}
+      - run: just snapshot
+      - run: just formula-check
+
+  perf:
+    name: timing budgets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - run: BDASH_PERF=1 go test -p 1 -count=1 -run 'Budget|SeenWithinSeconds' ./internal/...
