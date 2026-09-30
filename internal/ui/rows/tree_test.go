@@ -9,6 +9,7 @@ import (
 
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/theme"
+	"github.com/janlink/beads-dash/internal/ui/look"
 	"github.com/janlink/beads-dash/internal/ui/rows"
 	"github.com/janlink/beads-dash/internal/ui/uitest"
 )
@@ -54,7 +55,7 @@ func TestTreeRowFacts(t *testing.T) {
 	if s := text(find("ws-4k2", model.TreeIssue), 60); !strings.Contains(s, "2/5") || strings.Contains(s, "#") {
 		t.Errorf("narrow parent keeps the number only: %q", s)
 	}
-	if s := text(find("ws-4k2.5.1", model.TreeIssue), 100); !strings.Contains(s, "P3 carol") {
+	if s := text(find("ws-4k2.5.1", model.TreeIssue), 100); !strings.Contains(s, "P3") || !strings.Contains(s, "carol") {
 		t.Errorf("leaf lacks priority and assignee: %q", s)
 	}
 	if s := text(find("ws-4k2.5.1", model.TreeIssue), 60); strings.Contains(s, "carol") || !strings.Contains(s, "P3") {
@@ -92,9 +93,9 @@ func TestReadyColumnsDropInOrder(t *testing.T) {
 		{120, rows.ReadyCols{Type: true, Assignee: true, Age: true, Reason: true}},
 		{119, rows.ReadyCols{Type: true, Assignee: true, Age: true}},
 		{99, rows.ReadyCols{Type: true, Assignee: true}},
-		{89, rows.ReadyCols{Assignee: true}},
-		{79, rows.ReadyCols{}},
-		{60, rows.ReadyCols{}},
+		{89, rows.ReadyCols{Type: true, Assignee: true}},
+		{79, rows.ReadyCols{Type: true}},
+		{60, rows.ReadyCols{Type: true}},
 	} {
 		if got := r.ReadyColumns(tc.w); got != tc.want {
 			t.Errorf("w %d: %+v, want %+v", tc.w, got, tc.want)
@@ -142,5 +143,128 @@ func TestAge(t *testing.T) {
 	}
 	if rows.Age(now, time.Time{}) != "" || rows.Age(now, now.Add(time.Hour)) != "now" {
 		t.Error("zero and future times")
+	}
+}
+
+func TestStatusBarFollowsTheStatus(t *testing.T) {
+	snap, st := uitest.Sample()
+	p := theme.NewPalette(theme.Default(), true, theme.DepthTrueColor)
+	r := rows.New(uitest.Look(theme.DepthTrueColor, theme.TierFancy, true))
+	r.Bind(snap, st)
+	for _, tc := range []struct {
+		id   string
+		role theme.Role
+	}{
+		{"ws-7mt", theme.Warning},
+		{"ws-5ca", theme.Success},
+		{"ws-9qe", theme.StatusOpen},
+	} {
+		if g, want := r.Gutter(rows.Row{ID: tc.id}), p.Style(tc.role).Render("▌"); !strings.HasPrefix(g, want) {
+			t.Errorf("%s: gutter %q does not start with the %s bar %q", tc.id, g, tc.role, want)
+		}
+		if !strings.Contains(ansi.Strip(r.Gutter(rows.Row{ID: tc.id, Current: true})), "▌") {
+			t.Errorf("%s: selected gutter lost its bar", tc.id)
+		}
+	}
+	if g := r.Gutter(rows.Row{ID: "ws-7mt", NoBar: true}); strings.Contains(g, "▌") {
+		t.Errorf("NoBar still draws a bar: %q", g)
+	}
+	if g := r.Gutter(rows.Row{}); strings.Contains(g, "▌") {
+		t.Errorf("a row without an issue draws a bar: %q", g)
+	}
+}
+
+func TestNoBarWithoutColourOrUnicode(t *testing.T) {
+	snap, st := uitest.Sample()
+	for _, l := range []struct {
+		depth theme.Depth
+		tier  theme.Tier
+	}{{theme.DepthNone, theme.TierFancy}, {theme.DepthTrueColor, theme.TierASCII}} {
+		r := rows.New(uitest.Look(l.depth, l.tier, true))
+		r.Bind(snap, st)
+		if g := ansi.Strip(r.Gutter(rows.Row{ID: "ws-7mt"})); strings.TrimSpace(g) != "" {
+			t.Errorf("%v/%v: idle gutter %q", l.depth, l.tier, g)
+		}
+	}
+}
+
+func TestTreeColumnsLineUpAcrossDepths(t *testing.T) {
+	r, tree := treeRenderer(theme.TierASCII)
+	maxDepth := 0
+	for _, row := range tree {
+		maxDepth = max(maxDepth, row.Depth)
+	}
+	r.SetTreeDepth(maxDepth)
+	titleAt := map[string]int{}
+	for _, row := range tree {
+		if row.Kind != model.TreeIssue {
+			continue
+		}
+		is, _ := uitestTreeIssue(row.ID)
+		s := ansi.Strip(r.Tree(row)(120, false))
+		titleAt[row.ID] = strings.Index(s, is)
+	}
+	first := -1
+	for id, at := range titleAt {
+		if first < 0 {
+			first = at
+		}
+		if at < 0 || at != first {
+			t.Errorf("%s title starts at %d, others at %d", id, at, first)
+		}
+	}
+}
+
+func uitestTreeIssue(id string) (string, bool) {
+	snap, _ := uitest.Tree()
+	is, ok := snap.Issue(id)
+	if !ok {
+		return "", false
+	}
+	return is.Title, true
+}
+
+func TestTypeColumnIsReservedBeforeTheTitle(t *testing.T) {
+	r, tree := treeRenderer(theme.TierASCII)
+	for _, row := range tree {
+		if row.Kind != model.TreeIssue || row.ID != "ws-4k2.5.1" {
+			continue
+		}
+		r.SetTreeDepth(row.Depth)
+		if s := ansi.Strip(r.Tree(row)(100, false)); !strings.Contains(s, " task ") {
+			t.Errorf("type word missing at 100: %q", s)
+		}
+		if s := ansi.Strip(r.Tree(row)(40, false)); strings.Contains(s, " task ") {
+			t.Errorf("type word kept at 40 over the title: %q", s)
+		}
+	}
+}
+
+func TestNoBarsWithoutDistinctColours(t *testing.T) {
+	snap, st := uitest.Sample()
+	mono, _ := theme.Lookup("monochrome")
+	l := look.New(theme.NewPalette(mono, true, theme.Depth16), theme.GlyphsFor(theme.TierFancy))
+	r := rows.New(l)
+	r.Bind(snap, st)
+	if g := ansi.Strip(r.Gutter(rows.Row{ID: "ws-7mt"})); strings.TrimSpace(g) != "" {
+		t.Errorf("colourless gutter draws a bar: %q", g)
+	}
+	if g := ansi.Strip(r.Gutter(rows.Row{ID: "ws-7mt", Current: true})); !strings.HasPrefix(g, "▌") {
+		t.Errorf("current band lost: %q", g)
+	}
+}
+
+func TestPinnedReadyRowsKeepTheirColumns(t *testing.T) {
+	r, _ := treeRenderer(theme.TierASCII)
+	now := uitest.T0
+	for _, w := range []int{80, 100, 119} {
+		cols := r.ReadyColumns(w)
+		at := func(pinned bool) int {
+			s := ansi.Strip(r.Ready(rows.ReadyRow{ID: "ws-4k2.5.1", Cols: cols, Now: now, Reason: "waits on ws-1", Pinned: pinned})(w-rows.GutterWidth, false))
+			return strings.Index(s, "P3")
+		}
+		if a, b := at(false), at(true); a != b {
+			t.Errorf("w %d: priority at %d pinned, %d otherwise", w, b, a)
+		}
 	}
 }

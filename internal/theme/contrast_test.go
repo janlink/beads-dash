@@ -41,6 +41,22 @@ const (
 	barGraphic = 3.0
 )
 
+// defaultSoft lists the default theme's roles that sit below the graphic bar
+// on purpose: the lowest priority recedes. Every other role meets the bar.
+var defaultSoft = map[string]map[Role]float64{
+	"selection": {Priority4: 2.0},
+}
+
+func barOf(theme, on string, r Role, bar float64) float64 {
+	if theme != DefaultName {
+		return bar
+	}
+	if soft, ok := defaultSoft[on][r]; ok {
+		return soft
+	}
+	return bar
+}
+
 func TestContrast(t *testing.T) {
 	textRungs := map[Role]float64{Strong: barText, Text: barText, Dim: barText, Faint: barGraphic}
 	for _, th := range themes {
@@ -72,6 +88,9 @@ func TestContrast(t *testing.T) {
 					if (r >= StatusOpen && r <= TypeOther) || r == Primary || r == Success || r == Error || r == Warning || r == Match {
 						check(r.String(), th.Hex(dark, r), surface, barGraphic)
 					}
+				}
+				for _, r := range []Role{Priority0, Priority1, Priority2, Priority3, Priority4, StatusClosed, TypeChore, TypeOther, TypeBug, TypeFeature, TypeTask, TypeEpic, TypeDecision, Warning, Success, StatusOpen, StatusBlocked, StatusFrozen, StatusOther} {
+					check(r.String()+" on selection", th.Hex(dark, r), selection, barOf(th.Name, "selection", r, barGraphic))
 				}
 				check("border on surface", th.Hex(dark, Border), surface, 2.0)
 				check("changed on surface", th.Hex(dark, Changed), surface, barGraphic)

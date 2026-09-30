@@ -57,6 +57,7 @@ type Ready struct {
 	lastCur       string
 	pos, posOwner string
 	h             int
+	hdr           int
 	label         scopeInfo
 	note          string
 }
@@ -266,7 +267,8 @@ func (v *Ready) Handle(a keys.Action, env Env) (tea.Cmd, bool) {
 
 // Render implements View.
 func (v *Ready) Render(env Env, w, h int) []string {
-	v.h = h
+	v.hdr = headerRows(h)
+	v.h = h - v.hdr
 	v.ensure(env)
 	if env.Matches == nil {
 		return screens.RenderEmpty(env.Look, screens.EmptyReady, w, h)
@@ -279,12 +281,15 @@ func (v *Ready) Render(env Env, w, h int) []string {
 		return screens.RenderEmpty(env.Look, e, w, h)
 	}
 	cur, _ := v.cursor(env)
-	first := v.win.layout(v.keys, cur, h)
+	first := v.win.layout(v.keys, cur, v.h)
 	cols := env.Rows.ReadyColumns(w)
 	l := env.Look
 	out := make([]string, h)
-	for i := range out {
-		idx := first + i
+	if v.hdr > 0 {
+		out[0] = env.Rows.ReadyHeader(w, cols)
+	}
+	for i := v.hdr; i < h; i++ {
+		idx := first + i - v.hdr
 		if idx >= len(v.rows) {
 			out[i] = l.Fit("", w)
 			continue
@@ -328,7 +333,7 @@ func (v *Ready) Scroll(n int) { v.win.scroll(n) }
 
 // At implements View.
 func (v *Ready) At(y int) (string, bool) {
-	k, ok := v.win.at(y)
+	k, ok := v.win.at(y - v.hdr)
 	if !ok {
 		return "", false
 	}

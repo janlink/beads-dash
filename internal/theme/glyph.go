@@ -118,6 +118,8 @@ type Glyphs struct {
 	Ellipsis string
 	Arrow    string
 	Bullet   string
+	// Enter labels the Enter key in hints.
+	Enter string
 	// Live and Stale mark the snapshot state in the header.
 	Live  string
 	Stale string
@@ -150,6 +152,7 @@ func (g Glyphs) Slots() []Slot {
 		{"ellipsis", g.Ellipsis},
 		{"arrow", g.Arrow},
 		{"bullet", g.Bullet},
+		{"enter", g.Enter},
 		{"live", g.Live},
 		{"stale", g.Stale},
 	}
@@ -207,7 +210,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "|-", LastBranch: "`-", Vertical: "|",
 			BarFull: "#", BarEmpty: "-",
 			Checked: "[x]", Unchecked: "[ ]",
-			Rule: "-", RuleDown: "+", RuleUp: "+", Ellipsis: "...", Arrow: "->", Bullet: "*",
+			Rule: "-", RuleDown: "+", RuleUp: "+", Ellipsis: "...", Arrow: "->", Bullet: "*", Enter: "Enter",
 			Live: "*", Stale: "o",
 		}
 	case TierSafe:
@@ -218,7 +221,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "├─", LastBranch: "└─", Vertical: "│",
 			BarFull: "█", BarEmpty: "░",
 			Checked: "■", Unchecked: "□",
-			Rule: "─", RuleDown: "┬", RuleUp: "┴", Ellipsis: "…", Arrow: "→", Bullet: "•",
+			Rule: "─", RuleDown: "┬", RuleUp: "┴", Ellipsis: "…", Arrow: "→", Bullet: "•", Enter: "Enter",
 			Live: "●", Stale: "○",
 		}
 	case TierAuto, TierFancy:
@@ -230,7 +233,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "├─", LastBranch: "└─", Vertical: "│",
 			BarFull: "█", BarEmpty: "░",
 			Checked: "▪", Unchecked: "▫",
-			Rule: "─", RuleDown: "┬", RuleUp: "┴", Ellipsis: "…", Arrow: "→", Bullet: "•",
+			Rule: "─", RuleDown: "┬", RuleUp: "┴", Ellipsis: "…", Arrow: "→", Bullet: "•", Enter: "↵",
 			Live: "●", Stale: "◌",
 		}
 	}

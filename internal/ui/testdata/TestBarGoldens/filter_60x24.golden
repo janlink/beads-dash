@@ -1,5 +1,6 @@
-- Tree --- / -ty...ice · 1/15 · closed hidden - * 12:00:00 -
-|     * ws-4k2 Checkout: guest orders                    2/5
+- Tree --- / -type:chore...losed hidden - 1/1 - * 12:00:00 -
+        ID         TYPE    TITLE                       PR   
+|     * ws-4k2     epic    Checkout: guest orders      2/5  
                                                             
                                                             
                                                             
@@ -10,8 +11,7 @@
                                                             
                                                             
                                                             
-                                                            
------------------------------------------------------- 1/1 -
+- 1 - [2] - 3 - 4 - 5 - 6 ----------------------------------
  Enter keep  Esc close  Space toggle  Tab column            
  Filter  type to find an option                 1/15 shown  
 Priority            Assignee (1)        Labels              

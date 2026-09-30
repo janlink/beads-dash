@@ -1,4 +1,4 @@
-- Tree ---------------------------------------- * 12:00:00 -
+- Tree - demo -------------- 15 issues · 1/10 - * 12:00:00 -
  ws-9qe  o Open  bug  P0                                    
  Payment provider timeout retries                           
 |v Description  markdown                                    
@@ -12,5 +12,5 @@
    `-! ws-2hz Split pricing service                         
  * Children  none                                           
  > Details  created 5 h ago · updated 5 h ago               
------------------------------------------------------ 1/10 -
- ? help  j/k scroll  ]/[ section  1-6 switch view           
+- 1 - [2] - 3 - 4 - 5 - 6 ----------------------------------
+ j/k scroll  ]/[ section  Enter jump  : cmd  ? help         

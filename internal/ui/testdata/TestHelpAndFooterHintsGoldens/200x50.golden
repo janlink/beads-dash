@@ -1,16 +1,16 @@
-- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ----------------------------------------------------------------------------------------------------------------------- * live 12:00:00 -
- ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view  t appearance  / search  r refresh  f filter  : command  Ctrl+P jump                                                                 
+- Overview - demo -------------------------------------------------------------------------------------------------------------------------------------------------------------------- * live 12:00:00 -
+ / search  f filter  Enter details  : cmd  ? help                                                                                                  o open  * in progress  ! blocked  x closed  ~ frozen 
 
-- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ----------------------------------------------------------------------------------------------------------------------- * live 12:00:00 -
-|   ? P4 ws-1zz   Mystery status issue                                                                                                                                                                  
-    ! P2 ws-2hz   Split pricing service                     +- Keys ------------------------------------------------------------ 43 shown -+                                                            
-    * P1 ws-4k2   Checkout: guest orders                    | Lists                                                                        |                                                       alice
-    o P1 ws-4k2.1 Address form validation                   |   q        quit                                                              |                                                            
-    ! P2 ws-4k2.2 Guest order confirmation mail             |   j/Down   move down                                                         |                                                            
-    x P3 ws-5ca   Update analytics consent banner           |   k/Up     move up                                                           |                                                            
-    * P2 ws-7mt   Cart badge shows stale count              |   gg       first                                                             |                                                         bob
-    ~ P3 ws-8np   Search: typo tolerance                    |   G        last                                                              |                                                            
-    o P0 ws-9qe   Payment provider timeout retries          |   Ctrl+D   half page down                                                    |                                                            
+- Overview - demo -------------------------------------------------------------------------------------------------------------------------------------------------------------------- * live 12:00:00 -
+|   ? ws-1zz   task    Mystery status issue                                                                                                                                            P4               
+    ! ws-2hz   feature Split pricing service                +- Keys ------------------------------------------------------------ 43 shown -+                                           P2               
+    * ws-4k2   epic    Checkout: guest orders               | Lists                                                                        |                                           P1 alice         
+    o ws-4k2.1 task    Address form validation              |   q        quit                                                              |                                           P1               
+    ! ws-4k2.2 task    Guest order confirmation mail        |   j/Down   move down                                                         |                                           P2               
+    x ws-5ca   chore   Update analytics consent banner      |   k/Up     move up                                                           |                                           P3               
+    * ws-7mt   bug     Cart badge shows stale count         |   gg       first                                                             |                                           P2 bob           
+    ~ ws-8np   feature Search: typo tolerance               |   G        last                                                              |                                           P3               
+    o ws-9qe   bug     Payment provider timeout retries     |   Ctrl+D   half page down                                                    |                                           P0               
                                                             |   Ctrl+U   half page up                                                      |                                                            
                                                             |   PgDn     page down                                                         |                                                            
                                                             |   PgUp     page up                                                           |                                                            
@@ -49,5 +49,5 @@
                                                             |   Ctrl+P     jump to an issue                                                |                                                            
                                                             | ... 4 more                                                                   |                                                            
                                                             +-------------------------------------------- Esc close  j/k scroll  / filter -+                                                            
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------------------------------------------------------------------------------------------------------------------------------
  Esc close  j/k scroll  / filter                                                                                                                                                                        

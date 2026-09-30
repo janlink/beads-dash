@@ -37,6 +37,7 @@ type Tree struct {
 	// it counts only while its owner is the current issue.
 	pos, posOwner string
 	h             int
+	hdr           int
 	label         scopeInfo
 }
 
@@ -86,6 +87,11 @@ func (v *Tree) ensure(env Env) {
 		v.sel = append(v.sel, listRow{k, true})
 		v.index[k] = i
 	}
+	depth := 0
+	for _, r := range v.rows {
+		depth = max(depth, r.Depth)
+	}
+	env.Rows.SetTreeDepth(depth)
 	v.present = make(map[string]bool, env.Matches.Len())
 	for _, id := range env.Matches.IDs() {
 		for c := id; c != "" && !v.present[c]; c = v.parents[c] {
@@ -249,7 +255,8 @@ func (v *Tree) Handle(a keys.Action, env Env) (tea.Cmd, bool) {
 
 // Render implements View.
 func (v *Tree) Render(env Env, w, h int) []string {
-	v.h = h
+	v.hdr = headerRows(h)
+	v.h = h - v.hdr
 	v.ensure(env)
 	if len(v.rows) == 0 {
 		hidden := 0
@@ -259,11 +266,14 @@ func (v *Tree) Render(env Env, w, h int) []string {
 		return screens.RenderEmpty(env.Look, screens.EmptyScopeMatch(env.Scope.Query(), hidden), w, h)
 	}
 	cur, _ := v.cursor(env)
-	first := v.win.layout(v.keys, cur, h)
+	first := v.win.layout(v.keys, cur, v.h)
 	name := v.rowView()
 	out := make([]string, h)
-	for i := range out {
-		idx := first + i
+	if v.hdr > 0 {
+		out[0] = env.Rows.TreeHeader(w)
+	}
+	for i := v.hdr; i < h; i++ {
+		idx := first + i - v.hdr
 		if idx >= len(v.rows) {
 			out[i] = env.Look.Fit("", w)
 			continue
@@ -273,6 +283,7 @@ func (v *Tree) Render(env Env, w, h int) []string {
 		view := name
 		if r.Kind == model.TreeClosedFold {
 			view += "#f"
+			row.NoBar = true
 		} else {
 			row.Marked = env.Marked(r.ID)
 		}
@@ -318,7 +329,7 @@ func (v *Tree) Scroll(n int) { v.win.scroll(n) }
 
 // At implements View. Clicking a closed-children row puts the cursor on it.
 func (v *Tree) At(y int) (string, bool) {
-	k, ok := v.win.at(y)
+	k, ok := v.win.at(y - v.hdr)
 	if !ok {
 		return "", false
 	}

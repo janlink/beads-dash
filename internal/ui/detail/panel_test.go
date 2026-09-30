@@ -224,7 +224,7 @@ func TestDependenciesAndChildren(t *testing.T) {
 		}
 	}
 	got = text(New().Render(input(t, fixture(), "d-1", Overlay, 100, 40)))
-	for _, want := range []string{"1/2 closed", "d-1.2 Second child", "x 1 closed"} {
+	for _, want := range []string{"1/2 closed", "d-1.2 task Second child", "x 1 closed"} {
 		if !strings.Contains(got, want) {
 			t.Errorf("missing %q in\n%s", want, got)
 		}
@@ -411,7 +411,7 @@ func TestClosedChildrenRowExpandsAndCollapses(t *testing.T) {
 		t.Fatal("closed children start hidden")
 	}
 	p.Enter()
-	if !strings.Contains(text(p.Render(in)), "d-1.1 First child") {
+	if !strings.Contains(text(p.Render(in)), "d-1.1 task First child") {
 		t.Fatalf("Enter on the row lists the closed children:\n%s", text(p.Render(in)))
 	}
 	p.Move(1)
@@ -421,7 +421,7 @@ func TestClosedChildrenRowExpandsAndCollapses(t *testing.T) {
 	}
 	p.Collapse()
 	out := text(p.Render(in))
-	if strings.Contains(out, "d-1.1 First child") || !p.OnFold() || !p.Open(Children) {
+	if strings.Contains(out, "d-1.1 task First child") || !p.OnFold() || !p.Open(Children) {
 		t.Errorf("h among closed children folds them and keeps the section:\n%s", out)
 	}
 }

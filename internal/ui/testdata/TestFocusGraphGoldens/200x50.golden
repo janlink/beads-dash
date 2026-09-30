@@ -1,18 +1,19 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ----------------------------- * live 12:00:00 -+- gr-b ----------------------------------------------------------------------------------
-      * gr-a Extract pricing client                                                                         P2|  gr-b  o Open  task  P2                                                                 
-|     o gr-b Migrate cart totals                                                                            P2|  Migrate cart totals                                                                    
-      o gr-c Migrate invoice totals with a rather long title that needs cutting somewhere                   P2|  * Description  none                                                                    
-      o gr-d Remove legacy pricing                                                                          P2|  v Dependencies  waits on 1 (1 open) · holds up 1                                       
-    v o gr-e Checkout epic                                                                          0/2 ------|    < waits on (1 · 1 open)                                                              
-    |-  o gr-e1 Address form                                                                                P2|    `- * gr-a Extract pricing client                                                     
-    `-  o gr-e2 Confirmation mail                                                                           P2|    o gr-b Migrate cart totals                                                           
-      o gr-l Depends on closed                                                                              P2|    > holds up (1)                                                                       
-      o gr-lone1 Standalone chore                                                                           P2|    `- o gr-d Remove legacy pricing                                                      
-      ~ gr-lone2 Another standalone chore                                                                   P2|  * Children  none                                                                       
-      o gr-w Cache metrics                                                                                  P2|  > Details  created 2 d ago · updated 1 h ago                                           
-      o gr-x Cache warmup                                                                                   P2|  > Audit trail  no comments                                                             
-      o gr-y Cache eviction                                                                                 P2|                                                                                         
-      o gr-z Cache sizing                                                                                   P2|                                                                                         
+- Tree - demo ----------------------------------------------------------- 15 issues · 2/14 - * live 12:00:00 -+- gr-b ----------------------------------------------------------------------------------
+        ID         TYPE TITLE                                                        PR STATUS      WHO       |  gr-b  o Open  task  P2                                                                 
+      * gr-a       task Extract pricing client                                       P2 in progress           |  Migrate cart totals                                                                    
+|     o gr-b       task Migrate cart totals                                          P2                       |  * Description  none                                                                    
+      o gr-c       task Migrate invoice totals with a rather long title that need... P2                       |  v Dependencies  waits on 1 (1 open) · holds up 1                                       
+      o gr-d       task Remove legacy pricing                                        P2                       |    < waits on (1 · 1 open)                                                              
+    v o gr-e       task Checkout epic                                                0/2 ------               |    `- * gr-a Extract pricing client                                                     
+    |-  o gr-e1    task Address form                                                 P2                       |    o gr-b Migrate cart totals                                                           
+    `-  o gr-e2    task Confirmation mail                                            P2                       |    > holds up (1)                                                                       
+      o gr-l       task Depends on closed                                            P2                       |    `- o gr-d Remove legacy pricing                                                      
+      o gr-lone1   task Standalone chore                                             P2                       |  * Children  none                                                                       
+      ~ gr-lone2   task Another standalone chore                                     P2 deferred              |  > Details  created 2 d ago · updated 1 h ago                                           
+      o gr-w       task Cache metrics                                                P2                       |  > Audit trail  no comments                                                             
+      o gr-x       task Cache warmup                                                 P2                       |                                                                                         
+      o gr-y       task Cache eviction                                               P2                       |                                                                                         
+      o gr-z       task Cache sizing                                                 P2                       |                                                                                         
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
@@ -45,6 +46,5 @@
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
-                                                                                                              |                                                                                         
-------------------------------------------------------------------------------------------------------- 2/14 -+-----------------------------------------------------------------------------------------
- ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  / search  m markdown or source  r refresh  f filter  : command  Ctrl+P jump                                                
+- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------------------------------------+- ]/[ section  m markdown  x export  Esc back -------------------------------------------
+ j/k scroll  Enter jump  : cmd  ? help                                                                                                             o open  * in progress  ! blocked  x closed  ~ frozen 

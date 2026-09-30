@@ -1,12 +1,12 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
-|     o ws-9qe Payment provider timeout retries                               P0
-    v * ws-4k2 Checkout: guest orders                                 0/2 ------
-    |-  o ws-4k2.1 Address form validation                                    P1
-    `-  ! ws-4k2.2 Guest order confirmation mail                              P2
-  +- New issue -------------------------------------------------- field 1/8 -+P2
+- Tree - demo ------------------------------- 9 issues · 1/8 - * live 12:00:00 -
+        ID         TYPE    TITLE                       PR STATUS      WHO       
+|     o ws-9qe     bug     Payment provider timeout... P0                       
+    v * ws-4k2     epic    Checkout: guest orders      0/2 ------               
+    |-  o ws-4k2.1 task    Address form validation     P1                       
+  +- New issue -------------------------------------------------- field 1/8 -+  
   |   Title*       Retry the webhook                                         |  
-  |   Type         task                                                      |P3
-  |   Priority     P2                                                        |P4
+  |   Type         task                                                      |  
+  |   Priority     P2                                                        |  
   |   Assignee                                                               |  
   |   Labels                                                                 |  
   |   Parent       -                                                         |  
@@ -20,5 +20,5 @@
                                                                                 
                                                                                 
                                                                                 
--------------------------------------------------------------------------- 1/8 -
+- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
  Ctrl+S save  Esc close  Tab field                                              

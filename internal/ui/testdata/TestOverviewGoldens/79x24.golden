@@ -1,4 +1,4 @@
-- Overview ------------------------------------- 15 issues · all - * 12:00:00 -
+- Overview - demo ------------------------------ 15 issues · all - * 12:00:00 -
 o5 open >4 ready *2 in prog !2 blocked ~1 frozen x5 closed                     
 .~...........# closed/day · > 4 ready · ! 2 blocked                            
 active: alice *1  bob *1                                                       
@@ -20,5 +20,5 @@ active: alice *1  bob *1
      2d + created          ws-4k2.2   Guest order confirmation mail            
      2d + created          ws-4k2.5.1 Pickup point lookup                      
      2d + created          ws-4k2.5   Shipping options                         
--------------------------------------------------------------------------------
- ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view             
+- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph -----------
+ / search  f filter  Enter details  : cmd  ? help                              

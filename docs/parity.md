@@ -13,8 +13,8 @@ Statuses come from the code, key map, command table and test inventory of the re
 | Item | Status | Note |
 | --- | --- | --- |
 | Tree: roots are issues whose parent is not visible, pruned parents lift children | done | Tree view goldens |
-| Tree: row grid (gutter, status glyph or caret, ID with stems, type, title, meta) | done | |
-| Tree: epics bold, closed rows dim, header row | done | |
+| Tree: row grid (status bar gutter, caret, status glyph, ID with stems, type, title, priority, status text, assignee) | done | type is a coloured column of fixed width; titles and the right-hand block line up across depths |
+| Tree: epics bold, closed rows dim, column header row (ID, TYPE, TITLE, PR, STATUS, WHO) | done | Ready has a header row too |
 | Tree keys: j/k, expand and collapse, z fold all, Enter opens, e edit, x export | done | `z M` and `z R` fold all and unfold all; `x` is the export dialog |
 | Tree: detail beside the list on wide terminals, replaces it on narrow ones | done | breakpoints differ from bdui-next, see Responsive |
 | Tree: header stats, direct-children progress | done | progress shows direct children and descendants |
@@ -35,9 +35,10 @@ Statuses come from the code, key map, command table and test inventory of the re
 
 | Item | Status | Note |
 | --- | --- | --- |
-| Header rule with view tabs, scope label, live or stale marker | done | stale shows the age; parts drop in a fixed order: scope, bd warning, marker word, tab names |
+| Header rule with view name, workspace, scope label, issue count and position, live or stale marker | done | stale shows the age; parts drop in a fixed order: workspace, scope, bd warning, count and position, marker word |
+| View tabs in the footer rule | done | tabs shrink to the current view's name when the chips need the room; clicks act on the footer rule |
 | Fork junctions where the side panel starts | done | `┬` in the header rule and `┴` in the footer rule; ascii uses `+` |
-| Footer rule with marks, changes, scope note and position; hints row below | done | hints are generated from the key map and drop in a fixed order |
+| Footer rule with tabs, marks, changes and scope note; hints row below | done | hints are generated from the key map and drop in a fixed order |
 | Toast row with ASCII icons | done | a notice takes the hints row; notices queue instead of replacing each other |
 | Docked search, filter and command bars | done | |
 | Kanban column count by width, panel beside at wide terminals | done | breakpoints follow bdash ADR and goldens |

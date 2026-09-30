@@ -663,7 +663,7 @@ func TestTeatestCreateFlow(t *testing.T) {
 		tm.Send(keyMsg(string(c)))
 	}
 	tm.Send(keyMsg("ctrl+s"))
-	newRow := regexp.MustCompile(`\|[ +]+\S+ ws-\S+ Fresh idea`)
+	newRow := regexp.MustCompile(`\|[ +]+\S+ ws-\S+ +\S+ +Fresh idea`)
 	teatest.WaitFor(t, tm.Output(), func(b []byte) bool {
 		return newRow.MatchString(ansi.Strip(string(b)))
 	}, teatest.WithDuration(10*time.Second))

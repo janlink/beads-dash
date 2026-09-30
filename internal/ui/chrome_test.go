@@ -5,6 +5,7 @@ import (
 	"strings"
 	"testing"
 
+	tea "charm.land/bubbletea/v2"
 	"github.com/charmbracelet/x/ansi"
 
 	"github.com/janlink/beads-dash/internal/testgolden"
@@ -88,8 +89,8 @@ func TestChromeJunctionsUnderSidePanel(t *testing.T) {
 			if strings.Count(ls[0], tc.down) != 1 && tc.f.glyphs != "ascii" {
 				t.Errorf("header forks %d times: %q", strings.Count(ls[0], tc.down), ls[0])
 			}
-			if !strings.Contains(ls[0], "live 12:00:00") || !strings.Contains(ls[0], "2 Tree") {
-				t.Errorf("tabs or live marker lost beside the panel: %q", ls[0])
+			if !strings.Contains(ls[0], "live 12:00:00") || !strings.Contains(ls[0], "Tree") || !strings.Contains(ls[48], "2 Tree") {
+				t.Errorf("tabs or live marker lost beside the panel: %q %q", ls[0], ls[48])
 			}
 			testgolden.Equal(t, strings.Join(ls[:2], "\n")+"\n...\n"+strings.Join(ls[48:], "\n"))
 		})
@@ -170,10 +171,168 @@ func TestNoticeReplacesTheHintsRow(t *testing.T) {
 	if !strings.Contains(ls[29], "hello toast") || strings.Contains(ls[29], "help") {
 		t.Errorf("notice row %q", ls[29])
 	}
-	if !strings.HasPrefix(ls[28], "---") {
+	if !strings.HasPrefix(ls[28], "- ") || !strings.Contains(ls[28], "2 Tree") {
 		t.Errorf("rule above the notice: %q", ls[28])
 	}
 	if a.bodyHeight() != before {
 		t.Errorf("a notice changed the body height %d -> %d", before, a.bodyHeight())
+	}
+}
+
+func TestFooterHintsRow(t *testing.T) {
+	for _, tc := range []struct {
+		f    flavour
+		want string
+	}{
+		{truecolor, " / search  f filter  ↵ details  : cmd  ? help"},
+		{plain, " / search  f filter  Enter details  : cmd  ? help"},
+	} {
+		ls := lines(viewApp(t, tc.f, 100, 30, "tree", false))
+		if row := ls[29]; !strings.HasPrefix(row, tc.want+" ") || strings.Contains(row, "frozen") {
+			t.Errorf("%s hints row %q", tc.f.glyphs, row)
+		}
+	}
+}
+
+func TestFooterLegendFromWideTerminals(t *testing.T) {
+	a := viewApp(t, truecolor, 120, 30, "tree", false)
+	row := lines(a)[29]
+	if !strings.HasSuffix(strings.TrimSpace(row), "○ open  ◐ in progress  ● blocked  ✓ closed  ▫ frozen") {
+		t.Errorf("legend missing: %q", row)
+	}
+	if !strings.HasPrefix(row, " / search  f filter  ↵ details  : cmd  ? help") {
+		t.Errorf("hints lost beside the legend: %q", row)
+	}
+	if row := lines(viewApp(t, truecolor, 119, 30, "tree", false))[29]; strings.Contains(row, "frozen") {
+		t.Errorf("legend below 120 columns: %q", row)
+	}
+	if row := lines(viewApp(t, truecolor, 120, 30, "memories", false))[29]; strings.Contains(row, "frozen") {
+		t.Errorf("legend in Memories: %q", row)
+	}
+}
+
+func TestFooterHintsDropInOrder(t *testing.T) {
+	var prev []string
+	for cols := 60; cols >= 12; cols-- {
+		hs, drop, _ := viewApp(t, plain, 100, 30, "tree", false).listHints()
+		var words []string
+		for _, h := range dropToFit(hs, cols-2, drop) {
+			words = append(words, h.Desc)
+		}
+		if prev != nil && len(words) > len(prev) {
+			t.Fatalf("%d cols kept more hints than wider: %v vs %v", cols, words, prev)
+		}
+		prev = words
+	}
+	hs, drop, _ := viewApp(t, plain, 100, 30, "tree", false).listHints()
+	var kept []string
+	for _, h := range dropToFit(hs, 20, drop) {
+		kept = append(kept, h.Desc)
+	}
+	if got := strings.Join(kept, ","); got != "search,help" {
+		t.Errorf("kept %q, want search,help", got)
+	}
+}
+
+func TestFooterHintsKeepMemoriesOwnKeys(t *testing.T) {
+	row := lines(viewApp(t, plain, 100, 30, "memories", false))[29]
+	for _, want := range []string{"/ search", "f filter", "n new", "e edit", "d forget", ": cmd", "? help"} {
+		if !strings.Contains(row, want) {
+			t.Errorf("Memories hints lack %q: %q", want, row)
+		}
+	}
+	if strings.Contains(row, "details") {
+		t.Errorf("Memories hints offer details: %q", row)
+	}
+}
+
+func TestHelpListsTheHintsTheFooterLeftOut(t *testing.T) {
+	a := viewApp(t, plain, 120, 50, "tree", false)
+	press(a, "?")
+	out := screen(a)
+	for _, want := range []string{"refresh", "appearance", "switch view", "mark"} {
+		if !strings.Contains(out, want) {
+			t.Errorf("help lacks %q:\n%s", want, out)
+		}
+	}
+}
+
+func TestFooterTabsShrinkBeforeTheNoteLeaves(t *testing.T) {
+	var a *App
+	var sawNumbers bool
+	for cols := 100; cols >= 60; cols-- {
+		a = viewApp(t, plain, cols, 30, "tree", false)
+		a.sess.ToggleMark("ws-4k2")
+		rule := lines(a)[28]
+		named := strings.Contains(rule, "Kanban")
+		marked := strings.Contains(rule, "marked")
+		if !named && !sawNumbers {
+			sawNumbers = true
+			if !marked {
+				t.Errorf("%d cols: tabs shrank but the chip left: %q", cols, rule)
+			}
+		}
+		if named && !marked {
+			t.Errorf("%d cols: chip left while the tabs were named: %q", cols, rule)
+		}
+	}
+	if !sawNumbers {
+		t.Error("tabs never shrank to numbers")
+	}
+}
+
+func TestFooterTabClicksFollowTheRule(t *testing.T) {
+	for _, cols := range []int{60, 100} {
+		for i := range ViewNames {
+			a := viewApp(t, plain, cols, 30, "tree", false)
+			_, _, spans := a.footerLayout(cols)
+			send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: spans[i].from, Y: 1 + a.bodyHeight()})
+			if a.slot != i {
+				t.Errorf("%d cols: click on tab %d landed on slot %d", cols, i+1, a.slot)
+			}
+		}
+	}
+}
+
+func TestSidePanelFooterCarriesThePanelKeys(t *testing.T) {
+	a := viewApp(t, truecolor, 200, 30, "tree", true)
+	if rule := lines(a)[28]; !strings.Contains(rule, "┴─ e edit  x export  Tab focus ─") {
+		t.Errorf("list-focused panel keys: %q", rule)
+	}
+	press(a, "enter")
+	if rule := lines(a)[28]; !strings.Contains(rule, "┴─ ]/[ section  m markdown  x export  Esc back ─") {
+		t.Errorf("panel-focused panel keys: %q", rule)
+	}
+}
+
+func TestBottomPanelIsSeparatedFromTheFooter(t *testing.T) {
+	a := viewApp(t, plain, 120, 40, "tree", true)
+	press(a, "enter")
+	if a.dock().Frame != detail.Bottom {
+		t.Fatalf("frame %v, want bottom", a.dock().Frame)
+	}
+	ls := lines(a)
+	if strings.TrimSpace(ls[len(ls)-3]) != "" {
+		t.Errorf("no blank row above the footer rule: %q", ls[len(ls)-3])
+	}
+	if !strings.HasPrefix(ls[len(ls)-2], "- ") {
+		t.Errorf("footer rule %q", ls[len(ls)-2])
+	}
+}
+
+func TestSidePanelFocusedHintsDoNotRepeatTheRuleKeys(t *testing.T) {
+	a := viewApp(t, truecolor, 200, 30, "tree", true)
+	press(a, "enter")
+	ls := lines(a)
+	if !strings.Contains(ls[28], "]/[ section") || strings.Contains(ls[29], "section") {
+		t.Errorf("rule %q hints %q", ls[28], ls[29])
+	}
+}
+
+func TestBottomGapRowIsNotThePanel(t *testing.T) {
+	a := viewApp(t, plain, 120, 40, "tree", true)
+	body := a.bodyHeight()
+	if !a.overPanel(0, body-bottomGap-1) || a.overPanel(0, body-bottomGap) {
+		t.Errorf("panel hit-test at the gap row: last %v gap %v", a.overPanel(0, body-bottomGap-1), a.overPanel(0, body-bottomGap))
 	}
 }

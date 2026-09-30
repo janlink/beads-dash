@@ -1,9 +1,9 @@
-    ◊ P4 ws-1zz   Mystery status issue                                  
-▌■✱ ● P2 ws-2hz   Split pricing service                                 
- ■  ◐ P1 ws-4k2   Checkout: guest orders                           alice
-  ✱ ○ P1 ws-4k2.1 Address form validation                               
-    ● P2 ws-4k2.2 Guest order confirmation mail                         
-    ✓ P3 ws-5ca   Update analytics consent banner                       
-    ◐ P2 ws-7mt   Cart badge shows stale count                       bob
-    ▫ P3 ws-8np   Search: typo tolerance                                
-    ○ P0 ws-9qe   Payment provider timeout retries                      
+    ◊ ws-1zz   task    Mystery status issue            P4               
+▌■✱ ● ws-2hz   feature Split pricing service           P2               
+ ■  ◐ ws-4k2   epic    Checkout: guest orders          P1 alice         
+  ✱ ○ ws-4k2.1 task    Address form validation         P1               
+    ● ws-4k2.2 task    Guest order confirmation mail   P2               
+    ✓ ws-5ca   chore   Update analytics consent banner P3               
+    ◐ ws-7mt   bug     Cart badge shows stale count    P2 bob           
+    ▫ ws-8np   feature Search: typo tolerance          P3               
+    ○ ws-9qe   bug     Payment provider timeout retri… P0               

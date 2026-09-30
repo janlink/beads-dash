@@ -58,7 +58,7 @@ func TestSelectionBackgroundAtColourDepth(t *testing.T) {
 	for _, depth := range []Depth{DepthTrueColor, Depth256} {
 		p := NewPalette(th, true, depth)
 		out := p.SelectedStyle(Dim).Render("x")
-		if !strings.Contains(out, "48;2;49;50;68") {
+		if !strings.Contains(out, "48;2;58;58;58") {
 			t.Errorf("%s: no selection background in %q", depth, out)
 		}
 		if slices.Contains(sgrCodes(out), 7) {
@@ -138,5 +138,32 @@ func TestRoleMapping(t *testing.T) {
 	}
 	if TypeRole("bug") != TypeBug || TypeRole("spike") != TypeOther {
 		t.Error("TypeRole")
+	}
+}
+
+func TestBarRole(t *testing.T) {
+	want := [6]Role{StatusOpen, Warning, StatusBlocked, StatusFrozen, Success, StatusOther}
+	for i, w := range want {
+		if got := BarRole(i); got != w {
+			t.Errorf("BarRole(%d) = %s, want %s", i, got, w)
+		}
+	}
+	if BarRole(-1) != StatusOpen || BarRole(9) != StatusOther {
+		t.Error("BarRole clamp")
+	}
+}
+
+func TestTypeRolesAreDistinct(t *testing.T) {
+	for _, th := range themes[:4] {
+		for _, dark := range []bool{true, false} {
+			seen := map[string]Role{}
+			for _, r := range []Role{TypeBug, TypeFeature, TypeTask, TypeEpic, TypeDecision} {
+				hex := th.Hex(dark, r)
+				if other, dup := seen[hex]; dup {
+					t.Errorf("%s dark=%v: %s and %s share %s", th.Name, dark, r, other, hex)
+				}
+				seen[hex] = r
+			}
+		}
 	}
 }

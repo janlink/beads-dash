@@ -1,4 +1,4 @@
-- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
+- Overview - demo -------------------------- 15 issues · all - * live 12:00:00 -
 - >Activity ----------------------------- +8 -  - Now --------------------------
 - just now -----------------------------------  o Open                         5
     now * ws-7mt     Cart badge shows s... bob  > Ready                        4
@@ -12,13 +12,13 @@
     10h x ws-4k2.4   Guest cart merge           33% closed · 2 deps             
 - yesterday ----------------------------------  - Needs attention --------- +5 -
      1d + ws-7mt     Cart badge shows stale...  > Ready 4 (2 unassigned)        
-     1d + ws-lost    Follow-up from a delet...      o P0 ws-9qe   Payment pro...
-- earlier ------------------------------------      o P1 ws-4k2.1 Address for...
-     2d + ws-4k2.2   Guest order confirmati...      o P2 ws-lost  Follow-up f...
+     1d + ws-lost    Follow-up from a delet...      o ws-9qe   Payment pro... P0
+- earlier ------------------------------------      o ws-4k2.1 Address for... P1
+     2d + ws-4k2.2   Guest order confirmati...      o ws-lost  Follow-up f... P2
      2d + ws-4k2.5.1 Pickup point lookup        - Active -----------------------
      2d + ws-4k2.5   Shipping options           alice  1 in progress            
-     3d + ws-4k2.1   Address form validation        * P1 ws-4k2   Checkout: g...
+     3d + ws-4k2.1   Address form validation        * ws-4k2   Checkout: g... P1
      3d + ws-4k2     Checkout: guest orders     bob  1 in progress              
-     3d + ws-4k2.3   Order summary page             * P2 ws-7mt   Cart badge ...
---------------------------------------------------------------------------------
- ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view              
+     3d + ws-4k2.3   Order summary page             * ws-7mt   Cart badge ... P2
+- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
+ / search  f filter  Enter details  : cmd  ? help                               

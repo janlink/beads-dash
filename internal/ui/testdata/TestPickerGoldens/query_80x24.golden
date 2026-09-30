@@ -1,15 +1,15 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
-|     o ws-9qe Payment provider timeout retries                               P0
-    v * ws-4k2 Checkout: guest orders                                 2/5 ##----
-    |-  o ws-4k2.1 Address form validation                                    P1
-  +- Jump to issue ----------------------------------- 3/15 · closed hidden -+P2
-  | > gst                                                                    |--
+- Tree - demo ----------------------------- 15 issues · 1/10 - * live 12:00:00 -
+        ID             TYPE    TITLE                   PR STATUS      WHO       
+|     o ws-9qe         bug     Payment provider tim... P0                       
+    v * ws-4k2         epic    Checkout: guest orders  2/5 ##----               
+  +- Jump to issue ----------------------------------- 3/15 · closed hidden -+  
+  | > gst                                                                    |  
   |   * ws-4k2     Checkout: guest orders                                    |  
   |   ! ws-4k2.2   Guest order confirmation mail                             |  
-  |   * ws-7mt     Cart badge shows stale count                              |P2
+  |   * ws-7mt     Cart badge shows stale count                              |  
   |                                                                          |  
   |                                                                          |  
-  |                                                                          |P3
+  |                                                                          |  
   |                                                                          |  
   |                                                                          |  
   |                                                                          |  
@@ -20,5 +20,5 @@
   +----------------------- Enter pick  Esc close  Up/Dn move  Ctrl+T closed -+  
                                                                                 
                                                                                 
-------------------------------------------------------------------------- 1/10 -
+- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
  Enter pick  Esc close  Up/Dn move  Ctrl+T closed                               

@@ -197,7 +197,7 @@ func TestTreeChangedWalkSurvivesCycles(t *testing.T) {
 func TestHeaderShowsTheScopeLabelOnlyWhileActive(t *testing.T) {
 	a := viewApp(t, plain, 100, 30, "tree", false)
 	send(a, tea.WindowSizeMsg{Width: 140, Height: 30})
-	if h := lines(a)[0]; strings.Contains(h, " · ") {
+	if h := lines(a)[0]; strings.Contains(h, "closed hidden") {
 		t.Errorf("no scope, no label: %q", h)
 	}
 	a.setScope(model.ParseScope("mail", false))

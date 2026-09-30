@@ -12,7 +12,7 @@ priority.3           [38;2;232;232;232mSample text[m
 priority.4           [38;2;135;135;135mSample text[m
 type.bug             [38;2;245;245;245mSample text[m
 type.feature         [38;2;188;188;188mSample text[m
-type.task            [38;2;208;208;208mSample text[m
+type.task            [38;2;232;232;232mSample text[m
 type.epic            [38;2;156;156;156mSample text[m
 type.chore           [38;2;168;168;168mSample text[m
 type.decision        [38;2;176;176;176mSample text[m
@@ -47,7 +47,7 @@ priority.3           [38;2;26;26;26mSample text[m
 priority.4           [38;2;94;94;94mSample text[m
 type.bug             [38;2;0;0;0mSample text[m
 type.feature         [38;2;58;58;58mSample text[m
-type.task            [38;2;38;38;38mSample text[m
+type.task            [38;2;26;26;26mSample text[m
 type.epic            [38;2;96;96;96mSample text[m
 type.chore           [38;2;74;74;74mSample text[m
 type.decision        [38;2;85;85;85mSample text[m

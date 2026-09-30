@@ -7,12 +7,12 @@ import (
 
 	"github.com/charmbracelet/x/ansi"
 
+	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/look"
 )
 
 const (
-	readyTypeW   = 8
 	readyWhoW    = 12
 	readyAgeW    = 4
 	readyReasonW = 22
@@ -30,10 +30,10 @@ type ReadyCols struct {
 
 // ReadyColumns picks the columns for a row w cells wide, gutter included. As
 // the width shrinks they go in this order: reason below 120, age below 100,
-// type below 90, assignee below 80. A column also goes when it would leave
-// the title less than 20 cells, in the same order.
+// assignee below 80. A column also goes when it would leave the title less
+// than 20 cells, in the same order, the type last.
 func (r *Renderer) ReadyColumns(w int) ReadyCols {
-	c := ReadyCols{Type: w >= 90, Assignee: w >= 80, Age: w >= 100, Reason: w >= 120}
+	c := ReadyCols{Type: r.typeW > 0, Assignee: w >= 80, Age: w >= 100, Reason: w >= 120}
 	idW := min(r.idW, readyIDRef)
 	room := func() int { return w - GutterWidth - r.readyFixed(c, idW) }
 	if room() < minReadyCols {
@@ -43,10 +43,10 @@ func (r *Renderer) ReadyColumns(w int) ReadyCols {
 		c.Age = false
 	}
 	if room() < minReadyCols {
-		c.Type = false
+		c.Assignee = false
 	}
 	if room() < minReadyCols {
-		c.Assignee = false
+		c.Type = false
 	}
 	return c
 }
@@ -55,9 +55,9 @@ func (r *Renderer) ReadyColumns(w int) ReadyCols {
 // column counted at idW.
 func (r *Renderer) readyFixed(c ReadyCols, idW int) int {
 	sw := ansi.StringWidth(r.look.Glyphs.Status[0])
-	n := 1 + sw + 1 + idW + 1 + 2 + 1
+	n := 1 + sw + 1 + idW + 1 + 1 + 2
 	if c.Type {
-		n += readyTypeW + 1
+		n += r.typeW + 1
 	}
 	if c.Assignee {
 		n += readyWhoW + 1
@@ -82,7 +82,7 @@ type ReadyRow struct {
 	Pinned bool
 }
 
-// Ready draws a row of the Ready view: glyph, ID, priority, type, title,
+// Ready draws a row of the Ready view: glyph, ID, type, title, priority,
 // assignee, age and reason.
 func (r *Renderer) Ready(row ReadyRow) Body {
 	return func(w int, sel bool) string { return r.ready(row, w, sel) }
@@ -106,21 +106,24 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 	}
 	cols := row.Cols
 	fixed := r.readyFixed(cols, 0)
-	reserve := 0
-	if row.Pinned && !cols.Reason {
-		reserve = readyReasonW + 1
-	}
-	idW := r.idCol(w - fixed - reserve - minReadyCols)
+	idW := r.idCol(w - fixed - minReadyCols)
 	fixed += idW
 	reason := ansi.Truncate(row.Reason, readyReasonW, g.Ellipsis)
-	switch {
-	case cols.Reason:
-	case row.Pinned && reason != "" && w-fixed-1-ansi.StringWidth(reason) >= minReadyCols:
-		fixed += ansi.StringWidth(reason) + 1
-	default:
-		reason = ""
-	}
 	titleW := max(w-fixed, 0)
+	inline := ""
+	if !cols.Reason && row.Pinned && reason != "" && titleW-1-ansi.StringWidth(reason) >= minReadyCols {
+		inline = reason
+		titleW -= ansi.StringWidth(reason) + 1
+	}
+	dim := pres.Status == model.Closed
+	titleRole := theme.Text
+	if dim {
+		titleRole = theme.Dim
+	}
+	typeCol := 0
+	if cols.Type {
+		typeCol = r.typeW + 1
+	}
 
 	var b strings.Builder
 	sp := paint(theme.Text, " ")
@@ -129,13 +132,14 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 	b.WriteString(sp)
 	b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(is.ID, idW)))
 	b.WriteString(sp)
-	b.WriteString(paint(theme.PriorityRole(is.Priority), "P"+strconv.Itoa(min(max(is.Priority, 0), 9))))
-	b.WriteString(sp)
-	if cols.Type {
-		b.WriteString(paint(theme.TypeRole(is.IssueType), r.look.Fit(oneLine(is.IssueType), readyTypeW)))
+	b.WriteString(r.typeCell(paint, is, typeCol, dim))
+	b.WriteString(r.hl(paint, titleRole, r.look.Fit(oneLine(is.Title), titleW)))
+	if inline != "" {
 		b.WriteString(sp)
+		b.WriteString(paint(theme.Dim, inline))
 	}
-	b.WriteString(r.hl(paint, theme.Text, r.look.Fit(oneLine(is.Title), titleW)))
+	b.WriteString(sp)
+	b.WriteString(paint(theme.PriorityRole(is.Priority), "P"+strconv.Itoa(min(max(is.Priority, 0), 9))))
 	if cols.Assignee {
 		b.WriteString(sp)
 		b.WriteString(paint(theme.Dim, r.look.Fit(ansi.Truncate(oneLine(is.Assignee), readyWhoW, g.Ellipsis), readyWhoW)))
@@ -148,9 +152,50 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 	if cols.Reason {
 		b.WriteString(sp)
 		b.WriteString(paint(theme.Dim, r.look.Fit(reason, readyReasonW)))
-	} else if reason != "" {
-		b.WriteString(sp)
-		b.WriteString(paint(theme.Dim, reason))
 	}
 	return r.look.Fit(b.String(), w)
+}
+
+// ReadyHeader is the dim column header line of the Ready view, w cells wide
+// including the gutter.
+func (r *Renderer) ReadyHeader(w int, cols ReadyCols) string {
+	bw := w - GutterWidth
+	if bw <= 0 {
+		return strings.Repeat(" ", max(w, 0))
+	}
+	sw := ansi.StringWidth(r.look.Glyphs.Status[0])
+	fixed := r.readyFixed(cols, 0)
+	idW := r.idCol(bw - fixed - minReadyCols)
+	at := 1 + sw + 1
+	cells := []headerCell{{at, idW, "ID"}}
+	at += idW + 1
+	if cols.Type {
+		cells = append(cells, headerCell{at, r.typeW, "TYPE"})
+		at += r.typeW + 1
+	}
+	cells = append(cells, headerCell{at, 0, "TITLE"})
+	at = bw - 2
+	if cols.Reason {
+		at -= readyReasonW + 1
+	}
+	if cols.Age {
+		at -= readyAgeW + 1
+	}
+	if cols.Assignee {
+		at -= readyWhoW + 1
+	}
+	cells = append(cells, headerCell{at, 2, "PR"})
+	at += 3
+	if cols.Assignee {
+		cells = append(cells, headerCell{at, readyWhoW, "ASSIGNEE"})
+		at += readyWhoW + 1
+	}
+	if cols.Age {
+		cells = append(cells, headerCell{at, readyAgeW, "AGE"})
+		at += readyAgeW + 1
+	}
+	if cols.Reason {
+		cells = append(cells, headerCell{at, readyReasonW, "REASON"})
+	}
+	return strings.Repeat(" ", GutterWidth) + r.headerLine(bw, cells)
 }

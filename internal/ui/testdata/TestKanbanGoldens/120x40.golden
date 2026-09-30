@@ -1,10 +1,10 @@
-- 1 Overview  2 Tree  [3 Kanban]  4 Ready  5 Memories  6 Graph --------------------------------------- * live 12:00:00 -
+- Kanban - demo ------------------------------------------------------------------- 15 issues · 1/10 - * live 12:00:00 -
 - [Open] 5 ---------------------------- - In progress 2 ----------------------- - Blocked 2 ---------------------- 2> - 
-|   P0 Payment provider timeout retries     P1 Checkout: guest or... ##---- 2/5     P2 Split pricing service        ! 1 
-    P1 Address form validation              P2 Cart badge shows stale c... @bob     P2 Guest order confirmation ... ! 1 
-    P2 Follow-up from a delet... @alice                                                                                 
-    P3 Shipping options      ------ 0/1                                                                                 
-    P3 Pickup point lookup       @carol                                                                                 
+|   P0 bug     Payment provider time...     P1 epic    Checkout: ... ##---- 2/5     P2 feature Split pricing ser... ! 1 
+    P1 task    Address form validation      P2 bug     Cart badge shows... @bob     P2 task    Guest order confi... ! 1 
+    P2 task    Follow-up from... @alice                                                                                 
+    P3 feature Shipping o... ------ 0/1                                                                                 
+    P3 task    Pickup point l... @carol                                                                                 
                                                                                                                         
                                                                                                                         
                                                                                                                         
@@ -36,5 +36,5 @@
                                                                                                                         
                                                                                                                         
                                                                                                                         
------------------------------------------------------------------------------------------------------------------ 1/10 -
- ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view  t appearance  / search  r refresh  f filter         
+- 1 Overview - 2 Tree - [3 Kanban] - 4 Ready - 5 Memories - 6 Graph ----------------------------------------------------
+ / search  f filter  Enter details  : cmd  ? help                  o open  * in progress  ! blocked  x closed  ~ frozen 

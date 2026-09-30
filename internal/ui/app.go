@@ -1053,17 +1053,14 @@ func (a *App) click(m tea.Mouse) {
 		return
 	}
 	switch {
-	case m.Y == 0:
-		if a.tabsCollapsed() {
-			return
-		}
-		_, spans := a.tabSegs(false)
+	case m.Y == 1+a.bodyHeight():
+		_, _, spans := a.footerLayout(a.cols - a.panelSide())
 		for i, s := range spans {
 			if m.X >= s.from && m.X < s.to {
 				a.switchView(fmt.Sprintf("%d", i+1))
 			}
 		}
-	case m.Y-1 < a.bodyHeight():
+	case m.Y >= 1 && m.Y-1 < a.bodyHeight():
 		a.clickBody(m.X, m.Y-1)
 	}
 }

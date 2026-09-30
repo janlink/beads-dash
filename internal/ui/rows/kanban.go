@@ -57,9 +57,20 @@ func (r *Renderer) card(id string, w int, sel bool) string {
 	if factW > 0 && w-fixed-factW-1 < minKanbanTitle {
 		fact, factW = "", 0
 	}
+	taken := fixed
+	if factW > 0 {
+		taken += factW + 1
+	}
+	typeW := r.typeCol(w - taken - minKanbanTitle)
+	fixed += typeW
 	titleW := max(w-fixed, 0)
 	if factW > 0 {
 		titleW -= factW + 1
+	}
+	dim := r.snap.Present(id, r.statuses).Status == model.Closed
+	titleRole := theme.Text
+	if dim {
+		titleRole = theme.Dim
 	}
 	var b strings.Builder
 	sp := paint(theme.Text, " ")
@@ -70,7 +81,8 @@ func (r *Renderer) card(id string, w int, sel bool) string {
 		b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(id, idW)))
 		b.WriteString(sp)
 	}
-	b.WriteString(r.hl(paint, theme.Text, r.look.Fit(oneLine(is.Title), titleW)))
+	b.WriteString(r.typeCell(paint, is, typeW, dim))
+	b.WriteString(r.hl(paint, titleRole, r.look.Fit(oneLine(is.Title), titleW)))
 	if factW > 0 {
 		b.WriteString(sp)
 		b.WriteString(paint(role, fact))

@@ -1,15 +1,15 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
-      * gr-a Extract pricing client                                           P2
-|     o gr-b Migrate cart totals                                              P2
-      o gr-c Migrate invoice totals with a rather long title that needs cu... P2
-      o gr-d Remove legacy pricing                                            P2
-    v o gr-e Checkout epic                                            0/2 ------
-    |-  o gr-e1 Address form                                                  P2
-    `-  o gr-e2 Confirmation mail                                             P2
-      o gr-l Depends on closed                                                P2
-      o gr-lone1 Standalone chore                                             P2
-      ~ gr-lone2 Another standalone chore                                     P2
-      o gr-w Cache metrics                                                    P2
+- Tree - demo ----------------------------- 15 issues · 2/14 - * live 12:00:00 -
+        ID         TYPE TITLE                          PR STATUS      WHO       
+      * gr-a       task Extract pricing client         P2 in progress           
+|     o gr-b       task Migrate cart totals            P2                       
+      o gr-c       task Migrate invoice totals with... P2                       
+      o gr-d       task Remove legacy pricing          P2                       
+    v o gr-e       task Checkout epic                  0/2 ------               
+    |-  o gr-e1    task Address form                   P2                       
+    `-  o gr-e2    task Confirmation mail              P2                       
+      o gr-l       task Depends on closed              P2                       
+      o gr-lone1   task Standalone chore               P2                       
+      ~ gr-lone2   task Another standalone chore       P2 deferred              
 - Detail (focused) -------------------------------------------------------------
  gr-b  o Open  task  P2                                                         
  Migrate cart totals                                                            
@@ -19,6 +19,6 @@
    `- * gr-a Extract pricing client                                             
    o gr-b Migrate cart totals                                                   
    > holds up (1)                                                               
-   `- o gr-d Remove legacy pricing                                              
-------------------------------------------------------------------------- 2/14 -
- ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance     
+                                                                                
+- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
+ j/k scroll  ]/[ section  Enter jump  : cmd  ? help                             

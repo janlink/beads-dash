@@ -1,6 +1,7 @@
-- Tree --- / guest · 2/15 ·...den · +1 closed - * 12:00:00 -
-|   v * ws-4k2 Checkout: guest orders                    2/5
-    |-  ! ws-4k2.2 Guest order confirmation mail          P2
+- Tree --- / guest · 2/1... · +1 closed - 1/2 - * 12:00:00 -
+        ID           TYPE    TITLE                     PR   
+|   v * ws-4k2       epic    Checkout: guest orders    2/5  
+    |-  ! ws-4k2.2   task    Guest order confirmati... P2   
     `-> x 1 closed                                          
                                                             
                                                             
@@ -18,7 +19,6 @@
                                                             
                                                             
                                                             
-                                                            
------------------------------------------------------- 1/2 -
+- 1 - [2] - 3 - 4 - 5 - 6 ----------------------------------
  Enter keep  Esc close  Tab complete  Ctrl+N/P issue        
  / guest                                  2/15 · +1 closed  

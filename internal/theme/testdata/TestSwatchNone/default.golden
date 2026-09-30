@@ -2,9 +2,9 @@ default dark none
 status.open          o status
 status.in_progress   * status
 status.blocked       [1m! status[m
-status.frozen        ~ status
-status.closed        [2mx status[m
-status.other         ? status
+status.frozen        [2m~ status[m
+status.closed        x status
+status.other         [2m? status[m
 priority.0           [1mSample text[m
 priority.1           [1mSample text[m
 priority.2           Sample text

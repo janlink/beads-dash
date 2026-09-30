@@ -61,6 +61,17 @@ func moveTo(rows []listRow, from int, act keys.Action, page int) int {
 	return from
 }
 
+// headerRows is the rows a list view gives its column header when it has h
+// rows to draw in.
+func headerRows(h int) int {
+	if h >= minHeaderBody {
+		return 1
+	}
+	return 0
+}
+
+const minHeaderBody = 6
+
 // scopeInfo is what the header says about the scope: the query, how many of
 // the issues the view lists, and the closed issues it hides.
 type scopeInfo struct {

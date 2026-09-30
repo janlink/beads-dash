@@ -1,14 +1,14 @@
-- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
- ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view              
+- Overview - demo -------------------------------------------- * live 12:00:00 -
+ / search  f filter  Enter details  : cmd  ? help                               
 
-- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
-|   ? P4 ws-1zz   Mystery status issue                                          
+- Overview - demo -------------------------------------------- * live 12:00:00 -
+|   ? ws-1zz   task    Mystery status issue                    P4               
   +- Keys -------------------------------------------------------- 43 shown -+  
-  | Lists                                                                    |ce
+  | Lists                                                                    |  
   |   q        quit                                                          |  
   |   j/Down   move down                                                     |  
   |   k/Up     move up                                                       |  
-  |   gg       first                                                         |ob
+  |   gg       first                                                         |  
   |   G        last                                                          |  
   |   Ctrl+D   half page down                                                |  
   |   Ctrl+U   half page up                                                  |  
@@ -23,5 +23,5 @@
   |   zL       scroll half a screen right                                    |  
   | ... 30 more                                                              |  
   +---------------------------------------- Esc close  j/k scroll  / filter -+  
---------------------------------------------------------------------------------
+- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
  Esc close  j/k scroll  / filter                                                

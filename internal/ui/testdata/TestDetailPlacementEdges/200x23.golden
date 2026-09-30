@@ -1,16 +1,16 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ----------------------------- * live 12:00:00 -+- ws-9qe --------------------------------------------------------------------------------
-|     o ws-9qe Payment provider timeout retries                                                             P0|  ws-9qe  o Open  bug  P0                                                                
-    v * ws-4k2 Checkout: guest orders                                                               2/5 ##----|  Payment provider timeout retries                                                       
-    |-  o ws-4k2.1 Address form validation                                                                  P1| |v Description  markdown                                                                
-    |-  ! ws-4k2.2 Guest order confirmation mail                                                            P2|    Retries fail after the provider times out.                                           
-    |-v o ws-4k2.5 Shipping options                                                                 0/1 ------|                                                                                         
-    | `-  o ws-4k2.5.1 Pickup point lookup                                                       P3 carol     |    * back off between tries                                                             
-    `-> x 2 closed                                                                                            |    * add jitter                                                                         
-      ! ws-2hz Split pricing service                                                                        P2|  v Dependencies  holds up 1                                                             
-      o ws-lost Follow-up from a deleted epic                                          ^ ws-gone P2 alice     |    o ws-9qe Payment provider timeout retries                                            
-      * ws-7mt Cart badge shows stale count                                                      P2 bob       |    > holds up (1)                                                                       
-      ~ ws-8np Search: typo tolerance                                                                       P3|    `- ! ws-2hz Split pricing service                                                    
-                                                                                                              |  * Children  none                                                                       
+- Tree - demo ----------------------------------------------------------- 15 issues · 1/10 - * live 12:00:00 -+- ws-9qe --------------------------------------------------------------------------------
+        ID             TYPE    TITLE                                                 PR STATUS      WHO       |  ws-9qe  o Open  bug  P0                                                                
+|     o ws-9qe         bug     Payment provider timeout retries                      P0                       |  Payment provider timeout retries                                                       
+    v * ws-4k2         epic    Checkout: guest orders                                2/5 ##----               | |v Description  markdown                                                                
+    |-  o ws-4k2.1     task    Address form validation                               P1                       |    Retries fail after the provider times out.                                           
+    |-  ! ws-4k2.2     task    Guest order confirmation mail                         P2 blocked               |                                                                                         
+    |-v o ws-4k2.5     feature Shipping options                                      0/1 ------               |    * back off between tries                                                             
+    | `-  o ws-4k2.5.1 task    Pickup point lookup                                   P3             carol     |    * add jitter                                                                         
+    `-> x 2 closed                                                                                            |  v Dependencies  holds up 1                                                             
+      ! ws-2hz         feature Split pricing service                                 P2 blocked               |    o ws-9qe Payment provider timeout retries                                            
+      o ws-lost        task    Follow-up from a deleted epic               ^ ws-gone P2             alice     |    > holds up (1)                                                                       
+      * ws-7mt         bug     Cart badge shows stale count                          P2 in progress bob       |    `- ! ws-2hz Split pricing service                                                    
+      ~ ws-8np         feature Search: typo tolerance                                P3 deferred              |  * Children  none                                                                       
                                                                                                               |  > Details  created 5 h ago · updated 5 h ago                                           
                                                                                                               |  > Audit trail  no comments                                                             
                                                                                                               |                                                                                         
@@ -19,5 +19,5 @@
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
-------------------------------------------------------------------------------------------------------- 1/10 -+-----------------------------------------------------------------------------------------
- ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  / search  m markdown or source  r refresh  f filter  : command  Ctrl+P jump                                                
+- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------------------------------------+- ]/[ section  m markdown  x export  Esc back -------------------------------------------
+ j/k scroll  Enter jump  : cmd  ? help                                                                                                             o open  * in progress  ! blocked  x closed  ~ frozen 

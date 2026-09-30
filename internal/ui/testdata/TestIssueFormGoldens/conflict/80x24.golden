@@ -1,12 +1,12 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
-    v * ws-4k2 Checkout: guest orders                                 0/2 ------
-  +- Edit ws-9qe ----------------------- field 1/9 · 1 change · 1 to decide -+P1
-  | ! Changed since opened: title Payment provider timeou… -> Retries,       |P2
-  | ! reworded, priority P0 -> P3                                            |P2
+- Tree - demo ------------------------------- 9 issues · 7/8 - * live 12:00:00 -
+        ID         TYPE    TITLE                       PR STATUS      WHO       
+  +- Edit ws-9qe ----------------------- field 1/9 · 1 change · 1 to decide -+  
+  | ! Changed since opened: title Payment provider timeou… -> Retries,       |  
+  | ! reworded, priority P0 -> P3                                            |  
   |   Decide on the marked fields: keep mine or take theirs.                 |  
-  |                                                                          |P3
-| | * Title*       meout retries!  changed underneath: now Retries, reworded |P3
-  |   Type         bug                                                       |P4
+  |                                                                          |  
+  | * Title*       meout retries!  changed underneath: now Retries, reworded |  
+| |   Type         bug                                                       |  
   |   Priority     P3                                                        |  
   |   Status       open                                                      |  
   |   Assignee                                                               |  
@@ -20,5 +20,5 @@
   |   > Advanced                                                             |  
   +---------- Ctrl+S save  Esc close  Tab field  Ctrl+O mine  Ctrl+T theirs -+  
                                                                                 
--------------------------------------------------------------------------- 7/8 -
+- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
  Ctrl+S save  Esc close  Tab field  Ctrl+O mine  Ctrl+T theirs  Ctrl+R reload   

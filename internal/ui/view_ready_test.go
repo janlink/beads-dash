@@ -5,6 +5,8 @@ import (
 	"strings"
 	"testing"
 
+	tea "charm.land/bubbletea/v2"
+
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/testgolden"
 )
@@ -18,6 +20,11 @@ func TestReadyGoldens(t *testing.T) {
 	t.Run("blocked open", func(t *testing.T) {
 		a := viewApp(t, plain, 120, 30, "ready", false)
 		a.sess.SetCurrent("ws-2hz")
+		testgolden.Equal(t, screen(a))
+	})
+	t.Run("blocked open 80x24", func(t *testing.T) {
+		a := viewApp(t, plain, 80, 24, "ready", false)
+		a.view().(*Ready).blockedOpen = true
 		testgolden.Equal(t, screen(a))
 	})
 	t.Run("truecolor", func(t *testing.T) {
@@ -75,4 +82,28 @@ func TestReadyScopeAppliesFacetsNotStatusVisibility(t *testing.T) {
 	if !strings.Contains(screen(a), `No issue matches "zzzz".`) {
 		t.Error("empty scope state missing")
 	}
+}
+
+func TestListClicksSkipTheColumnHeader(t *testing.T) {
+	for _, view := range []string{"tree", "ready"} {
+		a := viewApp(t, plain, 120, 30, view, false)
+		a.View()
+		ids := a.view().Visible(a.env())
+		before := a.sess.Current()
+		send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 20, Y: 1})
+		if a.sess.Current() != before {
+			t.Errorf("%s: a click on the column header moved the cursor to %q", view, a.sess.Current())
+		}
+		send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 20, Y: 2 + firstIssueRow(view)})
+		if a.sess.Current() != ids[0] {
+			t.Errorf("%s: first row click selected %q, want %q", view, a.sess.Current(), ids[0])
+		}
+	}
+}
+
+func firstIssueRow(view string) int {
+	if view == "ready" {
+		return 1
+	}
+	return 0
 }

@@ -79,24 +79,24 @@ func TestBreakpoints(t *testing.T) {
 	}
 }
 
-func TestHeaderTabsFromRegularWidth(t *testing.T) {
-	narrow := lines(sample(t, plain, 79, 24))[0]
-	if strings.Contains(narrow, "2 Tree") || !strings.Contains(narrow, "Overview") {
-		t.Errorf("narrow header %q", narrow)
+func TestFooterTabsShrinkToNumbers(t *testing.T) {
+	narrow := lines(sample(t, plain, 60, 24))
+	if footer := narrow[len(narrow)-2]; strings.Contains(footer, "Tree") || !strings.Contains(footer, "[1] - 2 - 3 - 4 - 5 - 6") {
+		t.Errorf("narrow footer %q", footer)
 	}
-	regular := lines(sample(t, plain, 80, 24))[0]
-	if !strings.Contains(regular, "1 Overview") || !strings.Contains(regular, "2 Tree") {
-		t.Errorf("regular header %q", regular)
+	regular := lines(sample(t, plain, 80, 24))
+	if footer := regular[len(regular)-2]; !strings.Contains(footer, "[1 Overview] - 2 Tree - 3 Kanban") {
+		t.Errorf("regular footer %q", footer)
 	}
 }
 
 func TestHeaderIsOneRuleAndFooterTwoRows(t *testing.T) {
 	a := sample(t, plain, 80, 24)
 	ls := lines(a)
-	if !strings.Contains(ls[0], "12:00:00 -") || !strings.HasPrefix(ls[0], "- [1 Overview]") {
+	if !strings.Contains(ls[0], "12:00:00 -") || !strings.HasPrefix(ls[0], "- Overview - demo") {
 		t.Errorf("header %q", ls[0])
 	}
-	if !strings.HasPrefix(ls[22], "---") || strings.Contains(ls[22], "help") {
+	if !strings.HasPrefix(ls[22], "- [1 Overview]") || strings.Contains(ls[22], "help") {
 		t.Errorf("footer rule %q", ls[22])
 	}
 	if !strings.Contains(ls[23], "? help") {
@@ -178,8 +178,8 @@ func TestViewsRegisterIntoTheShell(t *testing.T) {
 	if a.slot != 1 || a.view() != View(second) {
 		t.Errorf("slot %d", a.slot)
 	}
-	if !strings.Contains(lines(a)[0], "[2 Tree]") {
-		t.Errorf("header %q", lines(a)[0])
+	if ls := lines(a); !strings.Contains(ls[len(ls)-2], "[2 Tree]") || !strings.HasPrefix(ls[0], "- Tree") {
+		t.Errorf("header %q footer %q", ls[0], ls[len(ls)-2])
 	}
 }
 
@@ -418,7 +418,7 @@ func TestMouse(t *testing.T) {
 	if a.sess.Current() != ids[3] {
 		t.Errorf("click selected %q", a.sess.Current())
 	}
-	send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 17, Y: 0})
+	send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 17, Y: a.bodyHeight() + 1})
 	if a.slot != 0 || a.hint == "" {
 		t.Errorf("click on the Tree tab: slot %d hint %q", a.slot, a.hint)
 	}

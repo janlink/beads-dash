@@ -1,11 +1,11 @@
-- [1 Overview]  2 Tree  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
-|   ? P4 ws-1zz   Mystery status issue                                          
+- Overview - demo -------------------------------------------- * live 12:00:00 -
+|   ? ws-1zz   task    Mystery status issue                    P4               
   +- Notifications ------------------------------------------------ 4 kinds -+  
-  |   [x] Notifications on                                                   |ce
+  |   [x] Notifications on                                                   |  
   |                                                                          |  
   | Tell me when an issue                                                    |  
   |   [ ] created                                                            |  
-  | > [x] claimed                                                            |ob
+  | > [x] claimed                                                            |  
   |   [ ] unassigned                                                         |  
   |   [x] closed                                                             |  
   |   [ ] reopened                                                           |  
@@ -20,5 +20,5 @@
   |                                                                          |  
   | Your own changes never notify. Method: auto                              |  
   +------------------------ Enter save  Esc cancel  Space toggle  Up/Dn row -+  
---------------------------------------------------------------------------------
+- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
  Enter save  Esc cancel  Space toggle  Up/Dn row                                

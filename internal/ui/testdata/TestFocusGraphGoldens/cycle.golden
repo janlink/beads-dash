@@ -1,19 +1,19 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph --------------------------------------- * live 12:00:00 -
-      * gr-a Extract pricing client                                                                                   P2
-      o gr-b Migrate cart totals                                                                                      P2
-      o gr-c Migrate invoice totals with a rather long title that needs cutting somewhere                             P2
-      o gr-d Remove legacy pricing                                                                                    P2
-    v o gr-e Checkout epic                                                                                    0/2 ------
-    |-  o gr-e1 Address form                                                                                          P2
-    `-  o gr-e2 Confirmation mail                                                                                     P2
-      o gr-l Depends on closed                                                                                        P2
-      o gr-lone1 Standalone chore                                                                                     P2
-      ~ gr-lone2 Another standalone chore                                                                             P2
-      o gr-w Cache metrics                                                                                            P2
-      o gr-x Cache warmup                                                                                             P2
-      o gr-y Cache eviction                                                                                           P2
-|     o gr-z Cache sizing                                                                                             P2
-                                                                                                                        
+- Tree - demo -------------------------------------------------------------------- 15 issues · 14/14 - * live 12:00:00 -
+        ID         TYPE TITLE                                                                  PR STATUS      WHO       
+      * gr-a       task Extract pricing client                                                 P2 in progress           
+      o gr-b       task Migrate cart totals                                                    P2                       
+      o gr-c       task Migrate invoice totals with a rather long title that needs cutting ... P2                       
+      o gr-d       task Remove legacy pricing                                                  P2                       
+    v o gr-e       task Checkout epic                                                          0/2 ------               
+    |-  o gr-e1    task Address form                                                           P2                       
+    `-  o gr-e2    task Confirmation mail                                                      P2                       
+      o gr-l       task Depends on closed                                                      P2                       
+      o gr-lone1   task Standalone chore                                                       P2                       
+      ~ gr-lone2   task Another standalone chore                                               P2 deferred              
+      o gr-w       task Cache metrics                                                          P2                       
+      o gr-x       task Cache warmup                                                           P2                       
+      o gr-y       task Cache eviction                                                         P2                       
+|     o gr-z       task Cache sizing                                                           P2                       
                                                                                                                         
                                                                                                                         
                                                                                                                         
@@ -35,6 +35,6 @@
    > holds up (2)                                                                                                       
    |- o gr-w Cache metrics                                                                                              
    `- o gr-x @ Cache warmup                                                                                             
-      `- o gr-y @ Cache eviction                                                                                        
----------------------------------------------------------------------------------------------------------------- 14/14 -
- ? help  j/k scroll  ]/[ section  1-6 switch view  Enter jump  t appearance  / search  m markdown or source  r refresh  
+                                                                                                                        
+- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ----------------------------------------------------
+ j/k scroll  ]/[ section  Enter jump  : cmd  ? help                o open  * in progress  ! blocked  x closed  ~ frozen 

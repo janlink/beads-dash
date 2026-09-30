@@ -1,10 +1,10 @@
-- 1 Overview  2 Tree  [3 Kanban]  4 Ready  5 Memories  6 Graph ----------------------------------------------------------- * live 12:00:00 -
+- Kanban - demo --------------------------------------------------------------------------------------- 15 issues · 1/10 - * live 12:00:00 -
 - [Open] 5 ----------------------- - In progress 2 ------------------ - Blocked 2 ---------------------- - Frozen 1 ------------------ 1> - 
-|   P0 Payment provider timeout...     P1 Checkout: gue... ##---- 2/5     P2 Split pricing service   ! 1     P3 Search: typo tolerance      
-    P1 Address form validation         P2 Cart badge shows st... @bob     P2 Guest order confirma... ! 1                                    
-    P2 Follow-up from a ... @alice                                                                                                          
+|   P0 bug     Payment provider...     P1 Checkout: gue... ##---- 2/5     P2 feature Split pricin... ! 1     P3 feature Search: typo tol... 
+    P1 task    Address form val...     P2 bug     Cart badge ... @bob     P2 task    Guest order ... ! 1                                    
+    P2 task    Follow-up... @alice                                                                                                          
     P3 Shipping options ------ 0/1                                                                                                          
-    P3 Pickup point lookup  @carol                                                                                                          
+    P3 task    Pickup po... @carol                                                                                                          
                                                                                                                                             
                                                                                                                                             
                                                                                                                                             
@@ -34,5 +34,5 @@
                                                                                                                                             
                                                                                                                                             
                                                                                                                                             
-------------------------------------------------------------------------------------------------------------------------------------- 1/10 -
- ? help  q quit  j/k move  Space mark  Enter open  1-6 switch view  t appearance  / search  r refresh  f filter  : command  Ctrl+P jump     
+- 1 Overview - 2 Tree - [3 Kanban] - 4 Ready - 5 Memories - 6 Graph ------------------------------------------------------------------------
+ / search  f filter  Enter details  : cmd  ? help                                      o open  * in progress  ! blocked  x closed  ~ frozen 

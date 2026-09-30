@@ -25,8 +25,8 @@ func Default() *Map {
 		{Keys: []string{"D"}, Action: DetailToggle, Desc: "show or hide the detail panel"},
 	}
 	m.by[View] = []Binding{
-		{Keys: []string{"q"}, Action: Quit, Desc: "quit", Hint: 2},
-		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "move down", Hint: 3, HintKey: "j/k", HintDesc: "move"},
+		{Keys: []string{"q"}, Action: Quit, Desc: "quit"},
+		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "move down", HintKey: "j/k"},
 		{Keys: []string{"k", "up"}, Action: NavUp, Label: "k/Up", Desc: "move up"},
 		{Keys: []string{"g g", "home"}, Action: NavFirst, Label: "gg", Desc: "first"},
 		{Keys: []string{"G", "end"}, Action: NavLast, Label: "G", Desc: "last"},
@@ -34,14 +34,14 @@ func Default() *Map {
 		{Keys: []string{"ctrl+u"}, Action: NavHalfUp, Label: "Ctrl+U", Desc: "half page up"},
 		{Keys: []string{"pgdown"}, Action: NavPageDown, Label: "PgDn", Desc: "page down"},
 		{Keys: []string{"pgup"}, Action: NavPageUp, Label: "PgUp", Desc: "page up"},
-		{Keys: []string{"space"}, Action: Mark, Label: "Space", Desc: "mark", Hint: 3},
+		{Keys: []string{"space"}, Action: Mark, Label: "Space", Desc: "mark"},
 		{Keys: []string{"h", "left"}, Action: Left, Label: "h/Left", Desc: "column, collapse"},
 		{Keys: []string{"l", "right"}, Action: Right, Label: "l/Right", Desc: "column, expand"},
 		{Keys: []string{"z h"}, Action: ScrollLeft, Label: "zh", Desc: "scroll left"},
 		{Keys: []string{"z l"}, Action: ScrollRight, Label: "zl", Desc: "scroll right"},
 		{Keys: []string{"z H"}, Action: ScrollHalfLeft, Label: "zH", Desc: "scroll half a screen left"},
 		{Keys: []string{"z L"}, Action: ScrollHalfRight, Label: "zL", Desc: "scroll half a screen right"},
-		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the detail, fold row", Hint: 4, HintDesc: "open"},
+		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the detail, fold row"},
 		{Keys: []string{"e"}, Action: Edit, Desc: "edit"},
 		{Keys: []string{"n"}, Action: New, Desc: "new issue"},
 		{Keys: []string{"s"}, Action: ChangeStatus, Desc: "status"},
@@ -58,10 +58,10 @@ func Default() *Map {
 		{Keys: []string{"-"}, Action: "narrow", Desc: "less", Later: true},
 	}
 	m.by[Memories] = []Binding{
-		{Keys: []string{"n"}, Action: MemoryNew, Desc: "new memory", Hint: 2, HintDesc: "new"},
-		{Keys: []string{"e"}, Action: MemoryEdit, Desc: "edit memory", Hint: 4, HintDesc: "edit"},
-		{Keys: []string{"d"}, Action: MemoryForget, Desc: "forget memory, or the marked ones", Hint: 5, HintDesc: "forget"},
-		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the content", Hint: 6, HintDesc: "copy"},
+		{Keys: []string{"n"}, Action: MemoryNew, Desc: "new memory"},
+		{Keys: []string{"e"}, Action: MemoryEdit, Desc: "edit memory"},
+		{Keys: []string{"d"}, Action: MemoryForget, Desc: "forget memory, or the marked ones"},
+		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the content"},
 		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the full-screen preview below 80 columns"},
 	}
 	m.by[Tree] = []Binding{
@@ -69,10 +69,10 @@ func Default() *Map {
 		{Keys: []string{"z R"}, Action: UnfoldAll, Label: "zR", Desc: "unfold all"},
 	}
 	m.by[Overview] = []Binding{
-		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the detail, or the view that owns the row", Hint: 4, HintDesc: "open"},
+		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the detail, or the view that owns the row"},
 	}
 	m.by[Graph] = []Binding{
-		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "focus the graph on the issue; on the focus, open the detail", Hint: 4, HintDesc: "focus"},
+		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "focus the graph on the issue; on the focus, open the detail"},
 		{Keys: []string{"z M"}, Action: FoldAll, Label: "zM", Desc: "fold all"},
 		{Keys: []string{"z R"}, Action: UnfoldAll, Label: "zR", Desc: "unfold all"},
 		{Keys: []string{"i"}, Action: ToggleIsolated, Desc: "show or hide issues without dependencies"},
@@ -80,7 +80,7 @@ func Default() *Map {
 		{Keys: []string{"-"}, Action: DepthLess, Desc: "shallower focus graph"},
 	}
 	m.by[Panel] = []Binding{
-		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "scroll down", Hint: 3, HintKey: "j/k", HintDesc: "scroll"},
+		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "scroll down", HintKey: "j/k"},
 		{Keys: []string{"k", "up"}, Action: NavUp, Label: "k/Up", Desc: "scroll up"},
 		{Keys: []string{"g g", "home"}, Action: NavFirst, Label: "gg", Desc: "top"},
 		{Keys: []string{"G", "end"}, Action: NavLast, Label: "G", Desc: "bottom"},
@@ -88,15 +88,15 @@ func Default() *Map {
 		{Keys: []string{"ctrl+u"}, Action: NavHalfUp, Label: "Ctrl+U", Desc: "half page up"},
 		{Keys: []string{"pgdown"}, Action: NavPageDown, Label: "PgDn", Desc: "page down"},
 		{Keys: []string{"pgup"}, Action: NavPageUp, Label: "PgUp", Desc: "page up"},
-		{Keys: []string{"]"}, Action: SectionNext, Desc: "next section", Hint: 4, HintKey: "]/[", HintDesc: "section"},
+		{Keys: []string{"]"}, Action: SectionNext, Desc: "next section", HintKey: "]/["},
 		{Keys: []string{"["}, Action: SectionPrev, Desc: "previous section"},
 		{Keys: []string{"h", "left"}, Action: Left, Label: "h/Left", Desc: "close section"},
 		{Keys: []string{"l", "right"}, Action: Right, Label: "l/Right", Desc: "open section, show all lines"},
-		{Keys: []string{"enter"}, Action: Jump, Label: "Enter", Desc: "jump to the issue on the row; open or close a section", Hint: 5, HintDesc: "jump"},
+		{Keys: []string{"enter"}, Action: Jump, Label: "Enter", Desc: "jump to the issue on the row; open or close a section"},
 		{Keys: []string{"o"}, Action: SectionsAll, Desc: "open or close all sections"},
 		{Keys: []string{"+"}, Action: DepthMore, Desc: "deeper focus graph"},
 		{Keys: []string{"-"}, Action: DepthLess, Desc: "shallower focus graph"},
-		{Keys: []string{"m"}, Action: Markdown, Desc: "markdown or source", Hint: 6},
+		{Keys: []string{"m"}, Action: Markdown, Desc: "markdown or source"},
 		{Keys: []string{"y"}, Action: CopyID, Desc: "copy ID"},
 		{Keys: []string{"x"}, Action: Export, Desc: "export"},
 	}

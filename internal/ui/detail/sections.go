@@ -199,7 +199,7 @@ func (p *Panel) children(in Input, is *model.Issue, bw int) block {
 	add := func(ids []string) {
 		for _, id := range ids[:min(len(ids), childCap)] {
 			b.targets = append(b.targets, target{id: id, line: len(b.body)})
-			b.body = append(b.body, in.Rows.Tree(model.TreeRow{Kind: model.TreeIssue, ID: id})(bw, false))
+			b.body = append(b.body, in.Rows.Flat(model.TreeRow{Kind: model.TreeIssue, ID: id})(bw, false))
 		}
 		if len(ids) > childCap {
 			b.body = append(b.body, l.Paint(theme.Faint, fmt.Sprintf("+%d more", len(ids)-childCap)))
@@ -208,7 +208,7 @@ func (p *Panel) children(in Input, is *model.Issue, bw int) block {
 	add(live)
 	if len(closed) > 0 {
 		b.targets = append(b.targets, target{fold: true, line: len(b.body)})
-		b.body = append(b.body, in.Rows.Tree(model.TreeRow{Kind: model.TreeClosedFold, ID: is.ID, Foldable: true, Folded: !p.closedOpen, Closed: len(closed)})(bw, false))
+		b.body = append(b.body, in.Rows.Flat(model.TreeRow{Kind: model.TreeClosedFold, ID: is.ID, Foldable: true, Folded: !p.closedOpen, Closed: len(closed)})(bw, false))
 		if p.closedOpen {
 			add(closed)
 		}

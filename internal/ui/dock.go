@@ -1,6 +1,8 @@
 package ui
 
 import (
+	"strings"
+
 	tea "charm.land/bubbletea/v2"
 
 	"github.com/janlink/beads-dash/internal/config"
@@ -148,9 +150,13 @@ func (a *App) panelAct(act keys.Action) {
 func (a *App) panelInput(d detail.Dock) detail.Input {
 	cur := a.sess.Current()
 	now := a.now()
+	h := d.H
+	if d.Frame == detail.Bottom {
+		h -= bottomGap
+	}
 	in := detail.Input{
 		Look: a.look, Gen: a.lookGen, Snap: a.snap, Statuses: a.bds.Statuses, Rows: a.rend,
-		ID: cur, Now: now, Frame: d.Frame, W: d.W, H: d.H,
+		ID: cur, Now: now, Frame: d.Frame, W: d.W, H: h,
 		Focused: d.Frame == detail.Overlay || a.sess.Has(state.LayerDetailFocus),
 	}
 	if a.hl.Live(cur, now) {
@@ -159,8 +165,17 @@ func (a *App) panelInput(d detail.Dock) detail.Input {
 	return in
 }
 
+// bottomGap is the blank row between a bottom panel and the footer rule.
+const bottomGap = 1
+
 func (a *App) panelLines(d detail.Dock) []string {
-	return a.panel.Render(a.panelInput(d))
+	lines := a.panel.Render(a.panelInput(d))
+	if d.Frame == detail.Bottom {
+		for range bottomGap {
+			lines = append(lines, strings.Repeat(" ", a.cols))
+		}
+	}
+	return lines
 }
 
 // mdMsg carries a finished markdown rendering to the panel.
@@ -200,7 +215,7 @@ func (a *App) overPanel(x, y int) bool {
 	case detail.Side:
 		return x >= a.cols-d.W
 	case detail.Bottom:
-		return y >= a.bodyHeight()-d.H
+		return y >= a.bodyHeight()-d.H && y < a.bodyHeight()-bottomGap
 	case detail.Hidden:
 	}
 	return false

@@ -1,16 +1,16 @@
-- Ready --------------------------------------- * 12:00:00 -
+- Ready - demo -------------- 15 issues · 1/4 - * 12:00:00 -
+      ID         TYPE    TITLE                            PR
    - Unassigned 2 ------------------------------------------
-|   o ws-9qe     P0 Payment provider timeout retries        
-    o ws-4k2.1   P1 Address form validation                 
+|   o ws-9qe     bug     Payment provider timeout retries P0
+    o ws-4k2.1   task    Address form validation          P1
    - Assigned, not started 2 -------------------------------
-    o ws-lost    P2 Follow-up from a deleted epic           
-    o ws-4k2.5.1 P3 Pickup point lookup                     
+    o ws-lost    task    Follow-up from a deleted epic    P2
+    o ws-4k2.5.1 task    Pickup point lookup              P3
    - > Blocked 2 -------------------------------------------
                                                             
                                                             
                                                             
                                                             
                                                             
-                                                            
-- 1 container hidden --------------------------------- 1/4 -
- ? help  q quit  j/k move  Space mark  Enter open           
+- 1 - 2 - 3 - [4] - 5 - 6 ------------- 1 container hidden -
+ / search  f filter  Enter details  : cmd  ? help           

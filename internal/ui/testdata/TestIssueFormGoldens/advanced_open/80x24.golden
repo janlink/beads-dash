@@ -1,12 +1,12 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
-|     o ws-9qe Payment provider timeout retries                               P0
-  +- Edit ws-9qe ----------------------------------------------- field 9/18 -+--
-  |   Title*       Payment provider timeout retries                          |P1
-  |   Type         bug                                                       |P2
-  |   Priority     P0                                                        |P2
+- Tree - demo ------------------------------- 9 issues · 1/8 - * live 12:00:00 -
+        ID         TYPE    TITLE                       PR STATUS      WHO       
+| +- Edit ws-9qe ----------------------------------------------- field 9/18 -+  
+  |   Title*       Payment provider timeout retries                          |  
+  |   Type         bug                                                       |  
+  |   Priority     P0                                                        |  
   |   Status       open                                                      |  
-  |   Assignee                                                               |P3
-  |   Labels                                                                 |P4
+  |   Assignee                                                               |  
+  |   Labels                                                                 |  
   |   Parent       -                                                         |  
   |   Description                                                            |  
   |                                                                          |  
@@ -20,5 +20,5 @@
   |                                                                          |  
   | ... 14 more                                                              |  
   +-------------------------------------- Ctrl+S save  Esc close  Tab field -+  
--------------------------------------------------------------------------- 1/8 -
+- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
  Ctrl+S save  Esc close  Tab field                                              

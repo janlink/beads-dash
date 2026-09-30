@@ -19,17 +19,21 @@ const GutterWidth = 3
 const (
 	maxFactWidth = 14
 	minTitle     = 20
+	// maxTypeW caps the type column however long a custom type is.
+	maxTypeW = 10
 	// minIDCol is the narrowest an ID column is squeezed to, unless every ID is
 	// shorter.
 	minIDCol = 8
 )
 
-// Row is one row to draw and its per-frame state.
+// Row is one row to draw and its per-frame state. The gutter's status bar
+// follows the issue ID names unless NoBar is set.
 type Row struct {
 	ID      string
 	Current bool
 	Marked  bool
 	Changed bool
+	NoBar   bool
 }
 
 // Body draws the part of a row right of the gutter, exactly w cells wide; sel
@@ -50,10 +54,19 @@ type Renderer struct {
 	snap     *model.Snapshot
 	statuses model.Statuses
 	idW      int
+	typeW    int
+	depth    int
+	bars     bool
 	cache    map[cacheKey]string
 	terms    []needle
-	gutter   [2][2][2]string
+	gutter   [barStates][2][2][2]string
 }
+
+// barStates counts the status bar variants of a gutter: none, one per
+// presentation status, and an in-progress issue that bd calls blocked.
+const barStates = 8
+
+const barBlockedMarker = 7
 
 // New returns a renderer drawing with l.
 func New(l look.Look) *Renderer {
@@ -67,6 +80,7 @@ func (r *Renderer) SetLook(l look.Look) {
 	r.look = l
 	clear(r.cache)
 	g := l.Glyphs
+	r.bars = g.Tier != theme.TierASCII && barsDistinct(l)
 	cell := func(on bool, glyph string, role theme.Role, sel bool) string {
 		text := " "
 		if on {
@@ -82,14 +96,49 @@ func (r *Renderer) SetLook(l look.Look) {
 		}
 		return text
 	}
-	for cur := range 2 {
-		for mark := range 2 {
-			for change := range 2 {
-				r.gutter[cur][mark][change] = cell(cur == 1, g.Band, theme.Primary, cur == 1) +
-					cell(mark == 1, g.Mark, theme.Strong, cur == 1) +
-					cell(change == 1, g.Change, theme.Changed, cur == 1)
+	for bar := range barStates {
+		for cur := range 2 {
+			for mark := range 2 {
+				for change := range 2 {
+					band, role := cur == 1, theme.Primary
+					if bar > 0 && r.bars {
+						band, role = true, barRole(bar)
+					}
+					r.gutter[bar][cur][mark][change] = cell(band, g.Band, role, cur == 1) +
+						cell(mark == 1, g.Mark, theme.Strong, cur == 1) +
+						cell(change == 1, g.Change, theme.Changed, cur == 1)
+				}
 			}
 		}
+	}
+}
+
+// barsDistinct reports whether the palette tells statuses apart by colour; a
+// colourless one would draw every bar the same.
+func barsDistinct(l look.Look) bool {
+	if l.Palette.Depth() == theme.DepthNone {
+		return false
+	}
+	seen := map[string]bool{}
+	for i := range 6 {
+		seen[l.Paint(theme.BarRole(i), "x")] = true
+	}
+	return len(seen) >= 5
+}
+
+func barRole(bar int) theme.Role {
+	if bar == barBlockedMarker {
+		return theme.StatusBlocked
+	}
+	return theme.BarRole(bar - 1)
+}
+
+// SetTreeDepth sets the deepest level of the tree being drawn; tree rows pad
+// their guides to it so the columns after them line up.
+func (r *Renderer) SetTreeDepth(d int) {
+	if d != r.depth {
+		r.depth = d
+		clear(r.cache)
 	}
 }
 
@@ -101,10 +150,13 @@ func (r *Renderer) Bind(snap *model.Snapshot, st model.Statuses) {
 	}
 	r.snap, r.statuses = snap, st
 	clear(r.cache)
-	r.idW = 0
+	r.idW, r.typeW = 0, 0
 	if snap != nil {
 		for _, id := range snap.IDs() {
 			r.idW = max(r.idW, ansi.StringWidth(id))
+			if is, ok := snap.Issue(id); ok {
+				r.typeW = max(r.typeW, min(ansi.StringWidth(oneLine(is.IssueType)), maxTypeW))
+			}
 		}
 	}
 }
@@ -115,7 +167,23 @@ func (r *Renderer) idCol(avail int) int {
 	return max(min(r.idW, avail), min(r.idW, minIDCol))
 }
 
-// Gutter is the three gutter cells of a row.
+// barState picks the gutter's status bar variant of a row.
+func (r *Renderer) barState(row Row) int {
+	if !r.bars || row.NoBar || row.ID == "" || r.snap == nil {
+		return 0
+	}
+	if _, ok := r.snap.Issue(row.ID); !ok {
+		return 0
+	}
+	pres := r.snap.Present(row.ID, r.statuses)
+	if pres.BlockedMarker {
+		return barBlockedMarker
+	}
+	return look.StatusIndex(int(pres.Status)) + 1
+}
+
+// Gutter is the three gutter cells of a row: the status bar (or the current
+// band where there are no colours), the mark and the change marker.
 func (r *Renderer) Gutter(row Row) string {
 	b := func(v bool) int {
 		if v {
@@ -123,7 +191,7 @@ func (r *Renderer) Gutter(row Row) string {
 		}
 		return 0
 	}
-	return r.gutter[b(row.Current)][b(row.Marked)][b(row.Changed)]
+	return r.gutter[r.barState(row)][b(row.Current)][b(row.Marked)][b(row.Changed)]
 }
 
 // Line draws one row exactly w cells wide: the gutter composed for this
@@ -179,47 +247,107 @@ func (r *Renderer) render(w int, id string, sel, withAssignee bool) string {
 	}
 
 	prio := "P" + string(rune('0'+min(max(is.Priority, 0), 9)))
-	var fact string
-	if withAssignee {
-		fact = ansi.Truncate(oneLine(is.Assignee), maxFactWidth, g.Ellipsis)
-	}
-
-	rest := 1 + ansi.StringWidth(g.Status[idx]) + 1 + 2 + 1 + 1
-	reserve := 0
-	if withAssignee {
-		reserve = maxFactWidth + 1
-	}
-	idW := r.idCol(w - rest - reserve - minTitle)
-	idText := r.look.FitID(id, idW)
-	fixed := rest + idW
+	rest := 1 + ansi.StringWidth(g.Status[idx]) + 1 + 1 + 2 + 1
 	factW := 0
-	if fact != "" && w-fixed-1-ansi.StringWidth(fact) >= minTitle {
-		factW = ansi.StringWidth(fact)
-	} else {
-		fact = ""
+	if withAssignee {
+		factW = maxFactWidth + 1
 	}
-	titleW := w - fixed
-	if factW > 0 {
-		titleW -= factW + 1
+	typeW := r.typeCol(w - rest - factW - min(r.idW, minIDCol) - minTitle)
+	idW := r.idCol(w - rest - factW - typeW - minTitle)
+	idText := r.look.FitID(id, idW)
+	if withAssignee && w-rest-idW-typeW-factW < minTitle {
+		factW = 0
 	}
+	titleW := max(w-rest-idW-typeW-factW, 0)
+	dim := pres.Status == model.Closed
 	titleRole := theme.Text
-	if pres.Status == model.Closed {
+	if dim {
 		titleRole = theme.Dim
 	}
 	var b strings.Builder
-	b.WriteString(paint(theme.Text, " "))
+	sp := paint(theme.Text, " ")
+	b.WriteString(sp)
 	b.WriteString(paint(statusRole, g.Status[idx]))
-	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(paint(theme.PriorityRole(is.Priority), prio))
-	b.WriteString(paint(theme.Text, " "))
+	b.WriteString(sp)
 	b.WriteString(r.hl(paint, theme.Dim, idText))
-	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(r.hl(paint, titleRole, r.look.Fit(oneLine(is.Title), max(titleW, 0))))
+	b.WriteString(sp)
+	b.WriteString(r.typeCell(paint, is, typeW, dim))
+	b.WriteString(r.hl(paint, titleRole, r.look.Fit(oneLine(is.Title), titleW)))
+	b.WriteString(sp)
+	b.WriteString(paint(theme.PriorityRole(is.Priority), prio))
 	if factW > 0 {
-		b.WriteString(paint(theme.Text, " "))
-		b.WriteString(paint(theme.Dim, fact))
+		b.WriteString(sp)
+		b.WriteString(paint(theme.Dim, r.look.Fit(ansi.Truncate(oneLine(is.Assignee), maxFactWidth, g.Ellipsis), maxFactWidth)))
 	}
 	return b.String()
+}
+
+// typeCol is the width of the type column, including its separator, when room
+// cells are left for it and the title; it is zero when the column would not
+// leave the title its minimum.
+func (r *Renderer) typeCol(room int) int {
+	if r.typeW == 0 || room < r.typeW+1 {
+		return 0
+	}
+	return r.typeW + 1
+}
+
+// typeCell draws the type word padded to the column and its separator; it is
+// empty when the column is not shown.
+func (r *Renderer) typeCell(paint func(theme.Role, string) string, is *model.Issue, col int, dim bool) string {
+	if col == 0 {
+		return ""
+	}
+	role := theme.TypeRole(is.IssueType)
+	if dim {
+		role = theme.Dim
+	}
+	return paint(role, r.look.Fit(oneLine(is.IssueType), col-1)) + paint(theme.Text, " ")
+}
+
+// statusText names the status of an issue on a row's right side; it is empty
+// for an open issue, whose glyph says enough.
+func statusText(pres model.Presentation, is *model.Issue) string {
+	switch pres.Status {
+	case model.Open:
+		return ""
+	case model.InProgress:
+		return "in progress"
+	case model.Blocked:
+		return "blocked"
+	case model.Closed:
+		return "closed"
+	case model.Frozen, model.Other:
+	}
+	return strings.ReplaceAll(oneLine(is.Status), "_", " ")
+}
+
+// headerCell is one label of a column header: where its column starts, how
+// wide it is (0 for as far as there is room) and its text.
+type headerCell struct {
+	at, width int
+	text      string
+}
+
+// headerLine draws a dim header of w cells from cells in increasing order of
+// position; a label is cut to its column.
+func (r *Renderer) headerLine(w int, cells []headerCell) string {
+	var b strings.Builder
+	x := 0
+	for _, c := range cells {
+		if c.at < x || c.at >= w {
+			continue
+		}
+		b.WriteString(strings.Repeat(" ", c.at-x))
+		cw := c.width
+		if cw == 0 {
+			cw = w - c.at
+		}
+		text := ansi.Truncate(c.text, cw, "")
+		b.WriteString(r.look.Paint(theme.Faint, text))
+		x = c.at + ansi.StringWidth(text)
+	}
+	return r.look.Fit(b.String(), w)
 }
 
 // oneLine replaces C0 and C1 control characters so a title cannot break the layout.

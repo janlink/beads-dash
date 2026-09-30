@@ -104,6 +104,19 @@ var Ladder = []Role{Strong, Text, Dim, Faint, Rule}
 // Frozen, Closed, Other) to its role.
 func StatusRole(i int) Role { return StatusOpen + Role(clamp(i, 0, 5)) }
 
+// BarRole maps a presentation status index to the role of the status bar at a
+// row's left edge. It is louder than the status glyph's role: in progress is
+// warning-coloured and closed is success-coloured.
+func BarRole(i int) Role {
+	switch clamp(i, 0, 5) {
+	case 1:
+		return Warning
+	case 4:
+		return Success
+	}
+	return StatusRole(i)
+}
+
 // PriorityRole maps a priority 0..4 to its role.
 func PriorityRole(p int) Role { return Priority0 + Role(clamp(p, 0, 4)) }
 

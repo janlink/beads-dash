@@ -1,12 +1,12 @@
-- 1 Overview  [2 Tree]  3 Kanban  4 Ready  5 Memories  6 Graph ---- * 12:00:00 -
- #    o ws-9qe Payment provider timeout retries                               P0
-    v * ws-4k2 Checkout: guest orders                                 0/2 ------
-    |-  o ws-4k2.1 Address form validation                                    P1
-  +- Export ----------------------------------------------------- field 4/5 -+P2
- #|   Set          Marked (3)                                                |P2
-|#|   Format       JSON                                                      |  
-  |   Comments     [ ]                                                       |P3
-  |   Target       < File >                                                  |P4
+- Tree - demo ------------------------------- 9 issues · 6/8 - * live 12:00:00 -
+        ID         TYPE    TITLE                       PR STATUS      WHO       
+ #    o ws-9qe     bug     Payment provider timeout... P0                       
+    v * ws-4k2     epic    Checkout: guest orders      0/2 ------               
+  +- Export ----------------------------------------------------- field 4/5 -+  
+  |   Set          Marked (3)                                                |  
+ #|   Format       JSON                                                      |  
+|#|   Comments     [ ]                                                       |  
+  |   Target       < File >                                                  |  
   |   Path         ws-marked-20260929-1200.json                              |  
   |   3 issues · JSON · 292 B                                                |  
   |   [                                                                      |  
@@ -20,5 +20,5 @@
   +------------------------------------ Ctrl+S export  Esc close  Tab field -+  
                                                                                 
                                                                                 
-- # 3 marked ------------------------------------------------------------- 6/8 -
+- 1 - [2] - 3 - 4 - 5 - 6 ----------------------------------------- # 3 marked -
  Ctrl+S export  Esc close  Tab field                                            

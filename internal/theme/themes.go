@@ -1,6 +1,9 @@
 package theme
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // Theme is a named set of role colours. Dark and Light are authored in hex;
 // ANSI16 is the one hand-authored table for 16-colour terminals, which has no
@@ -69,6 +72,8 @@ type spec struct {
 	primary, success, errc, warning string
 	yellow, cyan, violet            string
 	changed, match                  string
+	// roles overrides single roles after the shared slots are expanded.
+	roles map[Role]string
 }
 
 func (s spec) expand() (t [roleCount]string) {
@@ -85,7 +90,7 @@ func (s spec) expand() (t [roleCount]string) {
 	t[Priority4] = s.faint
 	t[TypeBug] = s.errc
 	t[TypeFeature] = s.success
-	t[TypeTask] = s.text
+	t[TypeTask] = s.primary
 	t[TypeEpic] = s.violet
 	t[TypeChore] = s.dim
 	t[TypeDecision] = s.cyan
@@ -104,7 +109,27 @@ func (s spec) expand() (t [roleCount]string) {
 	t[Selection] = s.selection
 	t[Changed] = s.changed
 	t[Match] = s.match
+	for r, hex := range s.roles {
+		t[r] = hex
+	}
 	return t
+}
+
+// xterm is the hex colour of an xterm-256 palette index in the colour cube
+// (16..231) or the grey ramp (232..255).
+func xterm(i int) string {
+	if i >= 232 {
+		v := 8 + 10*(i-232)
+		return fmt.Sprintf("#%02x%02x%02x", v, v, v)
+	}
+	i -= 16
+	level := func(n int) int {
+		if n == 0 {
+			return 0
+		}
+		return 55 + 40*n
+	}
+	return fmt.Sprintf("#%02x%02x%02x", level(i/36), level(i/6%6), level(i%6))
 }
 
 func mono(fg int, a Attr) Attr {
@@ -142,7 +167,7 @@ func ansi16(primary int, colourless bool) (t [roleCount]Attr) {
 
 	t[TypeBug] = c(1, Attr{})
 	t[TypeFeature] = c(2, Attr{})
-	t[TypeTask] = Attr{FG: DefaultFG}
+	t[TypeTask] = c(primary, Attr{})
 	t[TypeEpic] = c(5, Attr{Bold: colourless})
 	t[TypeChore] = Attr{FG: DefaultFG, Faint: true}
 	t[TypeDecision] = c(6, Attr{Underline: colourless})
@@ -160,26 +185,56 @@ func ansi16(primary int, colourless bool) (t [roleCount]Attr) {
 	return t
 }
 
+// defaultANSI16 is the default theme's 16-colour table: the shared table with
+// cyan as the primary colour, open, closed, priority 2 and 3 on their own ANSI
+// hues, and the neutral roles in the terminal's faint default foreground.
+func defaultANSI16() [roleCount]Attr {
+	t := ansi16(6, false)
+	neutral := Attr{FG: DefaultFG, Faint: true}
+	t[StatusOpen] = Attr{FG: 4}
+	t[StatusClosed] = Attr{FG: 2}
+	t[StatusFrozen] = neutral
+	t[StatusOther] = neutral
+	t[Priority2] = Attr{FG: 6}
+	t[Priority3] = Attr{FG: 4}
+	t[TypeTask] = Attr{FG: DefaultFG}
+	t[TypeChore] = neutral
+	t[TypeOther] = neutral
+	return t
+}
+
 var themes = []Theme{
 	{
 		Name: "default",
 		Dark: spec{
-			surface: "#1e1e2e", selection: "#313244",
-			strong: "#f5f5f7", text: "#cdd6f4", dim: "#a6adc8", faint: "#8087a2", rule: "#45475a",
-			border:  "#585b70",
-			primary: "#89b4fa", success: "#a6e3a1", errc: "#f38ba8", warning: "#fab387",
-			yellow: "#f9e2af", cyan: "#74c7ec", violet: "#b4befe",
-			changed: "#f9e2af", match: "#94e2d5",
+			surface: xterm(234), selection: xterm(237),
+			strong: xterm(255), text: xterm(253), dim: xterm(248), faint: xterm(243), rule: xterm(239),
+			border:  xterm(240),
+			primary: xterm(75), success: xterm(71), errc: xterm(203), warning: xterm(214),
+			yellow: xterm(214), cyan: xterm(80), violet: xterm(141),
+			changed: xterm(214), match: xterm(80),
+			roles: map[Role]string{
+				StatusClosed: xterm(71), StatusFrozen: xterm(245), StatusOther: xterm(245),
+				Priority1: xterm(209), Priority2: xterm(215), Priority3: xterm(246), Priority4: xterm(243),
+				TypeBug: xterm(209), TypeFeature: xterm(72), TypeTask: xterm(245), TypeEpic: xterm(141),
+				TypeChore: xterm(245), TypeDecision: xterm(177), TypeOther: xterm(245),
+			},
 		}.expand(),
 		Light: spec{
-			surface: "#eff1f5", selection: "#ccd0da",
-			strong: "#11111b", text: "#4c4f69", dim: "#50536b", faint: "#63667c", rule: "#bcc0cc",
-			border:  "#9ca0b0",
-			primary: "#1e66f5", success: "#2d7a1c", errc: "#c0173d", warning: "#b34d0a",
-			yellow: "#8a5a00", cyan: "#0f6f8f", violet: "#5b4fd1",
-			changed: "#8a5a00", match: "#0d7a6a",
+			surface: "#f4f4f4", selection: "#dadada",
+			strong: "#121212", text: "#303030", dim: "#4e4e4e", faint: "#6a6a6a", rule: "#bcbcbc",
+			border:  "#a8a8a8",
+			primary: "#005fd7", success: "#3c6e3c", errc: "#c62828", warning: "#9a5b00",
+			yellow: "#9a5b00", cyan: "#0b7a7a", violet: "#6b3fd4",
+			changed: "#9a5b00", match: "#0b7a7a",
+			roles: map[Role]string{
+				StatusClosed: "#3c6e3c", StatusFrozen: "#6a6a6a", StatusOther: "#6c6c6c",
+				Priority1: "#b84a1e", Priority2: "#9a5b00", Priority3: "#606060", Priority4: "#8a8a8a",
+				TypeBug: "#b84a1e", TypeFeature: "#1f7a55", TypeTask: "#6c6c6c", TypeEpic: "#6b3fd4",
+				TypeChore: "#6c6c6c", TypeDecision: "#a23fa2", TypeOther: "#6c6c6c",
+			},
 		}.expand(),
-		ANSI16: ansi16(12, false),
+		ANSI16: defaultANSI16(),
 	},
 	{
 		Name: "ocean",
