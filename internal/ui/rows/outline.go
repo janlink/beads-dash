@@ -190,7 +190,8 @@ func (r *Renderer) outlineLabel(row model.OutlineRow, w int, paint func(theme.Ro
 
 func (r *Renderer) refLabel(row model.OutlineRow, w int, text func(theme.Role, string) string) string {
 	g := r.look.Glyphs
-	head := RefGlyph(g) + " " + r.look.TruncID(row.ID, maxIDWidth)
+	glyph := RefGlyph(g) + " "
+	head := glyph + r.look.TruncID(row.ID, r.idCol(w-ansi.StringWidth(glyph)-1-minTitle))
 	title := ""
 	if is, ok := r.snap.Issue(row.ID); ok {
 		title = oneLine(is.Title)
@@ -227,16 +228,21 @@ func (r *Renderer) issueLabel(row model.OutlineRow, w int, text func(theme.Role,
 	}
 	head.WriteString(text(statusRole, g.Status[idx]))
 	head.WriteString(text(theme.Text, " "))
-	id := r.look.TruncID(is.ID, maxIDWidth)
-	head.WriteString(r.hl(text, idRole, id))
 	headW := ansi.StringWidth(head.String())
+	extra := 0
 	if row.Member {
-		head.WriteString(text(theme.Changed, " "+CycleGlyph(g)))
-		headW += 1 + ansi.StringWidth(CycleGlyph(g))
+		extra = 1 + ansi.StringWidth(CycleGlyph(g))
 	}
 	suffix := ""
 	if st.Hidden > 0 {
 		suffix = fmt.Sprintf(" %s%d", FoldedGlyph(g), st.Hidden)
+	}
+	id := r.look.TruncID(is.ID, r.idCol(w-headW-extra-1-ansi.StringWidth(suffix)-minTitle))
+	head.WriteString(r.hl(text, idRole, id))
+	headW += ansi.StringWidth(id)
+	if row.Member {
+		head.WriteString(text(theme.Changed, " "+CycleGlyph(g)))
+		headW += extra
 	}
 	titleW := w - headW - 1 - ansi.StringWidth(suffix)
 	if titleW <= 0 {

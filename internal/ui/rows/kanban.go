@@ -48,8 +48,10 @@ func (r *Renderer) card(id string, w int, sel bool) string {
 	fact = ansi.Truncate(fact, kanbanFactW, r.look.Glyphs.Ellipsis)
 	fixed := 1 + 2 + 1
 	withID := w+GutterWidth >= kanbanIDCol
+	idW := 0
 	if withID {
-		fixed += r.idW + 1
+		idW = r.idCol(w - fixed - 1 - kanbanFactW - 1 - minKanbanTitle)
+		fixed += idW + 1
 	}
 	factW := ansi.StringWidth(fact)
 	if factW > 0 && w-fixed-factW-1 < minKanbanTitle {
@@ -65,7 +67,7 @@ func (r *Renderer) card(id string, w int, sel bool) string {
 	b.WriteString(paint(theme.PriorityRole(is.Priority), "P"+strconv.Itoa(min(max(is.Priority, 0), 9))))
 	b.WriteString(sp)
 	if withID {
-		b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(id, r.idW)))
+		b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(id, idW)))
 		b.WriteString(sp)
 	}
 	b.WriteString(r.hl(paint, theme.Text, r.look.Fit(oneLine(is.Title), titleW)))
@@ -105,6 +107,3 @@ func (r *Renderer) cardFact(is *model.Issue) (theme.Role, string) {
 	}
 	return theme.Dim, ""
 }
-
-// IDWidth is the width the ID column of the snapshot's rows takes.
-func (r *Renderer) IDWidth() int { return r.idW }

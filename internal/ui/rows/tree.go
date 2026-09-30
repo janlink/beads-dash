@@ -27,6 +27,9 @@ const (
 	guideShare = 40
 	// minTitle cells stay for the title however deep the row sits.
 	minTreeTitle = 20
+	// treeIDRef is the ID width guides are budgeted for; a wider ID takes the
+	// room left over.
+	treeIDRef = 16
 )
 
 // UpGlyph marks a root whose parent is not in the snapshot.
@@ -86,16 +89,11 @@ func (r *Renderer) tree(row model.TreeRow, w int, sel bool) string {
 		textRole = theme.Dim
 	}
 
-	id := r.look.TruncID(is.ID, maxIDWidth)
 	sw := ansi.StringWidth(g.Status[idx])
 
 	prog, container := r.snap.Progress(row.ID, r.statuses)
-	orphan := ""
-	if row.Orphan != "" {
-		orphan = UpGlyph(g) + " " + r.look.TruncID(row.Orphan, maxIDWidth)
-	}
 	who := ansi.Truncate(oneLine(is.Assignee), treeWho, g.Ellipsis)
-	showBar, showWho, showOrphan := !narrow, !narrow && who != "", orphan != ""
+	showBar, showWho, showOrphan := !narrow, !narrow && who != "", false
 
 	factWidth := func() int {
 		switch {
@@ -108,9 +106,17 @@ func (r *Renderer) tree(row model.TreeRow, w int, sel bool) string {
 		}
 		return 2
 	}
-	fixed := 1 + 2 + sw + 1 + ansi.StringWidth(id) + 1
-	guideCap := max(min(w*guideShare/100, w-fixed-minTreeTitle-5), treeIndent)
+	rest := 1 + 2 + sw + 1 + 1
+	guideCap := max(min(w*guideShare/100, w-rest-min(r.idW, treeIDRef)-minTreeTitle-5), treeIndent)
 	guides, gw := r.guides(row, guideCap, paint)
+	idCap := r.idCol(w - gw - rest - 1 - factWidth() - minTreeTitle)
+	id := r.look.TruncID(is.ID, idCap)
+	fixed := rest + ansi.StringWidth(id)
+	orphan := ""
+	if row.Orphan != "" {
+		orphan = UpGlyph(g) + " " + r.look.TruncID(row.Orphan, idCap)
+		showOrphan = true
+	}
 	room := func() int {
 		n := w - gw - fixed - 1 - factWidth()
 		if showOrphan {

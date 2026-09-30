@@ -17,6 +17,9 @@ const (
 	readyAgeW    = 4
 	readyReasonW = 22
 	minReadyCols = 20
+	// readyIDRef is the ID width the columns are chosen for; a wider ID takes
+	// the room left over.
+	readyIDRef = 16
 )
 
 // ReadyCols says which optional columns of a Ready row are shown. The
@@ -31,7 +34,8 @@ type ReadyCols struct {
 // the title less than 20 cells, in the same order.
 func (r *Renderer) ReadyColumns(w int) ReadyCols {
 	c := ReadyCols{Type: w >= 90, Assignee: w >= 80, Age: w >= 100, Reason: w >= 120}
-	room := func() int { return w - GutterWidth - r.readyFixed(c) }
+	idW := min(r.idW, readyIDRef)
+	room := func() int { return w - GutterWidth - r.readyFixed(c, idW) }
 	if room() < minReadyCols {
 		c.Reason = false
 	}
@@ -47,9 +51,11 @@ func (r *Renderer) ReadyColumns(w int) ReadyCols {
 	return c
 }
 
-func (r *Renderer) readyFixed(c ReadyCols) int {
+// readyFixed is the width of the row besides title and ID column, with the ID
+// column counted at idW.
+func (r *Renderer) readyFixed(c ReadyCols, idW int) int {
 	sw := ansi.StringWidth(r.look.Glyphs.Status[0])
-	n := 1 + sw + 1 + r.idW + 1 + 2 + 1
+	n := 1 + sw + 1 + idW + 1 + 2 + 1
 	if c.Type {
 		n += readyTypeW + 1
 	}
@@ -99,7 +105,13 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 		statusRole = theme.StatusBlocked
 	}
 	cols := row.Cols
-	fixed := r.readyFixed(cols)
+	fixed := r.readyFixed(cols, 0)
+	reserve := 0
+	if row.Pinned && !cols.Reason {
+		reserve = readyReasonW + 1
+	}
+	idW := r.idCol(w - fixed - reserve - minReadyCols)
+	fixed += idW
 	reason := ansi.Truncate(row.Reason, readyReasonW, g.Ellipsis)
 	switch {
 	case cols.Reason:
@@ -115,7 +127,7 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 	b.WriteString(sp)
 	b.WriteString(paint(statusRole, g.Status[idx]))
 	b.WriteString(sp)
-	b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(is.ID, r.idW)))
+	b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(is.ID, idW)))
 	b.WriteString(sp)
 	b.WriteString(paint(theme.PriorityRole(is.Priority), "P"+strconv.Itoa(min(max(is.Priority, 0), 9))))
 	b.WriteString(sp)

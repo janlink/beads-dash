@@ -17,9 +17,11 @@ import (
 const GutterWidth = 3
 
 const (
-	maxIDWidth   = 16
 	maxFactWidth = 14
 	minTitle     = 20
+	// minIDCol is the narrowest an ID column is squeezed to, unless every ID is
+	// shorter.
+	minIDCol = 8
 )
 
 // Row is one row to draw and its per-frame state.
@@ -105,7 +107,12 @@ func (r *Renderer) Bind(snap *model.Snapshot, st model.Statuses) {
 			r.idW = max(r.idW, ansi.StringWidth(id))
 		}
 	}
-	r.idW = min(r.idW, maxIDWidth)
+}
+
+// idCol is the width of the ID column when avail cells are left for it: the
+// longest ID if that fits, else the room, but never less than minIDCol.
+func (r *Renderer) idCol(avail int) int {
+	return max(min(r.idW, avail), min(r.idW, minIDCol))
 }
 
 // Gutter is the three gutter cells of a row.
@@ -172,13 +179,19 @@ func (r *Renderer) render(w int, id string, sel, withAssignee bool) string {
 	}
 
 	prio := "P" + string(rune('0'+min(max(is.Priority, 0), 9)))
-	idText := r.look.FitID(id, r.idW)
 	var fact string
 	if withAssignee {
 		fact = ansi.Truncate(oneLine(is.Assignee), maxFactWidth, g.Ellipsis)
 	}
 
-	fixed := 1 + ansi.StringWidth(g.Status[idx]) + 1 + 2 + 1 + r.idW + 1
+	rest := 1 + ansi.StringWidth(g.Status[idx]) + 1 + 2 + 1 + 1
+	reserve := 0
+	if withAssignee {
+		reserve = maxFactWidth + 1
+	}
+	idW := r.idCol(w - rest - reserve - minTitle)
+	idText := r.look.FitID(id, idW)
+	fixed := rest + idW
 	factW := 0
 	if fact != "" && w-fixed-1-ansi.StringWidth(fact) >= minTitle {
 		factW = ansi.StringWidth(fact)

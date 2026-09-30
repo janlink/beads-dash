@@ -425,3 +425,36 @@ func TestClosedChildrenRowExpandsAndCollapses(t *testing.T) {
 		t.Errorf("h among closed children folds them and keeps the section:\n%s", out)
 	}
 }
+
+func TestWideDetailShowsFullRelatedIDs(t *testing.T) {
+	const parent, child, blocker = "beads-dash-www.31", "beads-dash-www.32", "beads-dash-www.33"
+	issues := []model.Issue{
+		{ID: parent, Title: "Parent", Status: "open", IssueType: "epic", Priority: 1, CreatedAt: now},
+		{
+			ID: child, Title: "Child", Status: "open", IssueType: "task", Priority: 2, Parent: parent, CreatedAt: now,
+			Dependencies: []model.Edge{{From: child, To: blocker, Type: "blocks"}},
+		},
+		{ID: blocker, Title: "Blocker", Status: "open", IssueType: "task", Priority: 2, CreatedAt: now},
+	}
+	snap := model.NewSnapshot(issues, model.Readiness{Blocked: map[string][]string{child: {blocker}}}, now)
+	for _, tc := range []struct {
+		id   string
+		want []string
+	}{
+		{parent, []string{child}},
+		{child, []string{parent, blocker}},
+	} {
+		in := input(t, snap, tc.id, Overlay, 200, 30)
+		out := text(New().Render(in))
+		for _, want := range tc.want {
+			if !strings.Contains(out, want) {
+				t.Errorf("%s at 200 columns lacks the full %s:\n%s", tc.id, want, out)
+			}
+		}
+	}
+	in := input(t, snap, child, Overlay, 40, 30)
+	out := text(New().Render(in))
+	if strings.Contains(out, blocker) || !strings.Contains(out, "www.33") {
+		t.Errorf("40 columns should front-cut %s:\n%s", blocker, out)
+	}
+}
