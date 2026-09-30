@@ -218,8 +218,12 @@ var (
 	EmptyReady    = Empty{Title: "Nothing is ready to work on.", Body: "Every open issue is blocked or already claimed."}
 	EmptyBlocked  = Empty{Title: "Nothing is blocked.", Body: "No open issue waits on another."}
 	EmptyScope    = Empty{Title: "The scope matches nothing.", Body: "Esc clears the scope."}
-	EmptyMemories = Empty{Title: "No memories yet.", Body: "bd remember \"insight\" stores one."}
-	EmptyGraph    = Empty{Title: "No dependencies to draw.", Body: "Link issues with bd dep add."}
+	EmptyMemories = Empty{
+		Title: "No memories yet.",
+		Body:  "bd injects memories into every agent session (bd prime), so keep them short and durable.",
+		Hints: []keys.Hint{{Key: "n", Desc: "new memory"}, {Key: "bd remember \"<insight>\" --key <key>"}},
+	}
+	EmptyGraph = Empty{Title: "No dependencies to draw.", Body: "Link issues with bd dep add."}
 )
 
 // EmptyScopeMatch is the block for a scope that shows no issue. hiddenClosed

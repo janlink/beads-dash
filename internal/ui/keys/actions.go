@@ -84,6 +84,16 @@ const (
 	TakeTheirs Action = "conflict.theirs"
 	Reload     Action = "conflict.reload"
 
+	MemoryNew    Action = "memory.new"
+	MemoryEdit   Action = "memory.edit"
+	MemoryForget Action = "memory.forget"
+	MemoryCopy   Action = "memory.copy"
+
+	DoOverwrite   Action = "overwrite"
+	KeepBoth      Action = "keep.both"
+	JournalEnable Action = "journal.enable"
+	JournalNever  Action = "journal.never"
+
 	Retry  Action = "retry"
 	Copy   Action = "copy"
 	PickUp Action = "pick.up"

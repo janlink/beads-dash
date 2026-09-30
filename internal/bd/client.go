@@ -104,10 +104,7 @@ type HistoryEntry struct {
 }
 
 // Memory is a keyed note stored in the workspace.
-type Memory struct {
-	Key     string
-	Content string
-}
+type Memory = model.Memory
 
 // ConfigValue is the answer of bd config get. Value is empty for an unset
 // key.

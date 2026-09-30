@@ -85,14 +85,18 @@ func (a *App) barOpen() bool {
 }
 
 func (a *App) openBar(k barKind) {
-	if a.snap == nil {
+	if a.snap == nil && !a.inMemories() {
 		a.hint = "nothing to search yet"
 		return
 	}
 	b := &bar{kind: k, in: input.New("")}
 	switch k {
 	case barSearch:
-		b.in.Set(a.scope.Query())
+		if a.inMemories() {
+			b.in.Set(a.mem.query.Text())
+		} else {
+			b.in.Set(a.scope.Query())
+		}
 		b.rec = a.searchHist
 	case barCommand:
 		b.rec = a.commandHist
@@ -326,6 +330,10 @@ type (
 func (a *App) barEdited() {
 	if b := a.bar; b != nil && b.kind == barSearch {
 		b.dirty = false
+		if a.inMemories() {
+			a.mem.setQuery(b.in.Text())
+			return
+		}
 		a.applyScope(model.ParseScope(b.in.Text(), a.scope.ShowClosed()))
 	}
 }
@@ -421,6 +429,9 @@ func (a *App) completions(text string) command.Completion {
 // searchCompletion completes the last word of a search: a facet name, a
 // facet value, or an issue ID.
 func (a *App) searchCompletion(text string) command.Completion {
+	if a.inMemories() {
+		return command.Completion{}
+	}
 	i := strings.LastIndex(text, " ")
 	start := utf8.RuneCountInString(text[:i+1])
 	tok := text[i+1:]
@@ -612,6 +623,9 @@ func (a *App) barLines() []string {
 }
 
 func (a *App) counts() string {
+	if a.inMemories() {
+		return fmt.Sprintf("%d/%d", len(a.mem.shown()), len(a.mem.list))
+	}
 	shown, total := 0, 0
 	if m := a.matches(); m != nil {
 		shown = m.Len()

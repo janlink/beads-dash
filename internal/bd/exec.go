@@ -26,8 +26,8 @@ type ExecOptions struct {
 	Runner Runner
 }
 
-// ExecClient is the [Client] backed by the bd CLI. Comment, Remember, Forget
-// and ConfigSet return [ErrNotImplemented].
+// ExecClient is the [Client] backed by the bd CLI. Comment returns
+// [ErrNotImplemented].
 type ExecClient struct {
 	runner   Runner
 	timeouts Timeouts
@@ -298,12 +298,3 @@ func (c *ExecClient) ConfigGet(ctx context.Context, key string) (ConfigValue, er
 
 // Comment is not implemented yet.
 func (c *ExecClient) Comment(context.Context, string, string) error { return ErrNotImplemented }
-
-// Remember is not implemented yet.
-func (c *ExecClient) Remember(context.Context, string, string) error { return ErrNotImplemented }
-
-// Forget is not implemented yet.
-func (c *ExecClient) Forget(context.Context, string) error { return ErrNotImplemented }
-
-// ConfigSet is not implemented yet.
-func (c *ExecClient) ConfigSet(context.Context, string, string) error { return ErrNotImplemented }

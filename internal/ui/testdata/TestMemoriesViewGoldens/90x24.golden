@@ -1,0 +1,24 @@
+ 1 Overview  2 Tree  3 Kanban  4 Ready  [5 Memories]  6 Graph  4 · 514    * live 12:00:00 
+|  dolt-push-needs-remote  Run bd dolt push only after the remote is set.                 
+   golden-update           Regenerate goldens with `just golden-update` and review the ...
+   no-tabs                 Go files use tabs; everything else uses two spaces.            
+   test-pump               Engine-driven tests share one persistent pump.                 
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+------------------------------------------------------------------------------------------
+dolt-push-needs-remote · 4 lines · 86 chars                                               
+Run bd dolt push only after the remote is set.                                            
+                                                                                          
+* check  bd dolt remote                                                                   
+* never force                                                                             
+                                                                                          
+                                                                                          
+ ? help  n new  q quit  j/k move  Space mark  e edit  1-6 switch view  d forget           

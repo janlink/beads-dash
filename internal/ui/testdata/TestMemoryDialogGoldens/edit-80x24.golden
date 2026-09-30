@@ -1,0 +1,24 @@
+ 1 Overview  2 Tree  3 Kanban  4 Ready  [5 Memories]  6 Graph   * live 12:00:00 
+   dolt-push-needs-remote  Run bd dolt push only after the remote is set.       
+|  golden-update           Regenerate goldens with `just golden-update` and r...
+   no-tabs                 Go files use tabs; everything else uses two spaces.  
+   test-pump               Engine-driven tests share one persistent pump.       
+                                                                                
+                                                                                
+  +- Edit memory ------------------------------------------------ field 1/2 -+  
+  |   Key*         golden-update                                             |  
+  |   Content*                                                               |  
+  |   Regenerate goldens with `just golden-update` and review the diff.      |  
+  |                                                                          |  
+  |                                                                          |  
+  |                                                                          |  
+  |                                                                          |  
+--|                                                                          |--
+go+-------------------------------------- Ctrl+S save  Esc close  Tab field -+  
+Regenerate goldens with  just golden-update  and review the diff.               
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+ Ctrl+S save  Esc close  Tab field                                              

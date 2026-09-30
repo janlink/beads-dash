@@ -1,0 +1,8 @@
+{
+  "data": {
+    "action": "remembered",
+    "key": "some-content-words-here-for-the-slug",
+    "value": "some content words here for the slug"
+  },
+  "schema_version": 1
+}

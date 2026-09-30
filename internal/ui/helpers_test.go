@@ -42,8 +42,9 @@ func testOptions(f flavour, mod func(*Options)) Options {
 			DetectDepth: func() theme.Depth { return theme.DepthTrueColor },
 			Probe:       func(term.Options) term.Result { return term.Result{Dark: true} },
 		}),
-		Client: bd.NewFake(),
-		Now:    func() time.Time { return uitest.T0 },
+		Client:  bd.NewFake(),
+		Journal: answeredJournal{},
+		Now:     func() time.Time { return uitest.T0 },
 	}
 	if mod != nil {
 		mod(&o)
@@ -151,3 +152,11 @@ func settle(a *App) {
 		send(a, searchTickMsg{b.gen})
 	}
 }
+
+// answeredJournal is a journal store whose viewer has declined already, so
+// no test meets the opt-in dialog by accident.
+type answeredJournal struct{}
+
+func (answeredJournal) Journal(string) config.JournalAnswer { return config.JournalDeclined }
+
+func (answeredJournal) SetJournal(string, config.JournalAnswer) error { return nil }

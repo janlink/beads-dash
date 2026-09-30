@@ -75,6 +75,7 @@ func uiOptions(s Session) ui.Options {
 	}
 	if s.State != nil {
 		o.History = s.State
+		o.Journal = s.State
 	}
 	return o
 }

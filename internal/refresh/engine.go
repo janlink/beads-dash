@@ -250,6 +250,26 @@ func (e *Engine) SetFocus(focused bool) {
 	})
 }
 
+// EnableEvents posts the switch to events mode, for a journal that was turned
+// on after the engine started. It does nothing in events mode already.
+func (e *Engine) EnableEvents() {
+	e.post(func() {
+		if e.mode == Events {
+			return
+		}
+		e.mode = Events
+		e.sess.EventsJournal = true
+		if e.snap != nil {
+			e.fl.history = true
+			if e.fl.boundary.IsZero() {
+				e.fl.boundary = e.clk.Now()
+			}
+			e.startFollower(e.ctx)
+		}
+		e.publishStatusIfChanged()
+	})
+}
+
 // SetNotify posts whether notifications are on and for which kinds.
 func (e *Engine) SetNotify(on bool, kinds model.KindSet) {
 	e.post(func() {

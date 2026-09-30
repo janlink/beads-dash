@@ -1,0 +1,10 @@
+{
+  "data": {
+    "Weird.Key": "a",
+    "schema_version": "v",
+    "some-content-words-here-for-the-slug": "some content words here for the slug",
+    "spaced key": "line1\nline2",
+    "weird.key": "b"
+  },
+  "schema_version": 1
+}

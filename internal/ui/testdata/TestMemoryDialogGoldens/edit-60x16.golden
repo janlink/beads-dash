@@ -1,0 +1,16 @@
++- Edit memory -------------------------------- field 1/2 -+
+|   Key*         golden-update                             |
+|   Content*                                               |
+|   Regenerate goldens with `just golden-update` and       |
+|   review the diff.                                       |
+|                                                          |
+|                                                          |
+|                                                          |
+|                                                          |
+|                                                          |
+|                                                          |
+|                                                          |
+|                                                          |
+|                                                          |
+|                                                          |
++---------------------- Ctrl+S save  Esc close  Tab field -+

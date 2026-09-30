@@ -4,6 +4,8 @@ import (
 	"context"
 	"time"
 
+	tea "charm.land/bubbletea/v2"
+
 	"github.com/janlink/beads-dash/internal/appearance"
 	"github.com/janlink/beads-dash/internal/bd"
 	"github.com/janlink/beads-dash/internal/config"
@@ -18,6 +20,8 @@ type Engine interface {
 	Updates() <-chan refresh.Update
 	Refresh()
 	SetFocus(focused bool)
+	// EnableEvents switches the engine to events mode once the journal is on.
+	EnableEvents()
 	// Do runs a lazy bd read in the serialized queue.
 	Do(ctx context.Context, fn func(context.Context, bd.Client) error) error
 	// Write runs a bd write in the serialized queue. ids are the issues it
@@ -49,6 +53,11 @@ type Options struct {
 	Store      Persister
 	// History is the persisted bar history; nil keeps it for the session.
 	History History
+	// Journal stores the events-journal opt-in answer per workspace; nil
+	// keeps it for the session.
+	Journal JournalStore
+	// CopyKey copies a memory key to the clipboard; nil leaves the hint.
+	CopyKey func(key string) tea.Cmd
 	// Warnings and the appearance notice are shown once in the notice row.
 	Warnings []string
 	NoMouse  bool

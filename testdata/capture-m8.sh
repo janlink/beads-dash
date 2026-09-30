@@ -85,3 +85,33 @@ state after-close-no-reason
 cap reopen-ok reopen "$A" --json --reason "back"
 cap reopen-already-open reopen "$A" --json
 cap reopen-missing-batch reopen "$D" m8-zzz --json
+
+# Memories: empty store, upserts, recalled shape, odd keys, failures.
+cap memories-empty memories --json
+cap forget-missing forget --json -- nokey
+cap remember-empty-content remember --key k --json -- ""
+cap remember-ok remember --key first-key --json -- "first content"
+cap remember-overwrite remember --key first-key --json -- "second content"
+cap remember-recalled-shape remember --json -- "some content words here for the slug"
+cap remember-leading-dash remember --key "-dash" --json -- "-content"
+cap remember-schema-version remember --key schema_version --json -- "v"
+cap remember-spaced-key remember --key "spaced key" --json -- "line1
+line2"
+cap remember-mixed-case-upper remember --key "Weird.Key" --json -- "a"
+cap remember-mixed-case-lower remember --key "weird.key" --json -- "b"
+cap memories-odd memories --json
+cap memories-odd-plain memories
+cap forget-ok forget --json -- first-key
+cap forget-leading-dash forget --json -- "-dash"
+cap forget-again forget --json -- first-key
+cap memories-after-forget memories --json
+
+# bd prime without memories and with two, in a fresh workspace: the difference
+# is the footprint the Memories view reports.
+PRIME=$(mktemp -d)
+(cd "$PRIME" && git init -q && bd init --non-interactive --prefix pr --stealth >/dev/null 2>&1 \
+  && bd prime >"$OUT/prime-none.txt" \
+  && bd remember "hello world" --key k1 >/dev/null \
+  && bd remember "two
+lines ä" --key k2 >/dev/null \
+  && bd prime >"$OUT/prime-two.txt")

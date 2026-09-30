@@ -658,3 +658,12 @@ func oneLine(s string) string {
 		return r
 	}, s)
 }
+
+// Markdown renders text as the panel renders prose, wrapped at w cells.
+func Markdown(l look.Look, text string, w int) []string {
+	text = cleanProse(text)
+	if text == "" {
+		return nil
+	}
+	return renderMarkdown(l, text, max(w, 1))
+}

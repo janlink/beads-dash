@@ -198,13 +198,8 @@ func TestStderrIsClipped(t *testing.T) {
 func TestUnbuiltCallsNotImplemented(t *testing.T) {
 	c := NewExec(ExecOptions{Runner: fixed(Result{}, errors.New("must not run"))})
 	ctx := context.Background()
-	for name, err := range map[string]error{
-		"Comment": c.Comment(ctx, "", ""), "Remember": c.Remember(ctx, "", ""),
-		"Forget": c.Forget(ctx, ""), "ConfigSet": c.ConfigSet(ctx, "", ""),
-	} {
-		if !errors.Is(err, ErrNotImplemented) {
-			t.Errorf("%s = %v", name, err)
-		}
+	if err := c.Comment(ctx, "", ""); !errors.Is(err, ErrNotImplemented) {
+		t.Errorf("Comment = %v", err)
 	}
 	if _, err := c.EventsFollow(ctx, 0); !errors.Is(err, ErrNotImplemented) {
 		t.Error("EventsFollow")

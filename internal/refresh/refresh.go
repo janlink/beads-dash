@@ -416,10 +416,18 @@ func (e *Engine) statusNow() Status {
 		LastRefresh:    e.lastSnapDur,
 		GCHint:         e.gcHint,
 		HashUnreliable: e.unreliable,
+		Commit:         e.hashValue(),
 		Focused:        e.focused,
 		Paused:         e.paused(),
 	}
 	return s
+}
+
+func (e *Engine) hashValue() string {
+	if e.hashKnown {
+		return e.hash
+	}
+	return ""
 }
 
 func (e *Engine) publishStatusIfChanged() {

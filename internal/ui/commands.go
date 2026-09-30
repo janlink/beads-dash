@@ -88,6 +88,8 @@ func (a *App) registerBuiltins() {
 		},
 	}, (*App).cmdGo)
 	a.registerWrites()
+	a.registerMemories()
+	a.registerJournal()
 }
 
 // choose completes an argument from a fixed list.

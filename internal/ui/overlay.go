@@ -10,11 +10,21 @@ import (
 func (a *App) hintsFor(c keys.Context) []keys.Hint { return a.km.Hints(c) }
 
 func (a *App) errorReport() screens.Report {
-	err := a.status.Err
-	if err == nil {
-		err = a.startErr
+	return screens.Diagnose(a.reportInput(a.detailError(), false, false))
+}
+
+// detailError is the failure the details dialog explains: the engine's, the
+// startup one, or the failed read of the memories.
+func (a *App) detailError() error {
+	switch {
+	case a.status.Err != nil:
+		return a.status.Err
+	case a.startErr != nil:
+		return a.startErr
+	case a.inMemories() && a.mem.err != nil:
+		return a.mem.err
 	}
-	return screens.Diagnose(a.reportInput(err, false, false))
+	return nil
 }
 
 func (a *App) reportInput(err error, first, vanished bool) screens.Input {

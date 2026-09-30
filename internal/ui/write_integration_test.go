@@ -3,6 +3,12 @@ package ui
 import (
 	"strings"
 	"testing"
+	"time"
+
+	tea "charm.land/bubbletea/v2"
+
+	"github.com/janlink/beads-dash/internal/bd"
+	"github.com/janlink/beads-dash/internal/refresh"
 
 	"github.com/janlink/beads-dash/internal/testbd"
 )
@@ -94,5 +100,79 @@ func TestIntegrationBulkPriorityOnThreeMarks(t *testing.T) {
 		if n := len(r.a.sess.MarkedIDs()); n != 0 {
 			t.Errorf("%d marks left", n)
 		}
+	})
+}
+
+func TestIntegrationMemoriesRememberRenameForget(t *testing.T) {
+	testbd.EachVersion(t, func(t *testing.T, w testbd.Workspace) {
+		r := newLiveRig(t, w, 120, 40, "tree")
+		r.key("5")
+		r.line("remember Prefer small commits")
+		r.key("ctrl+s")
+		if _, ok := r.a.mem.get("prefer-small-commits"); !ok {
+			t.Fatalf("not remembered:\n%s", screen(r.a))
+		}
+
+		r.a.mem.cursor = "prefer-small-commits"
+		r.key("e")
+		r.a.topDialog().(*memoryDialog).f.Field(fMemKey).Set("small-commits")
+		r.key("ctrl+s")
+		if _, ok := r.a.mem.get("small-commits"); !ok {
+			t.Fatalf("not renamed:\n%s", screen(r.a))
+		}
+		if _, ok := r.a.mem.get("prefer-small-commits"); ok {
+			t.Error("old key survived the rename")
+		}
+
+		r.a.mem.cursor = "small-commits"
+		r.key("d", "y")
+		if len(r.a.mem.list) != 0 {
+			t.Errorf("left %v", r.a.mem.list)
+		}
+		out, err := w.Bd("memories", "--json")
+		if err != nil || strings.Contains(out, "small-commits") {
+			t.Errorf("bd still holds it: %v %s", err, out)
+		}
+	})
+}
+
+func TestIntegrationJournalOptInTurnsEventsOn(t *testing.T) {
+	w := testbd.New(t, "1.3.0")
+	client := bd.NewExec(bd.ExecOptions{Bin: w.Bin, Dir: w.Dir})
+	a := New(testOptions(plain, func(o *Options) {
+		withView("tree", false)(o)
+		o.Client, o.Journal, o.Now = client, &memJournal{}, time.Now
+	}))
+	send(a, tea.WindowSizeMsg{Width: 120, Height: 40})
+	p := newPump(t, a)
+	p.spawn(a.Init())
+	p.until(func() bool { return a.snap != nil && a.eng != nil })
+	t.Cleanup(func() {
+		a.eng.Stop()
+		a.cancel()
+	})
+	eng := a.eng.(*refresh.Engine)
+	if eng.Status().Mode == refresh.Events {
+		t.Fatal("events mode before the opt-in")
+	}
+	p.until(func() bool { return isOpen[*journalDialog](a) })
+	p.send(keyMsg("y"))
+	p.until(func() bool {
+		st := eng.Status()
+		return st.Mode == refresh.Events && st.Following
+	})
+	if out, err := w.Bd("config", "get", "events-journal"); err != nil || !strings.Contains(out, "true") {
+		t.Errorf("config %q %v", out, err)
+	}
+	if _, err := w.Bd("--actor", "alice", "create", "--silent", "--title=After the opt-in"); err != nil {
+		t.Fatal(err)
+	}
+	p.until(func() bool {
+		for _, e := range a.feed.Newest() {
+			if e.Actor == "alice" && !e.Prefill {
+				return true
+			}
+		}
+		return false
 	})
 }

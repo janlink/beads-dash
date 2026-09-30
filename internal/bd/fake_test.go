@@ -49,9 +49,12 @@ func TestFakeCoversEveryErrorClass(t *testing.T) {
 		"DepRemove": func(f *Fake) error {
 			return f.DepRemove(ctx, "a", "b")
 		},
-		"Comment":   func(f *Fake) error { return f.Comment(ctx, "a", "x") },
-		"Remember":  func(f *Fake) error { return f.Remember(ctx, "k", "v") },
-		"Forget":    func(f *Fake) error { return f.Forget(ctx, "k") },
+		"Comment":  func(f *Fake) error { return f.Comment(ctx, "a", "x") },
+		"Remember": func(f *Fake) error { return f.Remember(ctx, "k", "v") },
+		"Forget": func(f *Fake) error {
+			f.SetMemory("k", "v")
+			return f.Forget(ctx, "k")
+		},
 		"ConfigSet": func(f *Fake) error { return f.ConfigSet(ctx, "k", "v") },
 	}
 	for method, call := range reads {

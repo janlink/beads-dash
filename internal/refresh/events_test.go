@@ -1,6 +1,7 @@
 package refresh
 
 import (
+	"context"
 	"errors"
 	"io"
 	"reflect"
@@ -550,5 +551,46 @@ func TestUnfocusedWithNotificationsStillRefreshesOnRecords(t *testing.T) {
 	r.step(10 * time.Second)
 	if got := r.since(m); !reflect.DeepEqual(got, []string{"VCStatus"}) {
 		t.Errorf("blurred gate: %v", got)
+	}
+}
+
+func TestEnableEventsStartsFollowerLate(t *testing.T) {
+	r := newRig(t, rigOpts{})
+	if r.eng.Status().Mode != Polling || r.count("EventsFollow") != 0 {
+		t.Fatal("started in events mode")
+	}
+	r.fake.SetConfig("events-journal", "true")
+	r.eng.EnableEvents()
+	r.eng.barrier()
+	st := r.eng.Status()
+	if st.Mode != Events || !st.Following {
+		t.Fatalf("status = %+v", st)
+	}
+	if got := r.fake.FollowStarts(); !reflect.DeepEqual(got, []int64{0}) {
+		t.Errorf("follow starts = %v", got)
+	}
+	r.eng.EnableEvents()
+	r.eng.barrier()
+	if got := r.fake.FollowStarts(); len(got) != 1 {
+		t.Errorf("second EnableEvents restarted the follower: %v", got)
+	}
+}
+
+func TestStatusCommitMovesWithMemoryWrite(t *testing.T) {
+	r := newRig(t, rigOpts{})
+	before := r.eng.Status().Commit
+	if before == "" {
+		t.Fatal("no commit in the first status")
+	}
+	n := len(r.updates())
+	if err := r.eng.Do(r.ctx, func(ctx context.Context, c bd.Client) error { return c.Remember(ctx, "k", "v") }); err != nil {
+		t.Fatal(err)
+	}
+	r.step(3 * time.Second)
+	if got := r.eng.Status().Commit; got == before {
+		t.Errorf("commit still %q", got)
+	}
+	if len(r.updates()) == n {
+		t.Error("a commit change without a snapshot change published nothing")
 	}
 }

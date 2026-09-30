@@ -58,9 +58,11 @@ func Default() *Map {
 		{Keys: []string{"-"}, Action: "narrow", Desc: "less", Later: true},
 	}
 	m.by[Memories] = []Binding{
-		{Keys: []string{"n"}, Action: "memory.new", Desc: "new memory", Later: true},
-		{Keys: []string{"e"}, Action: "memory.edit", Desc: "edit memory", Later: true},
-		{Keys: []string{"d"}, Action: "memory.forget", Desc: "forget memory", Later: true},
+		{Keys: []string{"n"}, Action: MemoryNew, Desc: "new memory", Hint: 2, HintDesc: "new"},
+		{Keys: []string{"e"}, Action: MemoryEdit, Desc: "edit memory", Hint: 4, HintDesc: "edit"},
+		{Keys: []string{"d"}, Action: MemoryForget, Desc: "forget memory, or the marked ones", Hint: 5, HintDesc: "forget"},
+		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the key", Hint: 6, HintDesc: "copy key"},
+		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the full-screen preview below 80 columns"},
 	}
 	m.by[Tree] = []Binding{
 		{Keys: []string{"z M"}, Action: FoldAll, Label: "zM", Desc: "fold all"},
@@ -96,6 +98,18 @@ func Default() *Map {
 		{Keys: []string{"-"}, Action: DepthLess, Desc: "shallower focus graph"},
 		{Keys: []string{"m"}, Action: Markdown, Desc: "markdown or source", Hint: 6},
 		{Keys: []string{"y"}, Action: "copy.id", Desc: "copy ID", Later: true},
+	}
+	m.by[MemoryPreview] = []Binding{
+		{Keys: []string{"j", "down"}, Action: NavDown, Label: "j/Down", Desc: "scroll down", Hint: 3, HintKey: "j/k", HintDesc: "scroll"},
+		{Keys: []string{"k", "up"}, Action: NavUp, Label: "k/Up", Desc: "scroll up"},
+		{Keys: []string{"g g", "home"}, Action: NavFirst, Label: "gg", Desc: "top"},
+		{Keys: []string{"G", "end"}, Action: NavLast, Label: "G", Desc: "bottom"},
+		{Keys: []string{"ctrl+d"}, Action: NavHalfDown, Label: "Ctrl+D", Desc: "half page down"},
+		{Keys: []string{"ctrl+u"}, Action: NavHalfUp, Label: "Ctrl+U", Desc: "half page up"},
+		{Keys: []string{"pgdown"}, Action: NavPageDown, Label: "PgDn", Desc: "page down"},
+		{Keys: []string{"pgup"}, Action: NavPageUp, Label: "PgUp", Desc: "page up"},
+		{Keys: []string{"m"}, Action: Markdown, Desc: "markdown or source", Hint: 4},
+		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the key", Hint: 5, HintDesc: "copy key"},
 	}
 	m.by[Bar] = []Binding{
 		{Keys: []string{"enter"}, Action: BarAccept, Label: "Enter", Desc: "keep the search and close", Hint: 1, HintDesc: "keep"},
@@ -142,6 +156,16 @@ func Default() *Map {
 	m.by[Confirm] = []Binding{
 		{Keys: []string{"y"}, Action: Apply, Desc: "yes", Hint: 1},
 		{Keys: []string{"n", "esc", "enter"}, Action: Close, Label: "n/Esc", Desc: "no", Hint: 2, HintKey: "n", HintDesc: "no"},
+	}
+	m.by[Overwrite] = []Binding{
+		{Keys: []string{"o"}, Action: DoOverwrite, Desc: "overwrite", Hint: 1},
+		{Keys: []string{"b"}, Action: KeepBoth, Desc: "keep both", Hint: 2},
+		{Keys: []string{"esc"}, Action: Close, Label: "Esc", Desc: "back", Hint: 3},
+	}
+	m.by[Journal] = []Binding{
+		{Keys: []string{"y"}, Action: JournalEnable, Desc: "enable", Hint: 1},
+		{Keys: []string{"n", "esc"}, Action: Close, Label: "n/Esc", Desc: "not now", Hint: 2, HintKey: "n", HintDesc: "not now"},
+		{Keys: []string{"N"}, Action: JournalNever, Desc: "never for this workspace", Hint: 3, HintDesc: "never"},
 	}
 	m.by[Refused] = []Binding{
 		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "jump to the selected blocker", Hint: 1, HintDesc: "jump"},

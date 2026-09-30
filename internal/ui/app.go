@@ -115,6 +115,10 @@ type App struct {
 	cmds        *command.Table
 	run         map[string]commandFunc
 
+	mem                                         *memState
+	journalAsked, journalDeclined, journalLater bool
+	localJournal                                *memJournal
+
 	writeSeq int
 	pending  map[int]writeOp
 	// pendingCurrent is an issue the current one moves to as soon as a
@@ -129,6 +133,7 @@ func New(o Options) *App {
 		o: o, km: o.Keys, mx: keys.NewMatcher(o.Keys),
 		app: o.Appearance, cols: 80, rows: 24, focused: true,
 		sess: state.New(),
+		mem:  newMemState(),
 		hl:   state.NewHighlights(time.Duration(o.Settings.Settings.HighlightSeconds) * time.Second),
 		choices: dialog.Choices{
 			Theme: o.Settings.Settings.Theme, Background: o.Settings.Settings.Background, Glyphs: o.Settings.Settings.Glyphs,
@@ -155,6 +160,8 @@ func New(o Options) *App {
 	}
 	if !hasView(a.views) {
 		a.views[0] = &placeholder{}
+	} else if a.views[memSlot] == nil {
+		a.views[memSlot] = &memoriesView{a: a}
 	}
 	a.slot = a.startSlot()
 	for _, w := range o.Warnings {
@@ -284,7 +291,7 @@ func (a *App) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	if s, ok := a.view().(Syncer); ok && a.snap != nil {
 		s.Sync(a.env())
 	}
-	cmd = tea.Batch(cmd, a.renderJobs())
+	cmd = tea.Batch(cmd, a.renderJobs(), a.memSync())
 	if a.needsClock() && !a.ticking && !a.quitting {
 		a.ticking = true
 		cmd = tea.Batch(cmd, tea.Tick(time.Second, func(time.Time) tea.Msg { return clockMsg{} }))
@@ -330,6 +337,8 @@ func (a *App) update(msg tea.Msg) tea.Cmd {
 		a.panel.ApplyAudit(m.res)
 	case writeDoneMsg:
 		return a.onWrite(m)
+	case memReadMsg:
+		return a.onMemRead(m)
 	case closedMsg:
 	case recheckMsg:
 		if m.gen == a.checkGen && a.startErr != nil && !a.checking {
@@ -454,7 +463,10 @@ func (a *App) apply(u refresh.Update) tea.Cmd {
 		old := slices.Clone(a.view().Visible(a.env()))
 		a.snap = u.Snapshot
 		a.rend.Bind(a.snap, a.bds.Statuses)
-		exists := func(id string) bool { _, ok := a.snap.Issue(id); return ok }
+		exists := func(id string) bool {
+			_, ok := a.snap.Issue(id)
+			return ok || strings.HasPrefix(id, memPrefix)
+		}
 		a.sess.Prune(exists)
 		a.hl.Prune(exists)
 		a.keepCurrent(old)
@@ -476,6 +488,7 @@ func (a *App) apply(u refresh.Update) tea.Cmd {
 	if a.report != nil {
 		cmds = append(cmds, a.cancelDialogs())
 	}
+	a.maybeAskJournal()
 	return tea.Batch(cmds...)
 }
 
@@ -684,6 +697,11 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 			return tea.Batch(cmd, a.syncPause())
 		}
 	}
+	if a.inMemories() {
+		if cmd, ok := a.memAct(act); ok {
+			return tea.Batch(cmd, a.syncPause())
+		}
+	}
 	switch act { //nolint:exhaustive // the action set is open: views add their own
 	case keys.Retry, keys.Refresh:
 		return a.retry()
@@ -700,7 +718,7 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 	case keys.OpenAppearance:
 		a.pushDialog(a.newAppearanceDialog())
 	case keys.OpenDetails:
-		if a.status.Err == nil && a.startErr == nil {
+		if a.detailError() == nil {
 			a.hint = "no error to show"
 			return nil
 		}
@@ -960,6 +978,7 @@ func (a *App) retry() tea.Cmd {
 		a.startFails = 0
 		return a.recheck()
 	}
+	a.memRefresh()
 	a.panel.RetryAudit()
 	if a.eng != nil {
 		a.eng.Refresh()
@@ -1034,6 +1053,10 @@ func (a *App) wheel(m tea.Mouse) {
 	default:
 		return
 	}
+	if a.inMemories() {
+		a.memWheel(m.X, m.Y-1, n)
+		return
+	}
 	if a.overPanel(m.X, m.Y-1) {
 		a.panel.ScrollBy(n)
 		return
@@ -1103,6 +1126,9 @@ func (a *App) render() string {
 }
 
 func (a *App) body(h int) []string {
+	if a.inMemories() {
+		return a.view().Render(a.env(), a.cols, h)
+	}
 	switch {
 	case a.snap == nil:
 		return screens.RenderEmpty(a.look, screens.Empty{Title: "Reading the workspace"}, a.cols, h)

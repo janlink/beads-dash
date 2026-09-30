@@ -26,6 +26,7 @@ type Fake struct {
 	statuses  model.Statuses
 	types     []TypeInfo
 	vc        VCStatus
+	commits   int
 	comments  map[string][]Comment
 	history   map[string][]HistoryEntry
 	memories  map[string]string
@@ -347,6 +348,9 @@ type FakeWrite struct {
 	Update UpdateSpec
 	Create CreateSpec
 	Reason string
+	// Key is the memory a Remember or Forget named; Content is set by
+	// Remember only.
+	Key, Content string
 }
 
 // Writes returns the write calls so far, in order.
@@ -761,19 +765,39 @@ func (f *Fake) Remember(ctx context.Context, key, content string) error {
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.record(FakeWrite{Method: "Remember", Key: key, Content: content})
+	if err := CheckMemoryKey(key); err != nil {
+		return &Error{Class: ClassRejected, Command: "remember", Message: err.Error()}
+	}
+	if strings.TrimSpace(content) == "" {
+		return &Error{Class: ClassRejected, Command: "remember", Message: "content is empty"}
+	}
 	f.memories[key] = content
+	f.bumpVC()
 	return nil
 }
 
-// Forget implements [Client].
+// Forget implements [Client]. A key the fake does not hold gives
+// [ErrMemoryGone].
 func (f *Fake) Forget(ctx context.Context, key string) error {
 	if err := f.enter(ctx, "Forget"); err != nil {
 		return err
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.record(FakeWrite{Method: "Forget", Key: key})
+	if _, ok := f.memories[key]; !ok {
+		return ErrMemoryGone
+	}
 	delete(f.memories, key)
+	f.bumpVC()
 	return nil
+}
+
+// bumpVC moves the commit hash the way a bd write does.
+func (f *Fake) bumpVC() {
+	f.commits++
+	f.vc.Commit = fmt.Sprintf("m%d", f.commits)
 }
 
 // ConfigSet implements [Client].
@@ -783,6 +807,7 @@ func (f *Fake) ConfigSet(ctx context.Context, key, value string) error {
 	}
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.record(FakeWrite{Method: "ConfigSet", Key: key, Content: value})
 	f.config[key] = ConfigValue{Key: key, Value: value, Location: "config.yaml"}
 	return nil
 }

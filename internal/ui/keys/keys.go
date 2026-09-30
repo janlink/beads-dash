@@ -37,8 +37,15 @@ const (
 	BarFilter
 	// Form holds the keys inside form dialogs.
 	Form
+	// MemoryPreview holds the keys of a focused memory preview and of the
+	// preview layer.
+	MemoryPreview
 	// Confirm holds the keys of the confirmation dialog.
 	Confirm
+	// Overwrite holds the keys of the overwrite prompt.
+	Overwrite
+	// Journal holds the keys of the events-journal opt-in dialog.
+	Journal
 	// Refused holds the keys of the close dialog once bd refused.
 	Refused
 	// Picker holds the keys of the issue picker.
@@ -59,7 +66,7 @@ const (
 
 var contextNames = [contextCount]string{
 	Always: "always", Global: "global", View: "view", Memories: "memories", Tree: "tree", Overview: "overview", Graph: "graph", Panel: "panel",
-	Bar: "search bar", BarCommand: "command bar", BarFilter: "filter bar", Form: "form", Confirm: "confirm", Refused: "refused close", Picker: "picker", Help: "help", Appearance: "appearance",
+	Bar: "search bar", BarCommand: "command bar", BarFilter: "filter bar", Form: "form", MemoryPreview: "memory preview", Confirm: "confirm", Overwrite: "overwrite", Journal: "journal", Refused: "refused close", Picker: "picker", Help: "help", Appearance: "appearance",
 	Details: "details", Startup: "startup", TooSmall: "too small",
 }
 
@@ -148,7 +155,7 @@ func Layered(c Context) []Context {
 	if c == Memories || c == Tree || c == Overview || c == Graph {
 		return []Context{c, View, Global, Always}
 	}
-	if c == View || c == Panel {
+	if c == View || c == Panel || c == MemoryPreview {
 		return []Context{c, Global, Always}
 	}
 	if c == Always {

@@ -291,8 +291,8 @@ func TestCommandView(t *testing.T) {
 		t.Errorf("slot %d", a.slot)
 	}
 	runLine(a, "view memories")
-	if a.bar == nil || !strings.Contains(a.bar.err.Msg, "not available yet") {
-		t.Errorf("unavailable view: %+v", a.bar)
+	if a.slot != memSlot {
+		t.Errorf("slot %d after view memories", a.slot)
 	}
 }
 

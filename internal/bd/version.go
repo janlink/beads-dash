@@ -113,6 +113,9 @@ type VersionInfo struct {
 	caps    capabilities
 }
 
+// HasJournal reports whether this bd has an events journal to switch on.
+func (v VersionInfo) HasJournal() bool { return v.caps.eventsJournal }
+
 // CheckVersion judges a version string. It returns the info even for an
 // unsupported version, together with a [ClassUnsupported] error.
 func CheckVersion(raw string) (VersionInfo, error) {

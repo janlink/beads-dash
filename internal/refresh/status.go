@@ -57,6 +57,10 @@ type Status struct {
 	// HashUnreliable is set when the vc status hash does not track changes
 	// and the engine polls in full at the plain interval.
 	HashUnreliable bool
+	// Commit is the vc status hash the engine last saw, empty while it has
+	// none. It moves for every bd write, memories included, so a caller can
+	// tell that something outside the snapshot changed.
+	Commit string
 	// Focused and Paused: an unfocused terminal without notifications pauses
 	// polling.
 	Focused bool

@@ -1,0 +1,8 @@
+{
+  "data": {
+    "action": "remembered",
+    "key": "spaced key",
+    "value": "line1\nline2"
+  },
+  "schema_version": 1
+}

@@ -11,7 +11,7 @@ import (
 
 // dock is where the docked panel sits; nothing docks without issues.
 func (a *App) dock() detail.Dock {
-	if a.snap == nil || a.snap.Len() == 0 {
+	if a.snap == nil || a.snap.Len() == 0 || a.inMemories() {
 		return detail.Dock{}
 	}
 	return detail.Place(a.cols, a.bodyHeight(), a.docked)
@@ -23,7 +23,7 @@ func (a *App) frame() detail.Dock {
 	if d := a.dock(); d.Frame != detail.Hidden {
 		return d
 	}
-	if a.snap != nil && a.snap.Len() > 0 && a.sess.Has(state.LayerDetail) {
+	if a.snap != nil && a.snap.Len() > 0 && a.sess.Has(state.LayerDetail) && !a.inMemories() {
 		return detail.Dock{Frame: detail.Overlay, W: a.cols, H: a.bodyHeight()}
 	}
 	return detail.Dock{}
@@ -207,6 +207,10 @@ func (a *App) overPanel(x, y int) bool {
 }
 
 func (a *App) clickBody(x, y int) {
+	if a.inMemories() {
+		a.memClick(x, y)
+		return
+	}
 	if a.overPanel(x, y) {
 		if a.frame().Frame != detail.Overlay && !a.sess.Has(state.LayerDetailFocus) && a.sess.Current() != "" {
 			a.sess.Push(state.LayerDetailFocus)

@@ -97,6 +97,9 @@ func ageText(d time.Duration) string {
 
 // chips are the counters and health chips at the right of the footer.
 func (a *App) chips() string {
+	if a.inMemories() {
+		return a.memChips()
+	}
 	l := a.look
 	var parts []string
 	if n := a.sess.MarkCount(); n > 0 {
@@ -106,7 +109,8 @@ func (a *App) chips() string {
 		}
 		parts = append(parts, l.Paint(theme.Primary, s))
 	}
-	if ids := a.hl.IDs(a.now()); len(ids) > 0 {
+	ids := slices.DeleteFunc(a.hl.IDs(a.now()), func(id string) bool { return strings.HasPrefix(id, memPrefix) })
+	if len(ids) > 0 {
 		hidden := 0
 		for _, id := range ids {
 			if !a.visible(id) {
@@ -129,6 +133,9 @@ func (a *App) chips() string {
 	}
 	if a.status.GCHint {
 		parts = append(parts, l.Paint(theme.Warning, "gc"))
+	}
+	if a.journalLimited() {
+		parts = append(parts, l.Paint(theme.Dim, "limited: no actors"))
 	}
 	if a.status.Fallback {
 		parts = append(parts, l.Paint(theme.Warning, "journal-limited"))
@@ -213,6 +220,9 @@ func (a *App) escClears() bool {
 	}
 	if _, layered := a.sess.Top(); layered {
 		return false
+	}
+	if a.inMemories() {
+		return a.mem.focus || len(a.mem.marks) > 0 || a.mem.query.Active()
 	}
 	return a.sess.ScopeActive || a.sess.MarkCount() > 0
 }
