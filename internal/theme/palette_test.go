@@ -141,15 +141,14 @@ func TestRoleMapping(t *testing.T) {
 	}
 }
 
-func TestBarRole(t *testing.T) {
-	want := [6]Role{StatusOpen, Warning, StatusBlocked, StatusFrozen, Success, StatusOther}
-	for i, w := range want {
-		if got := BarRole(i); got != w {
-			t.Errorf("BarRole(%d) = %s, want %s", i, got, w)
+func TestGutterRole(t *testing.T) {
+	for p := range 5 {
+		if got := GutterRole(p, false); got != PriorityRole(p) {
+			t.Errorf("GutterRole(%d, open) = %s, want %s", p, got, PriorityRole(p))
 		}
-	}
-	if BarRole(-1) != StatusOpen || BarRole(9) != StatusOther {
-		t.Error("BarRole clamp")
+		if got := GutterRole(p, true); got != Rule {
+			t.Errorf("GutterRole(%d, closed) = %s, want Rule", p, got)
+		}
 	}
 }
 

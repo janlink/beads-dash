@@ -146,7 +146,7 @@ func TestAge(t *testing.T) {
 	}
 }
 
-func TestStatusBarFollowsTheStatus(t *testing.T) {
+func TestGutterBarFollowsThePriority(t *testing.T) {
 	snap, st := uitest.Sample()
 	p := theme.NewPalette(theme.Default(), true, theme.DepthTrueColor)
 	r := rows.New(uitest.Look(theme.DepthTrueColor, theme.TierFancy, true))
@@ -155,9 +155,9 @@ func TestStatusBarFollowsTheStatus(t *testing.T) {
 		id   string
 		role theme.Role
 	}{
-		{"ws-7mt", theme.Warning},
-		{"ws-5ca", theme.Success},
-		{"ws-9qe", theme.StatusOpen},
+		{"ws-7mt", theme.Priority2},
+		{"ws-5ca", theme.Rule},
+		{"ws-9qe", theme.Priority0},
 	} {
 		if g, want := r.Gutter(rows.Row{ID: tc.id}), p.Style(tc.role).Render("▌"); !strings.HasPrefix(g, want) {
 			t.Errorf("%s: gutter %q does not start with the %s bar %q", tc.id, g, tc.role, want)
@@ -166,8 +166,8 @@ func TestStatusBarFollowsTheStatus(t *testing.T) {
 			t.Errorf("%s: selected gutter lost its bar", tc.id)
 		}
 	}
-	if g := r.Gutter(rows.Row{ID: "ws-7mt", NoBar: true}); strings.Contains(g, "▌") {
-		t.Errorf("NoBar still draws a bar: %q", g)
+	if g, want := r.Gutter(rows.Row{ID: "ws-7mt", Closed: true}), p.Style(theme.Rule).Render("▌"); !strings.HasPrefix(g, want) {
+		t.Errorf("a Closed row does not draw the closed bar: %q", g)
 	}
 	if g := r.Gutter(rows.Row{}); strings.Contains(g, "▌") {
 		t.Errorf("a row without an issue draws a bar: %q", g)

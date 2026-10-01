@@ -13,7 +13,7 @@ Statuses come from the code, key map, command table and test inventory of the re
 | Item | Status | Note |
 | --- | --- | --- |
 | Tree: roots are issues whose parent is not visible, pruned parents lift children | done | Tree view goldens |
-| Tree: row grid (status bar gutter, caret, status glyph, ID with stems, type, title, priority, status text, assignee) | done | type is a coloured column of fixed width; titles and the right-hand block line up across depths |
+| Tree: row grid (priority bar gutter, caret, status glyph, ID with stems, type, title, priority, status text, assignee) | done | type is a coloured column of fixed width; titles and the right-hand block line up across depths |
 | Tree: epics bold, closed rows dim, column header row (ID, TYPE, TITLE, PR, STATUS, WHO) | done | Ready has a header row too |
 | Tree keys: j/k, expand and collapse, z fold all, Enter opens, e edit, x export | done | `z M` and `z R` fold all and unfold all; `x` is the export dialog |
 | Tree: detail beside the list on wide terminals, replaces it on narrow ones | done | breakpoints differ from bdui-next, see Responsive |

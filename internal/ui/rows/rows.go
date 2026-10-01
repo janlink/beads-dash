@@ -26,14 +26,14 @@ const (
 	minIDCol = 8
 )
 
-// Row is one row to draw and its per-frame state. The gutter's status bar
-// follows the issue ID names unless NoBar is set.
+// Row is one row to draw and its per-frame state. The gutter's priority bar
+// follows the issue ID names; a Closed row draws the closed bar instead.
 type Row struct {
 	ID      string
 	Current bool
 	Marked  bool
 	Changed bool
-	NoBar   bool
+	Closed  bool
 }
 
 // Body draws the part of a row right of the gutter, exactly w cells wide; sel
@@ -62,11 +62,11 @@ type Renderer struct {
 	gutter   [barStates][2][2][2]string
 }
 
-// barStates counts the status bar variants of a gutter: none, one per
-// presentation status, and an in-progress issue that bd calls blocked.
-const barStates = 8
+// barStates counts the bar variants of a gutter: none, one per priority and
+// closed.
+const barStates = 7
 
-const barBlockedMarker = 7
+const barClosed = 6
 
 // New returns a renderer drawing with l.
 func New(l look.Look) *Renderer {
@@ -113,24 +113,22 @@ func (r *Renderer) SetLook(l look.Look) {
 	}
 }
 
-// barsDistinct reports whether the palette tells statuses apart by colour; a
-// colourless one would draw every bar the same.
+// barsDistinct reports whether the palette tells priorities apart by colour;
+// a colourless one would draw every bar the same.
 func barsDistinct(l look.Look) bool {
 	if l.Palette.Depth() == theme.DepthNone {
 		return false
 	}
 	seen := map[string]bool{}
-	for i := range 6 {
-		seen[l.Paint(theme.BarRole(i), "x")] = true
+	for p := range 5 {
+		seen[l.Paint(theme.PriorityRole(p), "x")] = true
 	}
+	seen[l.Paint(theme.Rule, "x")] = true
 	return len(seen) >= 5
 }
 
 func barRole(bar int) theme.Role {
-	if bar == barBlockedMarker {
-		return theme.StatusBlocked
-	}
-	return theme.BarRole(bar - 1)
+	return theme.GutterRole(bar-1, bar == barClosed)
 }
 
 // SetTreeDepth sets the deepest level of the tree being drawn; tree rows pad
@@ -167,22 +165,28 @@ func (r *Renderer) idCol(avail int) int {
 	return max(min(r.idW, avail), min(r.idW, minIDCol))
 }
 
-// barState picks the gutter's status bar variant of a row.
+// barState picks the gutter's bar variant of a row.
 func (r *Renderer) barState(row Row) int {
-	if !r.bars || row.NoBar || row.ID == "" || r.snap == nil {
+	if !r.bars {
 		return 0
 	}
-	if _, ok := r.snap.Issue(row.ID); !ok {
+	if row.Closed {
+		return barClosed
+	}
+	if row.ID == "" || r.snap == nil {
 		return 0
 	}
-	pres := r.snap.Present(row.ID, r.statuses)
-	if pres.BlockedMarker {
-		return barBlockedMarker
+	is, ok := r.snap.Issue(row.ID)
+	if !ok {
+		return 0
 	}
-	return look.StatusIndex(int(pres.Status)) + 1
+	if r.snap.Present(row.ID, r.statuses).Status == model.Closed {
+		return barClosed
+	}
+	return min(max(is.Priority, 0), 4) + 1
 }
 
-// Gutter is the three gutter cells of a row: the status bar (or the current
+// Gutter is the three gutter cells of a row: the priority bar (or the current
 // band where there are no colours), the mark and the change marker.
 func (r *Renderer) Gutter(row Row) string {
 	b := func(v bool) int {

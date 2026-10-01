@@ -283,7 +283,7 @@ func (v *Tree) Render(env Env, w, h int) []string {
 		view := name
 		if r.Kind == model.TreeClosedFold {
 			view += "#f"
-			row.NoBar = true
+			row.Closed = true
 		} else {
 			row.Marked = env.Marked(r.ID)
 		}
