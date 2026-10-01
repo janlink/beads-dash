@@ -28,8 +28,8 @@ RIGHT = ESC + "[C"
 LEFT = ESC + "[D"
 CTRL_S = "\x13"
 
-# The docked detail panel starts hidden so the views fill the screen; it is
-# shown once (D) in the Tree view, and Enter opens the detail as an overlay.
+# The detail panel starts hidden so the views fill the screen; D and Enter
+# show and hide it in the Tree view, and Esc closes it.
 # (seconds to wait before the keys, keys). Keys are typed one by one with TYPE_GAP.
 TAPE = [
     (1.5, ""),

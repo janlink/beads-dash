@@ -85,7 +85,8 @@ type App struct {
 	// expComments caches comment threads read for exports.
 	expComments map[string]commentEntry
 	panel       *detail.Panel
-	docked      bool
+	// shown is whether the detail panel is open, beside or over the view.
+	shown bool
 	// syncMD renders markdown inside Update; tests use it to see the final page.
 	syncMD bool
 	// fetching holds the cancel of each audit read still running, by its seq.
@@ -168,7 +169,7 @@ func New(o Options) *App {
 	a.registerBuiltins()
 	a.acts = sessionActions{s: a.sess, show: a.show}
 	a.panel = detail.New()
-	a.docked = o.Settings.Settings.DetailDocked
+	a.shown = o.Settings.Settings.DetailDocked
 	a.setScope(model.ParseScope("", o.Settings.Settings.ShowClosed))
 	a.setLook()
 	a.rend = rows.New(a.look)
@@ -573,7 +574,7 @@ func (a *App) env() Env {
 		Changed: func(id string) bool { return a.hl.Live(id, now) },
 		Act:     a.acts,
 		Scope:   a.scope, Matches: a.matches(), Now: now, Cols: a.cols, Feed: a.feedNewest,
-		Docked: a.dock().Frame != detail.Hidden && a.sess.Current() != "",
+		Docked: a.frame().Frame == detail.Side && a.sess.Current() != "",
 	}
 }
 
@@ -768,28 +769,39 @@ func (a *App) act(act keys.Action, key string) tea.Cmd {
 			a.switchTo(o.Slot, "")
 		}
 	case keys.Close:
-		if _, layered := a.sess.Top(); !layered && len(a.sess.MarkedIDs()) == 0 {
+		top, layered := a.sess.Top()
+		if !layered && len(a.sess.MarkedIDs()) == 0 {
 			if c, ok := a.view().(Closer); ok && c.Close(a.env()) {
 				return nil
 			}
 		}
+		if !layered && a.frame().Frame == detail.Side {
+			a.toggleDetail()
+			return nil
+		}
 		barOpen := a.barOpen()
-		if a.sess.Esc() == state.EscScope {
+		switch a.sess.Esc() { //nolint:exhaustive // only these need more than the pop
+		case state.EscLayer:
+			if top == state.LayerDetail {
+				a.toggleDetail()
+			}
+		case state.EscScope:
 			a.applyScope(a.clearedScope())
 		}
 		if barOpen {
 			return tea.Batch(a.closeBar(), a.syncPause())
 		}
 	case keys.Open:
-		if cmd, ok := a.view().Handle(act, a.env()); ok || !a.openDetail() {
+		if cmd, ok := a.view().Handle(act, a.env()); ok {
 			return cmd
 		}
+		a.toggleDetail()
 	case keys.FocusNext:
 		if !a.viewFocusNext() {
 			a.focusNext()
 		}
 	case keys.DetailToggle:
-		return a.toggleDocked()
+		a.toggleDetail()
 	case keys.Mark:
 		if id := a.sess.Current(); id != "" {
 			a.sess.ToggleMark(id)
@@ -1082,7 +1094,7 @@ func (a *App) wheel(m tea.Mouse) {
 		a.memWheel(m.X, m.Y-1, n)
 		return
 	}
-	if a.overPanel(m.X, m.Y-1) {
+	if a.overPanel(m.X) {
 		a.panel.ScrollBy(n)
 		return
 	}
@@ -1162,8 +1174,6 @@ func (a *App) body(h int) []string {
 	switch d.Frame {
 	case detail.Overlay:
 		return a.panelLines(d)
-	case detail.Bottom:
-		return append(a.view().Render(env, a.cols, h-d.H), a.panelLines(d)...)
 	case detail.Side:
 		list := a.view().Render(env, a.cols-d.W, h)
 		side := a.panelLines(d)

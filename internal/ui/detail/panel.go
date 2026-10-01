@@ -292,15 +292,13 @@ func (p *Panel) Toggle() {
 }
 
 // DepthMore shows one more level of the focus graph, for the rest of the session.
-func (p *Panel) DepthMore(f Frame) {
-	base := focusBase(f)
-	p.depth = min(max(p.depth, 1-base)+1, model.FocusMaxDepth-base)
+func (p *Panel) DepthMore() {
+	p.depth = min(max(p.depth, 1-focusBase)+1, model.FocusMaxDepth-focusBase)
 }
 
 // DepthLess shows one level less of the focus graph.
-func (p *Panel) DepthLess(f Frame) {
-	base := focusBase(f)
-	p.depth = max(min(p.depth, model.FocusMaxDepth-base)-1, 1-base)
+func (p *Panel) DepthLess() {
+	p.depth = max(min(p.depth, model.FocusMaxDepth-focusBase)-1, 1-focusBase)
 }
 
 // ToggleAll closes every section, or opens them all when none is open.
@@ -328,13 +326,6 @@ func (p *Panel) Render(in Input) []string {
 	var top []string
 	edge := ""
 	switch in.Frame {
-	case Bottom:
-		role, label := theme.Dim, " Detail "
-		if in.Focused {
-			role, label = theme.Primary, " Detail (focused) "
-		}
-		top = []string{l.Rule(in.W, l.Words(look.Word(role, strings.TrimSpace(label))), nil)}
-		innerH--
 	case Side:
 		role := theme.Rule
 		if in.Focused {

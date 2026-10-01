@@ -1,81 +1,66 @@
 package ui
 
 import (
-	"strings"
-
 	tea "charm.land/bubbletea/v2"
 
-	"github.com/janlink/beads-dash/internal/config"
 	"github.com/janlink/beads-dash/internal/ui/detail"
 	"github.com/janlink/beads-dash/internal/ui/keys"
 	"github.com/janlink/beads-dash/internal/ui/state"
 )
 
-// dock is where the docked panel sits; nothing docks without issues.
-func (a *App) dock() detail.Dock {
-	if a.snap == nil || a.snap.Len() == 0 || a.inMemories() {
+// frame is the panel as drawn now: beside the view or over it while it is
+// shown, otherwise nothing; nothing shows without issues.
+func (a *App) frame() detail.Dock {
+	if !a.shown || a.snap == nil || a.snap.Len() == 0 || a.inMemories() {
 		return detail.Dock{}
 	}
-	return detail.Place(a.cols, a.bodyHeight(), a.docked)
-}
-
-// frame is the panel as drawn now: docked, an overlay while the detail layer
-// is open, or nothing.
-func (a *App) frame() detail.Dock {
-	if d := a.dock(); d.Frame != detail.Hidden {
-		return d
-	}
-	if a.snap != nil && a.snap.Len() > 0 && a.sess.Has(state.LayerDetail) && !a.inMemories() {
-		return detail.Dock{Frame: detail.Overlay, W: a.cols, H: a.bodyHeight()}
-	}
-	return detail.Dock{}
+	_, board := a.view().(*Kanban)
+	return detail.Place(a.cols, a.bodyHeight(), board)
 }
 
 // listSize is the room the view gets next to the panel.
 func (a *App) listSize() (w, h int) {
-	body := a.bodyHeight()
-	switch d := a.frame(); d.Frame {
-	case detail.Side:
-		return a.cols - d.W, body
-	case detail.Bottom:
-		return a.cols, body - d.H
-	case detail.Hidden, detail.Overlay:
+	if d := a.frame(); d.Frame == detail.Side {
+		return a.cols - d.W, a.bodyHeight()
 	}
-	return a.cols, body
+	return a.cols, a.bodyHeight()
 }
 
-// syncLayers keeps the layer stack in line with where the panel sits: a
-// docked panel is entered through detail focus, an overlay is the detail
-// layer.
+// syncLayers keeps the layer stack in line with where the panel sits: a side
+// panel is entered through detail focus, an overlay is the detail layer and
+// lies under any bar or dialog opened over it.
 func (a *App) syncLayers() {
-	if a.dock().Frame != detail.Hidden {
+	if !a.shown && a.sess.Has(state.LayerDetail) {
+		a.shown = true
+	}
+	switch a.frame().Frame {
+	case detail.Side:
 		a.sess.Replace(state.LayerDetail, state.LayerDetailFocus)
+	case detail.Overlay:
+		if !a.sess.Replace(state.LayerDetailFocus, state.LayerDetail) && !a.sess.Has(state.LayerDetail) {
+			a.sess.PushUnder(state.LayerDetail)
+		}
+	case detail.Hidden:
+		a.sess.Remove(state.LayerDetailFocus)
+		a.sess.Remove(state.LayerDetail)
+	}
+}
+
+// toggleDetail shows or hides the panel for the current issue.
+func (a *App) toggleDetail() {
+	if !a.shown && (a.sess.Current() == "" || a.snap == nil) {
 		return
 	}
-	a.sess.Replace(state.LayerDetailFocus, state.LayerDetail)
+	a.shown = !a.shown
+	if !a.shown {
+		a.sess.Remove(state.LayerDetailFocus)
+		a.sess.Remove(state.LayerDetail)
+	}
 }
 
-// openDetail moves into the current issue's detail; it reports whether
-// there was one to open.
-func (a *App) openDetail() bool {
-	if a.sess.Current() == "" || a.snap == nil {
-		return false
-	}
-	if a.dock().Frame != detail.Hidden {
-		if !a.sess.Has(state.LayerDetailFocus) {
-			a.sess.Push(state.LayerDetailFocus)
-		}
-		return true
-	}
-	if !a.sess.Has(state.LayerDetail) {
-		a.sess.Push(state.LayerDetail)
-	}
-	return true
-}
-
-// focusNext moves the keys between the list and a docked panel.
+// focusNext moves the keys between the list and a side panel.
 func (a *App) focusNext() {
-	if a.dock().Frame == detail.Hidden || a.sess.Current() == "" {
+	if a.frame().Frame != detail.Side || a.sess.Current() == "" {
 		return
 	}
 	if a.sess.Has(state.LayerDetailFocus) {
@@ -83,20 +68,6 @@ func (a *App) focusNext() {
 		return
 	}
 	a.sess.Push(state.LayerDetailFocus)
-}
-
-// toggleDocked shows or hides the docked panel and remembers the choice.
-func (a *App) toggleDocked() tea.Cmd {
-	if a.dock().Frame != detail.Hidden {
-		a.sess.Remove(state.LayerDetailFocus)
-	}
-	a.docked = !a.docked
-	store := a.o.Store
-	if store == nil {
-		return nil
-	}
-	docked := a.docked
-	return func() tea.Msg { return savedMsg{store.Set(config.KeyDetailDocked, docked)} }
 }
 
 func (a *App) panelAct(act keys.Action) {
@@ -141,22 +112,18 @@ func (a *App) panelAct(act keys.Action) {
 	case keys.Markdown:
 		p.ToggleSource()
 	case keys.DepthMore:
-		p.DepthMore(a.frame().Frame)
+		p.DepthMore()
 	case keys.DepthLess:
-		p.DepthLess(a.frame().Frame)
+		p.DepthLess()
 	}
 }
 
 func (a *App) panelInput(d detail.Dock) detail.Input {
 	cur := a.sess.Current()
 	now := a.now()
-	h := d.H
-	if d.Frame == detail.Bottom {
-		h -= bottomGap
-	}
 	in := detail.Input{
 		Look: a.look, Gen: a.lookGen, Snap: a.snap, Statuses: a.bds.Statuses, Rows: a.rend,
-		ID: cur, Now: now, Frame: d.Frame, W: d.W, H: h,
+		ID: cur, Now: now, Frame: d.Frame, W: d.W, H: d.H,
 		Focused: d.Frame == detail.Overlay || a.sess.Has(state.LayerDetailFocus),
 	}
 	if a.hl.Live(cur, now) {
@@ -165,17 +132,8 @@ func (a *App) panelInput(d detail.Dock) detail.Input {
 	return in
 }
 
-// bottomGap is the blank row between a bottom panel and the footer rule.
-const bottomGap = 1
-
 func (a *App) panelLines(d detail.Dock) []string {
-	lines := a.panel.Render(a.panelInput(d))
-	if d.Frame == detail.Bottom {
-		for range bottomGap {
-			lines = append(lines, strings.Repeat(" ", a.cols))
-		}
-	}
-	return lines
+	return a.panel.Render(a.panelInput(d))
 }
 
 // mdMsg carries a finished markdown rendering to the panel.
@@ -207,15 +165,13 @@ func (a *App) renderJobs() tea.Cmd {
 	return tea.Batch(cmds...)
 }
 
-// overPanel reports whether body cell (x, y) is inside the panel.
-func (a *App) overPanel(x, y int) bool {
+// overPanel reports whether body column x is inside the panel.
+func (a *App) overPanel(x int) bool {
 	switch d := a.frame(); d.Frame {
 	case detail.Overlay:
 		return true
 	case detail.Side:
 		return x >= a.cols-d.W
-	case detail.Bottom:
-		return y >= a.bodyHeight()-d.H && y < a.bodyHeight()-bottomGap
 	case detail.Hidden:
 	}
 	return false
@@ -226,7 +182,7 @@ func (a *App) clickBody(x, y int) {
 		a.memClick(x, y)
 		return
 	}
-	if a.overPanel(x, y) {
+	if a.overPanel(x) {
 		if a.frame().Frame != detail.Overlay && !a.sess.Has(state.LayerDetailFocus) && a.sess.Current() != "" {
 			a.sess.Push(state.LayerDetailFocus)
 		}

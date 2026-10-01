@@ -21,7 +21,7 @@
                                                             |   zl       scroll right                                                      |                                                            
                                                             |   zH       scroll half a screen left                                         |                                                            
                                                             |   zL       scroll half a screen right                                        |                                                            
-                                                            |   Enter    open the detail, fold row                                         |                                                            
+                                                            |   Enter    show or hide the detail, fold row                                 |                                                            
                                                             |   e        edit                                                              |                                                            
                                                             |   n        new issue                                                         |                                                            
                                                             |   s        status                                                            |                                                            

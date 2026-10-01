@@ -8,7 +8,6 @@ import (
 
 	tea "charm.land/bubbletea/v2"
 
-	"github.com/janlink/beads-dash/internal/config"
 	"github.com/janlink/beads-dash/internal/refresh"
 	"github.com/janlink/beads-dash/internal/testgolden"
 	"github.com/janlink/beads-dash/internal/ui/detail"
@@ -19,7 +18,7 @@ import (
 func TestDetailPlacementGoldens(t *testing.T) {
 	for _, s := range goldenSizes {
 		t.Run(fmt.Sprintf("%dx%d", s[0], s[1]), func(t *testing.T) {
-			a := viewApp(t, plain, s[0], s[1], "tree", true)
+			a := viewApp(t, plain, s[0], s[1], "tree", false)
 			press(a, "enter")
 			testgolden.Equal(t, screen(a))
 		})
@@ -29,7 +28,7 @@ func TestDetailPlacementGoldens(t *testing.T) {
 	})
 	t.Run("truecolor 120x40", func(t *testing.T) {
 		a := viewApp(t, truecolor, 120, 40, "tree", true)
-		press(a, "enter")
+		press(a, "tab")
 		testgolden.Equal(t, a.View().Content)
 	})
 }
@@ -39,22 +38,19 @@ func TestDetailPlacementEdges(t *testing.T) {
 		cols, rows int
 		want       detail.Frame
 	}{
-		{199, 50, detail.Bottom},
+		{106, 30, detail.Overlay},
+		{107, 30, detail.Side},
 		{200, 50, detail.Side},
-		{200, 23, detail.Side},
-		{200, 22, detail.Overlay},
-		{200, 21, detail.Overlay},
-		{80, 22, detail.Overlay},
-		{80, 23, detail.Bottom},
-		{79, 30, detail.Overlay},
+		{200, 16, detail.Side},
+		{80, 24, detail.Overlay},
 	} {
 		t.Run(fmt.Sprintf("%dx%d", tc.cols, tc.rows), func(t *testing.T) {
-			a := viewApp(t, plain, tc.cols, tc.rows, "tree", true)
+			a := viewApp(t, plain, tc.cols, tc.rows, "tree", false)
 			press(a, "enter")
 			if got := a.frame().Frame; got != tc.want {
 				t.Fatalf("frame %v, want %v", got, tc.want)
 			}
-			if tc.cols == 199 || tc.cols == 200 || tc.rows == 21 || tc.rows == 22 || tc.rows == 23 {
+			if tc.cols == 106 || tc.cols == 107 || tc.rows == 16 {
 				testgolden.Equal(t, screen(a))
 			}
 			for i, l := range lines(a) {
@@ -66,39 +62,45 @@ func TestDetailPlacementEdges(t *testing.T) {
 	}
 }
 
-func TestEnterOpensDetailAndEscClosesIt(t *testing.T) {
-	a := viewApp(t, plain, 60, 24, "tree", true)
+func TestEnterTogglesDetailAndEscClosesIt(t *testing.T) {
+	a := viewApp(t, plain, 60, 24, "tree", false)
 	press(a, "enter")
 	if !a.sess.Has(state.LayerDetail) || a.baseContext().String() != "panel" {
 		t.Fatalf("Enter opens the overlay: layers %v context %v", a.sess.Has(state.LayerDetail), a.baseContext())
 	}
 	press(a, "esc")
-	if a.sess.Has(state.LayerDetail) {
+	if a.shown || a.sess.Has(state.LayerDetail) {
 		t.Error("Esc closes the overlay")
 	}
 
-	a = viewApp(t, plain, 120, 40, "tree", true)
+	a = viewApp(t, plain, 120, 40, "tree", false)
 	press(a, "enter")
-	if !a.sess.Has(state.LayerDetailFocus) {
-		t.Fatal("Enter with a docked panel moves focus into it")
-	}
-	press(a, "esc")
-	if a.sess.Has(state.LayerDetailFocus) || a.frame().Frame != detail.Bottom {
-		t.Error("Esc leaves the panel focus and keeps it docked")
+	if a.frame().Frame != detail.Side || a.sess.Has(state.LayerDetailFocus) {
+		t.Fatal("Enter shows the side panel and leaves the keys in the list")
 	}
 	press(a, "tab")
 	if !a.sess.Has(state.LayerDetailFocus) {
 		t.Error("Tab focuses the panel")
 	}
-	press(a, "tab")
-	if a.sess.Has(state.LayerDetailFocus) {
-		t.Error("Tab leaves the panel")
+	press(a, "esc")
+	if a.sess.Has(state.LayerDetailFocus) || a.frame().Frame != detail.Side {
+		t.Error("Esc leaves the panel focus and keeps the panel")
+	}
+	press(a, "esc")
+	if a.frame().Frame != detail.Hidden {
+		t.Error("Esc in the list closes the side panel")
+	}
+	press(a, "enter", "enter")
+	if a.frame().Frame != detail.Hidden {
+		t.Error("Enter twice hides the side panel again")
 	}
 }
 
-func TestResizeMovesTheDetailLayerBetweenOverlayAndDock(t *testing.T) {
+func TestResizeMovesTheDetailLayerBetweenOverlayAndSide(t *testing.T) {
 	a := viewApp(t, plain, 60, 24, "tree", true)
-	press(a, "enter")
+	if !a.sess.Has(state.LayerDetail) {
+		t.Fatal("a shown panel on a narrow terminal is an overlay")
+	}
 	send(a, tea.WindowSizeMsg{Width: 120, Height: 40})
 	if !a.sess.Has(state.LayerDetailFocus) || a.sess.Has(state.LayerDetail) {
 		t.Error("a wide terminal docks the overlay and focuses it")
@@ -109,12 +111,19 @@ func TestResizeMovesTheDetailLayerBetweenOverlayAndDock(t *testing.T) {
 	}
 }
 
-func TestPanelKeysAndDockedSetting(t *testing.T) {
-	store := &memStore{}
+func TestOverlayLiesUnderAnOpenBar(t *testing.T) {
+	a := viewApp(t, plain, 60, 24, "tree", false)
+	press(a, "/")
+	press(a, "D")
+	if top, _ := a.sess.Top(); top != state.LayerBar {
+		t.Fatalf("top layer %v, want the bar", top)
+	}
+}
+
+func TestPanelKeysAndShownSetting(t *testing.T) {
 	a := viewApp(t, plain, 120, 40, "tree", true)
-	a.o.Store = store
 	a.sess.SetCurrent("ws-4k2")
-	press(a, "enter")
+	press(a, "tab")
 	_ = screen(a)
 	press(a, "]")
 	if a.panel.Cursor() == detail.Description {
@@ -129,20 +138,16 @@ func TestPanelKeysAndDockedSetting(t *testing.T) {
 		t.Error("m shows the source")
 	}
 
-	cmd := send(a, keyMsg("D"))
-	runAll(cmd)
-	if a.docked || a.sess.Has(state.LayerDetailFocus) || a.frame().Frame != detail.Hidden {
-		t.Errorf("D hides the panel: docked %v frame %v", a.docked, a.frame().Frame)
-	}
-	if len(store.sets) != 1 || store.sets[0] != [2]string{config.KeyDetailDocked, "false"} {
-		t.Errorf("persisted %v", store.sets)
+	press(a, "D")
+	if a.shown || a.sess.Has(state.LayerDetailFocus) || a.frame().Frame != detail.Hidden {
+		t.Errorf("D hides the panel: shown %v frame %v", a.shown, a.frame().Frame)
 	}
 }
 
 func TestMouseFocusesAndScrollsThePanel(t *testing.T) {
 	a := viewApp(t, plain, 120, 40, "tree", true)
 	a.o.Settings.Settings.Mouse = true
-	send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 10, Y: 35})
+	send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 100, Y: 10})
 	if !a.sess.Has(state.LayerDetailFocus) {
 		t.Error("a click in the panel focuses it")
 	}
@@ -229,7 +234,7 @@ func TestStepsStayUnderBudgetWithFiveThousandIssues(t *testing.T) {
 func TestEnterOnAPanelRowJumpsAndBackReturns(t *testing.T) {
 	a := viewApp(t, plain, 120, 40, "tree", true)
 	a.sess.SetCurrent("ws-4k2")
-	press(a, "enter")
+	press(a, "tab")
 	_ = screen(a)
 	for range 8 {
 		if a.panel.Cursor() == detail.Children {
@@ -263,7 +268,7 @@ func TestEnterOnAPanelRowJumpsAndBackReturns(t *testing.T) {
 func TestDetailToggleIsListedInHelp(t *testing.T) {
 	a := viewApp(t, plain, 120, 100, "tree", true)
 	press(a, "?")
-	if out := screen(a); !strings.Contains(out, "show or hide the detail panel") {
+	if out := screen(a); !strings.Contains(out, "show or hide the detail") {
 		t.Errorf("help lacks the D binding:\n%s", out)
 	}
 }

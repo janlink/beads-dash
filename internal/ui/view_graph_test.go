@@ -7,6 +7,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/charmbracelet/x/ansi"
+
 	"github.com/janlink/beads-dash/internal/model"
 	"github.com/janlink/beads-dash/internal/testgolden"
 	"github.com/janlink/beads-dash/internal/ui/state"
@@ -162,7 +164,7 @@ func focusApp(t testing.TB, f flavour, cols, rows int, id string) *App {
 	snap, _ := uitest.Graph()
 	a := loaded(t, f, cols, rows, snap, withView("tree", true))
 	a.sess.SetCurrent(id)
-	press(a, "enter")
+	press(a, "tab")
 	return a
 }
 
@@ -183,17 +185,17 @@ func TestFocusGraphGoldens(t *testing.T) {
 func TestFocusGraphDepthKeysAndJump(t *testing.T) {
 	a := focusApp(t, plain, 120, 40, "gr-w")
 	has := func(id string) bool {
-		_, panel, _ := strings.Cut(screen(a), "- Detail")
-		return strings.Contains(panel, id+" ")
+		_ = screen(a)
+		return strings.Contains(ansi.Strip(strings.Join(a.panelLines(a.frame()), "\n")), id+" ")
 	}
-	if !has("gr-y") || has("gr-x") {
-		t.Fatalf("a bottom panel starts at depth 2:\n%s", screen(a))
-	}
-	press(a, "+")
 	if !has("gr-x") {
-		t.Fatalf("+ shows one more level:\n%s", screen(a))
+		t.Fatalf("the panel starts at depth 3:\n%s", screen(a))
 	}
-	press(a, "-", "-")
+	press(a, "-")
+	if !has("gr-y") || has("gr-x") {
+		t.Fatalf("- shows one level less:\n%s", screen(a))
+	}
+	press(a, "-")
 	if has("gr-y") {
 		t.Fatalf("- shows fewer levels:\n%s", screen(a))
 	}

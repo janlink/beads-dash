@@ -33,7 +33,7 @@ func (p *pump) spawn(c tea.Cmd) {
 
 func (p *pump) send(m tea.Msg) { p.spawn(send(p.a, m)) }
 
-func (p *pump) poke() { p.send(tea.WindowSizeMsg{Width: 120, Height: 62}) }
+func (p *pump) poke() { p.send(tea.WindowSizeMsg{Width: 100, Height: 62}) }
 
 func (p *pump) until(done func() bool) {
 	p.t.Helper()
@@ -86,7 +86,7 @@ func auditFixture(t *testing.T) auditEnv {
 		withView("tree", true)(o)
 		o.Client = fake
 	}))
-	send(a, tea.WindowSizeMsg{Width: 120, Height: 60})
+	send(a, tea.WindowSizeMsg{Width: 100, Height: 60})
 	p := newPump(t, a)
 	p.spawn(a.Init())
 	p.until(func() bool { return a.snap != nil && a.eng != nil })

@@ -133,7 +133,7 @@ func fitRuleAll(l look.Look, w int, items []ruleItem) (left, right []look.Seg, o
 // panelSide is the width of a detail panel docked at the right, 0 when there
 // is none.
 func (a *App) panelSide() int {
-	if d := a.dock(); d.Frame == detail.Side {
+	if d := a.frame(); d.Frame == detail.Side {
 		return d.W
 	}
 	return 0

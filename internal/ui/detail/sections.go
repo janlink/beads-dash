@@ -153,7 +153,7 @@ func (p *Panel) dependencies(in Input, is *model.Issue, bw int) block {
 	}
 	b := block{summary: strings.Join(sum, " · ")}
 	if parent != "" || len(waits) > 0 || len(holds) > 0 {
-		graph := model.BuildFocus(snap, in.Statuses, is.ID, model.FocusOptions{Depth: p.focusDepth(in.Frame)})
+		graph := model.BuildFocus(snap, in.Statuses, is.ID, model.FocusOptions{Depth: p.focusDepth()})
 		style := rows.OutlineStyle{Narrow: rows.Narrow(bw)}
 		for i, r := range graph {
 			if r.Kind.Selectable() && r.Kind != model.OutSelf {
@@ -168,22 +168,13 @@ func (p *Panel) dependencies(in Input, is *model.Issue, bw int) block {
 	return b
 }
 
-const (
-	focusDepthBottom = 2
-	focusDepthWide   = 3
-)
+// focusBase is how many levels the focus graph shows before the session's
+// adjustment.
+const focusBase = 3
 
-// focusDepth is how many levels the focus graph shows: two in a bottom panel,
-// three elsewhere, moved by the session's adjustment.
-func (p *Panel) focusDepth(f Frame) int {
-	return min(max(focusBase(f)+p.depth, 1), model.FocusMaxDepth)
-}
-
-func focusBase(f Frame) int {
-	if f == Bottom {
-		return focusDepthBottom
-	}
-	return focusDepthWide
+// focusDepth is how many levels the focus graph shows.
+func (p *Panel) focusDepth() int {
+	return min(max(focusBase+p.depth, 1), model.FocusMaxDepth)
 }
 
 func (p *Panel) children(in Input, is *model.Issue, bw int) block {

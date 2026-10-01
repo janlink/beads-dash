@@ -50,7 +50,7 @@ func text(lines []string) string { return ansi.Strip(strings.Join(lines, "\n")) 
 
 func TestRenderSizesAndHeader(t *testing.T) {
 	snap := fixture()
-	for _, f := range []Frame{Side, Bottom, Overlay} {
+	for _, f := range []Frame{Side, Overlay} {
 		for _, size := range [][2]int{{60, 14}, {80, 10}, {90, 30}} {
 			in := input(t, snap, "d-1.2", f, size[0], size[1])
 			out := New().Render(in)
@@ -253,7 +253,7 @@ func TestDetailsSectionAndLabelOverflow(t *testing.T) {
 }
 
 func TestNoIssue(t *testing.T) {
-	out := New().Render(input(t, fixture(), "", Bottom, 80, 10))
+	out := New().Render(input(t, fixture(), "", Overlay, 80, 10))
 	if len(out) != 10 || !strings.Contains(text(out), "No issue selected.") {
 		t.Errorf("empty panel:\n%s", text(out))
 	}

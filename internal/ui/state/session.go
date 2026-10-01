@@ -208,6 +208,9 @@ func (s *Session) Prune(exists func(id string) bool) {
 // Push opens a layer on top.
 func (s *Session) Push(l Layer) { s.layers = append(s.layers, l) }
 
+// PushUnder opens a layer below every open one.
+func (s *Session) PushUnder(l Layer) { s.layers = slices.Insert(s.layers, 0, l) }
+
 // Pop closes the top layer, if any.
 func (s *Session) Pop() {
 	if len(s.layers) > 0 {

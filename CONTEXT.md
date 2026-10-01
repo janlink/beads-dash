@@ -91,7 +91,7 @@ Issues the viewer has set aside for one action on all of them at once, such as a
 _Avoid_: multi-selection, checked issues
 
 **Detail panel**:
-Everything about the current issue in one place, beside or below the view or over it. Beside or below, it follows the current issue while the view keeps the keys; over the view, it takes them.
+Everything about the current issue in one place, beside the view or over it. Enter shows or hides it, Esc closes it. Beside the view, it follows the current issue while the view keeps the keys; over the view, when the terminal is too narrow for both, it takes them.
 _Avoid_: inspector, preview, sidebar
 
 **Audit trail**:

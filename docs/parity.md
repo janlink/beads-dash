@@ -16,7 +16,7 @@ Statuses come from the code, key map, command table and test inventory of the re
 | Tree: row grid (priority bar and mark/change cell, glyph column, ID column with stems, type, title, priority, status text, assignee) | done | the glyph column holds the fold caret of a parent and the status glyph of a leaf and never indents; a parent's status shows in its coloured progress count; type is a coloured column of fixed width; titles and the right-hand block line up across depths |
 | Tree: epics bold, closed rows dim, column header row (ID, TYPE, TITLE, PR, STATUS, WHO) | done | Ready has a header row too |
 | Tree keys: j/k, expand and collapse, z fold all, Enter opens, e edit, x export | done | `z M` and `z R` fold all and unfold all; `x` is the export dialog |
-| Tree: detail beside the list on wide terminals, replaces it on narrow ones | done | breakpoints differ from bdui-next, see Responsive |
+| Tree: detail beside the list on wide terminals, replaces it on narrow ones | done | same breakpoints as bdui-next, in every view: beside from 107 columns (Kanban 90), 37 to 41 wide |
 | Tree: header stats, direct-children progress | done | progress shows direct children and descendants |
 | Tree is the default view | dropped | Overview is view 1 and the default, Tree is view 2 |
 | List view | dropped | removed in bdui-next 0.3.0 too |
@@ -41,7 +41,7 @@ Statuses come from the code, key map, command table and test inventory of the re
 | Footer rule with tabs, marks, changes and scope note; hints row below | done | hints are generated from the key map and drop in a fixed order |
 | Toast row with ASCII icons | done | a notice takes the hints row; notices queue instead of replacing each other |
 | Docked search, filter and command bars | done | |
-| Kanban column count by width, panel beside at wide terminals | done | breakpoints follow bdash ADR and goldens |
+| Kanban column count by width, panel beside at wide terminals | done | panel beside from 90 columns, as in bdui-next |
 | Minimum size guard | done | "too small" screen below the minimum size |
 | Window title push and pop | dropped | per R12: bdash leaves the terminal title alone |
 

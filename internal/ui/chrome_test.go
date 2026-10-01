@@ -69,8 +69,7 @@ func TestChromeJunctionsUnderSidePanel(t *testing.T) {
 	} {
 		t.Run(tc.f.glyphs, func(t *testing.T) {
 			a := viewApp(t, tc.f, 200, 50, "tree", true)
-			press(a, "enter")
-			d := a.dock()
+			d := a.frame()
 			if d.Frame != detail.Side {
 				t.Fatalf("frame %v, want side", d.Frame)
 			}
@@ -99,7 +98,7 @@ func TestChromeJunctionsUnderSidePanel(t *testing.T) {
 
 func TestChromeNoJunctionWithoutSidePanel(t *testing.T) {
 	for _, s := range [][2]int{{60, 16}, {80, 24}, {120, 40}, {199, 50}} {
-		a := viewApp(t, truecolor, s[0], s[1], "tree", true)
+		a := viewApp(t, truecolor, s[0], s[1], "tree", false)
 		ls := strings.Split(ansi.Strip(a.View().Content), "\n")
 		for _, row := range []string{ls[0], ls[s[1]-2]} {
 			if strings.ContainsAny(row, "┬┴") {
@@ -299,40 +298,17 @@ func TestSidePanelFooterCarriesThePanelKeys(t *testing.T) {
 	if rule := lines(a)[28]; !strings.Contains(rule, "┴─ e edit  x export  Tab focus ─") {
 		t.Errorf("list-focused panel keys: %q", rule)
 	}
-	press(a, "enter")
-	if rule := lines(a)[28]; !strings.Contains(rule, "┴─ ]/[ section  m markdown  x export  Esc back ─") {
+	press(a, "tab")
+	if rule := lines(a)[28]; !strings.Contains(rule, "┴─ ]/[ section  m markdown  x export ─") {
 		t.Errorf("panel-focused panel keys: %q", rule)
-	}
-}
-
-func TestBottomPanelIsSeparatedFromTheFooter(t *testing.T) {
-	a := viewApp(t, plain, 120, 40, "tree", true)
-	press(a, "enter")
-	if a.dock().Frame != detail.Bottom {
-		t.Fatalf("frame %v, want bottom", a.dock().Frame)
-	}
-	ls := lines(a)
-	if strings.TrimSpace(ls[len(ls)-3]) != "" {
-		t.Errorf("no blank row above the footer rule: %q", ls[len(ls)-3])
-	}
-	if !strings.HasPrefix(ls[len(ls)-2], "- ") {
-		t.Errorf("footer rule %q", ls[len(ls)-2])
 	}
 }
 
 func TestSidePanelFocusedHintsDoNotRepeatTheRuleKeys(t *testing.T) {
 	a := viewApp(t, truecolor, 200, 30, "tree", true)
-	press(a, "enter")
+	press(a, "tab")
 	ls := lines(a)
 	if !strings.Contains(ls[28], "]/[ section") || strings.Contains(ls[29], "section") {
 		t.Errorf("rule %q hints %q", ls[28], ls[29])
-	}
-}
-
-func TestBottomGapRowIsNotThePanel(t *testing.T) {
-	a := viewApp(t, plain, 120, 40, "tree", true)
-	body := a.bodyHeight()
-	if !a.overPanel(0, body-bottomGap-1) || a.overPanel(0, body-bottomGap) {
-		t.Errorf("panel hit-test at the gap row: last %v gap %v", a.overPanel(0, body-bottomGap-1), a.overPanel(0, body-bottomGap))
 	}
 }

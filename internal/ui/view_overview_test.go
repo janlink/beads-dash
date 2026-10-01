@@ -16,6 +16,7 @@ import (
 	"github.com/janlink/beads-dash/internal/refresh"
 	"github.com/janlink/beads-dash/internal/testgolden"
 	"github.com/janlink/beads-dash/internal/theme"
+	"github.com/janlink/beads-dash/internal/ui/detail"
 	"github.com/janlink/beads-dash/internal/ui/state"
 	"github.com/janlink/beads-dash/internal/ui/uitest"
 )
@@ -61,7 +62,7 @@ func TestOverviewFeedEnterOpensDetailAndEscReturns(t *testing.T) {
 	a.sess.SetCurrent(feed[0].IssueID)
 	_ = screen(a)
 	press(a, "enter")
-	if !a.sess.Has(state.LayerDetail) {
+	if a.frame().Frame != detail.Side {
 		t.Fatalf("Enter on a feed line does not open the detail:\n%s", screen(a))
 	}
 	if out := screen(a); !strings.Contains(out, feed[0].IssueID) {
@@ -69,7 +70,7 @@ func TestOverviewFeedEnterOpensDetailAndEscReturns(t *testing.T) {
 	}
 	press(a, "esc")
 	_ = screen(a)
-	if a.sess.Has(state.LayerDetail) {
+	if a.frame().Frame != detail.Hidden {
 		t.Errorf("Esc leaves the detail open:\n%s", screen(a))
 	}
 	if a.slot != 0 || !strings.Contains(screen(a), "Activity") {

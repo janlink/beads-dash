@@ -53,7 +53,7 @@ func Defaults() Settings {
 		Glyphs:           "auto",
 		Ambiguous:        "auto",
 		HighlightSeconds: 10,
-		DetailDocked:     true,
+		DetailDocked:     false,
 		NotifyMethod:     "auto",
 		NotifyKinds:      []string{"closed", "blocked", "ready"},
 		Refresh: Refresh{
