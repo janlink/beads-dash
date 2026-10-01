@@ -1,10 +1,10 @@
 - Kanban - demo --------------------------------------------------------------------------------------- 15 issues · 1/10 - * live 12:00:00 -
 - [Open] 5 ----------------------- - In progress 2 ------------------ - Blocked 2 ---------------------- - Frozen 1 ------------------ 1> - 
-|   P0 bug     Payment provider...     P1 Checkout: gue... ##---- 2/5     P2 feature Split pricin... ! 1     P3 feature Search: typo tol... 
-    P1 task    Address form val...     P2 bug     Cart badge ... @bob     P2 task    Guest order ... ! 1                                    
-    P2 task    Follow-up... @alice                                                                                                          
-    P3 Shipping options ------ 0/1                                                                                                          
-    P3 task    Pickup po... @carol                                                                                                          
+| P0 bug     Payment provider t...   P1 epic    Checkou... ##---- 2/5   P2 feature Split pricing ... ! 1   P3 feature Search: typo toler... 
+  P1 task    Address form valid...   P2 bug     Cart badge sh... @bob   P2 task    Guest order co... ! 1                                    
+  P2 task    Follow-up f... @alice                                                                                                          
+  P3 feature Shippin... ------ 0/1                                                                                                          
+  P3 task    Pickup poin... @carol                                                                                                          
                                                                                                                                             
                                                                                                                                             
                                                                                                                                             

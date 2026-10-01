@@ -1,5 +1,5 @@
 - Tree - demo ------------------------------- 9 issues · 7/8 - * live 12:00:00 -
-        ID         TYPE    TITLE                       PR STATUS      WHO       
+    ID          TYPE    TITLE                          PR STATUS      WHO       
   +- Edit ws-9qe ----------------------- field 1/9 · 1 change · 1 to decide -+  
   | ! Changed since opened: title Payment provider timeou… -> Retries,       |  
   | ! reworded, priority P0 -> P3                                            |  

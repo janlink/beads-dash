@@ -1,6 +1,6 @@
 - Tree - demo ---------------------- / -type:chore order assignee:alice · 1/15 · closed hidden - 1/1 - * live 12:00:00 -
-        ID         TYPE    TITLE                                                               PR STATUS      WHO       
-|     * ws-4k2     epic    Checkout: guest orders                                              2/5 ##----               
+    ID     TYPE    TITLE                                                                       PR STATUS      WHO       
+| * ws-4k2 epic    Checkout: guest orders                                                      * 2/5 ##----             
                                                                                                                         
                                                                                                                         
                                                                                                                         

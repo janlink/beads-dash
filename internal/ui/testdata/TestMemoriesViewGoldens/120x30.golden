@@ -1,8 +1,8 @@
 - Memories - demo -------------------------------------------------------- 4 · 514 chars in bd prime - * live 12:00:00 -
-|  dolt-push-needs-remote  Run bd dolt push o...|  dolt-push-needs-remote · 4 lines · 86 chars                           
-   golden-update           Regenerate goldens...|  Run bd dolt push only after the remote is set.                        
-   no-tabs                 Go files use tabs;...|                                                                        
-   test-pump               Engine-driven test...|  * check  bd dolt remote                                               
+| dolt-push-needs-remote  Run bd dolt push on...|  dolt-push-needs-remote · 4 lines · 86 chars                           
+  golden-update           Regenerate goldens ...|  Run bd dolt push only after the remote is set.                        
+  no-tabs                 Go files use tabs; ...|                                                                        
+  test-pump               Engine-driven tests...|  * check  bd dolt remote                                               
                                                 |  * never force                                                         
                                                 |                                                                        
                                                 |                                                                        

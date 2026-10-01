@@ -87,11 +87,7 @@ func (v *Tree) ensure(env Env) {
 		v.sel = append(v.sel, listRow{k, true})
 		v.index[k] = i
 	}
-	depth := 0
-	for _, r := range v.rows {
-		depth = max(depth, r.Depth)
-	}
-	env.Rows.SetTreeDepth(depth)
+	env.Rows.SetTreeRows(v.rows)
 	v.present = make(map[string]bool, env.Matches.Len())
 	for _, id := range env.Matches.IDs() {
 		for c := id; c != "" && !v.present[c]; c = v.parents[c] {

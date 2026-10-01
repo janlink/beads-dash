@@ -39,7 +39,7 @@ func TestLinesHaveExactWidth(t *testing.T) {
 	}
 }
 
-func TestChangeSlotNeverShiftsText(t *testing.T) {
+func TestSharedSlotNeverShiftsText(t *testing.T) {
 	r, _ := newRenderer(theme.DepthNone, theme.TierFancy)
 	plain := ansi.Strip(line(r, 80, rows.Row{ID: "ws-9qe"}))
 	changed := ansi.Strip(line(r, 80, rows.Row{ID: "ws-9qe", Changed: true}))
@@ -48,18 +48,26 @@ func TestChangeSlotNeverShiftsText(t *testing.T) {
 	if body(plain) != body(changed) || body(plain) != body(marked) {
 		t.Errorf("body moved:\n%q\n%q\n%q", plain, changed, marked)
 	}
-	if g := theme.GlyphsFor(theme.TierFancy); !strings.HasPrefix(changed, "  "+g.Change) {
-		t.Errorf("gutter = %q", changed)
+	if g := theme.GlyphsFor(theme.TierFancy); !strings.HasPrefix(changed, " "+g.Change) || !strings.HasPrefix(marked, " "+g.Mark) {
+		t.Errorf("gutter = %q, %q", changed, marked)
 	}
 }
 
-func TestGutterComposesAllThreeCells(t *testing.T) {
+func TestGutterSharesOneCellForMarkAndChange(t *testing.T) {
 	r, _ := newRenderer(theme.DepthNone, theme.TierASCII)
-	got := ansi.Strip(r.Gutter(rows.Row{ID: "x", Current: true, Marked: true, Changed: true}))
-	if got != "|#+" {
-		t.Errorf("gutter = %q, want |#+", got)
+	for _, tc := range []struct {
+		row  rows.Row
+		want string
+	}{
+		{rows.Row{ID: "x", Current: true, Marked: true, Changed: true}, "|#"},
+		{rows.Row{ID: "x", Current: true, Changed: true}, "|+"},
+		{rows.Row{ID: "x", Marked: true, Changed: true}, " #"},
+	} {
+		if got := ansi.Strip(r.Gutter(tc.row)); got != tc.want {
+			t.Errorf("gutter of %+v = %q, want %q", tc.row, got, tc.want)
+		}
 	}
-	if got := ansi.Strip(r.Gutter(rows.Row{ID: "x"})); got != "   " {
+	if got := ansi.Strip(r.Gutter(rows.Row{ID: "x"})); got != "  " {
 		t.Errorf("empty gutter = %q", got)
 	}
 }

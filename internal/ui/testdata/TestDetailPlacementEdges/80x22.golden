@@ -9,7 +9,7 @@
  v Dependencies  holds up 1                                                     
    o ws-9qe Payment provider timeout retries                                    
    > holds up (1)                                                               
-   `- ! ws-2hz Split pricing service                                            
+   `-! ws-2hz Split pricing service                                             
  * Children  none                                                               
  > Details  created 5 h ago · updated 5 h ago                                   
  > Audit trail  no comments                                                     

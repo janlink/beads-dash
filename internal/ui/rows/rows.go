@@ -13,8 +13,9 @@ import (
 	"github.com/janlink/beads-dash/internal/ui/look"
 )
 
-// GutterWidth is the cells the gutter takes: current band, mark, change.
-const GutterWidth = 3
+// GutterWidth is the cells the gutter takes: the current band and one cell
+// shared by the mark and the change marker.
+const GutterWidth = 2
 
 const (
 	maxFactWidth = 14
@@ -55,11 +56,13 @@ type Renderer struct {
 	statuses model.Statuses
 	idW      int
 	typeW    int
-	depth    int
+	stem     int
+	need     int
+	label    int
 	bars     bool
 	cache    map[cacheKey]string
 	terms    []needle
-	gutter   [barStates][2][2][2]string
+	gutter   [barStates][2][3]string
 }
 
 // barStates counts the bar variants of a gutter: none, one per priority and
@@ -67,6 +70,13 @@ type Renderer struct {
 const barStates = 7
 
 const barClosed = 6
+
+// The states of the gutter's shared cell.
+const (
+	slotNone = iota
+	slotChange
+	slotMark
+)
 
 // New returns a renderer drawing with l.
 func New(l look.Look) *Renderer {
@@ -98,17 +108,16 @@ func (r *Renderer) SetLook(l look.Look) {
 	}
 	for bar := range barStates {
 		for cur := range 2 {
-			for mark := range 2 {
-				for change := range 2 {
-					band, role := cur == 1, theme.Primary
-					if bar > 0 && r.bars {
-						band, role = true, barRole(bar)
-					}
-					r.gutter[bar][cur][mark][change] = cell(band, g.Band, role, cur == 1) +
-						cell(mark == 1, g.Mark, theme.Strong, cur == 1) +
-						cell(change == 1, g.Change, theme.Changed, cur == 1)
-				}
+			band, role := cur == 1, theme.Primary
+			if bar > 0 && r.bars {
+				band, role = true, barRole(bar)
 			}
+			r.gutter[bar][cur][slotNone] = cell(band, g.Band, role, cur == 1) +
+				cell(false, "", theme.Text, cur == 1)
+			r.gutter[bar][cur][slotChange] = cell(band, g.Band, role, cur == 1) +
+				cell(true, g.Change, theme.Changed, cur == 1)
+			r.gutter[bar][cur][slotMark] = cell(band, g.Band, role, cur == 1) +
+				cell(true, g.Mark, theme.Strong, cur == 1)
 		}
 	}
 }
@@ -131,11 +140,21 @@ func barRole(bar int) theme.Role {
 	return theme.GutterRole(bar-1, bar == barClosed)
 }
 
-// SetTreeDepth sets the deepest level of the tree being drawn; tree rows pad
-// their guides to it so the columns after them line up.
-func (r *Renderer) SetTreeDepth(d int) {
-	if d != r.depth {
-		r.depth = d
+// SetTreeRows sets the rows of the tree being drawn; the ID column is measured
+// over them so it does not change as the view scrolls.
+func (r *Renderer) SetTreeRows(tree []model.TreeRow) {
+	stem, need, labelW := 0, 0, 0
+	for _, row := range tree {
+		label := ansi.StringWidth(row.ID)
+		if row.Kind == model.TreeClosedFold {
+			label = ansi.StringWidth(r.closedText(row))
+		}
+		labelW = max(labelW, label)
+		stem = max(stem, stemWidth(row.Depth))
+		need = max(need, stemWidth(row.Depth)+label)
+	}
+	if stem != r.stem || need != r.need || labelW != r.label {
+		r.stem, r.need, r.label = stem, need, labelW
 		clear(r.cache)
 	}
 }
@@ -161,8 +180,20 @@ func (r *Renderer) Bind(snap *model.Snapshot, st model.Statuses) {
 
 // idCol is the width of the ID column when avail cells are left for it: the
 // longest ID if that fits, else the room, but never less than minIDCol.
-func (r *Renderer) idCol(avail int) int {
-	return max(min(r.idW, avail), min(r.idW, minIDCol))
+func (r *Renderer) idCol(avail int) int { return fitCol(r.idW, avail) }
+
+// fitCol is need cells when avail leaves that much, else the room, but never
+// less than minIDCol.
+func fitCol(need, avail int) int { return max(min(need, avail), min(need, minIDCol)) }
+
+// glyphW is the width of the glyph column that heads a row: the status glyph,
+// or the fold caret of a parent.
+func (r *Renderer) glyphW() int { return ansi.StringWidth(r.look.Glyphs.Status[0]) }
+
+// glyphCell draws s padded to the glyph column and the gap after it, in one
+// role.
+func (r *Renderer) glyphCell(paint func(theme.Role, string) string, role theme.Role, s string) string {
+	return paint(role, r.look.Fit(s, r.glyphW())+" ")
 }
 
 // barState picks the gutter's bar variant of a row.
@@ -186,16 +217,21 @@ func (r *Renderer) barState(row Row) int {
 	return min(max(is.Priority, 0), 4) + 1
 }
 
-// Gutter is the three gutter cells of a row: the priority bar (or the current
-// band where there are no colours), the mark and the change marker.
+// Gutter is the two gutter cells of a row: the priority bar (or the current
+// band where there are no colours) and the cell for the mark, which wins over
+// the change marker.
 func (r *Renderer) Gutter(row Row) string {
-	b := func(v bool) int {
-		if v {
-			return 1
-		}
-		return 0
+	cur, slot := 0, slotNone
+	if row.Current {
+		cur = 1
 	}
-	return r.gutter[r.barState(row)][b(row.Current)][b(row.Marked)][b(row.Changed)]
+	switch {
+	case row.Marked:
+		slot = slotMark
+	case row.Changed:
+		slot = slotChange
+	}
+	return r.gutter[r.barState(row)][cur][slot]
 }
 
 // Line draws one row exactly w cells wide: the gutter composed for this
@@ -251,7 +287,7 @@ func (r *Renderer) render(w int, id string, sel, withAssignee bool) string {
 	}
 
 	prio := "P" + string(rune('0'+min(max(is.Priority, 0), 9)))
-	rest := 1 + ansi.StringWidth(g.Status[idx]) + 1 + 1 + 2 + 1
+	rest := r.glyphW() + 1 + 1 + 2 + 1
 	factW := 0
 	if withAssignee {
 		factW = maxFactWidth + 1
@@ -270,8 +306,7 @@ func (r *Renderer) render(w int, id string, sel, withAssignee bool) string {
 	}
 	var b strings.Builder
 	sp := paint(theme.Text, " ")
-	b.WriteString(sp)
-	b.WriteString(paint(statusRole, g.Status[idx]+" "))
+	b.WriteString(r.glyphCell(paint, statusRole, g.Status[idx]))
 	b.WriteString(r.hl(paint, theme.Dim, idText))
 	b.WriteString(sp)
 	b.WriteString(r.typeCell(paint, is, typeW, dim))

@@ -1,7 +1,7 @@
 - Tree - demo ------------------------------- 9 issues · 1/8 - * live 12:00:00 -
-        ID         TYPE    TITLE                       PR STATUS      WHO       
-|     o ws-9qe     bug     Payment provider timeout... P0                       
-    v * ws-4k2     epic    Checkout: guest orders      0/2 ------               
+    ID          TYPE    TITLE                          PR STATUS      WHO       
+| o ws-9qe      bug     Payment provider timeout re... P0                       
+  v ws-4k2      epic    Checkout: guest orders         * 0/2 ------             
   +- Edit ws-9qe ------------------------------------- field 1/9 · 1 change -+  
   | * Title*       Payment provider timeout retries!                         |  
   |   Type         bug                                                       |  

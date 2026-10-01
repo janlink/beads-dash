@@ -38,6 +38,7 @@ func TestTreeRowsHaveExactWidth(t *testing.T) {
 
 func TestTreeRowFacts(t *testing.T) {
 	r, tree := treeRenderer(theme.TierASCII)
+	r.SetTreeRows(tree)
 	find := func(id string, kind model.TreeRowKind) model.TreeRow {
 		for _, row := range tree {
 			if row.ID == id && row.Kind == kind {
@@ -69,17 +70,58 @@ func TestTreeRowFacts(t *testing.T) {
 	}
 }
 
-func TestDeepRowsCapTheirGuidesAndKeepTheTitle(t *testing.T) {
+func TestDeepRowsCutTheirStemsFromTheFrontAndKeepTheTitle(t *testing.T) {
 	snap, st := uitest.Tree()
 	r := rows.New(uitest.Look(theme.DepthNone, theme.TierASCII, true))
 	r.Bind(snap, st)
 	row := model.TreeRow{ID: "ws-4k2.5.1", Depth: 30, Last: true, More: 1<<30 - 1}
+	r.SetTreeRows([]model.TreeRow{row})
 	s := ansi.Strip(r.Tree(row)(60, false))
-	if !strings.Contains(s, "…") && !strings.Contains(s, "...") {
-		t.Errorf("no depth marker: %q", s)
+	if !strings.Contains(s, "`- ws-4k2.5.1") || !strings.Contains(s, "...") {
+		t.Errorf("own connector, full ID or cut marker missing: %q", s)
 	}
 	if !strings.Contains(s, "Pickup point lookup") {
 		t.Errorf("title lost: %q", s)
+	}
+	if got := ansi.StringWidth(s); got != 60 {
+		t.Errorf("row is %d cells", got)
+	}
+}
+
+func TestGlyphColumnHoldsCaretOrStatusAndNeverIndents(t *testing.T) {
+	r, tree := treeRenderer(theme.TierASCII)
+	r.SetTreeRows(tree)
+	g := theme.GlyphsFor(theme.TierASCII)
+	for _, row := range tree {
+		s := ansi.Strip(r.Tree(row)(120, false))
+		got := s[:1]
+		isCaret := got == g.FoldClosed || got == g.FoldOpen
+		switch {
+		case row.Foldable && row.Folded && got != g.FoldClosed,
+			row.Foldable && !row.Folded && got != g.FoldOpen,
+			!row.Foldable && (isCaret || got == " "),
+			s[1] != ' ':
+			t.Errorf("%s %v: glyph column %q in %q", row.ID, row.Kind, got, s)
+		}
+	}
+}
+
+func TestClosedRowShowsStemsAndCountInTheIDColumn(t *testing.T) {
+	r, tree := treeRenderer(theme.TierASCII)
+	r.SetTreeRows(tree)
+	found := false
+	for _, row := range tree {
+		if row.Kind != model.TreeClosedFold {
+			continue
+		}
+		found = true
+		s := ansi.Strip(r.Tree(row)(100, false))
+		if !strings.HasPrefix(s, "> `- x 2 closed") {
+			t.Errorf("closed row = %q", s)
+		}
+	}
+	if !found {
+		t.Fatal("the sample tree has no closed-children row")
 	}
 }
 
@@ -190,11 +232,7 @@ func TestNoBarWithoutColourOrUnicode(t *testing.T) {
 
 func TestTreeColumnsLineUpAcrossDepths(t *testing.T) {
 	r, tree := treeRenderer(theme.TierASCII)
-	maxDepth := 0
-	for _, row := range tree {
-		maxDepth = max(maxDepth, row.Depth)
-	}
-	r.SetTreeDepth(maxDepth)
+	r.SetTreeRows(tree)
 	titleAt := map[string]int{}
 	for _, row := range tree {
 		if row.Kind != model.TreeIssue {
@@ -230,7 +268,7 @@ func TestTypeColumnIsReservedBeforeTheTitle(t *testing.T) {
 		if row.Kind != model.TreeIssue || row.ID != "ws-4k2.5.1" {
 			continue
 		}
-		r.SetTreeDepth(row.Depth)
+		r.SetTreeRows(tree)
 		if s := ansi.Strip(r.Tree(row)(100, false)); !strings.Contains(s, " task ") {
 			t.Errorf("type word missing at 100: %q", s)
 		}
@@ -265,6 +303,68 @@ func TestPinnedReadyRowsKeepTheirColumns(t *testing.T) {
 		}
 		if a, b := at(false), at(true); a != b {
 			t.Errorf("w %d: priority at %d pinned, %d otherwise", w, b, a)
+		}
+	}
+}
+
+func TestTreeAlignsAcrossDepthsAndWidths(t *testing.T) {
+	snap, st := uitest.Tree()
+	for _, tier := range []theme.Tier{theme.TierASCII, theme.TierFancy} {
+		r := rows.New(uitest.Look(theme.DepthNone, tier, true))
+		r.Bind(snap, st)
+		for _, depth := range []int{0, 1, 3, 8, 20} {
+			var tree []model.TreeRow
+			for d := 0; d <= depth; d++ {
+				id := "ws-4k2.5.1"
+				if d%2 == 1 {
+					id = "ws-9qe"
+				}
+				tree = append(tree, model.TreeRow{Kind: model.TreeIssue, ID: id, Depth: d, Last: d%3 == 0, More: 1<<uint(min(d, 62)) - 1})
+			}
+			if depth > 0 {
+				tree = append(tree, model.TreeRow{Kind: model.TreeClosedFold, ID: "ws-4k2", Depth: depth, Foldable: true, Folded: true, Closed: 3, Last: true})
+			}
+			r.SetTreeRows(tree)
+			for _, width := range []int{60, 80, 120, 200} {
+				w := width - rows.GutterWidth
+				header := ansi.Strip(r.TreeHeader(width))[rows.GutterWidth:]
+				want := map[string]int{"TITLE": strings.Index(header, "TITLE"), "PR": strings.Index(header, "PR")}
+				if got := ansi.StringWidth(header); got != w {
+					t.Errorf("%v d%d w%d: header is %d cells", tier, depth, width, got)
+				}
+				for _, row := range tree {
+					s := ansi.Strip(r.Tree(row)(w, false))
+					if got := ansi.StringWidth(s); got != w {
+						t.Errorf("%v d%d w%d %s: %d cells", tier, depth, width, row.ID, got)
+					}
+					if row.Kind == model.TreeClosedFold {
+						continue
+					}
+					title := strings.Index(s, "Pickup")
+					if title < 0 {
+						title = strings.Index(s, "Payment")
+					}
+					if title < 0 || ansi.StringWidth(s[:title]) != want["TITLE"] {
+						t.Errorf("%v d%d w%d %s: title column off header (%d): %q", tier, depth, width, row.ID, want["TITLE"], s)
+					}
+					if p := strings.LastIndex(s, " P"); p < 0 || ansi.StringWidth(s[:p+1]) != want["PR"] {
+						t.Errorf("%v d%d w%d %s: PR column off header (%d): %q", tier, depth, width, row.ID, want["PR"], s)
+					}
+				}
+			}
+		}
+	}
+}
+
+func TestParentStatusSurvivesWithoutColour(t *testing.T) {
+	r, tree := treeRenderer(theme.TierASCII)
+	r.SetTreeRows(tree)
+	for _, row := range tree {
+		if row.ID != "ws-4k2" || row.Kind != model.TreeIssue {
+			continue
+		}
+		if s := ansi.Strip(r.Tree(row)(100, false)); !strings.Contains(s, "* 2/5") {
+			t.Errorf("parent lacks its status glyph before the count: %q", s)
 		}
 	}
 }

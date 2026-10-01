@@ -46,7 +46,7 @@ func (r *Renderer) card(id string, w int, sel bool) string {
 	}
 	role, fact := r.cardFact(is)
 	fact = ansi.Truncate(fact, kanbanFactW, r.look.Glyphs.Ellipsis)
-	fixed := 1 + 2 + 1
+	fixed := 2 + 1
 	withID := w+GutterWidth >= kanbanIDCol
 	idW := 0
 	if withID {
@@ -74,7 +74,6 @@ func (r *Renderer) card(id string, w int, sel bool) string {
 	}
 	var b strings.Builder
 	sp := paint(theme.Text, " ")
-	b.WriteString(sp)
 	b.WriteString(paint(theme.PriorityRole(is.Priority), "P"+strconv.Itoa(min(max(is.Priority, 0), 9))))
 	b.WriteString(sp)
 	if withID {

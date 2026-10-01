@@ -1,8 +1,8 @@
 - Tree --- / guest · 2/1... · +1 closed - 1/2 - * 12:00:00 -
-        ID           TYPE    TITLE                     PR   
-|   v * ws-4k2       epic    Checkout: guest orders    2/5  
-    |-  ! ws-4k2.2   task    Guest order confirmati... P2   
-    `-> x 1 closed                                          
+    ID            TYPE    TITLE                        PR   
+| v ws-4k2        epic    Checkout: guest orders       * 2/5
+  ! |- ws-4k2.2   task    Guest order confirmation ... P2   
+  > `- x 1 closed                                           
                                                             
                                                             
                                                             

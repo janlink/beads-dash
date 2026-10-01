@@ -1,16 +1,16 @@
 - Tree - demo ---------------------------------------------------------------------------------------------------------------------------------------------------- 15 issues · 1/10 - * live 12:00:00 -
-        ID             TYPE    TITLE                                                                                                                                          PR STATUS      WHO       
-|     o ws-9qe         bug     Payment provider timeout retries                                                                                                               P0                       
-    v * ws-4k2         epic    Checkout: guest orders                                                                                                                         2/5 ##----               
-    |-  o ws-4k2.1     task    Address form validation                                                                                                                        P1                       
-    |-  ! ws-4k2.2     task    Guest order confirmation mail                                                                                                                  P2 blocked               
-    |-v o ws-4k2.5     feature Shipping options                                                                                                                               0/1 ------               
-    | `-  o ws-4k2.5.1 task    Pickup point lookup                                                                                                                            P3             carol     
-    `-> x 2 closed                                                                                                                                                                                     
-      ! ws-2hz         feature Split pricing service                                                                                                                          P2 blocked               
-      o ws-lost        task    Follow-up from a deleted epic                                                                                                        ^ ws-gone P2             alice     
-      * ws-7mt         bug     Cart badge shows stale count                                                                                                                   P2 in progress bob       
-      ~ ws-8np         feature Search: typo tolerance                                                                                                                         P3 deferred              
+    ID              TYPE    TITLE                                                                                                                                             PR STATUS      WHO       
+| o ws-9qe          bug     Payment provider timeout retries                                                                                                                  P0                       
+  v ws-4k2          epic    Checkout: guest orders                                                                                                                            * 2/5 ##----             
+  o |- ws-4k2.1     task    Address form validation                                                                                                                           P1                       
+  ! |- ws-4k2.2     task    Guest order confirmation mail                                                                                                                     P2 blocked               
+  v |- ws-4k2.5     feature Shipping options                                                                                                                                  o 0/1 ------             
+  o | `- ws-4k2.5.1 task    Pickup point lookup                                                                                                                               P3             carol     
+  > `- x 2 closed                                                                                                                                                                                      
+  ! ws-2hz          feature Split pricing service                                                                                                                             P2 blocked               
+  o ws-lost         task    Follow-up from a deleted epic                                                                                                           ^ ws-gone P2             alice     
+  * ws-7mt          bug     Cart badge shows stale count                                                                                                                      P2 in progress bob       
+  ~ ws-8np          feature Search: typo tolerance                                                                                                                            P3 deferred              
                                                                                                                                                                                                        
                                                                                                                                                                                                        
                                                                                                                                                                                                        

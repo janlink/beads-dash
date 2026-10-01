@@ -1,10 +1,10 @@
 - Kanban - demo --------------------------- 15 issues · 1/10 - * live 12:00:00 -
 - [Open] 5 ---------------------------- - In progress 2 ------------------ 3> - 
-|   P0 bug     Payment provider time...     P1 epic    Checkout: ... ##---- 2/5 
-    P1 task    Address form validation      P2 bug     Cart badge shows... @bob 
-    P2 task    Follow-up from... @alice                                         
-    P3 feature Shipping o... ------ 0/1                                         
-    P3 task    Pickup point l... @carol                                         
+| P0 bug     Payment provider timeou...   P1 epic    Checkout: gu... ##---- 2/5 
+  P1 task    Address form validation      P2 bug     Cart badge shows s... @bob 
+  P2 task    Follow-up from a... @alice                                         
+  P3 feature Shipping opt... ------ 0/1                                         
+  P3 task    Pickup point lookup @carol                                         
                                                                                 
                                                                                 
                                                                                 

@@ -1,19 +1,19 @@
 - Tree - demo -------------------------------------------------------------------- 15 issues · 14/14 - * live 12:00:00 -
-        ID         TYPE TITLE                                                                  PR STATUS      WHO       
-      * gr-a       task Extract pricing client                                                 P2 in progress           
-      o gr-b       task Migrate cart totals                                                    P2                       
-      o gr-c       task Migrate invoice totals with a rather long title that needs cutting ... P2                       
-      o gr-d       task Remove legacy pricing                                                  P2                       
-    v o gr-e       task Checkout epic                                                          0/2 ------               
-    |-  o gr-e1    task Address form                                                           P2                       
-    `-  o gr-e2    task Confirmation mail                                                      P2                       
-      o gr-l       task Depends on closed                                                      P2                       
-      o gr-lone1   task Standalone chore                                                       P2                       
-      ~ gr-lone2   task Another standalone chore                                               P2 deferred              
-      o gr-w       task Cache metrics                                                          P2                       
-      o gr-x       task Cache warmup                                                           P2                       
-      o gr-y       task Cache eviction                                                         P2                       
-|     o gr-z       task Cache sizing                                                           P2                       
+    ID       TYPE TITLE                                                                        PR STATUS      WHO       
+  * gr-a     task Extract pricing client                                                       P2 in progress           
+  o gr-b     task Migrate cart totals                                                          P2                       
+  o gr-c     task Migrate invoice totals with a rather long title that needs cutting somewhere P2                       
+  o gr-d     task Remove legacy pricing                                                        P2                       
+  v gr-e     task Checkout epic                                                                o 0/2 ------             
+  o |- gr-e1 task Address form                                                                 P2                       
+  o `- gr-e2 task Confirmation mail                                                            P2                       
+  o gr-l     task Depends on closed                                                            P2                       
+  o gr-lone1 task Standalone chore                                                             P2                       
+  ~ gr-lone2 task Another standalone chore                                                     P2 deferred              
+  o gr-w     task Cache metrics                                                                P2                       
+  o gr-x     task Cache warmup                                                                 P2                       
+  o gr-y     task Cache eviction                                                               P2                       
+| o gr-z     task Cache sizing                                                                 P2                       
                                                                                                                         
                                                                                                                         
                                                                                                                         

@@ -1,6 +1,6 @@
 - Tree - demo ------------------------------- 9 issues · 1/8 - * live 12:00:00 -
-        ID         TYPE    TITLE                       PR STATUS      WHO       
-|     o ws-9qe     bug     Payment provider timeout... P0                       
+    ID          TYPE    TITLE                          PR STATUS      WHO       
+| o ws-9qe      bug     Payment provider timeout re... P0                       
   +- Export ----------------------------------------------------- field 1/5 -+  
   | ! 908 KB, over the 700 KB clipboard limit, save to file                  |  
   |                                                                          |  

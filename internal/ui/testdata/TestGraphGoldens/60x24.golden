@@ -1,23 +1,23 @@
 - Graph --- 2 isol...idden - 15 issues · 1/13 - * 12:00:00 -
-   - 4 issues ----------------------------------------------
-|  * gr-a Extract pricing client                            
-   |-o gr-b Migrate cart totals                             
-   | `-o gr-d Remove legacy pricing                         
-   `-o gr-c Migrate invoice totals with a rather long tit...
-     `-~ gr-d Remove legacy pricing                         
-   - 4 issues ----------------------------------------------
-   o gr-x @ Cache warmup                                    
-   `-o gr-y @ Cache eviction                                
-     `-o gr-z @ Cache sizing                                
-       |-o gr-w Cache metrics                               
-       `-@ gr-x (cycle)                                     
-   - 3 issues ----------------------------------------------
-   o gr-e Checkout epic                                     
-   `-o gr-e1 Address form                                   
-     `-o gr-e2 Confirmation mail                            
-   - 2 issues ----------------------------------------------
-   x gr-k Closed prerequisite                               
-   `-o gr-l Depends on closed                               
+  - 4 issues -----------------------------------------------
+| * gr-a Extract pricing client                             
+  |-o gr-b Migrate cart totals                              
+  | `-o gr-d Remove legacy pricing                          
+  `-o gr-c Migrate invoice totals with a rather long titl...
+    `-~ gr-d Remove legacy pricing                          
+  - 4 issues -----------------------------------------------
+  o gr-x @ Cache warmup                                     
+  `-o gr-y @ Cache eviction                                 
+    `-o gr-z @ Cache sizing                                 
+      |-o gr-w Cache metrics                                
+      `-@ gr-x (cycle)                                      
+  - 3 issues -----------------------------------------------
+  o gr-e Checkout epic                                      
+  `-o gr-e1 Address form                                    
+    `-o gr-e2 Confirmation mail                             
+  - 2 issues -----------------------------------------------
+  x gr-k Closed prerequisite                                
+  `-o gr-l Depends on closed                                
                                                             
                                                             
 - 1 - 2 - 3 - 4 - 5 - [6] ----------------------------------

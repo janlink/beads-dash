@@ -1,9 +1,9 @@
 - Overview - demo -------------------------------------------- * live 12:00:00 -
-|   ? ws-1zz   task    Mystery status issue                    P4               
-    ! ws-2hz   feature Split pricing service                   P2               
-    * ws-4k2   epic    Checkout: guest orders                  P1 alice         
-    o ws-4k2.1 task    Address form validation                 P1               
-    ! ws-4k2.2 task    Guest order confirmation mail           P2               
+| ? ws-1zz   task    Mystery status issue                      P4               
+  ! ws-2hz   feature Split pricing service                     P2               
+  * ws-4k2   epic    Checkout: guest orders                    P1 alice         
+  o ws-4k2.1 task    Address form validation                   P1               
+  ! ws-4k2.2 task    Guest order confirmation mail             P2               
   +- Appearance -------------------------------------------------------------+  
   | > Theme       < default >                                                |  
   |   Background    dark                                                     |  

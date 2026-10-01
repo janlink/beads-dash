@@ -23,13 +23,13 @@ const (
 	treeIndent = 2
 	treeBarW   = 6
 	treeWho    = 10
-	// guideShare is the largest part of a row, in percent, the guides may take.
-	guideShare = 40
-	// minTitle cells stay for the title however deep the row sits.
+	// minTreeTitle cells stay for the title however deep the row sits.
 	minTreeTitle = 20
-	// treeIDRef is the ID width guides are budgeted for; a wider ID takes the
-	// room left over.
+	// treeIDRef is the ID width the type column is budgeted for; a wider ID
+	// takes the room left over.
 	treeIDRef = 16
+	// stemShare is the largest part of a row, in percent, the stems may take.
+	stemShare = 40
 )
 
 // UpGlyph marks a root whose parent is not in the snapshot.
@@ -40,19 +40,21 @@ func UpGlyph(g theme.Glyphs) string {
 	return "↑"
 }
 
-// Tree draws a row of the tree: guides, fold marker, status glyph, ID, type
-// and title, then the orphan marker and the right-hand block (progress for
-// parents; priority, status text and assignee for leaves). A closed-children
-// row shows the count instead.
-// Rows at depth 0 carry no guides, which is how views list children.
+// Tree draws a row of the tree: the glyph column, the ID column, type and
+// title, then the orphan marker and the right-hand block (progress for
+// parents; priority, status text and assignee for leaves). The glyph column
+// holds the fold caret of a parent and the status glyph of a leaf; the ID
+// column holds the stems and the ID. A closed-children row shows the count in
+// the ID column instead.
+// Rows at depth 0 carry no stems, which is how views list children.
 func (r *Renderer) Tree(row model.TreeRow) Body {
-	return func(w int, sel bool) string { return r.tree(row, w, r.depth, sel) }
+	return func(w int, sel bool) string { return r.tree(row, w, false, sel) }
 }
 
-// Flat is Tree for a short list of children that does not pad its guides to
-// the depth of the tree view.
+// Flat is Tree for a short list of children whose ID column is not widened
+// for the depth of the tree view.
 func (r *Renderer) Flat(row model.TreeRow) Body {
-	return func(w int, sel bool) string { return r.tree(row, w, 0, sel) }
+	return func(w int, sel bool) string { return r.tree(row, w, true, sel) }
 }
 
 // TreeHeader is the dim column header line of the tree view, w cells wide
@@ -62,11 +64,10 @@ func (r *Renderer) TreeHeader(w int) string {
 	if bw <= 0 {
 		return strings.Repeat(" ", max(w, 0))
 	}
-	plan := r.treePlan(bw, r.depth)
-	sw := ansi.StringWidth(r.look.Glyphs.Status[0])
-	lead := 1 + 2 + sw + 1
+	plan := r.treePlan(bw, false)
+	lead := r.glyphW() + 1
 	cells := []headerCell{{lead, plan.id, "ID"}}
-	titleAt := 1 + plan.guide + 2 + sw + 1 + plan.id + 1
+	titleAt := lead + plan.id + 1
 	if plan.typ > 0 {
 		cells = append(cells, headerCell{titleAt, plan.typ - 1, "TYPE"})
 		titleAt += plan.typ
@@ -86,8 +87,8 @@ func (r *Renderer) TreeHeader(w int) string {
 // treeLayout is the column plan of tree rows for one body width; every row
 // of a frame shares it so the columns line up.
 type treeLayout struct {
-	guide  int
 	id     int
+	stem   int
 	typ    int
 	fact   int
 	status bool
@@ -96,14 +97,22 @@ type treeLayout struct {
 
 const (
 	treeStatusW = 11
-	treeBarMin  = 12
 )
+
+// stemWidth is the cells the stems of a row at depth take: two a level and the
+// gap before the ID.
+func stemWidth(depth int) int {
+	if depth == 0 {
+		return 0
+	}
+	return treeIndent*depth + 1
+}
 
 // treePlan picks the widest right-hand block that leaves the title its
 // minimum: priority, status text and assignee, then priority and status text,
 // then priority alone. Narrow rows start at priority alone. When even that
 // leaves no room for the title, the type column goes.
-func (r *Renderer) treePlan(w, depth int) treeLayout {
+func (r *Renderer) treePlan(w int, flat bool) treeLayout {
 	prio := 2
 	modes := []treeLayout{
 		{fact: prio + 1 + treeStatusW + 1 + treeWho, status: true, who: true},
@@ -114,22 +123,23 @@ func (r *Renderer) treePlan(w, depth int) treeLayout {
 		modes = modes[2:]
 	}
 	var pick treeLayout
+	stem, need, label := min(r.stem, w*stemShare/100), r.need, r.label
+	if flat {
+		stem, need, label = 0, r.idW, r.idW
+	}
+	need = min(need, stem+label)
+	idRef := min(need, treeIDRef+stem)
 	for _, withType := range []bool{true, false} {
 		for _, m := range modes {
 			pick = m
-			idRef := min(r.idW, treeIDRef)
-			pick.guide = max(min(2*depth, w*guideShare/100), 0)
-			pick.guide = min(pick.guide, max(w-idRef-minTreeTitle-m.fact-8, treeIndent))
-			if depth == 0 {
-				pick.guide = 0
-			}
-			rest := 1 + pick.guide + 2 + ansi.StringWidth(r.look.Glyphs.Status[0]) + 1 + 1 + m.fact
+			rest := r.glyphW() + 1 + 1 + 1 + m.fact
 			if withType {
 				pick.typ = r.typeCol(w - rest - idRef - minTreeTitle)
 			} else {
 				pick.typ = 0
 			}
-			pick.id = r.idCol(w - rest - pick.typ - minTreeTitle)
+			pick.id = fitCol(need, w-rest-pick.typ-minTreeTitle)
+			pick.stem = min(max(pick.id-label, min(stem, treeIndent+1+ansi.StringWidth(r.look.Glyphs.Ellipsis))), stem)
 			if w-rest-pick.id-pick.typ >= minTreeTitle {
 				return pick
 			}
@@ -138,25 +148,25 @@ func (r *Renderer) treePlan(w, depth int) treeLayout {
 	return pick
 }
 
-func (r *Renderer) tree(row model.TreeRow, w, depth int, sel bool) string {
+func (r *Renderer) tree(row model.TreeRow, w int, flat, sel bool) string {
 	paint := r.look.Paint
 	if sel {
 		paint = r.look.PaintSel
 	}
 	g := r.look.Glyphs
+	plan := r.treePlan(w, flat)
 
-	fold := "  "
+	caret := ""
 	if row.Foldable {
-		mark := g.FoldOpen
+		caret = g.FoldOpen
 		if row.Folded {
-			mark = g.FoldClosed
+			caret = g.FoldClosed
 		}
-		fold = mark + " "
 	}
 	if row.Kind == model.TreeClosedFold {
-		guides, _ := r.guides(row, w*guideShare/100, paint)
-		text := fmt.Sprintf("%s %d closed", g.Status[look.StatusIndex(int(model.Closed))], row.Closed)
-		return r.look.Fit(" "+guides+paint(theme.Dim, fold+text), w)
+		text := r.closedText(row)
+		lead, _ := r.stems(row, plan, paint)
+		return r.look.Fit(r.glyphCell(paint, theme.Dim, caret)+lead+paint(theme.Dim, text), w)
 	}
 
 	is, ok := r.snap.Issue(row.ID)
@@ -169,11 +179,11 @@ func (r *Renderer) tree(row model.TreeRow, w, depth int, sel bool) string {
 	if pres.BlockedMarker {
 		statusRole = theme.StatusBlocked
 	}
-	textRole, idRole := theme.Text, theme.Dim
+	textRole, idRole, caretRole := theme.Text, theme.Dim, theme.Dim
 	dim := false
 	switch {
 	case row.Context:
-		textRole, idRole = theme.Faint, theme.Faint
+		textRole, idRole, caretRole = theme.Faint, theme.Faint, theme.Faint
 		statusRole = theme.Faint
 		dim = true
 	case pres.Status == model.Closed:
@@ -181,16 +191,20 @@ func (r *Renderer) tree(row model.TreeRow, w, depth int, sel bool) string {
 		dim = true
 	}
 
-	plan := r.treePlan(w, max(depth, row.Depth))
-	guides, gw := r.guides(row, plan.guide, paint)
-	guidePad := max(plan.guide-gw, 0)
-	id := r.look.FitID(is.ID, plan.id)
-	sw := ansi.StringWidth(g.Status[idx])
-	fixed := 1 + max(gw, plan.guide) + 2 + sw + 1 + plan.id + 1 + plan.typ
+	var b strings.Builder
+	if row.Foldable {
+		b.WriteString(r.glyphCell(paint, caretRole, caret))
+	} else {
+		b.WriteString(r.glyphCell(paint, statusRole, g.Status[idx]))
+	}
+	lead, lw := r.stems(row, plan, paint)
+	b.WriteString(lead)
+	b.WriteString(r.hl(paint, idRole, r.look.FitID(is.ID, plan.id-lw)))
+	fixed := r.glyphW() + 1 + plan.id + 1 + plan.typ
 	orphan := ""
 	room := w - fixed - 1 - plan.fact
 	if row.Orphan != "" {
-		if o := UpGlyph(g) + " " + r.look.TruncID(row.Orphan, plan.id); room-ansi.StringWidth(o)-1 >= minTreeTitle {
+		if o := UpGlyph(g) + " " + r.look.TruncID(row.Orphan, r.idW); room-ansi.StringWidth(o)-1 >= minTreeTitle {
 			orphan = o
 		}
 	}
@@ -199,13 +213,7 @@ func (r *Renderer) tree(row model.TreeRow, w, depth int, sel bool) string {
 		titleW -= ansi.StringWidth(orphan) + 1
 	}
 
-	var b strings.Builder
 	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(guides)
-	b.WriteString(paint(theme.Dim, fold))
-	b.WriteString(paint(statusRole, g.Status[idx]+" "))
-	b.WriteString(r.hl(paint, idRole, id))
-	b.WriteString(paint(theme.Text, strings.Repeat(" ", 1+guidePad)))
 	b.WriteString(r.typeCell(paint, is, plan.typ, dim))
 	b.WriteString(r.hl(paint, textRole, r.look.Fit(oneLine(is.Title), titleW)))
 	if orphan != "" {
@@ -213,13 +221,27 @@ func (r *Renderer) tree(row model.TreeRow, w, depth int, sel bool) string {
 		b.WriteString(paint(theme.Faint, orphan))
 	}
 	b.WriteString(paint(theme.Text, " "))
-	b.WriteString(r.treeFact(paint, row.ID, is, pres, plan))
+	b.WriteString(r.treeFact(paint, row.ID, is, pres, plan, statusRole, r.parentGlyph(pres, idx)))
 	return r.look.Fit(b.String(), w)
+}
+
+// parentGlyph is the status glyph a parent shows before its progress count,
+// where the caret has replaced it in its own column: always when colour cannot
+// carry the status, and for a blocked parent whatever the colour.
+func (r *Renderer) parentGlyph(pres model.Presentation, idx int) string {
+	g := r.look.Glyphs
+	switch {
+	case pres.BlockedMarker:
+		return g.Status[look.StatusIndex(int(model.Blocked))]
+	case pres.Status == model.Blocked, r.look.Palette.Depth() == theme.DepthNone:
+		return g.Status[idx]
+	}
+	return ""
 }
 
 // treeFact draws the right-hand block: progress for a parent; priority, status
 // text and assignee for a leaf. The parts keep their columns from row to row.
-func (r *Renderer) treeFact(paint func(theme.Role, string) string, id string, is *model.Issue, pres model.Presentation, plan treeLayout) string {
+func (r *Renderer) treeFact(paint func(theme.Role, string) string, id string, is *model.Issue, pres model.Presentation, plan treeLayout, progressRole theme.Role, parentGlyph string) string {
 	g := r.look.Glyphs
 	var fact string
 	used := 0
@@ -228,8 +250,11 @@ func (r *Renderer) treeFact(paint func(theme.Role, string) string, id string, is
 		used += ansi.StringWidth(s)
 	}
 	if prog, container := r.snap.Progress(id, r.statuses); container {
-		add(theme.Text, fmt.Sprintf("%d/%d", prog.Direct.Closed, prog.Direct.Total))
-		if plan.fact >= treeBarMin && prog.Descendants.Total > 0 {
+		if parentGlyph != "" {
+			add(progressRole, parentGlyph+" ")
+		}
+		add(progressRole, fmt.Sprintf("%d/%d", prog.Direct.Closed, prog.Direct.Total))
+		if used+1+treeBarW <= plan.fact && prog.Descendants.Total > 0 {
 			full := prog.Descendants.Closed * treeBarW / prog.Descendants.Total
 			add(theme.Text, " ")
 			add(theme.Success, strings.Repeat(strings.TrimRight(g.BarFull, " "), full))
@@ -260,48 +285,62 @@ func (r *Renderer) treeFact(paint func(theme.Role, string) string, id string, is
 	return fact
 }
 
-// guides draws the indent of a row: a vertical line for each ancestor that
-// has later siblings and the branch to the row itself, two cells a level.
-// When that would take more than capCells the outer levels collapse into a
-// marker counting them.
-func (r *Renderer) guides(row model.TreeRow, capCells int, paint func(theme.Role, string) string) (string, int) {
+// closedText is the label of a closed-children row.
+func (r *Renderer) closedText(row model.TreeRow) string {
+	return fmt.Sprintf("%s %d closed", r.look.Glyphs.Status[look.StatusIndex(int(model.Closed))], row.Closed)
+}
+
+// stems draws the branch of a row: a vertical line for each ancestor that has
+// later siblings, then the row's own connector and a gap, two cells a level.
+// Stems wider than the frame's budget lose their outer levels, marked by an
+// ellipsis, so every row of a frame loses the same cells whatever its ID. It
+// returns the drawing and its width.
+func (r *Renderer) stems(row model.TreeRow, plan treeLayout, paint func(theme.Role, string) string) (string, int) {
 	d := row.Depth
 	if d == 0 {
 		return "", 0
 	}
 	g := r.look.Glyphs
-	cells := make([]string, d)
+	type seg struct {
+		text string
+		role theme.Role
+	}
+	segs := make([]seg, 0, d+2)
+	drop := max(stemWidth(d)-plan.stem, 0)
+	if drop > 0 {
+		ew := ansi.StringWidth(g.Ellipsis)
+		segs = append(segs, seg{g.Ellipsis, theme.Faint})
+		drop += ew
+	}
 	for j := 1; j < d; j++ {
 		if j < 64 && row.More&(1<<uint(j)) != 0 {
-			cells[j-1] = g.Vertical
+			segs = append(segs, seg{r.look.Fit(g.Vertical, treeIndent), theme.Rule})
 		} else {
-			cells[j-1] = strings.Repeat(" ", treeIndent)
+			segs = append(segs, seg{strings.Repeat(" ", treeIndent), theme.Text})
 		}
 	}
-	cells[d-1] = g.Branch
+	join := g.Branch
 	if row.Last {
-		cells[d-1] = g.LastBranch
+		join = g.LastBranch
 	}
-	marker := ""
-	hidden := 0
-	if treeIndent*d > capCells {
-		hidden = d
-		for range 3 {
-			marker = g.Ellipsis + strconv.Itoa(hidden)
-			keep := max((capCells-ansi.StringWidth(marker))/treeIndent, 1)
-			hidden = max(d-keep, 0)
-		}
-		marker = g.Ellipsis + strconv.Itoa(hidden)
-	}
+	segs = append(segs, seg{r.look.Fit(join, treeIndent), theme.Rule}, seg{" ", theme.Text})
 	var b strings.Builder
 	w := 0
-	if hidden > 0 {
-		b.WriteString(paint(theme.Faint, marker))
-		w += ansi.StringWidth(marker)
-	}
-	for _, c := range cells[hidden:] {
-		b.WriteString(paint(theme.Rule, c))
-		w += ansi.StringWidth(c)
+	for i, sg := range segs {
+		if i == 0 && drop > 0 {
+			b.WriteString(paint(sg.role, sg.text))
+			w += ansi.StringWidth(sg.text)
+			continue
+		}
+		sw := ansi.StringWidth(sg.text)
+		if drop >= sw {
+			drop -= sw
+			continue
+		}
+		text := ansi.TruncateLeft(sg.text, drop, "")
+		drop = 0
+		b.WriteString(paint(sg.role, text))
+		w += ansi.StringWidth(text)
 	}
 	return b.String(), w
 }

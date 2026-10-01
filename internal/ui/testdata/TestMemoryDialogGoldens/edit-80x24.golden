@@ -1,8 +1,8 @@
 - Memories - demo ---------------- 4 · 514 chars in bd prime - * live 12:00:00 -
-   dolt-push-needs-remote  Run bd dolt push only after the remote is set.       
-|  golden-update           Regenerate goldens with `just golden-update` and r...
-   no-tabs                 Go files use tabs; everything else uses two spaces.  
-   test-pump               Engine-driven tests share one persistent pump.       
+  dolt-push-needs-remote  Run bd dolt push only after the remote is set.        
+| golden-update           Regenerate goldens with `just golden-update` and re...
+  no-tabs                 Go files use tabs; everything else uses two spaces.   
+  test-pump               Engine-driven tests share one persistent pump.        
                                                                                 
                                                                                 
   +- Edit memory ------------------------------------------------ field 1/2 -+  

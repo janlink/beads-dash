@@ -2,15 +2,15 @@
  / search  f filter  Enter details  : cmd  ? help                  o open  * in progress  ! blocked  x closed  ~ frozen 
 
 - Overview - demo ------------------------------------------------------------------------------------ * live 12:00:00 -
-|   ? ws-1zz   task    Mystery status issue                                                            P4               
-    ! ws-2hz   featu+- Keys ------------------------------------------------------------ 43 shown -+   P2               
-    * ws-4k2   epic | Lists                                                                        |   P1 alice         
-    o ws-4k2.1 task |   q        quit                                                              |   P1               
-    ! ws-4k2.2 task |   j/Down   move down                                                         |   P2               
-    x ws-5ca   chore|   k/Up     move up                                                           |   P3               
-    * ws-7mt   bug  |   gg       first                                                             |   P2 bob           
-    ~ ws-8np   featu|   G        last                                                              |   P3               
-    o ws-9qe   bug  |   Ctrl+D   half page down                                                    |   P0               
+| ? ws-1zz   task    Mystery status issue                                                              P4               
+  ! ws-2hz   feature+- Keys ------------------------------------------------------------ 43 shown -+   P2               
+  * ws-4k2   epic   | Lists                                                                        |   P1 alice         
+  o ws-4k2.1 task   |   q        quit                                                              |   P1               
+  ! ws-4k2.2 task   |   j/Down   move down                                                         |   P2               
+  x ws-5ca   chore  |   k/Up     move up                                                           |   P3               
+  * ws-7mt   bug    |   gg       first                                                             |   P2 bob           
+  ~ ws-8np   feature|   G        last                                                              |   P3               
+  o ws-9qe   bug    |   Ctrl+D   half page down                                                    |   P0               
                     |   Ctrl+U   half page up                                                      |                    
                     |   PgDn     page down                                                         |                    
                     |   PgUp     page up                                                           |                    

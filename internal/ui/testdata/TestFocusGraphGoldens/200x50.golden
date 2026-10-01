@@ -1,19 +1,19 @@
 - Tree - demo ----------------------------------------------------------- 15 issues · 2/14 - * live 12:00:00 -+- gr-b ----------------------------------------------------------------------------------
-        ID         TYPE TITLE                                                        PR STATUS      WHO       |  gr-b  o Open  task  P2                                                                 
-      * gr-a       task Extract pricing client                                       P2 in progress           |  Migrate cart totals                                                                    
-|     o gr-b       task Migrate cart totals                                          P2                       |  * Description  none                                                                    
-      o gr-c       task Migrate invoice totals with a rather long title that need... P2                       |  v Dependencies  waits on 1 (1 open) · holds up 1                                       
-      o gr-d       task Remove legacy pricing                                        P2                       |    < waits on (1 · 1 open)                                                              
-    v o gr-e       task Checkout epic                                                0/2 ------               |    `- * gr-a Extract pricing client                                                     
-    |-  o gr-e1    task Address form                                                 P2                       |    o gr-b Migrate cart totals                                                           
-    `-  o gr-e2    task Confirmation mail                                            P2                       |    > holds up (1)                                                                       
-      o gr-l       task Depends on closed                                            P2                       |    `- o gr-d Remove legacy pricing                                                      
-      o gr-lone1   task Standalone chore                                             P2                       |  * Children  none                                                                       
-      ~ gr-lone2   task Another standalone chore                                     P2 deferred              |  > Details  created 2 d ago · updated 1 h ago                                           
-      o gr-w       task Cache metrics                                                P2                       |  > Audit trail  no comments                                                             
-      o gr-x       task Cache warmup                                                 P2                       |                                                                                         
-      o gr-y       task Cache eviction                                               P2                       |                                                                                         
-      o gr-z       task Cache sizing                                                 P2                       |                                                                                         
+    ID       TYPE TITLE                                                              PR STATUS      WHO       |  gr-b  o Open  task  P2                                                                 
+  * gr-a     task Extract pricing client                                             P2 in progress           |  Migrate cart totals                                                                    
+| o gr-b     task Migrate cart totals                                                P2                       |  * Description  none                                                                    
+  o gr-c     task Migrate invoice totals with a rather long title that needs cutt... P2                       |  v Dependencies  waits on 1 (1 open) · holds up 1                                       
+  o gr-d     task Remove legacy pricing                                              P2                       |    < waits on (1 · 1 open)                                                              
+  v gr-e     task Checkout epic                                                      o 0/2 ------             |    `- * gr-a Extract pricing client                                                     
+  o |- gr-e1 task Address form                                                       P2                       |    o gr-b Migrate cart totals                                                           
+  o `- gr-e2 task Confirmation mail                                                  P2                       |    > holds up (1)                                                                       
+  o gr-l     task Depends on closed                                                  P2                       |    `- o gr-d Remove legacy pricing                                                      
+  o gr-lone1 task Standalone chore                                                   P2                       |  * Children  none                                                                       
+  ~ gr-lone2 task Another standalone chore                                           P2 deferred              |  > Details  created 2 d ago · updated 1 h ago                                           
+  o gr-w     task Cache metrics                                                      P2                       |  > Audit trail  no comments                                                             
+  o gr-x     task Cache warmup                                                       P2                       |                                                                                         
+  o gr-y     task Cache eviction                                                     P2                       |                                                                                         
+  o gr-z     task Cache sizing                                                       P2                       |                                                                                         
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         
                                                                                                               |                                                                                         

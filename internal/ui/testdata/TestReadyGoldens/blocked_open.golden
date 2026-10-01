@@ -1,12 +1,12 @@
 - Ready - demo --------------------------------------------------------------------------- 15 issues - * live 12:00:00 -
-      ID         TYPE    TITLE                                               PR ASSIGNEE     AGE  REASON                
-   - Unassigned 2 ------------------------------------------------------------------------------------------------------
-    o ws-9qe     bug     Payment provider timeout retries                    P0                5h no blocking depende...
-    o ws-4k2.1   task    Address form validation                             P1                3d no blocking depende...
-   - Assigned, not started 2 -------------------------------------------------------------------------------------------
-    o ws-lost    task    Follow-up from a deleted epic                       P2 alice          1d 1 blocker(s) resolved 
-    o ws-4k2.5.1 task    Pickup point lookup                                 P3 carol          2d no blocking depende...
-   - > Blocked 2 -------------------------------------------------------------------------------------------------------
+    ID         TYPE    TITLE                                                 PR ASSIGNEE     AGE  REASON                
+  - Unassigned 2 -------------------------------------------------------------------------------------------------------
+  o ws-9qe     bug     Payment provider timeout retries                      P0                5h no blocking depende...
+  o ws-4k2.1   task    Address form validation                               P1                3d no blocking depende...
+  - Assigned, not started 2 --------------------------------------------------------------------------------------------
+  o ws-lost    task    Follow-up from a deleted epic                         P2 alice          1d 1 blocker(s) resolved 
+  o ws-4k2.5.1 task    Pickup point lookup                                   P3 carol          2d no blocking depende...
+  - > Blocked 2 --------------------------------------------------------------------------------------------------------
                                                                                                                         
                                                                                                                         
                                                                                                                         

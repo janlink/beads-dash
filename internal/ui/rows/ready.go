@@ -54,8 +54,7 @@ func (r *Renderer) ReadyColumns(w int) ReadyCols {
 // readyFixed is the width of the row besides title and ID column, with the ID
 // column counted at idW.
 func (r *Renderer) readyFixed(c ReadyCols, idW int) int {
-	sw := ansi.StringWidth(r.look.Glyphs.Status[0])
-	n := 1 + sw + 1 + idW + 1 + 1 + 2
+	n := r.glyphW() + 1 + idW + 1 + 1 + 2
 	if c.Type {
 		n += r.typeW + 1
 	}
@@ -127,8 +126,7 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 
 	var b strings.Builder
 	sp := paint(theme.Text, " ")
-	b.WriteString(sp)
-	b.WriteString(paint(statusRole, g.Status[idx]+" "))
+	b.WriteString(r.glyphCell(paint, statusRole, g.Status[idx]))
 	b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(is.ID, idW)))
 	b.WriteString(sp)
 	b.WriteString(r.typeCell(paint, is, typeCol, dim))
@@ -162,10 +160,9 @@ func (r *Renderer) ReadyHeader(w int, cols ReadyCols) string {
 	if bw <= 0 {
 		return strings.Repeat(" ", max(w, 0))
 	}
-	sw := ansi.StringWidth(r.look.Glyphs.Status[0])
 	fixed := r.readyFixed(cols, 0)
 	idW := r.idCol(bw - fixed - minReadyCols)
-	at := 1 + sw + 1
+	at := r.glyphW() + 1
 	cells := []headerCell{{at, idW, "ID"}}
 	at += idW + 1
 	if cols.Type {

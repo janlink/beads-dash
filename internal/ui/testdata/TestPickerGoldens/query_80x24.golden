@@ -1,7 +1,7 @@
 - Tree - demo ----------------------------- 15 issues · 1/10 - * live 12:00:00 -
-        ID             TYPE    TITLE                   PR STATUS      WHO       
-|     o ws-9qe         bug     Payment provider tim... P0                       
-    v * ws-4k2         epic    Checkout: guest orders  2/5 ##----               
+    ID              TYPE    TITLE                      PR STATUS      WHO       
+| o ws-9qe          bug     Payment provider timeou... P0                       
+  v ws-4k2          epic    Checkout: guest orders     * 2/5 ##----             
   +- Jump to issue ----------------------------------- 3/15 · closed hidden -+  
   | > gst                                                                    |  
   |   * ws-4k2     Checkout: guest orders                                    |  

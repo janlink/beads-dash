@@ -37,7 +37,9 @@ func idDraws(r *rows.Renderer, w int) map[string]idDraw {
 			return r.Line(w, rows.Row{ID: id}, "ready", r.Ready(rows.ReadyRow{ID: id, Cols: r.ReadyColumns(w), Now: uitest.T0}))
 		},
 		"tree": func(id string) string {
-			return r.Line(w, rows.Row{ID: id}, "tree", r.Tree(model.TreeRow{Kind: model.TreeIssue, ID: id}))
+			row := model.TreeRow{Kind: model.TreeIssue, ID: id}
+			r.SetTreeRows([]model.TreeRow{row})
+			return r.Line(w, rows.Row{ID: id}, "tree", r.Tree(row))
 		},
 		"feed": func(id string) string {
 			e := model.Event{IssueID: id, Time: uitest.T0.Add(-time.Minute), Kind: model.KindCreated}
