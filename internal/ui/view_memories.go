@@ -19,10 +19,8 @@ import (
 )
 
 const (
-	memListMinCols = 32
-	memListMaxCols = 60
+	memListMaxCols = 40
 	memKeyMaxCols  = 40
-	memBottomMin   = 4
 )
 
 // memoriesView is view slot 5. The memories are not issues, so the shell
@@ -97,16 +95,9 @@ type memLayout struct {
 }
 
 func memLayoutFor(w, h int) memLayout {
-	switch {
-	case w >= memSideCols:
-		lw := min(max(w*40/100, memListMinCols), memListMaxCols)
+	if w >= memSideCols {
+		lw := min(w/2, memListMaxCols)
 		return memLayout{listW: lw, listH: h, prevW: w - lw, prevH: h, side: true, previews: true}
-	case w >= memBottomCols:
-		ph := max(h*40/100, memBottomMin)
-		if h-ph < 3 {
-			return memLayout{listW: w, listH: h}
-		}
-		return memLayout{listW: w, listH: h - ph, prevW: w, prevH: ph, previews: true}
 	}
 	return memLayout{listW: w, listH: h}
 }

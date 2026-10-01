@@ -1,10 +1,10 @@
 - Memories - demo ---------------- 4 · 514 chars in bd prime - * live 12:00:00 -
-  dolt-push-needs-remote  Run bd dolt push only after the remote is set.        
-| golden-update           Regenerate goldens with `just golden-update` and re...
-  no-tabs                 Go files use tabs; everything else uses two spaces.   
-  test-pump               Engine-driven tests share one persistent pump.        
-                                                                                
-                                                                                
+  dolt-push-needs-...  Run bd dolt pu...|  golden-update · 1 line · 65 chars    
+| golden-update        Regenerate gol...|  Regenerate goldens with  just golden-
+  no-tabs              Go files use t...|  update  and review the diff.         
+  test-pump            Engine-driven ...|                                       
+                                        |                                       
+                                        |                                       
   +- Edit memory ------------------------------------------------ field 1/2 -+  
   |   Key*         golden-update                                             |  
   |   Content*                                                               |  
@@ -12,13 +12,13 @@
   |                                                                          |  
   |                                                                          |  
   |                                                                          |  
---|                                                                          |--
-go|                                                                          |  
-Re+-------------------------------------- Ctrl+S save  Esc close  Tab field -+  
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
+  |                                                                          |  
+  |                                                                          |  
+  +-------------------------------------- Ctrl+S save  Esc close  Tab field -+  
+                                        |                                       
+                                        |                                       
+                                        |                                       
+                                        |                                       
+                                        |                                       
 - 1 Overview - 2 Tree - 3 Kanban - 4 Ready - [5 Memories] - 6 Graph ------------
  Ctrl+S save  Esc close  Tab field                                              

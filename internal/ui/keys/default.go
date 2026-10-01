@@ -62,7 +62,7 @@ func Default() *Map {
 		{Keys: []string{"e"}, Action: MemoryEdit, Desc: "edit memory"},
 		{Keys: []string{"d"}, Action: MemoryForget, Desc: "forget memory, or the marked ones"},
 		{Keys: []string{"y"}, Action: MemoryCopy, Desc: "copy the content"},
-		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the full-screen preview below 80 columns"},
+		{Keys: []string{"enter"}, Action: Open, Label: "Enter", Desc: "open the full-screen preview below 72 columns"},
 	}
 	m.by[Tree] = []Binding{
 		{Keys: []string{"z M"}, Action: FoldAll, Label: "zM", Desc: "fold all"},

@@ -20,10 +20,9 @@ import (
 const (
 	memSlot   = 4
 	memPrefix = "mem:"
-	// memSideCols and memBottomCols are the widths from which the preview
-	// sits beside the list and below it.
-	memSideCols   = 100
-	memBottomCols = 80
+	// memSideCols is the width from which the preview sits beside the list;
+	// below it, Enter opens the preview full screen.
+	memSideCols   = 72
 	issueOnlyHint = "issue action: switch to 1-4"
 )
 
@@ -284,7 +283,7 @@ func (a *App) memNavigate(act keys.Action) {
 	m.scroll = 0
 }
 
-func (a *App) previewShown() bool { return a.cols >= memBottomCols }
+func (a *App) previewShown() bool { return a.cols >= memSideCols }
 
 // memAct runs the actions of the Memories view; it reports whether it took
 // the action.
