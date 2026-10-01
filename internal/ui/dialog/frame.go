@@ -59,39 +59,27 @@ func Page(cols, rows, n int) int {
 // lines.
 func MaxScroll(cols, rows, n int) int { return max(n-Page(cols, rows, n), 0) }
 
-type border struct{ tl, tr, bl, br, h, v string }
-
-func borderFor(l look.Look) border {
-	if l.Glyphs.Tier == theme.TierASCII {
-		return border{"+", "+", "+", "+", "-", "|"}
-	}
-	return border{"╭", "╮", "╰", "╯", "─", "│"}
-}
-
-// Box draws the framed dialog exactly w by h cells.
+// Box draws the framed dialog exactly w by h cells. A dialog has the keys, so
+// its frame is always focused.
 func Box(l look.Look, f Frame, w, h int) []string {
 	if w < 8 || h < 3 {
 		return nil
 	}
-	bd := borderFor(l)
 	iw, ch := w-4, h-2
-	line := func(content string) string {
-		return l.Paint(theme.Border, bd.v) + " " + l.Fit(content, iw) + " " + l.Paint(theme.Border, bd.v)
-	}
-
-	out := make([]string, 0, h)
-	out = append(out, topBorder(l, bd, f, w))
-	body, more := window(f.Body, f.Scroll, ch)
-	for _, b := range body {
-		out = append(out, line(b))
+	line := func(content string) string { return " " + l.Fit(content, iw) + " " }
+	shown, more := window(f.Body, f.Scroll, ch)
+	body := make([]string, 0, ch)
+	for _, b := range shown {
+		body = append(body, line(b))
 	}
 	if more > 0 {
-		out = append(out, line(l.Paint(theme.Faint, fmt.Sprintf("%s %d more", l.Glyphs.Ellipsis, more))))
+		body = append(body, line(l.Paint(theme.Faint, fmt.Sprintf("%s %d more", l.Glyphs.Ellipsis, more))))
 	}
-	for len(out) < h-1 {
-		out = append(out, line(""))
+	var aside []look.Seg
+	if f.Aside != "" {
+		aside = look.Word(theme.Dim, f.Aside)
 	}
-	return append(out, bottomBorder(l, bd, f.Hints, w))
+	return l.Frame(look.Panel{Title: f.Title, Aside: aside, Bottom: hintSegs(f.Hints, w-6), Focused: true}, w, h, body)
 }
 
 // window returns the lines to show in ch rows and how many are cut below.
@@ -109,46 +97,26 @@ func window(body []string, scroll, ch int) (shown []string, more int) {
 	return body[scroll : scroll+room], len(body) - scroll - room
 }
 
-func topBorder(l look.Look, bd border, f Frame, w int) string {
-	title := " " + f.Title + " "
-	aside := ""
-	if f.Aside != "" {
-		aside = " " + f.Aside + " "
-	}
-	room := w - 4
-	if ansi.StringWidth(title)+ansi.StringWidth(aside)+1 > room {
-		aside = ""
-	}
-	title = ansi.Truncate(title, room, l.Glyphs.Ellipsis)
-	fill := max(room-ansi.StringWidth(title)-ansi.StringWidth(aside), 0)
-	return l.Paint(theme.Border, bd.tl+bd.h) + l.Paint(theme.Strong, title) +
-		l.Paint(theme.Border, strings.Repeat(bd.h, fill)) + l.Paint(theme.Dim, aside) +
-		l.Paint(theme.Border, bd.h+bd.tr)
-}
-
-func bottomBorder(l look.Look, bd border, hints []keys.Hint, w int) string {
-	room := w - 4
-	var text string
+// hintSegs sets the hints that fit in room cells, most important first.
+func hintSegs(hints []keys.Hint, room int) []look.Seg {
+	var segs []look.Seg
 	used := 0
 	for _, h := range hints {
-		part := l.Paint(theme.Primary, h.Key) + " " + l.Paint(theme.Dim, h.Desc)
 		pw := ansi.StringWidth(h.Key) + 1 + ansi.StringWidth(h.Desc)
-		sep, sw := "", 0
-		if text != "" {
-			sep, sw = l.Paint(theme.Faint, "  "), 2
+		sw := 0
+		if used > 0 {
+			sw = 2
 		}
-		if used+sw+pw+2 > room {
+		if used+sw+pw > room {
 			break
 		}
-		text += sep + part
+		if sw > 0 {
+			segs = append(segs, look.Seg{Role: theme.Faint, Text: "  "})
+		}
+		segs = append(segs, look.Seg{Role: theme.Primary, Text: h.Key}, look.Seg{Role: theme.Dim, Text: " " + h.Desc})
 		used += sw + pw
 	}
-	if text != "" {
-		text = " " + text + " "
-		used += 2
-	}
-	fill := max(room-used, 0)
-	return l.Paint(theme.Border, bd.bl+strings.Repeat(bd.h, fill+1)) + text + l.Paint(theme.Border, bd.h+bd.br)
+	return segs
 }
 
 // Overlay draws f centred over backdrop (the view, cols by rows), dimming the
