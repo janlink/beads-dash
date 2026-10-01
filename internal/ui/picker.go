@@ -288,8 +288,7 @@ func (p *picker) row(l look.Look, i, w int) string {
 	title := ansi.Truncate(it.title, titleW, l.Glyphs.Ellipsis)
 	var b strings.Builder
 	b.WriteString(paint(theme.Primary, mark))
-	b.WriteString(paint(statusRole, glyph))
-	b.WriteString(paint(theme.Text, " "))
+	b.WriteString(paint(statusRole, glyph+" "))
 	id := l.TruncID(it.id, idCells)
 	b.WriteString(paintMatch(paint, idRole, id, 0, tailHits(it.id, id, l.Glyphs.Ellipsis, hit)))
 	b.WriteString(paint(theme.Text, strings.Repeat(" ", max(idCells-ansi.StringWidth(id), 0)+1)))

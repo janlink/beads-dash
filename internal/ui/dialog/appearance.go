@@ -156,7 +156,7 @@ func previewLines(l look.Look) []string {
 	names := []string{"open", "in progress", "blocked", "frozen", "closed", "other"}
 	var st []string
 	for i, n := range names {
-		st = append(st, l.Paint(theme.StatusRole(i), g.Status[i])+" "+l.Paint(theme.Text, n))
+		st = append(st, l.Paint(theme.StatusRole(i), g.Status[i]+" ")+l.Paint(theme.Text, n))
 	}
 	var pr []string
 	for p := range 5 {

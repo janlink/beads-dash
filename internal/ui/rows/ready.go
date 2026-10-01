@@ -128,8 +128,7 @@ func (r *Renderer) ready(row ReadyRow, w int, sel bool) string {
 	var b strings.Builder
 	sp := paint(theme.Text, " ")
 	b.WriteString(sp)
-	b.WriteString(paint(statusRole, g.Status[idx]))
-	b.WriteString(sp)
+	b.WriteString(paint(statusRole, g.Status[idx]+" "))
 	b.WriteString(r.hl(paint, theme.Dim, r.look.FitID(is.ID, idW)))
 	b.WriteString(sp)
 	b.WriteString(r.typeCell(paint, is, typeCol, dim))

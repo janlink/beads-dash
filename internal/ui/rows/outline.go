@@ -226,8 +226,7 @@ func (r *Renderer) issueLabel(row model.OutlineRow, w int, text func(theme.Role,
 	if row.Kind == model.OutParent {
 		head.WriteString(text(theme.Dim, UpGlyph(g)+" "))
 	}
-	head.WriteString(text(statusRole, g.Status[idx]))
-	head.WriteString(text(theme.Text, " "))
+	head.WriteString(text(statusRole, g.Status[idx]+" "))
 	headW := ansi.StringWidth(head.String())
 	extra := 0
 	if row.Member {

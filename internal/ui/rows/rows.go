@@ -267,8 +267,7 @@ func (r *Renderer) render(w int, id string, sel, withAssignee bool) string {
 	var b strings.Builder
 	sp := paint(theme.Text, " ")
 	b.WriteString(sp)
-	b.WriteString(paint(statusRole, g.Status[idx]))
-	b.WriteString(sp)
+	b.WriteString(paint(statusRole, g.Status[idx]+" "))
 	b.WriteString(r.hl(paint, theme.Dim, idText))
 	b.WriteString(sp)
 	b.WriteString(r.typeCell(paint, is, typeW, dim))

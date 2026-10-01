@@ -127,8 +127,7 @@ func (r *Renderer) feed(l FeedLine, w int, sel bool) string {
 	sp := paint(theme.Text, " ")
 	b.WriteString(paint(theme.Faint, strings.Repeat(" ", max(feedAgeW-len(age), 0))+age))
 	b.WriteString(sp)
-	b.WriteString(paint(role(glyphRole), glyph))
-	b.WriteString(sp)
+	b.WriteString(paint(role(glyphRole), glyph+" "))
 	if labelled {
 		b.WriteString(paint(role(theme.Text), r.look.Fit(e.Kind.Label(), feedKindW)))
 		b.WriteString(sp)

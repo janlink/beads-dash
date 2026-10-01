@@ -494,7 +494,7 @@ func (a *App) legendSegs() []look.Seg {
 			segs = append(segs, look.Seg{Role: theme.Faint, Text: strings.Repeat(" ", hintGap)})
 		}
 		glyph := strings.TrimSpace(a.look.Glyphs.Status[e.status])
-		segs = append(segs, look.Seg{Role: theme.StatusRole(e.status), Text: glyph}, look.Seg{Role: theme.Faint, Text: " " + e.name})
+		segs = append(segs, look.Seg{Role: theme.StatusRole(e.status), Text: glyph + " "}, look.Seg{Role: theme.Faint, Text: e.name})
 	}
 	return segs
 }
