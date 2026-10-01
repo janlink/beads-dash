@@ -104,6 +104,12 @@ type Syncer interface {
 	Sync(env Env)
 }
 
+// Divided is a view whose body is split by vertical borders running its full
+// height; the header and footer rules join them at those columns.
+type Divided interface {
+	Dividers() []int
+}
+
 // Closer is implemented by views with a state Esc steps out of, such as a
 // focus. It is asked when no layer is open and nothing is marked, and reports
 // whether it acted.

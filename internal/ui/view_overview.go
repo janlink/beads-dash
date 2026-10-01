@@ -74,6 +74,8 @@ type Overview struct {
 	// roomy is set while the regions are laid out in three columns, which
 	// changes their reading order.
 	roomy bool
+	// dividers are the columns of the borders between the drawn columns.
+	dividers []int
 	// exited is set when Tab left the last region for the detail panel: the
 	// next Tab from the list starts over at the first region.
 	exited bool

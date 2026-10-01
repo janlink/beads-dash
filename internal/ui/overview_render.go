@@ -20,8 +20,15 @@ const (
 	ovSideRoomy = 36
 	ovSideBase  = 32
 	minBoxH     = 3
-	ovGap       = 2
+	// ovGap is the divider column between two columns of cards.
+	ovGap = 1
 )
+
+// inset is the blank cells a card keeps between its lines and a divider
+// beside it; its rules run through to the divider.
+type inset struct{ left, right int }
+
+func (in inset) width(w int) int { return max(w-in.left-in.right, 1) }
 
 // ovLine is one body line of a box and the item it shows, -1 for none.
 type ovLine struct {
@@ -34,6 +41,7 @@ func textLine(s string) ovLine { return ovLine{s, -1} }
 // Render implements View.
 func (v *Overview) Render(env Env, w, h int) []string {
 	v.ensure(env)
+	v.dividers = v.dividers[:0]
 	if env.Matches == nil || v.data.Total == 0 {
 		return v.empty(env, w, h)
 	}
@@ -58,9 +66,22 @@ func (v *Overview) Render(env Env, w, h int) []string {
 func (v *Overview) wide(env Env, w, h int) []string {
 	aw := w * 28 / 100
 	fw := w - aw - ovSideWide - 2*ovGap
-	feed := v.region(env, regFeed, "Activity", 0, 0, fw, h)
-	active := v.region(env, regActive, "Active assignees", fw+ovGap, 0, aw, h)
-	return hjoin(env.Look, h, ovGap, feed, active, v.side(env, fw+aw+2*ovGap, ovSideWide, h, false))
+	feed := v.region(env, regFeed, "Activity", 0, 0, fw, h, inset{right: 1})
+	active := v.region(env, regActive, "Active assignees", fw+ovGap, 0, aw, h, inset{1, 1})
+	side := v.side(env, fw+aw+2*ovGap, ovSideWide, h, false, lastInset(env))
+	return v.hjoin(env.Look, h, feed, active, side)
+}
+
+// Dividers implements Divided.
+func (v *Overview) Dividers() []int { return v.dividers }
+
+// lastInset is the inset of the rightmost column: it keeps a cell from a side
+// panel's border, and none from the screen edge.
+func lastInset(env Env) inset {
+	if env.Docked {
+		return inset{1, 1}
+	}
+	return inset{left: 1}
 }
 
 func (v *Overview) sidebar(env Env, w, h int) []string {
@@ -69,15 +90,15 @@ func (v *Overview) sidebar(env Env, w, h int) []string {
 		sw = ovSideRoomy
 	}
 	fw := w - sw - ovGap
-	feed := v.region(env, regFeed, "Activity", 0, 0, fw, h)
-	return hjoin(env.Look, h, ovGap, feed, v.side(env, fw+ovGap, sw, h, true))
+	feed := v.region(env, regFeed, "Activity", 0, 0, fw, h, inset{right: 1})
+	return v.hjoin(env.Look, h, feed, v.side(env, fw+ovGap, sw, h, true, lastInset(env)))
 }
 
 // side stacks Now, Needs attention and, when asked, the active assignees.
-func (v *Overview) side(env Env, x, w, h int, withActive bool) []string {
-	now := v.nowLines(env, w)
+func (v *Overview) side(env Env, x, w, h int, withActive bool, in inset) []string {
+	now := v.nowLines(env, in.width(w))
 	nh := min(len(now)+1, max(h-minBoxH, minBoxH))
-	out := v.box(env, -1, "Now", now, w, nh, 0, 0)
+	out := v.box(env, -1, "Now", now, w, nh, 0, 0, in)
 	rest := h - nh
 	if rest < minBoxH {
 		return pad(env.Look, out, w, h)
@@ -86,9 +107,9 @@ func (v *Overview) side(env Env, x, w, h int, withActive bool) []string {
 	if withActive && rest >= 2*minBoxH {
 		attn = rest * 55 / 100
 	}
-	out = append(out, v.region(env, regAttention, "Needs attention", x, nh, w, attn)...)
+	out = append(out, v.region(env, regAttention, "Needs attention", x, nh, w, attn, in)...)
 	if rest -= attn; withActive && rest >= minBoxH {
-		out = append(out, v.region(env, regActive, "Active", x, nh+attn, w, rest)...)
+		out = append(out, v.region(env, regActive, "Active", x, nh+attn, w, rest, in)...)
 	}
 	return pad(env.Look, out, w, h)
 }
@@ -113,22 +134,23 @@ func (v *Overview) strip(env Env, w, h int) []string {
 		active += l.Paint(theme.Dim, "nobody")
 	}
 	head = append(head, l.Fit(active, w))
-	return append(head, v.region(env, regFeed, "Activity", 0, len(head), w, h-len(head))...)
+	return append(head, v.region(env, regFeed, "Activity", 0, len(head), w, h-len(head), lastInset(env))...)
 }
 
 // region draws a focusable card and records where it went.
-func (v *Overview) region(env Env, r ovRegion, title string, x, y, w, h int) []string {
+func (v *Overview) region(env Env, r ovRegion, title string, x, y, w, h int, in inset) []string {
 	bh := h - 1
+	iw := in.width(w)
 	var lines []ovLine
 	switch r {
 	case regFeed:
-		lines = v.feedLines(env, w, bh)
+		lines = v.feedLines(env, iw, bh)
 	case regAttention:
-		lines = v.attentionLines(env, w)
+		lines = v.attentionLines(env, iw)
 	case regActive, regionCount:
-		lines = v.activeLines(env, w)
+		lines = v.activeLines(env, iw)
 	}
-	return v.box(env, r, title, lines, w, h, x, y)
+	return v.box(env, r, title, lines, w, h, x, y, in)
 }
 
 func (v *Overview) focused(r ovRegion) bool { return v.active() == r }
@@ -321,7 +343,7 @@ func sparkline(g theme.Glyphs, counts []int) string {
 // box draws a card of exactly w x h: a rule with the title, then the lines. A
 // focusable region (r >= 0) keeps its cursor line in view and records where it
 // was drawn.
-func (v *Overview) box(env Env, r ovRegion, title string, lines []ovLine, w, h, x, y int) []string {
+func (v *Overview) box(env Env, r ovRegion, title string, lines []ovLine, w, h, x, y int, in inset) []string {
 	l := env.Look
 	g := l.Glyphs
 	focused := r >= 0 && v.focused(r)
@@ -347,12 +369,13 @@ func (v *Overview) box(env Env, r ovRegion, title string, lines []ovLine, w, h, 
 	}
 	title = ansi.Truncate(title, max(w-look.WordCost-1-look.SegWidth(right), 1), g.Ellipsis)
 	out := []string{l.Rule(w, l.Words(look.Word(titleRole, title)), right)}
+	padL, padR := strings.Repeat(" ", in.left), strings.Repeat(" ", in.right)
 	for i := range bh {
 		s := ""
 		if off+i < len(lines) {
 			s = lines[off+i].s
 		}
-		out = append(out, l.Fit(s, w))
+		out = append(out, padL+l.Fit(s, in.width(w))+padR)
 	}
 	return out
 }
@@ -387,20 +410,31 @@ func lineOf(lines []ovLine, item int) int {
 	return -1
 }
 
-// hjoin places blocks side by side, gap cells apart, as h lines.
-func hjoin(l look.Look, h, gap int, blocks ...[]string) []string {
+// hjoin places blocks side by side as h lines, a divider between each two
+// that joins the rules running into it, and records where the dividers are.
+func (v *Overview) hjoin(l look.Look, h int, blocks ...[]string) []string {
 	out := make([]string, h)
-	sep := strings.Repeat(" ", gap)
+	x := 0
+	for _, b := range blocks[:len(blocks)-1] {
+		x += blockWidth(b)
+		v.dividers = append(v.dividers, x)
+		x += ovGap
+	}
 	for y := range out {
-		parts := make([]string, len(blocks))
-		for i, b := range blocks {
-			if y < len(b) {
-				parts[i] = b[y]
-			} else {
-				parts[i] = l.Fit("", blockWidth(b))
+		var b strings.Builder
+		prev := ""
+		for i, blk := range blocks {
+			cur := l.Fit("", blockWidth(blk))
+			if y < len(blk) {
+				cur = blk[y]
 			}
+			if i > 0 {
+				b.WriteString(l.Divider(prev, cur))
+			}
+			b.WriteString(cur)
+			prev = cur
 		}
-		out[y] = strings.Join(parts, sep)
+		out[y] = b.String()
 	}
 	return out
 }

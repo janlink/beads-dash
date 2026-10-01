@@ -1,24 +1,24 @@
 - Overview - demo -------------------------- 15 issues · all - * live 12:00:00 -
-- >Activity ----------------------------- +8 -  - Now --------------------------
-- just now -----------------------------------  o Open                         5
-   now * ws-7mt     Cart badge shows st... bob  > Ready                        4
-|   3m ^ ws-9qe     Payment provider ti... 2→0  * In progress                  2
-- last hour ----------------------------------  ! Blocked                      2
-   20m ! ws-2hz     Split pricing... by ws-9qe  ~ Frozen                       1
-- today --------------------------------------  x Closed                       5
-    5h + ws-9qe     Payment provider timeou...                                  
-    8h x ws-5ca     Update analytics consen...  closed/day, 14d                 
-    9h x ws-4k2.3   Order summary page          .~...........#                  
-   10h x ws-4k2.4   Guest cart merge            33% closed · 2 deps             
-- yesterday ----------------------------------  - Needs attention --------- +5 -
-    1d + ws-7mt     Cart badge shows stale ...  > Ready 4 (2 unassigned)        
-    1d + ws-lost    Follow-up from a delete...    o ws-9qe   Payment provi... P0
-- earlier ------------------------------------    o ws-4k2.1 Address form ... P1
-    2d + ws-4k2.2   Guest order confirmatio...    o ws-lost  Follow-up fro... P2
-    2d + ws-4k2.5.1 Pickup point lookup         - Active -----------------------
-    2d + ws-4k2.5   Shipping options            alice  1 in progress            
-    3d + ws-4k2.1   Address form validation       * ws-4k2   Checkout: gue... P1
-    3d + ws-4k2     Checkout: guest orders      bob  1 in progress              
-    3d + ws-4k2.3   Order summary page            * ws-7mt   Cart badge sh... P2
+- >Activity ------------------------------ +8 -+- Now --------------------------
+- just now ----------------------------------- | o Open                        5
+   now * ws-7mt     Cart badge shows st... bob | > Ready                       4
+|   3m ^ ws-9qe     Payment provider ti... 2→0 | * In progress                 2
+- last hour ---------------------------------- | ! Blocked                     2
+   20m ! ws-2hz     Split pricing... by ws-9qe | ~ Frozen                      1
+- today -------------------------------------- | x Closed                      5
+    5h + ws-9qe     Payment provider timeou... |                                
+    8h x ws-5ca     Update analytics consen... | closed/day, 14d                
+    9h x ws-4k2.3   Order summary page         | .~...........#                 
+   10h x ws-4k2.4   Guest cart merge           | 33% closed · 2 deps            
+- yesterday ---------------------------------- +- Needs attention --------- +5 -
+    1d + ws-7mt     Cart badge shows stale ... | > Ready 4 (2 unassigned)       
+    1d + ws-lost    Follow-up from a delete... |   o ws-9qe   Payment prov... P0
+- earlier ------------------------------------ |   o ws-4k2.1 Address form... P1
+    2d + ws-4k2.2   Guest order confirmatio... |   o ws-lost  Follow-up fr... P2
+    2d + ws-4k2.5.1 Pickup point lookup        +- Active -----------------------
+    2d + ws-4k2.5   Shipping options           | alice  1 in progress           
+    3d + ws-4k2.1   Address form validation    |   * ws-4k2   Checkout: gu... P1
+    3d + ws-4k2     Checkout: guest orders     | bob  1 in progress             
+    3d + ws-4k2.3   Order summary page         |   * ws-7mt   Cart badge s... P2
 - [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
  / search  f filter  Enter details  : cmd  ? help                               

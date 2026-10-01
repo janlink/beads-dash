@@ -139,6 +139,18 @@ func (a *App) panelSide() int {
 	return 0
 }
 
+// joinDividers sets glyph into rule where the view's body borders meet it.
+func (a *App) joinDividers(rule, glyph string) string {
+	d, ok := a.view().(Divided)
+	if !ok || a.snap == nil || a.snap.Len() == 0 || a.frame().Frame == detail.Overlay {
+		return rule
+	}
+	for _, x := range d.Dividers() {
+		rule = a.look.Junction(rule, x, glyph)
+	}
+	return rule
+}
+
 // headerWords are the header rule's words for w cells: the view name and the
 // workspace on the left; the scope label, the bd version warning, the issue
 // count with the cursor position and the live marker on the right. When the
@@ -223,7 +235,7 @@ func (a *App) header() string {
 	l := a.look
 	pw := a.panelSide()
 	left, right := a.headerWords(a.cols - pw)
-	row := l.Rule(a.cols-pw, left, right)
+	row := a.joinDividers(l.Rule(a.cols-pw, left, right), l.Glyphs.RuleDown)
 	if pw > 0 {
 		id := l.TruncID(a.sess.Current(), max(pw-1-look.WordCost-1, 1))
 		row += l.Rule(pw, append([]look.Seg{l.Tee(true)}, l.Words(look.Word(theme.Strong, id))...), nil)
@@ -337,7 +349,7 @@ func (a *App) footer() []string {
 	l := a.look
 	pw := a.panelSide()
 	left, right, _ := a.footerLayout(a.cols - pw)
-	rule := l.Rule(a.cols-pw, left, right)
+	rule := a.joinDividers(l.Rule(a.cols-pw, left, right), l.Glyphs.RuleUp)
 	if pw > 0 {
 		keyWord := a.panelKeySegs(pw - 1 - look.WordCost - 1)
 		rule += l.Rule(pw, append([]look.Seg{l.Tee(false)}, l.Words(keyWord)...), nil)

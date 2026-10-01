@@ -1,40 +1,40 @@
 - Overview - demo ------------------------------------------------------------------ 15 issues · all - * live 12:00:00 -
-- >Activity ----------------------------------------------------------------------  - Now ------------------------------
-- just now -----------------------------------------------------------------------  o Open                             5
-   now * claimed          ws-7mt     Cart badge shows stale count              bob  > Ready                            4
-|   3m ^ priority changed ws-9qe     Payment provider timeout retries          2→0  * In progress                      2
-- last hour ----------------------------------------------------------------------  ! Blocked                          2
-   20m ! became blocked   ws-2hz     Split pricing service               by ws-9qe  ~ Frozen                           1
-- today --------------------------------------------------------------------------  x Closed                           5
-    5h + created          ws-9qe     Payment provider timeout retries                                                   
-    8h x closed           ws-5ca     Update analytics consent banner                closed/day, 14d                     
-    9h x closed           ws-4k2.3   Order summary page                             .~...........#                      
-   10h x closed           ws-4k2.4   Guest cart merge                               33% closed · 2 deps                 
-- yesterday ----------------------------------------------------------------------  - Needs attention ------------------
-    1d + created          ws-7mt     Cart badge shows stale count                   > Ready 4 (2 unassigned)            
-    1d + created          ws-lost    Follow-up from a deleted epic                    o ws-9qe   Payment provider ... P0
-- earlier ------------------------------------------------------------------------    o ws-4k2.1 Address form vali... P1
-    2d + created          ws-4k2.2   Guest order confirmation mail                    o ws-lost  Follow-up from a ... P2
-    2d + created          ws-4k2.5.1 Pickup point lookup                              ... 1 more in 4 Ready             
-    2d + created          ws-4k2.5   Shipping options                                 2 assigned, not started           
-    3d + created          ws-4k2.1   Address form validation                        ! Blocked 2                         
-    3d + created          ws-4k2     Checkout: guest orders                           ! ws-2hz   Split pricing ser... P2
-    3d + created          ws-4k2.3   Order summary page                               ! ws-4k2.2 Guest order confi... P2
-    3d + created          ws-4k2.4   Guest cart merge                                                                   
-    4d + created          ws-5ca     Update analytics consent banner                                                    
-    6d + created          ws-2hz     Split pricing service                                                              
-    1w + created          ws-8np     Search: typo tolerance                                                             
-    1w x closed           ws-old.1   Delete legacy routes                           - Active ---------------------------
-    1w x closed           ws-old     Legacy checkout removal                        alice  1 in progress                
-    2w + created          ws-old.1   Delete legacy routes                             * ws-4k2   Checkout: guest o... P1
-    2w + created          ws-old     Legacy checkout removal                        bob  1 in progress                  
-                                                                                      * ws-7mt   Cart badge shows ... P2
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ----------------------------------------------------
+- >Activity -----------------------------------------------------------------------+- Now ------------------------------
+- just now ----------------------------------------------------------------------- | o Open                            5
+   now * claimed          ws-7mt     Cart badge shows stale count              bob | > Ready                           4
+|   3m ^ priority changed ws-9qe     Payment provider timeout retries          2→0 | * In progress                     2
+- last hour ---------------------------------------------------------------------- | ! Blocked                         2
+   20m ! became blocked   ws-2hz     Split pricing service               by ws-9qe | ~ Frozen                          1
+- today -------------------------------------------------------------------------- | x Closed                          5
+    5h + created          ws-9qe     Payment provider timeout retries              |                                    
+    8h x closed           ws-5ca     Update analytics consent banner               | closed/day, 14d                    
+    9h x closed           ws-4k2.3   Order summary page                            | .~...........#                     
+   10h x closed           ws-4k2.4   Guest cart merge                              | 33% closed · 2 deps                
+- yesterday ---------------------------------------------------------------------- +- Needs attention ------------------
+    1d + created          ws-7mt     Cart badge shows stale count                  | > Ready 4 (2 unassigned)           
+    1d + created          ws-lost    Follow-up from a deleted epic                 |   o ws-9qe   Payment provider... P0
+- earlier ------------------------------------------------------------------------ |   o ws-4k2.1 Address form val... P1
+    2d + created          ws-4k2.2   Guest order confirmation mail                 |   o ws-lost  Follow-up from a... P2
+    2d + created          ws-4k2.5.1 Pickup point lookup                           |   ... 1 more in 4 Ready            
+    2d + created          ws-4k2.5   Shipping options                              |   2 assigned, not started          
+    3d + created          ws-4k2.1   Address form validation                       | ! Blocked 2                        
+    3d + created          ws-4k2     Checkout: guest orders                        |   ! ws-2hz   Split pricing se... P2
+    3d + created          ws-4k2.3   Order summary page                            |   ! ws-4k2.2 Guest order conf... P2
+    3d + created          ws-4k2.4   Guest cart merge                              |                                    
+    4d + created          ws-5ca     Update analytics consent banner               |                                    
+    6d + created          ws-2hz     Split pricing service                         |                                    
+    1w + created          ws-8np     Search: typo tolerance                        |                                    
+    1w x closed           ws-old.1   Delete legacy routes                          +- Active ---------------------------
+    1w x closed           ws-old     Legacy checkout removal                       | alice  1 in progress               
+    2w + created          ws-old.1   Delete legacy routes                          |   * ws-4k2   Checkout: guest ... P1
+    2w + created          ws-old     Legacy checkout removal                       | bob  1 in progress                 
+                                                                                   |   * ws-7mt   Cart badge shows... P2
+                                                                                   |                                    
+                                                                                   |                                    
+                                                                                   |                                    
+                                                                                   |                                    
+                                                                                   |                                    
+                                                                                   |                                    
+                                                                                   |                                    
+- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ---------------+------------------------------------
  / search  f filter  Enter details  : cmd  ? help                  o open  * in progress  ! blocked  x closed  ~ frozen 

@@ -1178,7 +1178,7 @@ func (a *App) body(h int) []string {
 		list := a.view().Render(env, a.cols-d.W, h)
 		side := a.panelLines(d)
 		for i := range list {
-			list[i] += side[i]
+			list[i] += a.panelEdge(list[i], side[i], d.W)
 		}
 		return list
 	case detail.Hidden:

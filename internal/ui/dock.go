@@ -2,7 +2,9 @@ package ui
 
 import (
 	tea "charm.land/bubbletea/v2"
+	"github.com/charmbracelet/x/ansi"
 
+	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/detail"
 	"github.com/janlink/beads-dash/internal/ui/keys"
 	"github.com/janlink/beads-dash/internal/ui/state"
@@ -130,6 +132,20 @@ func (a *App) panelInput(d detail.Dock) detail.Input {
 		in.Events = a.hl.Events(cur)
 	}
 	return in
+}
+
+// panelEdge is a side panel line whose border joins a rule of the view that
+// runs into it.
+func (a *App) panelEdge(list, side string, w int) string {
+	l := a.look
+	if !l.IsRuleAt(list, ansi.StringWidth(list)-1) {
+		return side
+	}
+	role := theme.Rule
+	if a.sess.Has(state.LayerDetailFocus) {
+		role = theme.Primary
+	}
+	return l.Paint(role, l.Glyphs.RuleLeft) + ansi.Cut(side, 1, w)
 }
 
 func (a *App) panelLines(d detail.Dock) []string {

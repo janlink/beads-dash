@@ -1,12 +1,12 @@
 - Ready - demo ---------------------------- 15 issues · 1/4 - * live 12:00:00 -+- ws-9qe -------------------------------
     ID         TYPE    TITLE                                                 PR|  ws-9qe  o Open  bug  P0               
-  - Unassigned 2 --------------------------------------------------------------|  Payment provider timeout retries      
+  - Unassigned 2 --------------------------------------------------------------+  Payment provider timeout retries      
 | o ws-9qe     bug     Payment provider timeout retries                      P0|  v Description  markdown               
   o ws-4k2.1   task    Address form validation                               P1|    Retries fail after the provider     
-  - Assigned, not started 2 ---------------------------------------------------|    times out.                          
+  - Assigned, not started 2 ---------------------------------------------------+    times out.                          
   o ws-lost    task    Follow-up from a deleted epic                         P2|                                        
   o ws-4k2.5.1 task    Pickup point lookup                                   P3|    * back off between tries            
-  - > Blocked 2 ---------------------------------------------------------------|    * add jitter                        
+  - > Blocked 2 ---------------------------------------------------------------+    * add jitter                        
                                                                                |  v Dependencies  holds up 1            
                                                                                |    o ws-9qe Payment provider timeout...
                                                                                |    > holds up (1)                      
