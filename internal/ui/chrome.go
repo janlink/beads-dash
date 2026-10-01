@@ -130,25 +130,23 @@ func fitRuleAll(l look.Look, w int, items []ruleItem) (left, right []look.Seg, o
 	return left, right, ok, whole
 }
 
-// panelSide is the width of a detail panel docked at the right, 0 when there
-// is none.
-func (a *App) panelSide() int {
-	if d := a.frame(); d.Frame == detail.Side {
-		return d.W
+// plainRow draws a header or footer row: its words sit on blank cells
+// instead of a rule.
+func (a *App) plainRow(left, right []look.Seg) string {
+	l := a.look
+	rule := l.Glyphs.Rule
+	l.Glyphs.Rule = " "
+	bare := func(segs []look.Seg) []look.Seg {
+		out := make([]look.Seg, len(segs))
+		for i, s := range segs {
+			if s.Role == theme.Rule {
+				s.Text = strings.ReplaceAll(s.Text, rule, " ")
+			}
+			out[i] = s
+		}
+		return out
 	}
-	return 0
-}
-
-// joinDividers sets glyph into rule where the view's body borders meet it.
-func (a *App) joinDividers(rule, glyph string) string {
-	d, ok := a.view().(Divided)
-	if !ok || a.snap == nil || a.snap.Len() == 0 || a.frame().Frame == detail.Overlay {
-		return rule
-	}
-	for _, x := range d.Dividers() {
-		rule = a.look.Junction(rule, x, glyph)
-	}
-	return rule
+	return l.Rule(a.cols, bare(left), bare(right))
 }
 
 // headerWords are the header rule's words for w cells: the view name and the
@@ -232,15 +230,8 @@ func (a *App) footerLayout(w int) (left, right []look.Seg, spans [6]span) {
 }
 
 func (a *App) header() string {
-	l := a.look
-	pw := a.panelSide()
-	left, right := a.headerWords(a.cols - pw)
-	row := a.joinDividers(l.Rule(a.cols-pw, left, right), l.Glyphs.RuleDown)
-	if pw > 0 {
-		id := l.TruncID(a.sess.Current(), max(pw-1-look.WordCost-1, 1))
-		row += l.Rule(pw, append([]look.Seg{l.Tee(true)}, l.Words(look.Word(theme.Strong, id))...), nil)
-	}
-	return row
+	left, right := a.headerWords(a.cols)
+	return a.plainRow(left, right)
 }
 
 // liveSegs is the live marker: the snapshot's state and age.
@@ -342,23 +333,15 @@ func (a *App) position() string {
 	return ""
 }
 
-// footer is the two rows under the body: a rule with the view tabs and the
-// counters and chips, then the hints or the notice. Beside a side panel the
-// rule closes the panel's border and carries the panel's keys.
+// footer is the two rows under the body: the view tabs with the counters and
+// chips, then the hints or the notice.
 func (a *App) footer() []string {
-	l := a.look
-	pw := a.panelSide()
-	left, right, _ := a.footerLayout(a.cols - pw)
-	rule := a.joinDividers(l.Rule(a.cols-pw, left, right), l.Glyphs.RuleUp)
-	if pw > 0 {
-		keyWord := a.panelKeySegs(pw - 1 - look.WordCost - 1)
-		rule += l.Rule(pw, append([]look.Seg{l.Tee(false)}, l.Words(keyWord)...), nil)
-	}
-	return []string{rule, a.hintsRow()}
+	left, right, _ := a.footerLayout(a.cols)
+	return []string{a.plainRow(left, right), a.hintsRow()}
 }
 
-// panelKeySegs are the keys of the docked panel as one rule word of at most w
-// cells: the panel's own keys while it has the keys, else the list's keys that
+// panelKeySegs are the keys of the side panel, at most w cells, for its
+// bottom border: the panel's own keys while it has the keys, else the list's keys that
 // act on the panel's issue.
 func (a *App) panelKeySegs(w int) []look.Seg {
 	hs := []keys.Hint{
@@ -442,7 +425,7 @@ func (a *App) listHints() (hs []keys.Hint, drop []string, ok bool) {
 		if hs[2].Key != "" {
 			hs[2].Key = a.look.Glyphs.Enter
 		}
-		if a.panelSide() > 0 {
+		if a.framed() && a.frame().Frame == detail.Side {
 			hs = slices.DeleteFunc(hs, func(h keys.Hint) bool { return h.Desc == "section" })
 		}
 	case keys.Memories:

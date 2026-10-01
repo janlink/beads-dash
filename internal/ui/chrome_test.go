@@ -8,8 +8,6 @@ import (
 	tea "charm.land/bubbletea/v2"
 	"github.com/charmbracelet/x/ansi"
 
-	"github.com/janlink/beads-dash/internal/testgolden"
-	"github.com/janlink/beads-dash/internal/ui/detail"
 	"github.com/janlink/beads-dash/internal/ui/screens"
 )
 
@@ -22,12 +20,11 @@ func (f flavour) rule() string {
 	return "─"
 }
 
-func cellsOf(s string) []string {
-	var out []string
-	for _, r := range ansi.Strip(s) {
-		out = append(out, string(r))
+func (f flavour) corner() string {
+	if f.glyphs == "ascii" {
+		return "+"
 	}
-	return out
+	return "╭"
 }
 
 func TestChromeRowsFillTheScreen(t *testing.T) {
@@ -45,11 +42,15 @@ func TestChromeRowsFillTheScreen(t *testing.T) {
 							t.Fatalf("%s: row %d is %d cells, want %d: %q", view, i, w, s[0], l)
 						}
 					}
-					if rule := ls[s[1]-2]; !strings.HasPrefix(rule, f.rule()) || strings.Contains(rule, "help") {
-						t.Errorf("%s: footer rule %q", view, rule)
+					for _, row := range []string{ls[0], ls[s[1]-2]} {
+						if strings.HasPrefix(row, f.rule()) {
+							t.Errorf("%s: chrome row %q is a rule", view, row)
+						}
 					}
-					if head := ls[0]; !strings.HasPrefix(head, f.rule()+" ") {
-						t.Errorf("%s: header %q is not a rule", view, head)
+					if a.framed() {
+						if strings.TrimSpace(ls[1]) != "" || !strings.HasPrefix(ls[2], f.corner()) {
+							t.Errorf("%s: body under a blank row %q / %q", view, ls[1], ls[2])
+						}
 					}
 				}
 			})
@@ -57,61 +58,9 @@ func TestChromeRowsFillTheScreen(t *testing.T) {
 	}
 }
 
-func TestChromeJunctionsUnderSidePanel(t *testing.T) {
-	for _, tc := range []struct {
-		f         flavour
-		down, up  string
-		vertical  string
-		ruleGlyph string
-	}{
-		{truecolor, "┬", "┴", "│", "─"},
-		{plain, "+", "+", "|", "-"},
-	} {
-		t.Run(tc.f.glyphs, func(t *testing.T) {
-			a := viewApp(t, tc.f, 200, 50, "tree", true)
-			d := a.frame()
-			if d.Frame != detail.Side {
-				t.Fatalf("frame %v, want side", d.Frame)
-			}
-			ls := strings.Split(ansi.Strip(a.View().Content), "\n")
-			col := 200 - d.W
-			header, footer := cellsOf(ls[0]), cellsOf(ls[48])
-			if header[col] != tc.down {
-				t.Errorf("%s header junction %q at %d, want %q: %q", tc.f.glyphs, header[col], col, tc.down, ls[0])
-			}
-			if footer[col] != tc.up {
-				t.Errorf("%s footer junction %q at %d, want %q: %q", tc.f.glyphs, footer[col], col, tc.up, ls[48])
-			}
-			if edge := cellsOf(ls[1])[col]; edge != tc.vertical {
-				t.Errorf("%s panel edge %q at %d, want %q", tc.f.glyphs, edge, col, tc.vertical)
-			}
-			if strings.Count(ls[0], tc.down) != 1 && tc.f.glyphs != "ascii" {
-				t.Errorf("header forks %d times: %q", strings.Count(ls[0], tc.down), ls[0])
-			}
-			if !strings.Contains(ls[0], "live 12:00:00") || !strings.Contains(ls[0], "Tree") || !strings.Contains(ls[48], "2 Tree") {
-				t.Errorf("tabs or live marker lost beside the panel: %q %q", ls[0], ls[48])
-			}
-			testgolden.Equal(t, strings.Join(ls[:2], "\n")+"\n...\n"+strings.Join(ls[48:], "\n"))
-		})
-	}
-}
-
-func TestChromeNoJunctionWithoutSidePanel(t *testing.T) {
-	for _, s := range [][2]int{{60, 16}, {80, 24}, {120, 40}, {199, 50}} {
-		a := viewApp(t, truecolor, s[0], s[1], "tree", false)
-		ls := strings.Split(ansi.Strip(a.View().Content), "\n")
-		for _, row := range []string{ls[0], ls[s[1]-2]} {
-			if strings.ContainsAny(row, "┬┴") {
-				t.Errorf("%dx%d: junction without a side panel: %q", s[0], s[1], row)
-			}
-		}
-	}
-}
-
 func TestChromeHeaderDropsPartsInOrder(t *testing.T) {
 	a := viewApp(t, plain, 120, 40, "tree", false)
-	full := cellsOf(lines(a)[0])
-	if !strings.Contains(strings.Join(full, ""), "live") {
+	if !strings.Contains(lines(a)[0], "live") {
 		t.Fatal("wide header lacks the live marker")
 	}
 	for cols := 60; cols <= 130; cols++ {
@@ -146,8 +95,8 @@ func TestChromeBarsKeepTheRowCount(t *testing.T) {
 
 func TestMinimumSizeKeepsABody(t *testing.T) {
 	a := viewApp(t, plain, MinCols, MinRows, "tree", false)
-	if h := a.bodyHeight(); h != MinRows-chromeRows {
-		t.Errorf("body height %d at the minimum size, want %d", h, MinRows-chromeRows)
+	if h := a.bodyHeight(); h != MinRows-a.chromeRows() {
+		t.Errorf("body height %d at the minimum size, want %d", h, MinRows-a.chromeRows())
 	}
 	for _, key := range []string{"/", "f", ":"} {
 		a := viewApp(t, plain, MinCols, MinRows, "tree", false)
@@ -170,8 +119,8 @@ func TestNoticeReplacesTheHintsRow(t *testing.T) {
 	if !strings.Contains(ls[29], "hello toast") || strings.Contains(ls[29], "help") {
 		t.Errorf("notice row %q", ls[29])
 	}
-	if !strings.HasPrefix(ls[28], "- ") || !strings.Contains(ls[28], "2 Tree") {
-		t.Errorf("rule above the notice: %q", ls[28])
+	if !strings.Contains(ls[28], "2 Tree") {
+		t.Errorf("tabs above the notice: %q", ls[28])
 	}
 	if a.bodyHeight() != before {
 		t.Errorf("a notice changed the body height %d -> %d", before, a.bodyHeight())
@@ -285,7 +234,7 @@ func TestFooterTabClicksFollowTheRule(t *testing.T) {
 		for i := range ViewNames {
 			a := viewApp(t, plain, cols, 30, "tree", false)
 			_, _, spans := a.footerLayout(cols)
-			send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: spans[i].from, Y: 1 + a.bodyHeight()})
+			send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: spans[i].from, Y: a.bodyTop() + a.bodyHeight()})
 			if a.slot != i {
 				t.Errorf("%d cols: click on tab %d landed on slot %d", cols, i+1, a.slot)
 			}
@@ -295,12 +244,12 @@ func TestFooterTabClicksFollowTheRule(t *testing.T) {
 
 func TestSidePanelFooterCarriesThePanelKeys(t *testing.T) {
 	a := viewApp(t, truecolor, 200, 30, "tree", true)
-	if rule := lines(a)[28]; !strings.Contains(rule, "┴─ e edit  x export  Tab focus ─") {
-		t.Errorf("list-focused panel keys: %q", rule)
+	if edge := lines(a)[27]; !strings.Contains(edge, "─ e edit  x export  Tab focus ─╯") {
+		t.Errorf("list-focused panel keys: %q", edge)
 	}
 	press(a, "tab")
-	if rule := lines(a)[28]; !strings.Contains(rule, "┴─ ]/[ section  m markdown  x export ─") {
-		t.Errorf("panel-focused panel keys: %q", rule)
+	if edge := lines(a)[27]; !strings.Contains(edge, "─ ]/[ section  m markdown  x export ─╯") {
+		t.Errorf("panel-focused panel keys: %q", edge)
 	}
 }
 
@@ -308,7 +257,7 @@ func TestSidePanelFocusedHintsDoNotRepeatTheRuleKeys(t *testing.T) {
 	a := viewApp(t, truecolor, 200, 30, "tree", true)
 	press(a, "tab")
 	ls := lines(a)
-	if !strings.Contains(ls[28], "]/[ section") || strings.Contains(ls[29], "section") {
-		t.Errorf("rule %q hints %q", ls[28], ls[29])
+	if !strings.Contains(ls[27], "]/[ section") || strings.Contains(ls[29], "section") {
+		t.Errorf("edge %q hints %q", ls[27], ls[29])
 	}
 }

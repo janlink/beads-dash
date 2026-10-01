@@ -1,53 +1,53 @@
-- Overview - demo -------------------------------------------------------------------------------------------------------------------------------------------------------------------- * live 12:00:00 -
+  Overview   demo                                                                                                                                                                      * live 12:00:00  
  / search  f filter  Enter details  : cmd  ? help                                                                                                  o open  * in progress  ! blocked  x closed  ~ frozen 
 
-- Overview - demo -------------------------------------------------------------------------------------------------------------------------------------------------------------------- * live 12:00:00 -
-| ? ws-1zz   task    Mystery status issue                                                                                                                                              P4               
-  ! ws-2hz   feature Split pricing service                  +- Keys ------------------------------------------------------------ 43 shown -+                                           P2               
-  * ws-4k2   epic    Checkout: guest orders                 | Lists                                                                        |                                           P1 alice         
-  o ws-4k2.1 task    Address form validation                |   q        quit                                                              |                                           P1               
-  ! ws-4k2.2 task    Guest order confirmation mail          |   j/Down   move down                                                         |                                           P2               
-  x ws-5ca   chore   Update analytics consent banner        |   k/Up     move up                                                           |                                           P3               
-  * ws-7mt   bug     Cart badge shows stale count           |   gg       first                                                             |                                           P2 bob           
-  ~ ws-8np   feature Search: typo tolerance                 |   G        last                                                              |                                           P3               
-  o ws-9qe   bug     Payment provider timeout retries       |   Ctrl+D   half page down                                                    |                                           P0               
-                                                            |   Ctrl+U   half page up                                                      |                                                            
-                                                            |   PgDn     page down                                                         |                                                            
-                                                            |   PgUp     page up                                                           |                                                            
-                                                            |   Space    mark                                                              |                                                            
-                                                            |   h/Left   column, collapse                                                  |                                                            
-                                                            |   l/Right  column, expand                                                    |                                                            
-                                                            |   zh       scroll left                                                       |                                                            
-                                                            |   zl       scroll right                                                      |                                                            
-                                                            |   zH       scroll half a screen left                                         |                                                            
-                                                            |   zL       scroll half a screen right                                        |                                                            
-                                                            |   Enter    show or hide the detail, fold row                                 |                                                            
-                                                            |   e        edit                                                              |                                                            
-                                                            |   n        new issue                                                         |                                                            
-                                                            |   s        status                                                            |                                                            
-                                                            |   p        priority                                                          |                                                            
-                                                            |   a        assignee                                                          |                                                            
-                                                            |   #        labels                                                            |                                                            
-                                                            |   c        close or reopen with a reason                                     |                                                            
-                                                            |   y        copy ID                                                           |                                                            
-                                                            |   x        export                                                            |                                                            
-                                                            |   <        Kanban: move the card back                                        |                                                            
-                                                            |   >        Kanban: move the card on                                          |                                                            
-                                                            |                                                                              |                                                            
-                                                            | Everywhere                                                                   |                                                            
-                                                            |   ?          help                                                            |                                                            
-                                                            |   1-6        switch view                                                     |                                                            
-                                                            |   t          appearance                                                      |                                                            
-                                                            |   r          refresh                                                         |                                                            
-                                                            |   Esc        close, then clear marks and scope                               |                                                            
-                                                            |   Backspace  back to the previous issue                                      |                                                            
-                                                            |   !          error details                                                   |                                                            
-                                                            |   /          search                                                          |                                                            
-                                                            |   f          filter                                                          |                                                            
-                                                            |   :          command bar                                                     |                                                            
-                                                            |   N          notifications                                                   |                                                            
-                                                            |   Ctrl+P     jump to an issue                                                |                                                            
-                                                            | ... 4 more                                                                   |                                                            
-                                                            +-------------------------------------------- Esc close  j/k scroll  / filter -+                                                            
-- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------------------------------------------------------------------------------------------------------------------------------
+  Overview   demo                                                                                                                                                                      * live 12:00:00  
+                                                                                                                                                                                                        
++- Overview ------------------------------------------------+- Keys ------------------------------------------------------------ 43 shown -+-----------------------------------------------------------+
+|| ? ws-1zz   task    Mystery status issue                  | Lists                                                                        |                                         P4                |
+|  ! ws-2hz   feature Split pricing service                 |   q        quit                                                              |                                         P2                |
+|  * ws-4k2   epic    Checkout: guest orders                |   j/Down   move down                                                         |                                         P1 alice          |
+|  o ws-4k2.1 task    Address form validation               |   k/Up     move up                                                           |                                         P1                |
+|  ! ws-4k2.2 task    Guest order confirmation mail         |   gg       first                                                             |                                         P2                |
+|  x ws-5ca   chore   Update analytics consent banner       |   G        last                                                              |                                         P3                |
+|  * ws-7mt   bug     Cart badge shows stale count          |   Ctrl+D   half page down                                                    |                                         P2 bob            |
+|  ~ ws-8np   feature Search: typo tolerance                |   Ctrl+U   half page up                                                      |                                         P3                |
+|  o ws-9qe   bug     Payment provider timeout retries      |   PgDn     page down                                                         |                                         P0                |
+|                                                           |   PgUp     page up                                                           |                                                           |
+|                                                           |   Space    mark                                                              |                                                           |
+|                                                           |   h/Left   column, collapse                                                  |                                                           |
+|                                                           |   l/Right  column, expand                                                    |                                                           |
+|                                                           |   zh       scroll left                                                       |                                                           |
+|                                                           |   zl       scroll right                                                      |                                                           |
+|                                                           |   zH       scroll half a screen left                                         |                                                           |
+|                                                           |   zL       scroll half a screen right                                        |                                                           |
+|                                                           |   Enter    show or hide the detail, fold row                                 |                                                           |
+|                                                           |   e        edit                                                              |                                                           |
+|                                                           |   n        new issue                                                         |                                                           |
+|                                                           |   s        status                                                            |                                                           |
+|                                                           |   p        priority                                                          |                                                           |
+|                                                           |   a        assignee                                                          |                                                           |
+|                                                           |   #        labels                                                            |                                                           |
+|                                                           |   c        close or reopen with a reason                                     |                                                           |
+|                                                           |   y        copy ID                                                           |                                                           |
+|                                                           |   x        export                                                            |                                                           |
+|                                                           |   <        Kanban: move the card back                                        |                                                           |
+|                                                           |   >        Kanban: move the card on                                          |                                                           |
+|                                                           |                                                                              |                                                           |
+|                                                           | Everywhere                                                                   |                                                           |
+|                                                           |   ?          help                                                            |                                                           |
+|                                                           |   1-6        switch view                                                     |                                                           |
+|                                                           |   t          appearance                                                      |                                                           |
+|                                                           |   r          refresh                                                         |                                                           |
+|                                                           |   Esc        close, then clear marks and scope                               |                                                           |
+|                                                           |   Backspace  back to the previous issue                                      |                                                           |
+|                                                           |   !          error details                                                   |                                                           |
+|                                                           |   /          search                                                          |                                                           |
+|                                                           |   f          filter                                                          |                                                           |
+|                                                           |   :          command bar                                                     |                                                           |
+|                                                           |   N          notifications                                                   |                                                           |
+|                                                           |   Ctrl+P     jump to an issue                                                |                                                           |
+|                                                           | ... 4 more                                                                   |                                                           |
++-----------------------------------------------------------+-------------------------------------------- Esc close  j/k scroll  / filter -+-----------------------------------------------------------+
+  [1 Overview]   2 Tree   3 Kanban   4 Ready   5 Memories   6 Graph                                                                                                                                     
  Esc close  j/k scroll  / filter                                                                                                                                                                        

@@ -1,24 +1,24 @@
-- Tree - demo ------------------------------- 9 issues · 7/8 - * live 12:00:00 -
-    ID          TYPE    TITLE                          PR STATUS      WHO       
-  +- Edit ws-9qe ----------------------- field 1/9 · 1 change · 1 to decide -+  
-  | ! Changed since opened: title Payment provider timeou… -> Retries,       |  
-  | ! reworded, priority P0 -> P3                                            |  
-  |   Decide on the marked fields: keep mine or take theirs.                 |  
-  |                                                                          |  
-  | * Title*       meout retries!  changed underneath: now Retries, reworded |  
-| |   Type         bug                                                       |  
-  |   Priority     P3                                                        |  
-  |   Status       open                                                      |  
-  |   Assignee                                                               |  
-  |   Labels                                                                 |  
-  |   Parent       -                                                         |  
-  |   Description                                                            |  
-  |                                                                          |  
-  |                                                                          |  
-  |                                                                          |  
-  |                                                                          |  
-  |   > Advanced                                                             |  
-  +---------- Ctrl+S save  Esc close  Tab field  Ctrl+O mine  Ctrl+T theirs -+  
+  Tree   demo                                 9 issues · 7/8   * live 12:00:00  
                                                                                 
-- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
++-+- Edit ws-9qe ----------------------- field 1/9 · 1 change · 1 to decide -+-+
+| | ! Changed since opened: title Payment provider timeou… -> Retries,       | |
+| | ! reworded, priority P0 -> P3                                            | |
+| |   Decide on the marked fields: keep mine or take theirs.                 | |
+| |                                                                          | |
+| | * Title*       meout retries!  changed underneath: now Retries, reworded | |
+| |   Type         bug                                                       | |
+| |   Priority     P3                                                        | |
+|||   Status       open                                                      | |
+| |   Assignee                                                               | |
+| |   Labels                                                                 | |
+| |   Parent       -                                                         | |
+| |   Description                                                            | |
+| |                                                                          | |
+| |                                                                          | |
+| |                                                                          | |
+| |                                                                          | |
+| |   > Advanced                                                             | |
+| +---------- Ctrl+S save  Esc close  Tab field  Ctrl+O mine  Ctrl+T theirs -+ |
++------------------------------------------------------------------------------+
+  1 Overview   [2 Tree]   3 Kanban   4 Ready   5 Memories   6 Graph             
  Ctrl+S save  Esc close  Tab field  Ctrl+O mine  Ctrl+T theirs  Ctrl+R reload   

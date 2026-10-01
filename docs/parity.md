@@ -35,10 +35,10 @@ Statuses come from the code, key map, command table and test inventory of the re
 
 | Item | Status | Note |
 | --- | --- | --- |
-| Header rule with view name, workspace, scope label, issue count and position, live or stale marker | done | stale shows the age; parts drop in a fixed order: workspace, scope, bd warning, count and position, marker word |
-| View tabs in the footer rule | done | tabs shrink to the current view's name when the chips need the room; clicks act on the footer rule |
-| Fork junctions where the side panel starts | done | `┬` in the header rule and `┴` in the footer rule; ascii uses `+` |
-| Footer rule with tabs, marks, changes and scope note; hints row below | done | hints are generated from the key map and drop in a fixed order |
+| Header row with view name, workspace, scope label, issue count and position, live or stale marker | done | stale shows the age; parts drop in a fixed order: workspace, scope, bd warning, count and position, marker word |
+| View tabs in the footer row | done | tabs shrink to the current view's name when the chips need the room; clicks act on the footer row |
+| Framed panels with the title in the top border | done | rounded borders, primary for the panel with the keys, grey otherwise; header and footer stay unframed, a blank row under the header; no frames at the full-screen dialog size |
+| Footer row with tabs, marks, changes and scope note; hints row below | done | hints are generated from the key map and drop in a fixed order |
 | Toast row with ASCII icons | done | a notice takes the hints row; notices queue instead of replacing each other |
 | Docked search, filter and command bars | done | |
 | Kanban column count by width, panel beside at wide terminals | done | panel beside from 90 columns, as in bdui-next |

@@ -1,40 +1,40 @@
-- Tree - demo --------------------------- 15 issues · 14/14 - * live 12:00:00 -+- gr-z ---------------------------------
-    ID       TYPE TITLE                                                   PR   |  gr-z  o Open  task  P2                
-  * gr-a     task Extract pricing client                                  P2   |  Cache sizing                          
-  o gr-b     task Migrate cart totals                                     P2   |  * Description  none                   
-  o gr-c     task Migrate invoice totals with a rather long title that... P2   |  v Dependencies  waits on 1 (1 open)...
-  o gr-d     task Remove legacy pricing                                   P2   |    < waits on (1 · 1 open)             
-  v gr-e     task Checkout epic                                           o 0/2|    `-o gr-y @ Cache eviction           
-  o |- gr-e1 task Address form                                            P2   |      `-o gr-x @ Cache warmup           
-  o `- gr-e2 task Confirmation mail                                       P2   |        `-@ gr-z (cycle)                
-  o gr-l     task Depends on closed                                       P2   |    o gr-z @ Cache sizing               
-  o gr-lone1 task Standalone chore                                        P2   |    > holds up (2)                      
-  ~ gr-lone2 task Another standalone chore                                P2   |    |-o gr-w Cache metrics              
-  o gr-w     task Cache metrics                                           P2   |    `-o gr-x @ Cache warmup             
-  o gr-x     task Cache warmup                                            P2   |      `-o gr-y @ Cache eviction         
-  o gr-y     task Cache eviction                                          P2   |        `-@ gr-z (cycle)                
-| o gr-z     task Cache sizing                                            P2   |  * Children  none                      
-                                                                               |  > Details  created 2 d ago · update...
-                                                                               |  > Audit trail  no comments            
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph -----------+- ]/[ section  m markdown  x export ----
+  Tree   demo                                                                      15 issues · 14/14   * live 12:00:00  
+                                                                                                                        
++- Tree ----------------------------------------------------------------------+ +- gr-z -------------------------------+
+|    ID       TYPE TITLE                                                PR    | | gr-z  o Open  task  P2               |
+|  * gr-a     task Extract pricing client                               P2    | | Cache sizing                         |
+|  o gr-b     task Migrate cart totals                                  P2    | | * Description  none                  |
+|  o gr-c     task Migrate invoice totals with a rather long title t... P2    | | v Dependencies  waits on 1 (1 ope... |
+|  o gr-d     task Remove legacy pricing                                P2    | |   < waits on (1 · 1 open)            |
+|  v gr-e     task Checkout epic                                        o 0/2 | |   `-o gr-y @ Cache eviction          |
+|  o |- gr-e1 task Address form                                         P2    | |     `-o gr-x @ Cache warmup          |
+|  o `- gr-e2 task Confirmation mail                                    P2    | |       `-@ gr-z (cycle)               |
+|  o gr-l     task Depends on closed                                    P2    | |   o gr-z @ Cache sizing              |
+|  o gr-lone1 task Standalone chore                                     P2    | |   > holds up (2)                     |
+|  ~ gr-lone2 task Another standalone chore                             P2    | |   |-o gr-w Cache metrics             |
+|  o gr-w     task Cache metrics                                        P2    | |   `-o gr-x @ Cache warmup            |
+|  o gr-x     task Cache warmup                                         P2    | |     `-o gr-y @ Cache eviction        |
+|  o gr-y     task Cache eviction                                       P2    | |       `-@ gr-z (cycle)               |
+|| o gr-z     task Cache sizing                                         P2    | | * Children  none                     |
+|                                                                             | | > Details  created 2 d ago · upda... |
+|                                                                             | | > Audit trail  no comments           |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
++-----------------------------------------------------------------------------+ +-- ]/[ section  m markdown  x export -+
+  1 Overview   [2 Tree]   3 Kanban   4 Ready   5 Memories   6 Graph                                                     
  j/k scroll  Enter jump  : cmd  ? help                             o open  * in progress  ! blocked  x closed  ~ frozen 

@@ -1,40 +1,40 @@
-- Graph - demo ------------------------------------------------ 2 isolated hidden - 15 issues · 1/13 - * live 12:00:00 -
-  - 4 issues -----------------------------------------------------------------------------------------------------------
-| * gr-a Extract pricing client                                                                                         
-  |- o gr-b Migrate cart totals                                                                                         
-  |  `- o gr-d Remove legacy pricing                                                                                    
-  `- o gr-c Migrate invoice totals with a rather long title that needs cutting somewhere                                
-     `- ~ gr-d Remove legacy pricing                                                                                    
-  - 4 issues -----------------------------------------------------------------------------------------------------------
-  o gr-x @ Cache warmup                                                                                                 
-  `- o gr-y @ Cache eviction                                                                                            
-     `- o gr-z @ Cache sizing                                                                                           
-        |- o gr-w Cache metrics                                                                                         
-        `- @ gr-x (cycle)                                                                                               
-  - 3 issues -----------------------------------------------------------------------------------------------------------
-  o gr-e Checkout epic                                                                                                  
-  `- o gr-e1 Address form                                                                                               
-     `- o gr-e2 Confirmation mail                                                                                       
-  - 2 issues -----------------------------------------------------------------------------------------------------------
-  x gr-k Closed prerequisite                                                                                            
-  `- o gr-l Depends on closed                                                                                           
+  Graph   demo                                                  2 isolated hidden   15 issues · 1/13   * live 12:00:00  
                                                                                                                         
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-- 1 Overview - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - [6 Graph] ----------------------------------------------------
++- Graph --------------------------------------------------------------------------------------------------------------+
+|  4 issues                                                                                                            |
+|| * gr-a Extract pricing client                                                                                       |
+|  |- o gr-b Migrate cart totals                                                                                       |
+|  |  `- o gr-d Remove legacy pricing                                                                                  |
+|  `- o gr-c Migrate invoice totals with a rather long title that needs cutting somewhere                              |
+|     `- ~ gr-d Remove legacy pricing                                                                                  |
+|  4 issues                                                                                                            |
+|  o gr-x @ Cache warmup                                                                                               |
+|  `- o gr-y @ Cache eviction                                                                                          |
+|     `- o gr-z @ Cache sizing                                                                                         |
+|        |- o gr-w Cache metrics                                                                                       |
+|        `- @ gr-x (cycle)                                                                                             |
+|  3 issues                                                                                                            |
+|  o gr-e Checkout epic                                                                                                |
+|  `- o gr-e1 Address form                                                                                             |
+|     `- o gr-e2 Confirmation mail                                                                                     |
+|  2 issues                                                                                                            |
+|  x gr-k Closed prerequisite                                                                                          |
+|  `- o gr-l Depends on closed                                                                                         |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------+
+  1 Overview   2 Tree   3 Kanban   4 Ready   5 Memories   [6 Graph]                                                     
  / search  f filter  Enter focus  : cmd  ? help                    o open  * in progress  ! blocked  x closed  ~ frozen 

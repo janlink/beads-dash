@@ -1,50 +1,50 @@
-- Kanban - demo -------------------------------------------------------------------------------------------------------------------------------------------------- 15 issues · 1/10 - * live 12:00:00 -
-- [Open] 5 ---------------------------- - In progress 2 ----------------------- - Blocked 2 --------------------------- - Frozen 1 ---------------------------- - Other 0 -----------------------------
-| P0 bug     Payment provider timeou...   P1 epic    Checkout: gu... ##---- 2/5   P2 feature Split pricing service  ! 1   P3 feature Search: typo tolerance       (empty)                              
-  P1 task    Address form validation      P2 bug     Cart badge shows s... @bob   P2 task    Guest order confirm... ! 1                                                                                
-  P2 task    Follow-up from a... @alice                                                                                                                                                                
-  P3 feature Shipping opt... ------ 0/1                                                                                                                                                                
-  P3 task    Pickup point lookup @carol                                                                                                                                                                
+  Kanban   demo                                                                                                                                                    15 issues · 1/10   * live 12:00:00  
                                                                                                                                                                                                        
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-                                                                                                                                                                                                       
-- 1 Overview - 2 Tree - [3 Kanban] - 4 Ready - 5 Memories - 6 Graph -----------------------------------------------------------------------------------------------------------------------------------
++- Open 5 ----------------------------+ +- In progress 2 ---------------------+ +- Blocked 2 -------------------------+ +- Frozen 1 --------------------------+ +- Other 0 ---------------------------+
+|| P0 bug     Payment provider tim... | |  P1 epic    Checkout:... ##---- 2/5 | |  P2 feature Split pricing se... ! 1 | |  P3 feature Search: typo tolerance  | |  (empty)                            |
+|  P1 task    Address form validation | |  P2 bug     Cart badge show... @bob | |  P2 task    Guest order conf... ! 1 | |                                     | |                                     |
+|  P2 task    Follow-up fro... @alice | |                                     | |                                     | |                                     | |                                     |
+|  P3 feature Shipping ... ------ 0/1 | |                                     | |                                     | |                                     | |                                     |
+|  P3 task    Pickup point ... @carol | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
+|                                     | |                                     | |                                     | |                                     | |                                     |
++-------------------------------------+ +-------------------------------------+ +-------------------------------------+ +-------------------------------------+ +-------------------------------------+
+  1 Overview   2 Tree   [3 Kanban]   4 Ready   5 Memories   6 Graph                                                                                                                                    
  / search  f filter  Enter details  : cmd  ? help                                                                                                 o open  * in progress  ! blocked  x closed  ~ frozen 

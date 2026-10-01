@@ -1,24 +1,24 @@
-- Overview - demo -------------------------------------------- * live 12:00:00 -
-| ? ws-1zz   task    Mystery status issue                      P4               
-  +- Notifications ------------------------------------------------ 3 kinds -+  
-  | > [ ] Notifications off                                                  |  
-  |                                                                          |  
-  | Tell me when an issue                                                    |  
-  |   [ ] created                                                            |  
-  |   [ ] claimed                                                            |  
-  |   [ ] unassigned                                                         |  
-  |   [x] closed                                                             |  
-  |   [ ] reopened                                                           |  
-  |   [ ] status changed                                                     |  
-  |   [x] became blocked                                                     |  
-  |   [ ] unblocked                                                          |  
-  |   [x] became ready                                                       |  
-  |   [ ] priority changed                                                   |  
-  |   [ ] deleted                                                            |  
-  |   [ ] edited                                                             |  
-  |   [ ] commented                                                          |  
-  |                                                                          |  
-  | Your own changes never notify. Method: auto                              |  
-  +------------------------ Enter save  Esc cancel  Space toggle  Up/Dn row -+  
-- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
+  Overview   demo                                              * live 12:00:00  
+                                                                                
++-+- Notifications ------------------------------------------------ 3 kinds -+-+
+||| > [ ] Notifications off                                                  | |
+| |                                                                          | |
+| | Tell me when an issue                                                    | |
+| |   [ ] created                                                            | |
+| |   [ ] claimed                                                            | |
+| |   [ ] unassigned                                                         | |
+| |   [x] closed                                                             | |
+| |   [ ] reopened                                                           | |
+| |   [ ] status changed                                                     | |
+| |   [x] became blocked                                                     | |
+| |   [ ] unblocked                                                          | |
+| |   [x] became ready                                                       | |
+| |   [ ] priority changed                                                   | |
+| |   [ ] deleted                                                            | |
+| |   [ ] edited                                                             | |
+| |   [ ] commented                                                          | |
+| |                                                                          | |
+| | Your own changes never notify. Method: auto                              | |
++-+------------------------ Enter save  Esc cancel  Space toggle  Up/Dn row -+-+
+  [1 Overview]   2 Tree   3 Kanban   4 Ready   5 Memories   6 Graph             
  Enter save  Esc cancel  Space toggle  Up/Dn row                                

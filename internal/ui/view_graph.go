@@ -450,7 +450,7 @@ func (v *Graph) Render(env Env, w, h int) []string {
 		curKey = v.keys[cur]
 	}
 	first := v.win.layout(v.keys, curKey, h)
-	style := rows.OutlineStyle{Narrow: v.guide() == 2, XOff: v.xoff}
+	style := rows.OutlineStyle{Narrow: v.guide() == 2, XOff: v.xoff, Plain: env.Framed}
 	out := make([]string, h)
 	for i := range out {
 		k := first + i

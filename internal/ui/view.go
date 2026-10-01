@@ -63,8 +63,14 @@ type Env struct {
 	Now     time.Time
 	// Cols is the width of the whole terminal, of which a view may get less.
 	Cols int
-	// Docked reports a detail panel docked beside or below the view.
+	// Docked reports a detail panel docked beside the view.
 	Docked bool
+	// Framed reports that the body is drawn in framed panels; on small
+	// terminals it is not.
+	Framed bool
+	// Focused reports that the view has the keys, so its panel is framed in
+	// the primary colour.
+	Focused bool
 	// Feed is the activity events, newest first.
 	Feed []model.Event
 }
@@ -104,10 +110,10 @@ type Syncer interface {
 	Sync(env Env)
 }
 
-// Divided is a view whose body is split by vertical borders running its full
-// height; the header and footer rules join them at those columns.
-type Divided interface {
-	Dividers() []int
+// Paneled is implemented by views that draw their own framed panels; the
+// shell frames every other view in one panel named after it.
+type Paneled interface {
+	Paneled()
 }
 
 // Closer is implemented by views with a state Esc steps out of, such as a

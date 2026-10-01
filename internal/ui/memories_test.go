@@ -66,7 +66,7 @@ func TestMemoriesViewLayoutsByWidth(t *testing.T) {
 	}
 	for _, w := range []int{72, 120} {
 		s := screen(memRig(t, w, 30).a)
-		if at, list := rowContaining(s, "2 lines"), rowContaining(s, "alpha-key  "); at != list {
+		if at, list := rowContaining(s, "2 lines"), rowContaining(s, "alpha-key  "); at != list && at != rowContaining(s, "Memories -") {
 			t.Errorf("width %d: preview header on line %d, not beside the list (%d)", w, at, list)
 		}
 	}

@@ -33,29 +33,9 @@ func TestRuleSetsWordsIntoLine(t *testing.T) {
 	}
 }
 
-func TestRuleJunctions(t *testing.T) {
-	tests := []struct {
-		tier        theme.Tier
-		down, up, h string
-	}{
-		{theme.TierFancy, "┬", "┴", "─"},
-		{theme.TierSafe, "┬", "┴", "─"},
-		{theme.TierASCII, "+", "+", "-"},
-	}
-	for _, tt := range tests {
-		l := testLook(tt.tier)
-		if got := l.Rule(8, []Seg{l.Tee(true)}, nil); ansi.Strip(got) != tt.down+strings.Repeat(tt.h, 7) {
-			t.Errorf("tier %v down: %q", tt.tier, got)
-		}
-		if got := l.Rule(8, []Seg{l.Tee(false)}, nil); ansi.Strip(got) != tt.up+strings.Repeat(tt.h, 7) {
-			t.Errorf("tier %v up: %q", tt.tier, got)
-		}
-	}
-}
-
 func TestRuleASCIIUsesOnlyASCII(t *testing.T) {
 	l := testLook(theme.TierASCII)
-	row := l.Rule(30, append([]Seg{l.Tee(true)}, l.Words(Word(theme.Strong, "Now"))...), l.Words(Word(theme.Dim, "live")))
+	row := l.Rule(30, l.Words(Word(theme.Strong, "Now")), l.Words(Word(theme.Dim, "live")))
 	for _, r := range row {
 		if r > 0x7f {
 			t.Fatalf("non-ASCII %q in %q", r, row)

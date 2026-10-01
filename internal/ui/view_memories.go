@@ -124,6 +124,9 @@ func (v *memoriesView) Render(env Env, w, h int) []string {
 			Title: fmt.Sprintf("No memory matches %q · Esc clear", m.query.Text()),
 		}, w, h)
 	}
+	if env.Framed {
+		return v.panels(env, shown, lay, w, h)
+	}
 	list := v.listLines(env, shown, lay.listW, lay.listH)
 	if !lay.previews {
 		return list
@@ -265,23 +268,67 @@ func (v *memoriesView) previewLines(env Env, cur model.Memory, lay memLayout) []
 		out = append(out, l.Rule(w, nil, nil))
 	}
 	out = append(out, lead+l.Fit(a.memHeader(cur, inner, m.focus), inner))
-	body := a.memBody(cur, inner)
-	page := max(h-len(out), 1)
+	for _, s := range v.previewPage(env, cur, inner, max(h-len(out), 1)) {
+		out = append(out, lead+l.Fit(s, inner))
+	}
+	return out[:h]
+}
+
+// previewPage is the page of the preview body that is scrolled into view, w
+// cells wide and page rows tall; its last row says how much more there is.
+func (v *memoriesView) previewPage(env Env, cur model.Memory, w, page int) []string {
+	a, m, l := v.a, v.a.mem, env.Look
+	body := a.memBody(cur, w)
 	m.prevPage = page
 	m.scroll = min(m.scroll, max(len(body)-page, 0))
 	shown := body[min(m.scroll, len(body)):min(m.scroll+page, len(body))]
 	more := len(body) - m.scroll - page
-	for i := range page {
-		s := ""
+	out := make([]string, page)
+	for i := range out {
 		if i < len(shown) {
-			s = shown[i]
+			out[i] = shown[i]
 		}
 		if i == page-1 && more > 0 {
-			s = l.Paint(theme.Faint, fmt.Sprintf("%s %d more", l.Glyphs.Ellipsis, more+1))
+			out[i] = l.Paint(theme.Faint, fmt.Sprintf("%s %d more", l.Glyphs.Ellipsis, more+1))
 		}
-		out = append(out, lead+l.Fit(s, inner))
 	}
-	return out[:h]
+	return out
+}
+
+// panels draws the list and the preview as framed panels, a blank column
+// apart; the one with the keys is focused.
+func (v *memoriesView) panels(env Env, shown []model.Memory, lay memLayout, w, h int) []string {
+	m, l := v.a.mem, env.Look
+	listW := w
+	if lay.previews {
+		listW = lay.listW
+	}
+	body := max(h-2, 1)
+	list := v.listLines(env, shown, max(look.PanelInner(listW)-1, 1), body)
+	for i := range list {
+		list[i] += " "
+	}
+	m.rowKeys = append([]string{""}, m.rowKeys[:h-1]...)
+	lp := look.Panel{Title: "Memories", Aside: look.Word(theme.Dim, itoa(len(shown))), Focused: env.Focused && !m.focus}
+	out := l.Frame(lp, listW, h, list)
+	if !lay.previews {
+		return out
+	}
+	cur, _ := m.current()
+	pw := w - listW - 1
+	inner := max(look.PanelInner(pw)-2, 1)
+	page := v.previewPage(env, cur, inner, body)
+	for i, s := range page {
+		page[i] = " " + l.Fit(s, inner) + " "
+	}
+	lines, chars := model.MemorySize(cur.Content)
+	size := fmt.Sprintf("%d %s · %d chars", lines, plural(lines, "line", "lines"), chars)
+	pp := look.Panel{Title: oneLineText(cur.Key), Aside: look.Word(theme.Dim, size), Focused: env.Focused && m.focus}
+	prev := l.Frame(pp, pw, h, page)
+	for i := range out {
+		out[i] += " " + prev[i]
+	}
+	return out
 }
 
 // memHeader is the preview's title row: the key and the size of the content.

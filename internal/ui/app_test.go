@@ -81,23 +81,23 @@ func TestBreakpoints(t *testing.T) {
 
 func TestFooterTabsShrinkToNumbers(t *testing.T) {
 	narrow := lines(sample(t, plain, 60, 24))
-	if footer := narrow[len(narrow)-2]; strings.Contains(footer, "Tree") || !strings.Contains(footer, "[1] - 2 - 3 - 4 - 5 - 6") {
+	if footer := narrow[len(narrow)-2]; strings.Contains(footer, "Tree") || !strings.Contains(footer, "[1]   2   3   4   5   6") {
 		t.Errorf("narrow footer %q", footer)
 	}
 	regular := lines(sample(t, plain, 80, 24))
-	if footer := regular[len(regular)-2]; !strings.Contains(footer, "[1 Overview] - 2 Tree - 3 Kanban") {
+	if footer := regular[len(regular)-2]; !strings.Contains(footer, "[1 Overview]   2 Tree   3 Kanban") {
 		t.Errorf("regular footer %q", footer)
 	}
 }
 
-func TestHeaderIsOneRuleAndFooterTwoRows(t *testing.T) {
+func TestHeaderIsOneRowAndFooterTwoRows(t *testing.T) {
 	a := sample(t, plain, 80, 24)
 	ls := lines(a)
-	if !strings.Contains(ls[0], "12:00:00 -") || !strings.HasPrefix(ls[0], "- Overview - demo") {
+	if !strings.HasSuffix(ls[0], "12:00:00  ") || !strings.HasPrefix(ls[0], "  Overview   demo") {
 		t.Errorf("header %q", ls[0])
 	}
-	if !strings.HasPrefix(ls[22], "- [1 Overview]") || strings.Contains(ls[22], "help") {
-		t.Errorf("footer rule %q", ls[22])
+	if !strings.HasPrefix(ls[22], "  [1 Overview]") || strings.Contains(ls[22], "help") {
+		t.Errorf("footer tabs %q", ls[22])
 	}
 	if !strings.Contains(ls[23], "? help") {
 		t.Errorf("footer hints %q", ls[23])
@@ -178,7 +178,7 @@ func TestViewsRegisterIntoTheShell(t *testing.T) {
 	if a.slot != 1 || a.view() != View(second) {
 		t.Errorf("slot %d", a.slot)
 	}
-	if ls := lines(a); !strings.Contains(ls[len(ls)-2], "[2 Tree]") || !strings.HasPrefix(ls[0], "- Tree") {
+	if ls := lines(a); !strings.Contains(ls[len(ls)-2], "[2 Tree]") || !strings.HasPrefix(ls[0], "  Tree") {
 		t.Errorf("header %q footer %q", ls[0], ls[len(ls)-2])
 	}
 }
@@ -413,12 +413,12 @@ func TestWindowTitleAndTerminalModes(t *testing.T) {
 func TestMouse(t *testing.T) {
 	a := sample(t, plain, 100, 30)
 	ids := snapOf(t).IDs()
-	a.View()
-	send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 10, Y: 4})
+	y := rowContaining(screen(a), ids[3])
+	send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 10, Y: y})
 	if a.sess.Current() != ids[3] {
 		t.Errorf("click selected %q", a.sess.Current())
 	}
-	send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 17, Y: a.bodyHeight() + 1})
+	send(a, tea.MouseClickMsg{Button: tea.MouseLeft, X: 17, Y: a.bodyTop() + a.bodyHeight()})
 	if a.slot != 0 || a.hint == "" {
 		t.Errorf("click on the Tree tab: slot %d hint %q", a.slot, a.hint)
 	}

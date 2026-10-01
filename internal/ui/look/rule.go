@@ -42,15 +42,6 @@ func (l Look) Words(entries ...[]Seg) []Seg {
 // WordCost is the cells Words spends around an entry of w cells.
 const WordCost = 3
 
-// Tee is the junction where a vertical border meets a rule: from below for a
-// border under the rule, from above for one over it.
-func (l Look) Tee(below bool) Seg {
-	if below {
-		return Seg{theme.Rule, l.Glyphs.RuleDown}
-	}
-	return Seg{theme.Rule, l.Glyphs.RuleUp}
-}
-
 // Rule draws left, then line, then right across exactly w cells. The line
 // takes whole glyphs, so a rule glyph wider than one cell leaves an odd
 // remainder blank. When the words do not fit, right goes first and left is

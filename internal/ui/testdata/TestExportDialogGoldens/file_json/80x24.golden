@@ -1,24 +1,24 @@
-- Tree - demo ------------------------------- 9 issues · 6/8 - * live 12:00:00 -
-    ID          TYPE    TITLE                          PR STATUS      WHO       
- #o ws-9qe      bug     Payment provider timeout re... P0                       
-  v ws-4k2      epic    Checkout: guest orders         * 0/2 ------             
-  +- Export ----------------------------------------------------- field 4/5 -+  
-  |   Set          Marked (3)                                                |  
- #|   Format       JSON                                                      |  
-|#|   Comments     [ ]                                                       |  
-  |   Target       < File >                                                  |  
-  |   Path         ws-marked-20260929-1200.json                              |  
-  |   3 issues · JSON · 292 B                                                |  
-  |   [                                                                      |  
-  |     {                                                                    |  
-  |       "id": "ws-9qe",                                                    |  
-  |       "status": "open",                                                  |  
-  |       "title": "Payment provider timeout retries"                        |  
-  |     },                                                                   |  
-  |     {                                                                    |  
-  |       "id": "ws-2hz",                                                    |  
-  +------------------------------------ Ctrl+S export  Esc close  Tab field -+  
+  Tree   demo                                 9 issues · 6/8   * live 12:00:00  
                                                                                 
-                                                                                
-- 1 - [2] - 3 - 4 - 5 - 6 ----------------------------------------- # 3 marked -
++- Tree -----------------------------------------------------------------------+
+|    ID          TYPE    TITLE                                           PR    |
+| +- Export ----------------------------------------------------- field 4/5 -+ |
+| |   Set          Marked (3)                                                | |
+| |   Format       JSON                                                      | |
+| |   Comments     [ ]                                                       | |
+| |   Target       < File >                                                  | |
+|||   Path         ws-marked-20260929-1200.json                              | |
+| |   3 issues · JSON · 292 B                                                | |
+| |   [                                                                      | |
+| |     {                                                                    | |
+| |       "id": "ws-9qe",                                                    | |
+| |       "status": "open",                                                  | |
+| |       "title": "Payment provider timeout retries"                        | |
+| |     },                                                                   | |
+| |     {                                                                    | |
+| |       "id": "ws-2hz",                                                    | |
+| +------------------------------------ Ctrl+S export  Esc close  Tab field -+ |
+|                                                                              |
++------------------------------------------------------------------------------+
+  1   [2]   3   4   5   6                                           # 3 marked  
  Ctrl+S export  Esc close  Tab field                                            

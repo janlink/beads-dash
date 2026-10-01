@@ -1,33 +1,33 @@
-- Tree - demo ---------------------- / -type:chore order assignee:alice · 1/15 · closed hidden - 1/1 - * live 12:00:00 -
-    ID     TYPE    TITLE                                                                       PR STATUS      WHO       
-| * ws-4k2 epic    Checkout: guest orders                                                      * 2/5 ##----             
+  Tree   demo                        / -type:chore order assignee:alice · 1/15 · closed hidden   1/1   * live 12:00:00  
                                                                                                                         
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ----------------------------------------------------
++- Tree ---------------------------------------------------------------------------------------------------------------+
+|    ID     TYPE    TITLE                                                                    PR STATUS      WHO        |
+|| * ws-4k2 epic    Checkout: guest orders                                                   * 2/5 ##----              |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------+
+  1 Overview   [2 Tree]   3 Kanban   4 Ready   5 Memories   6 Graph                                                     
  Enter keep  Esc close  Space toggle  Tab column  Up/Dn option                                                          
  Filter  type to find an option                                                                             1/15 shown  
 Status                          Type                  Priority              Assignee (1)          Labels                

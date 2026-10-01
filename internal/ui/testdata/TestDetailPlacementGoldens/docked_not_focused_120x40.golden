@@ -1,40 +1,40 @@
-- Ready - demo ---------------------------- 15 issues · 1/4 - * live 12:00:00 -+- ws-9qe -------------------------------
-    ID         TYPE    TITLE                                                 PR|  ws-9qe  o Open  bug  P0               
-  - Unassigned 2 --------------------------------------------------------------+  Payment provider timeout retries      
-| o ws-9qe     bug     Payment provider timeout retries                      P0|  v Description  markdown               
-  o ws-4k2.1   task    Address form validation                               P1|    Retries fail after the provider     
-  - Assigned, not started 2 ---------------------------------------------------+    times out.                          
-  o ws-lost    task    Follow-up from a deleted epic                         P2|                                        
-  o ws-4k2.5.1 task    Pickup point lookup                                   P3|    * back off between tries            
-  - > Blocked 2 ---------------------------------------------------------------+    * add jitter                        
-                                                                               |  v Dependencies  holds up 1            
-                                                                               |    o ws-9qe Payment provider timeout...
-                                                                               |    > holds up (1)                      
-                                                                               |    `-! ws-2hz Split pricing service    
-                                                                               |  * Children  none                      
-                                                                               |  > Details  created 5 h ago · update...
-                                                                               |  > Audit trail  no comments            
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-                                                                               |                                        
-- 1 - 2 - 3 - [4] - 5 - 6 -------------------------------- 1 container hidden -+- e edit  x export  Tab focus ----------
+  Ready   demo                                                                       15 issues · 1/4   * live 12:00:00  
+                                                                                                                        
++- Ready ---------------------------------------------------------------------+ +- ws-9qe -----------------------------+
+|    ID         TYPE    TITLE                                              PR | | ws-9qe  o Open  bug  P0              |
+|  Unassigned 2                                                               | | Payment provider timeout retries     |
+|| o ws-9qe     bug     Payment provider timeout retries                   P0 | | v Description  markdown              |
+|  o ws-4k2.1   task    Address form validation                            P1 | |   Retries fail after the provider    |
+|  Assigned, not started 2                                                    | |   times out.                         |
+|  o ws-lost    task    Follow-up from a deleted epic                      P2 | |                                      |
+|  o ws-4k2.5.1 task    Pickup point lookup                                P3 | |   * back off between tries           |
+|  > Blocked 2                                                                | |   * add jitter                       |
+|                                                                             | | v Dependencies  holds up 1           |
+|                                                                             | |   o ws-9qe Payment provider timeo... |
+|                                                                             | |   > holds up (1)                     |
+|                                                                             | |   `-! ws-2hz Split pricing service   |
+|                                                                             | | * Children  none                     |
+|                                                                             | | > Details  created 5 h ago · upda... |
+|                                                                             | | > Audit trail  no comments           |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
+|                                                                             | |                                      |
++-----------------------------------------------------------------------------+ +-------- e edit  x export  Tab focus -+
+  1 Overview   2 Tree   3 Kanban   [4 Ready]   5 Memories   6 Graph                                 1 container hidden  
  / search  f filter  Enter details  : cmd  ? help                  o open  * in progress  ! blocked  x closed  ~ frozen 

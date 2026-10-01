@@ -1,40 +1,40 @@
-- Tree - demo ------------------------------------- / guest · 2/15 · closed hidden · +1 closed - 1/2 - * live 12:00:00 -
-    ID            TYPE    TITLE                                                                PR STATUS      WHO       
-| v ws-4k2        epic    Checkout: guest orders                                               * 2/5 ##----             
-  ! |- ws-4k2.2   task    Guest order confirmation mail                                        P2 blocked               
-  > `- x 1 closed                                                                                                       
+  Tree   demo                                       / guest · 2/15 · closed hidden · +1 closed   1/2   * live 12:00:00  
                                                                                                                         
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-                                                                                                                        
-- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ----------------------------------------------------
++- Tree ---------------------------------------------------------------------------------------------------------------+
+|    ID            TYPE    TITLE                                                             PR STATUS      WHO        |
+|| v ws-4k2        epic    Checkout: guest orders                                            * 2/5 ##----              |
+|  ! |- ws-4k2.2   task    Guest order confirmation mail                                     P2 blocked                |
+|  > `- x 1 closed                                                                                                     |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
+|                                                                                                                      |
++----------------------------------------------------------------------------------------------------------------------+
+  1 Overview   [2 Tree]   3 Kanban   4 Ready   5 Memories   6 Graph                                                     
  Enter keep  Esc close  Tab complete  Ctrl+N/P issue  Up/Dn issue, history                                              
  / guest                                                                                              2/15 · +1 closed  

@@ -65,6 +65,10 @@ type Input struct {
 	Frame   Frame
 	W, H    int
 	Focused bool
+	// Framed draws the panel in a frame titled with the issue ID, Hints set
+	// into its bottom border.
+	Framed bool
+	Hints  []look.Seg
 }
 
 // mdKey identifies one rendered prose section: the issue as of its last
@@ -322,18 +326,17 @@ func (p *Panel) Render(in Input) []string {
 	p.switchTo(in.ID)
 	l := in.Look
 	g := l.Glyphs
-	innerW, innerH := in.W, in.H
-	var top []string
+	innerW, innerH := innerWidth(in), in.H
 	edge := ""
-	switch in.Frame {
-	case Side:
+	switch {
+	case in.Framed:
+		innerH = max(in.H-2, 0)
+	case in.Frame == Side:
 		role := theme.Rule
 		if in.Focused {
 			role = theme.Primary
 		}
 		edge = l.Paint(role, g.Vertical)
-		innerW -= ansi.StringWidth(g.Vertical)
-	case Hidden, Overlay:
 	}
 
 	var lines []string
@@ -350,8 +353,17 @@ func (p *Panel) Render(in Input) []string {
 	} else {
 		lines = p.compose(in, &is, innerW, innerH)
 	}
+	if in.Framed {
+		title := ""
+		if ok {
+			title = l.TruncID(is.ID, max(in.W-6, 1))
+		}
+		for i, s := range lines {
+			lines[i] = l.Fit(s, innerW) + " "
+		}
+		return l.Frame(look.Panel{Title: strings.TrimSpace(title), Bottom: in.Hints, Focused: in.Focused}, in.W, in.H, lines)
+	}
 	out := make([]string, 0, in.H)
-	out = append(out, top...)
 	for _, s := range lines {
 		out = append(out, edge+l.Fit(s, innerW))
 	}
@@ -540,6 +552,9 @@ func proseWidth(w int) int { return min(max(w-3, 1), readingWidth) }
 
 // innerWidth is the width of the panel's content area.
 func innerWidth(in Input) int {
+	if in.Framed {
+		return max(look.PanelInner(in.W)-1, 0)
+	}
 	if in.Frame == Side {
 		return in.W - ansi.StringWidth(in.Look.Glyphs.Vertical)
 	}

@@ -1,38 +1,38 @@
-- Kanban - demo --------------------------------------------------------------------------------------- 15 issues · 1/10 - * live 12:00:00 -
-- [Open] 5 ----------------------- - In progress 2 ------------------ - Blocked 2 ---------------------- - Frozen 1 ------------------ 1> - 
-| P0 bug     Payment provider t...   P1 epic    Checkou... ##---- 2/5   P2 feature Split pricing ... ! 1   P3 feature Search: typo toler... 
-  P1 task    Address form valid...   P2 bug     Cart badge sh... @bob   P2 task    Guest order co... ! 1                                    
-  P2 task    Follow-up f... @alice                                                                                                          
-  P3 feature Shippin... ------ 0/1                                                                                                          
-  P3 task    Pickup poin... @carol                                                                                                          
+  Kanban   demo                                                                                         15 issues · 1/10   * live 12:00:00  
                                                                                                                                             
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-                                                                                                                                            
-- 1 Overview - 2 Tree - [3 Kanban] - 4 Ready - 5 Memories - 6 Graph ------------------------------------------------------------------------
++- Open 5 -----------------------+ +- In progress 2 ----------------+ +- Blocked 2 --------------------+ +- Frozen 1 ---------------- 1> -+ 
+|| P0 bug     Payment provide... | |  P1 Checkout: gu... ##---- 2/5 | |  P2 feature Split prici... ! 1 | |  P3 feature Search: typo to... | 
+|  P1 task    Address form va... | |  P2 bug     Cart badge... @bob | |  P2 task    Guest order... ! 1 | |                                | 
+|  P2 task    Follow-u... @alice | |                                | |                                | |                                | 
+|  P3 Shipping opt... ------ 0/1 | |                                | |                                | |                                | 
+|  P3 task    Pickup p... @carol | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
+|                                | |                                | |                                | |                                | 
++--------------------------------+ +--------------------------------+ +--------------------------------+ +--------------------------------+ 
+  1 Overview   2 Tree   [3 Kanban]   4 Ready   5 Memories   6 Graph                                                                         
  / search  f filter  Enter details  : cmd  ? help                                      o open  * in progress  ! blocked  x closed  ~ frozen 

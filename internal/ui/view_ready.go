@@ -323,8 +323,11 @@ func (v *Ready) head(env Env, r readyRow, w int, cur bool) string {
 	if cur {
 		role = theme.Primary
 	}
-	words := l.Words([]look.Seg{{Role: role, Text: name}, {Role: theme.Dim, Text: " " + itoa(r.count)}})
 	gutter := env.Rows.Gutter(rows.Row{Current: cur})
+	if env.Framed {
+		return gutter + l.Fit(l.Paint(role, name)+l.Paint(theme.Dim, " "+itoa(r.count)), w-rows.GutterWidth)
+	}
+	words := l.Words([]look.Seg{{Role: role, Text: name}, {Role: theme.Dim, Text: " " + itoa(r.count)}})
 	return gutter + l.Rule(w-rows.GutterWidth, words, nil)
 }
 

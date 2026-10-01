@@ -1,24 +1,24 @@
-- Tree - demo ----------------------------- 15 issues · 1/10 - * live 12:00:00 -
-    ID              TYPE    TITLE                      PR STATUS      WHO       
-| o ws-9qe          bug     Payment provider timeou... P0                       
-  v ws-4k2          epic    Checkout: guest orders     * 2/5 ##----             
-  +- Add dependency ---------------------- 10/15 · closed hidden · 2 marked -+  
-  | >                                                                        |  
-  | # ! ws-2hz     Split pricing service                                     |  
-  | # * ws-4k2     Checkout: guest orders                                    |  
-  |   o ws-4k2.1   Address form validation                                   |  
-  |   ! ws-4k2.2   Guest order confirmation mail                             |  
-  |   o ws-4k2.5   Shipping options                                          |  
-  |   o ws-4k2.5.1 Pickup point lookup                                       |  
-  |   * ws-7mt     Cart badge shows stale count                              |  
-  |   ~ ws-8np     Search: typo tolerance                                    |  
-  |   o ws-9qe     Payment provider timeout retries     already a dependency |  
-  |   o ws-lost    Follow-up from a deleted epic                             |  
-  |                                                                          |  
-  |                                                                          |  
-  |                                                                          |  
-  +------------- Enter pick  Esc close  Up/Dn move  Tab mark  Ctrl+T closed -+  
+  Tree   demo                               15 issues · 1/10   * live 12:00:00  
                                                                                 
-                                                                                
-- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
++- Tree -----------------------------------------------------------------------+
+|    ID              TYPE    TITLE                                       PR    |
+||+- Add dependency ---------------------- 10/15 · closed hidden · 2 marked -+ |
+| | >                                                                        | |
+| | # ! ws-2hz     Split pricing service                                     | |
+| | # * ws-4k2     Checkout: guest orders                                    | |
+| |   o ws-4k2.1   Address form validation                                   | |
+| |   ! ws-4k2.2   Guest order confirmation mail                             | |
+| |   o ws-4k2.5   Shipping options                                          | |
+| |   o ws-4k2.5.1 Pickup point lookup                                       | |
+| |   * ws-7mt     Cart badge shows stale count                              | |
+| |   ~ ws-8np     Search: typo tolerance                                    | |
+| |   o ws-9qe     Payment provider timeout retries     already a dependency | |
+| |   o ws-lost    Follow-up from a deleted epic                             | |
+| |                                                                          | |
+| |                                                                          | |
+| |                                                                          | |
+| +------------- Enter pick  Esc close  Up/Dn move  Tab mark  Ctrl+T closed -+ |
+|                                                                              |
++------------------------------------------------------------------------------+
+  1 Overview   [2 Tree]   3 Kanban   4 Ready   5 Memories   6 Graph             
  Enter pick  Esc close  Up/Dn move  Tab mark  Ctrl+T closed                     

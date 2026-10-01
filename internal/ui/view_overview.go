@@ -39,6 +39,8 @@ type ovItem struct {
 // ovBox is where a region was drawn in the last frame.
 type ovBox struct {
 	x, y, w, h int
+	// bh is the body rows between the title and the bottom edge.
+	bh int
 	// at maps a body line to the item it shows, -1 for none.
 	at []int
 }
@@ -74,8 +76,6 @@ type Overview struct {
 	// roomy is set while the regions are laid out in three columns, which
 	// changes their reading order.
 	roomy bool
-	// dividers are the columns of the borders between the drawn columns.
-	dividers []int
 	// exited is set when Tab left the last region for the detail panel: the
 	// next Tab from the list starts over at the first region.
 	exited bool
@@ -282,7 +282,7 @@ func (v *Overview) Handle(a keys.Action, env Env) (tea.Cmd, bool) {
 		for i := range lr {
 			lr[i].sel = true
 		}
-		page := max(v.boxes[focus].h-1, 1)
+		page := max(v.boxes[focus].bh, 1)
 		if to := moveTo(lr, v.cursor(focus, env.Current), a, page); to >= 0 {
 			v.move(env, focus, to)
 		}
@@ -311,7 +311,7 @@ func (*Overview) At(int) (string, bool) { return "", false }
 // AtXY implements Pointer: a click focuses the region and selects the line.
 func (v *Overview) AtXY(x, y int) (string, bool) {
 	for r, b := range v.boxes {
-		if b.w == 0 || x < b.x || x >= b.x+b.w || y <= b.y || y >= b.y+b.h {
+		if b.w == 0 || x < b.x || x >= b.x+b.w || y <= b.y || y > b.y+b.bh {
 			continue
 		}
 		line := v.off[r] + y - b.y - 1

@@ -1,4 +1,4 @@
-- Kanban - demo ------------ 15 issues · 1/10 - * 12:00:00 -
+  Kanban   demo              15 issues · 1/10   * 12:00:00  
 - [Open] 5 -------------------------------------------------
 | P0 ws-9qe     bug     Payment provider timeout retries    
   P1 ws-4k2.1   task    Address form validation             
@@ -12,5 +12,5 @@
   P2 ws-2hz     feature Split pricing service            ! 1
   P2 ws-4k2.2   task    Guest order confirmation mail    ! 1
 - Frozen 1 -------------------------------------------------
-- 1 - 2 - [3] - 4 - 5 - 6 ----------------------------------
+  1   2   [3]   4   5   6                                   
  / search  f filter  Enter details  : cmd  ? help           

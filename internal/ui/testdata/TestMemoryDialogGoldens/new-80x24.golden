@@ -1,24 +1,24 @@
-- Memories - demo ---------------- 4 · 514 chars in bd prime - * live 12:00:00 -
-| dolt-push-needs-...  Run bd dolt pu...|  dolt-push-need... · 4 lines · 86 char
-  golden-update        Regenerate gol...|  Run bd dolt push only after the remot
-  no-tabs              Go files use t...|  is set.                              
-  test-pump            Engine-driven ...|                                       
-                                        |  * check  bd dolt remote              
-                                        |  * never force                        
-  +- New memory ------------------------------------------------- field 2/2 -+  
-  |   Key*         prefer-small-commits                                      |  
-  |   Content*                                                               |  
-  |   Prefer small commits                                                   |  
-  |                                                                          |  
-  |                                                                          |  
-  |                                                                          |  
-  |                                                                          |  
-  |                                                                          |  
-  +-------------------------------------- Ctrl+S save  Esc close  Tab field -+  
-                                        |                                       
-                                        |                                       
-                                        |                                       
-                                        |                                       
-                                        |                                       
-- 1 Overview - 2 Tree - 3 Kanban - 4 Ready - [5 Memories] - 6 Graph ------------
+  Memories   demo                  4 · 514 chars in bd prime   * live 12:00:00  
+                                                                                
++- Memories ----------------------- 4 -+ +- dolt-push-needs-remote ------------+
+|| dolt-push-need...  Run bd dolt p... | | Run bd dolt push only after the     |
+|  golden-update      Regenerate go... | | remote is set.                      |
+|  no-tabs            Go files use ... | |                                     |
+|  test-pump          Engine-driven... | | * check  bd dolt remote             |
+| +- New memory ------------------------------------------------- field 2/2 -+ |
+| |   Key*         prefer-small-commits                                      | |
+| |   Content*                                                               | |
+| |   Prefer small commits                                                   | |
+| |                                                                          | |
+| |                                                                          | |
+| |                                                                          | |
+| |                                                                          | |
+| |                                                                          | |
+| +-------------------------------------- Ctrl+S save  Esc close  Tab field -+ |
+|                                      | |                                     |
+|                                      | |                                     |
+|                                      | |                                     |
+|                                      | |                                     |
++--------------------------------------+ +-------------------------------------+
+  1 Overview   2 Tree   3 Kanban   4 Ready   [5 Memories]   6 Graph             
  Ctrl+S save  Esc close  Tab field                                              

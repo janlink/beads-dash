@@ -1,24 +1,24 @@
-- Ready - demo ----------------------------- 15 issues · 1/6 - * live 12:00:00 -
-    ID         TYPE    TITLE                                     PR ASSIGNEE    
-  - Unassigned 2 ---------------------------------------------------------------
-| o ws-9qe     bug     Payment provider timeout retries          P0             
-  o ws-4k2.1   task    Address form validation                   P1             
-  - Assigned, not started 2 ----------------------------------------------------
-  o ws-lost    task    Follow-up from a deleted epic             P2 alice       
-  o ws-4k2.5.1 task    Pickup point lookup                       P3 carol       
-  - v Blocked 2 ----------------------------------------------------------------
-  ! ws-2hz     feature Split pricing service     waits on ws-9qe P2             
-  ! ws-4k2.2   task    Guest order confirma... waits on ws-4k2.1 P2             
+  Ready   demo                               15 issues · 1/6   * live 12:00:00  
                                                                                 
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-- 1 - 2 - 3 - [4] - 5 - 6 --------------------------------- 1 container hidden -
++- Ready ----------------------------------------------------------------------+
+|    ID         TYPE    TITLE                                               PR |
+|  Unassigned 2                                                                |
+|| o ws-9qe     bug     Payment provider timeout retries                    P0 |
+|  o ws-4k2.1   task    Address form validation                             P1 |
+|  Assigned, not started 2                                                     |
+|  o ws-lost    task    Follow-up from a deleted epic                       P2 |
+|  o ws-4k2.5.1 task    Pickup point lookup                                 P3 |
+|  v Blocked 2                                                                 |
+|  ! ws-2hz     feature Split pricing service               waits on ws-9qe P2 |
+|  ! ws-4k2.2   task    Guest order confirmation mail     waits on ws-4k2.1 P2 |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+  1   2   3   [4]   5   6                                   1 container hidden  
  / search  f filter  Enter details  : cmd  ? help                               

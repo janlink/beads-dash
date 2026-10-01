@@ -31,6 +31,9 @@ type OutlineStyle struct {
 	Hidden int
 	// XOff is the number of cells the outline is scrolled to the left.
 	XOff int
+	// Plain draws group headers as text instead of a rule, for outlines in a
+	// framed panel.
+	Plain bool
 }
 
 // GuideCells is the width of one guide level.
@@ -158,6 +161,15 @@ func (r *Renderer) guideLevels(all []model.OutlineRow, i, lo, hi, cw int, paint 
 	return b.String()
 }
 
+// heading is a group header: a rule with the label, or the label alone in a
+// plain outline.
+func (r *Renderer) heading(label string, w int, st OutlineStyle) string {
+	if st.Plain {
+		return r.look.Fit(r.look.Paint(theme.Dim, label), w)
+	}
+	return r.look.Rule(w, r.look.Words(look.Word(theme.Dim, label)), nil)
+}
+
 func (r *Renderer) outlineLabel(row model.OutlineRow, w int, paint func(theme.Role, string) string, st OutlineStyle) string {
 	g := r.look.Glyphs
 	text := func(role theme.Role, s string) string {
@@ -168,9 +180,9 @@ func (r *Renderer) outlineLabel(row model.OutlineRow, w int, paint func(theme.Ro
 	}
 	switch row.Kind {
 	case model.OutHeader:
-		return r.look.Rule(w, r.look.Words(look.Word(theme.Dim, fmt.Sprintf("%d issues", row.Count))), nil)
+		return r.heading(fmt.Sprintf("%d issues", row.Count), w, st)
 	case model.OutIsolated:
-		return r.look.Rule(w, r.look.Words(look.Word(theme.Dim, fmt.Sprintf("without dependencies (%d)", row.Count))), nil)
+		return r.heading(fmt.Sprintf("without dependencies (%d)", row.Count), w, st)
 	case model.OutWaits:
 		return paint(theme.Dim, r.look.Fit(fmt.Sprintf("%s waits on (%d · %d open)", WaitsGlyph(g), row.Count, row.Aux), w))
 	case model.OutHolds:

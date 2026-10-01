@@ -1,4 +1,5 @@
-- Overview - demo -------------------------------------------- * live 12:00:00 -
+  Overview   demo                                              * live 12:00:00  
+                                                                                
                                                                                 
                                                                                 
                                                                                 
@@ -19,6 +20,5 @@
                                                                                 
                                                                                 
                                                                                 
-                                                                                
-- [1 Overview] - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
+  [1 Overview]   2 Tree   3 Kanban   4 Ready   5 Memories   6 Graph             
  n new issue  bd create "First task" -t task  bd quickstart  / search  ? help   

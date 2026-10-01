@@ -110,19 +110,10 @@ type Glyphs struct {
 	Checked   string
 	Unchecked string
 
-	Rule string
-	// RuleDown and RuleUp are the junctions where a vertical border meets a
-	// rule from below and from above.
-	RuleDown string
-	RuleUp   string
-	// RuleLeft, RuleRight and RuleCross are the junctions where a rule meets
-	// a vertical border from the left, from the right and from both sides.
-	RuleLeft  string
-	RuleRight string
-	RuleCross string
-	Ellipsis  string
-	Arrow     string
-	Bullet    string
+	Rule     string
+	Ellipsis string
+	Arrow    string
+	Bullet   string
 	// Enter labels the Enter key in hints.
 	Enter string
 	// Live and Stale mark the snapshot state in the header.
@@ -152,11 +143,6 @@ func (g Glyphs) Slots() []Slot {
 		{"checked", g.Checked},
 		{"unchecked", g.Unchecked},
 		{"rule", g.Rule},
-		{"rule_down", g.RuleDown},
-		{"rule_up", g.RuleUp},
-		{"rule_left", g.RuleLeft},
-		{"rule_right", g.RuleRight},
-		{"rule_cross", g.RuleCross},
 		{"ellipsis", g.Ellipsis},
 		{"arrow", g.Arrow},
 		{"bullet", g.Bullet},
@@ -218,7 +204,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "|-", LastBranch: "`-", Vertical: "|",
 			BarFull: "#", BarEmpty: "-",
 			Checked: "[x]", Unchecked: "[ ]",
-			Rule: "-", RuleDown: "+", RuleUp: "+", RuleLeft: "+", RuleRight: "+", RuleCross: "+", Ellipsis: "...", Arrow: "->", Bullet: "*", Enter: "Enter",
+			Rule: "-", Ellipsis: "...", Arrow: "->", Bullet: "*", Enter: "Enter",
 			Live: "*", Stale: "o",
 		}
 	case TierSafe:
@@ -229,7 +215,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "├─", LastBranch: "└─", Vertical: "│",
 			BarFull: "█", BarEmpty: "░",
 			Checked: "■", Unchecked: "□",
-			Rule: "─", RuleDown: "┬", RuleUp: "┴", RuleLeft: "┤", RuleRight: "├", RuleCross: "┼", Ellipsis: "…", Arrow: "→", Bullet: "•", Enter: "Enter",
+			Rule: "─", Ellipsis: "…", Arrow: "→", Bullet: "•", Enter: "Enter",
 			Live: "●", Stale: "○",
 		}
 	case TierAuto, TierFancy:
@@ -241,7 +227,7 @@ func GlyphsFor(t Tier) Glyphs {
 			Branch: "├─", LastBranch: "└─", Vertical: "│",
 			BarFull: "█", BarEmpty: "░",
 			Checked: "▪", Unchecked: "▫",
-			Rule: "─", RuleDown: "┬", RuleUp: "┴", RuleLeft: "┤", RuleRight: "├", RuleCross: "┼", Ellipsis: "…", Arrow: "→", Bullet: "•", Enter: "↵",
+			Rule: "─", Ellipsis: "…", Arrow: "→", Bullet: "•", Enter: "↵",
 			Live: "●", Stale: "◌",
 		}
 	}

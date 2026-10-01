@@ -106,7 +106,7 @@ func TestKanbanDemoWidthHeadings(t *testing.T) {
 			head = ln
 		}
 	}
-	if !strings.Contains(head, "Frozen 1 ") || !strings.HasSuffix(strings.TrimRight(head, " "), "1> -") {
+	if !strings.Contains(head, "Frozen 1 ") || !strings.HasSuffix(strings.TrimRight(head, " "), "1> -+") {
 		t.Errorf("Frozen heading = %q, want name and count followed by a right-aligned 1> hint", head)
 	}
 }

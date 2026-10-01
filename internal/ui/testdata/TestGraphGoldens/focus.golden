@@ -1,30 +1,30 @@
-- Graph - demo ------------------------------------ focus gr-b - 15 issues · 2/3 - * live 12:00:00 -
-  < waits on (1 · 1 open)                                                                           
-  `- * gr-a Extract pricing client                                                                  
-| o gr-b Migrate cart totals                                                                        
-  > holds up (1)                                                                                    
-  `- o gr-d Remove legacy pricing                                                                   
+  Graph   demo                                      focus gr-b   15 issues · 2/3   * live 12:00:00  
                                                                                                     
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-- 1 Overview - 2 Tree - 3 Kanban - 4 Ready - 5 Memories - [6 Graph] --------------------------------
++- Graph ------------------------------------------------------------------------------------------+
+|  < waits on (1 · 1 open)                                                                         |
+|  `- * gr-a Extract pricing client                                                                |
+|| o gr-b Migrate cart totals                                                                      |
+|  > holds up (1)                                                                                  |
+|  `- o gr-d Remove legacy pricing                                                                 |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
+|                                                                                                  |
++--------------------------------------------------------------------------------------------------+
+  1 Overview   2 Tree   3 Kanban   4 Ready   5 Memories   [6 Graph]                                 
  / search  f filter  Enter focus  : cmd  ? help                                                     

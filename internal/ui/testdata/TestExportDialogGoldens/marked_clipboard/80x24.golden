@@ -1,24 +1,24 @@
-- Tree - demo ------------------------------- 9 issues · 5/8 - * live 12:00:00 -
-    ID          TYPE    TITLE                          PR STATUS      WHO       
- #o ws-9qe      bug     Payment provider timeout re... P0                       
-  v ws-4k2      epic    Checkout: guest orders         * 0/2 ------             
-  +- Export ----------------------------------------------------- field 1/4 -+  
-  |   Set          < Marked (2) >                                            |  
-|#|   Format       Markdown                                                  |  
-  |   Comments     [ ]                                                       |  
-  |   Target       Clipboard                                                 |  
-  |   2 issues · Markdown · 510 B                                            |  
-  |   # ws · 2 issues                                                        |  
-  |                                                                          |  
-  |   Marked · exported 2026-09-29 12:00 +00:00                              |  
-  |                                                                          |  
-  |   | ID | Title | Status | P |                                            |  
-  |   | --- | --- | --- | --- |                                              |  
-  |   | ws-9qe | Payment provider timeout retries | Open | P0 |              |  
-  |   | ws-2hz | Split pricing service | Blocked (open) | P2 |               |  
-  +------------------------------------ Ctrl+S export  Esc close  Tab field -+  
+  Tree   demo                                 9 issues · 5/8   * live 12:00:00  
                                                                                 
-                                                                                
-                                                                                
-- 1 - [2] - 3 - 4 - 5 - 6 ----------------------------------------- # 2 marked -
++- Tree -----------------------------------------------------------------------+
+|    ID          TYPE    TITLE                                           PR    |
+| +- Export ----------------------------------------------------- field 1/4 -+ |
+| |   Set          < Marked (2) >                                            | |
+| |   Format       Markdown                                                  | |
+| |   Comments     [ ]                                                       | |
+|||   Target       Clipboard                                                 | |
+| |   2 issues · Markdown · 510 B                                            | |
+| |   # ws · 2 issues                                                        | |
+| |                                                                          | |
+| |   Marked · exported 2026-09-29 12:00 +00:00                              | |
+| |                                                                          | |
+| |   | ID | Title | Status | P |                                            | |
+| |   | --- | --- | --- | --- |                                              | |
+| |   | ws-9qe | Payment provider timeout retries | Open | P0 |              | |
+| |   | ws-2hz | Split pricing service | Blocked (open) | P2 |               | |
+| +------------------------------------ Ctrl+S export  Esc close  Tab field -+ |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+  1   [2]   3   4   5   6                                           # 2 marked  
  Ctrl+S export  Esc close  Tab field                                            

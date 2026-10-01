@@ -1,4 +1,4 @@
-- Kanban - demo ------------------------------- 15 issues · 1/10 - * 12:00:00 -
+  Kanban   demo                                 15 issues · 1/10   * 12:00:00  
 - [Open] 5 --------------------------------------------------------------------
 | P0 ws-9qe     bug     Payment provider timeout retries                       
   P1 ws-4k2.1   task    Address form validation                                
@@ -20,5 +20,5 @@
                                                                                
                                                                                
                                                                                
-- 1 Overview - 2 Tree - [3 Kanban] - 4 Ready - 5 Memories - 6 Graph -----------
+  1 Overview   2 Tree   [3 Kanban]   4 Ready   5 Memories   6 Graph            
  / search  f filter  Enter details  : cmd  ? help                              

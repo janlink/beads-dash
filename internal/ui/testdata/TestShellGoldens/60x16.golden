@@ -1,4 +1,4 @@
-- Overview - demo ----------------------------- * 12:00:00 -
+  Overview   demo                               * 12:00:00  
 | ? ws-1zz   task    Mystery status issue  P4               
   ! ws-2hz   feature Split pricing service P2               
   * ws-4k2   epic    Checkout: guest or... P1 alice         
@@ -12,5 +12,5 @@
                                                             
                                                             
                                                             
-- [1] - 2 - 3 - 4 - 5 - 6 ----------------------------------
+  [1]   2   3   4   5   6                                   
  / search  f filter  Enter details  : cmd  ? help           

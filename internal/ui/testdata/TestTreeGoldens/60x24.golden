@@ -1,4 +1,4 @@
-- Tree - demo -------------- 15 issues · 1/10 - * 12:00:00 -
+  Tree   demo                15 issues · 1/10   * 12:00:00  
     ID              TYPE    TITLE                      PR   
 | o ws-9qe          bug     Payment provider timeou... P0   
   v ws-4k2          epic    Checkout: guest orders     * 2/5
@@ -20,5 +20,5 @@
                                                             
                                                             
                                                             
-- 1 - [2] - 3 - 4 - 5 - 6 ----------------------------------
+  1   [2]   3   4   5   6                                   
  / search  f filter  Enter details  : cmd  ? help           

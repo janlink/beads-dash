@@ -575,6 +575,7 @@ func (a *App) env() Env {
 		Act:     a.acts,
 		Scope:   a.scope, Matches: a.matches(), Now: now, Cols: a.cols, Feed: a.feedNewest,
 		Docked: a.frame().Frame == detail.Side && a.sess.Current() != "",
+		Framed: a.framed(), Focused: a.viewFocused(),
 	}
 }
 
@@ -616,12 +617,30 @@ func (a *App) topDialog() Dialog {
 	return nil
 }
 
-// chromeRows are the header rule and the footer's two rows.
-const chromeRows = 3
+// chromeRows are the header and the footer's two rows, plus the blank row
+// under the header while the body is framed.
+func (a *App) chromeRows() int {
+	if a.framed() {
+		return 4
+	}
+	return 3
+}
+
+// bodyTop is the screen row the body starts on.
+func (a *App) bodyTop() int { return a.chromeRows() - 2 }
+
+// framed reports whether the body is drawn in framed panels: not on terminals
+// so small that dialogs fill the screen.
+func (a *App) framed() bool { return !dialog.FullScreen(a.cols, a.rows) }
+
+// viewFocused reports whether the view has the keys.
+func (a *App) viewFocused() bool {
+	return len(a.dialogs) == 0 && !a.sess.Has(state.LayerDetailFocus) && a.frame().Frame != detail.Overlay
+}
 
 // bodyHeight is the rows left for the body between the header and the footer.
 func (a *App) bodyHeight() int {
-	return max(a.rows-chromeRows-a.barHeight(), 1)
+	return max(a.rows-a.chromeRows()-a.barHeight(), 1)
 }
 
 func (a *App) refreshNotice() (screens.Notice, bool) {
@@ -1065,15 +1084,15 @@ func (a *App) click(m tea.Mouse) {
 		return
 	}
 	switch {
-	case m.Y == 1+a.bodyHeight():
-		_, _, spans := a.footerLayout(a.cols - a.panelSide())
+	case m.Y == a.bodyTop()+a.bodyHeight():
+		_, _, spans := a.footerLayout(a.cols)
 		for i, s := range spans {
 			if m.X >= s.from && m.X < s.to {
 				a.switchView(fmt.Sprintf("%d", i+1))
 			}
 		}
-	case m.Y >= 1 && m.Y-1 < a.bodyHeight():
-		a.clickBody(m.X, m.Y-1)
+	case m.Y >= a.bodyTop() && m.Y-a.bodyTop() < a.bodyHeight():
+		a.clickBody(m.X, m.Y-a.bodyTop())
 	}
 }
 
@@ -1091,7 +1110,7 @@ func (a *App) wheel(m tea.Mouse) {
 		return
 	}
 	if a.inMemories() {
-		a.memWheel(m.X, m.Y-1, n)
+		a.memWheel(m.X, m.Y-a.bodyTop(), n)
 		return
 	}
 	if a.overPanel(m.X) {
@@ -1147,6 +1166,9 @@ func (a *App) render() string {
 	body := a.body(a.bodyHeight())
 	lines := make([]string, 0, a.rows)
 	lines = append(lines, a.header())
+	if a.framed() {
+		lines = append(lines, strings.Repeat(" ", a.cols))
+	}
 	lines = append(lines, body...)
 	lines = append(lines, a.footer()...)
 	if a.bar != nil {
@@ -1175,15 +1197,29 @@ func (a *App) body(h int) []string {
 	case detail.Overlay:
 		return a.panelLines(d)
 	case detail.Side:
-		list := a.view().Render(env, a.cols-d.W, h)
+		list := a.viewLines(env, a.cols-d.W, h)
 		side := a.panelLines(d)
 		for i := range list {
-			list[i] += a.panelEdge(list[i], side[i], d.W)
+			list[i] += side[i]
 		}
 		return list
 	case detail.Hidden:
 	}
-	return a.view().Render(env, a.cols, h)
+	return a.viewLines(env, a.cols, h)
+}
+
+// viewLines draws the view in w by h cells, framed in one panel named after
+// it unless it draws its own panels or the body is not framed.
+func (a *App) viewLines(env Env, w, h int) []string {
+	if _, own := a.view().(Paneled); own || !env.Framed {
+		return a.view().Render(env, w, h)
+	}
+	p := look.Panel{Title: ViewNames[a.slot], Focused: env.Focused}
+	body := a.view().Render(env, max(look.PanelInner(w)-1, 1), max(h-2, 1))
+	for i := range body {
+		body[i] += " "
+	}
+	return env.Look.Frame(p, w, h, body)
 }
 
 func (a *App) emptyWorkspace() screens.Empty {

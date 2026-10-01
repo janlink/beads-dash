@@ -1,24 +1,24 @@
-- Tree - demo ------------------------------- 9 issues · 1/8 - * live 12:00:00 -
-    ID          TYPE    TITLE                          PR STATUS      WHO       
-| o ws-9qe      bug     Payment provider timeout re... P0                       
-  v ws-4k2      epic    Checkout: guest orders         * 0/2 ------             
-  +- Export ----------------------------------------------------- field 1/4 -+  
-  |   Set          < Current >                                               |  
-  |   Format       Markdown                                                  |  
-  |   Comments     [x]                                                       |  
-  |   Target       Clipboard                                                 |  
-  |   1 issue · Markdown · 234 B                                             |  
-  |   # ws-9qe · Payment provider timeout retries                            |  
-  |                                                                          |  
-  |   Open · P0 · bug                                                        |  
-  |   Created 2026-09-29 07:00 +00:00 · updated 2026-09-29 07:00 +00:00      |  
-  |                                                                          |  
-  |   ## Comments                                                            |  
-  |                                                                          |  
-  |   **ana** · 2026-09-28 10:00 +00:00                                      |  
-  +------------------------------------ Ctrl+S export  Esc close  Tab field -+  
+  Tree   demo                                 9 issues · 1/8   * live 12:00:00  
                                                                                 
-                                                                                
-                                                                                
-- 1 Overview - [2 Tree] - 3 Kanban - 4 Ready - 5 Memories - 6 Graph ------------
++- Tree -----------------------------------------------------------------------+
+|    ID          TYPE    TITLE                                           PR    |
+||+- Export ----------------------------------------------------- field 1/4 -+ |
+| |   Set          < Current >                                               | |
+| |   Format       Markdown                                                  | |
+| |   Comments     [x]                                                       | |
+| |   Target       Clipboard                                                 | |
+| |   1 issue · Markdown · 234 B                                             | |
+| |   # ws-9qe · Payment provider timeout retries                            | |
+| |                                                                          | |
+| |   Open · P0 · bug                                                        | |
+| |   Created 2026-09-29 07:00 +00:00 · updated 2026-09-29 07:00 +00:00      | |
+| |                                                                          | |
+| |   ## Comments                                                            | |
+| |                                                                          | |
+| |   **ana** · 2026-09-28 10:00 +00:00                                      | |
+| +------------------------------------ Ctrl+S export  Esc close  Tab field -+ |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+  1 Overview   [2 Tree]   3 Kanban   4 Ready   5 Memories   6 Graph             
  Ctrl+S export  Esc close  Tab field                                            

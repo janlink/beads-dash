@@ -239,11 +239,28 @@ func (v *Kanban) Render(env Env, w, h int) []string {
 		return screens.RenderEmpty(env.Look, e, w, h)
 	}
 	v.grouped = w < kanbanGroupedBelow
-	if v.grouped {
+	switch {
+	case v.grouped && env.Framed:
+		body := v.renderGrouped(env, max(look.PanelInner(w)-1, 1), max(h-2, 1))
+		for i := range body {
+			body[i] += " "
+		}
+		for i := range v.hits {
+			v.hits[i].x0++
+			v.hits[i].x1++
+			v.hits[i].y++
+		}
+		return env.Look.Frame(look.Panel{Title: v.Name(), Focused: env.Focused}, w, h, body)
+	case v.grouped:
 		return v.renderGrouped(env, w, h)
+	case env.Framed:
+		return v.renderPanels(env, w, h)
 	}
 	return v.renderColumns(env, w, h)
 }
+
+// Paneled implements Paneled: each column is a panel of its own.
+func (v *Kanban) Paneled() {}
 
 func (v *Kanban) heading(env Env, c model.KanbanColumn, w int, current bool, extra string) string {
 	l := env.Look
@@ -263,6 +280,100 @@ func (v *Kanban) heading(env Env, c model.KanbanColumn, w int, current bool, ext
 	room := max(w-look.WordCost-1-ansi.StringWidth(count)-look.SegWidth(right), 1)
 	name = ansi.Truncate(name, room, l.Glyphs.Ellipsis)
 	return l.Rule(w, l.Words([]look.Seg{{Role: role, Text: name}, {Role: theme.Dim, Text: count}}), right)
+}
+
+// groupLabel is a column's heading as text, for the grouped list in a panel.
+func (v *Kanban) groupLabel(env Env, c model.KanbanColumn, w int, current bool) string {
+	l := env.Look
+	role := theme.Strong
+	if current {
+		role = theme.Primary
+	}
+	return l.Fit("  "+l.Paint(role, c.Status.String())+l.Paint(theme.Dim, " "+itoa(len(c.IDs))), w)
+}
+
+// columnLayout is how many columns fit in w cells, how wide each is, and the
+// current column and row.
+func (v *Kanban) columnLayout(env Env, w int) (k, colW, cur, curRow int) {
+	n := len(v.cols)
+	k = max(min(n, (w+1)/(kanbanMinCol+1)), 1)
+	colW = min(kanbanMaxCol, (w+1)/k-1)
+	cur, curRow = v.place(env)
+	v.start = min(max(v.start, cur-k+1), max(cur, 0))
+	v.start = min(max(v.start, 0), n-k)
+	return k, colW, cur, curRow
+}
+
+// renderPanels draws each column that fits as a framed panel: the status and
+// count in its top border, the page dots in its bottom border.
+func (v *Kanban) renderPanels(env Env, w, h int) []string {
+	l := env.Look
+	n := len(v.cols)
+	k, colW, cur, curRow := v.columnLayout(env, w)
+	per := max(h-2, 1)
+	cw := max(look.PanelInner(colW)-1, 1)
+	blocks := make([][]string, 0, k)
+	x := 0
+	for c := v.start; c < v.start+k; c++ {
+		col := v.cols[c]
+		var aside []look.Seg
+		switch {
+		case c == v.start && v.start > 0:
+			aside = look.Word(theme.Dim, kanbanHint(l.Glyphs, v.start, true))
+		case c == v.start+k-1 && c < n-1:
+			aside = look.Word(theme.Dim, kanbanHint(l.Glyphs, n-1-c, false))
+		}
+		ref := slices.Index(col.IDs, v.memo[col.Status])
+		if c == cur && curRow >= 0 {
+			ref = curRow
+		}
+		page := max(ref, 0) / per
+		var body []string
+		if len(col.IDs) == 0 {
+			body = append(body, l.Paint(theme.Dim, "  (empty)"))
+		}
+		for i := page * per; i < min(len(col.IDs), (page+1)*per); i++ {
+			id := col.IDs[i]
+			v.hits = append(v.hits, kanbanHit{x + 1, x + cw, len(body) + 1, c, id})
+			body = append(body, v.card(env, id, cw)+" ")
+		}
+		p := look.Panel{
+			Title:   col.Status.String() + " " + itoa(len(col.IDs)),
+			Aside:   aside,
+			Bottom:  v.dotSegs(env, (len(col.IDs)+per-1)/per, page),
+			Focused: c == cur && env.Focused,
+		}
+		blocks = append(blocks, l.Frame(p, colW, h, body))
+		v.spans = append(v.spans, kanbanSpan{x, x + colW - 1, c})
+		x += colW + 1
+	}
+	out := make([]string, h)
+	for y := range out {
+		parts := make([]string, len(blocks))
+		for i, b := range blocks {
+			parts[i] = b[y]
+		}
+		out[y] = l.Fit(strings.Join(parts, " "), w)
+	}
+	return out
+}
+
+// dotSegs is the page indicator for a panel's bottom border, none for a
+// single page.
+func (v *Kanban) dotSegs(env Env, pages, page int) []look.Seg {
+	if pages < 2 {
+		return nil
+	}
+	g := env.Look.Glyphs
+	segs := make([]look.Seg, 0, pages)
+	for p := range pages {
+		if p == page {
+			segs = append(segs, look.Seg{Role: theme.Primary, Text: g.Live})
+		} else {
+			segs = append(segs, look.Seg{Role: theme.Dim, Text: g.Stale})
+		}
+	}
+	return segs
 }
 
 func (v *Kanban) card(env Env, id string, w int) string {
@@ -304,6 +415,9 @@ func (v *Kanban) renderGrouped(env Env, w, h int) []string {
 		g := order[first+i]
 		if g.id == "" {
 			out[i] = v.heading(env, v.cols[g.col], w, g.col == col, "")
+			if env.Framed {
+				out[i] = v.groupLabel(env, v.cols[g.col], w, g.col == col)
+			}
 			continue
 		}
 		out[i] = v.card(env, g.id, w)
@@ -315,11 +429,7 @@ func (v *Kanban) renderGrouped(env Env, w, h int) []string {
 func (v *Kanban) renderColumns(env Env, w, h int) []string {
 	l := env.Look
 	n := len(v.cols)
-	k := max(min(n, (w+1)/(kanbanMinCol+1)), 1)
-	colW := min(kanbanMaxCol, (w+1)/k-1)
-	cur, curRow := v.place(env)
-	v.start = min(max(v.start, cur-k+1), max(cur, 0))
-	v.start = min(max(v.start, 0), n-k)
+	k, colW, cur, curRow := v.columnLayout(env, w)
 	per := max(h-2, 1)
 	blocks := make([][]string, 0, k)
 	x := 0

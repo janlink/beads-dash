@@ -1,30 +1,30 @@
-- Tree - demo ------------------- 15 issues · 1/10 - * live 12:00:00 -+- ws-9qe ---------------------------
-    ID              TYPE    TITLE                                PR   |  ws-9qe  o Open  bug  P0           
-| o ws-9qe          bug     Payment provider timeout retries     P0   |  Payment provider timeout retries  
-  v ws-4k2          epic    Checkout: guest orders               * 2/5|  v Description  markdown           
-  o |- ws-4k2.1     task    Address form validation              P1   |    Retries fail after the provider 
-  ! |- ws-4k2.2     task    Guest order confirmation mail        P2   |    times out.                      
-  v |- ws-4k2.5     feature Shipping options                     o 0/1|                                    
-  o | `- ws-4k2.5.1 task    Pickup point lookup                  P3   |    * back off between tries        
-  > `- x 2 closed                                                     |    * add jitter                    
-  ! ws-2hz          feature Split pricing service                P2   |  v Dependencies  holds up 1        
-  o ws-lost         task    Follow-up from a delete... ^ ws-gone P2   |    o ws-9qe Payment provider tim...
-  * ws-7mt          bug     Cart badge shows stale count         P2   |    > holds up (1)                  
-  ~ ws-8np          feature Search: typo tolerance               P3   |    `-! ws-2hz Split pricing service
-                                                                      |  * Children  none                  
-                                                                      |  > Details  created 5 h ago · up...
-                                                                      |  > Audit trail  no comments        
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-                                                                      |                                    
-- 1 - [2] - 3 - 4 - 5 - 6 --------------------------------------------+- e edit  x export  Tab focus ------
+  Tree   demo                                                          15 issues · 1/10   * live 12:00:00  
+                                                                                                           
++- Tree -------------------------------------------------------------+ +- ws-9qe -------------------------+
+|    ID              TYPE    TITLE                             PR    | | ws-9qe  o Open  bug  P0          |
+|| o ws-9qe          bug     Payment provider timeout retries  P0    | | Payment provider timeout retries |
+|  v ws-4k2          epic    Checkout: guest orders            * 2/5 | | v Description  markdown          |
+|  o |- ws-4k2.1     task    Address form validation           P1    | |   Retries fail after the         |
+|  ! |- ws-4k2.2     task    Guest order confirmation mail     P2    | |   provider times out.            |
+|  v |- ws-4k2.5     feature Shipping options                  o 0/1 | |                                  |
+|  o | `- ws-4k2.5.1 task    Pickup point lookup               P3    | |   * back off between tries       |
+|  > `- x 2 closed                                                   | |   * add jitter                   |
+|  ! ws-2hz          feature Split pricing service             P2    | | v Dependencies  holds up 1       |
+|  o ws-lost         task    Follow-up from a del... ^ ws-gone P2    | |   o ws-9qe Payment provider t... |
+|  * ws-7mt          bug     Cart badge shows stale count      P2    | |   > holds up (1)                 |
+|  ~ ws-8np          feature Search: typo tolerance            P3    | |   `-! ws-2hz Split pricing se... |
+|                                                                    | | * Children  none                 |
+|                                                                    | | > Details  created 5 h ago · ... |
+|                                                                    | | > Audit trail  no comments       |
+|                                                                    | |                                  |
+|                                                                    | |                                  |
+|                                                                    | |                                  |
+|                                                                    | |                                  |
+|                                                                    | |                                  |
+|                                                                    | |                                  |
+|                                                                    | |                                  |
+|                                                                    | |                                  |
+|                                                                    | |                                  |
++--------------------------------------------------------------------+ +---- e edit  x export  Tab focus -+
+  1 Overview   [2 Tree]   3 Kanban   4 Ready   5 Memories   6 Graph                                        
  / search  f filter  Enter details  : cmd  ? help                                                          

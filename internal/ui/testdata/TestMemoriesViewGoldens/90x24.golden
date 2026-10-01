@@ -1,24 +1,24 @@
-- Memories - demo -------------------------- 4 · 514 chars in bd prime - * live 12:00:00 -
-| dolt-push-needs-...  Run bd dolt pu...|  dolt-push-needs-remote · 4 lines · 86 chars     
-  golden-update        Regenerate gol...|  Run bd dolt push only after the remote is set.  
-  no-tabs              Go files use t...|                                                  
-  test-pump            Engine-driven ...|  * check  bd dolt remote                         
-                                        |  * never force                                   
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-                                        |                                                  
-- 1 Overview - 2 Tree - 3 Kanban - 4 Ready - [5 Memories] - 6 Graph ----------------------
+  Memories   demo                            4 · 514 chars in bd prime   * live 12:00:00  
+                                                                                          
++- Memories ----------------------- 4 -+ +- dolt-push-needs-remote - 4 lines · 86 chars -+
+|| dolt-push-need...  Run bd dolt p... | | Run bd dolt push only after the remote is     |
+|  golden-update      Regenerate go... | | set.                                          |
+|  no-tabs            Go files use ... | |                                               |
+|  test-pump          Engine-driven... | | * check  bd dolt remote                       |
+|                                      | | * never force                                 |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
+|                                      | |                                               |
++--------------------------------------+ +-----------------------------------------------+
+  1 Overview   2 Tree   3 Kanban   4 Ready   [5 Memories]   6 Graph                       
  / search  f filter  j/k move  n new  e edit  d forget  : cmd  ? help                     

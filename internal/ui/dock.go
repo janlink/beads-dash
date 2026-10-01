@@ -2,9 +2,7 @@ package ui
 
 import (
 	tea "charm.land/bubbletea/v2"
-	"github.com/charmbracelet/x/ansi"
 
-	"github.com/janlink/beads-dash/internal/theme"
 	"github.com/janlink/beads-dash/internal/ui/detail"
 	"github.com/janlink/beads-dash/internal/ui/keys"
 	"github.com/janlink/beads-dash/internal/ui/state"
@@ -127,6 +125,13 @@ func (a *App) panelInput(d detail.Dock) detail.Input {
 		Look: a.look, Gen: a.lookGen, Snap: a.snap, Statuses: a.bds.Statuses, Rows: a.rend,
 		ID: cur, Now: now, Frame: d.Frame, W: d.W, H: d.H,
 		Focused: d.Frame == detail.Overlay || a.sess.Has(state.LayerDetailFocus),
+		Framed:  a.framed(),
+	}
+	if in.Framed {
+		in.Hints = a.panelKeySegs(d.W - 6)
+		if d.Frame == detail.Side {
+			in.W--
+		}
 	}
 	if a.hl.Live(cur, now) {
 		in.Events = a.hl.Events(cur)
@@ -134,22 +139,18 @@ func (a *App) panelInput(d detail.Dock) detail.Input {
 	return in
 }
 
-// panelEdge is a side panel line whose border joins a rule of the view that
-// runs into it.
-func (a *App) panelEdge(list, side string, w int) string {
-	l := a.look
-	if !l.IsRuleAt(list, ansi.StringWidth(list)-1) {
-		return side
-	}
-	role := theme.Rule
-	if a.sess.Has(state.LayerDetailFocus) {
-		role = theme.Primary
-	}
-	return l.Paint(role, l.Glyphs.RuleLeft) + ansi.Cut(side, 1, w)
-}
-
+// panelLines draws the panel; framed beside the view, it keeps a blank column
+// from the view's panel.
 func (a *App) panelLines(d detail.Dock) []string {
-	return a.panel.Render(a.panelInput(d))
+	in := a.panelInput(d)
+	if !in.Framed || d.Frame != detail.Side {
+		return a.panel.Render(in)
+	}
+	lines := a.panel.Render(in)
+	for i := range lines {
+		lines[i] = " " + lines[i]
+	}
+	return lines
 }
 
 // mdMsg carries a finished markdown rendering to the panel.
@@ -206,6 +207,9 @@ func (a *App) clickBody(x, y int) {
 	}
 	if a.sess.Has(state.LayerDetailFocus) {
 		a.sess.Remove(state.LayerDetailFocus)
+	}
+	if _, own := a.view().(Paneled); !own && a.framed() {
+		x, y = x-1, y-1
 	}
 	var id string
 	var ok bool
